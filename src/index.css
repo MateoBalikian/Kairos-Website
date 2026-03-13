@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0A2463;
+  --navy-dark: #071a47;
+  --navy-light: #1E3A8A;
+  --accent: #7BA7E8;
+  --surface: #F8F8F6;
+  --border: #E5E5E2;
+  --text: #0A0A0A;
+  --text-secondary: #4A4A47;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* Typography */
+.font-serif {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-mono {
+  font-family: 'DM Mono', monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy);
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: var(--navy);
+  color: white;
+}
+
+/* Protocol sticky section */
+.protocol-sticky-container {
+  position: relative;
+}
+
+/* EKG animation */
+@keyframes ekg-draw {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes scan-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+@keyframes typewriter-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: typewriter-cursor 1s infinite;
+}
+
+@keyframes float-data {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+.float-data {
+  animation: float-data 3s ease-in-out infinite;
+}
+
+/* Magnetic button base */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s ease;
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.03);
+}
+
+/* Sliding button fill */
+.btn-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-slide .slide-fill {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 0;
+}
+
+.btn-slide:hover .slide-fill {
+  transform: translateY(0);
+}
+
+.btn-slide span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Pose estimation animation */
+@keyframes joint-pulse {
+  0%, 100% { r: 4; opacity: 1; }
+  50% { r: 6; opacity: 0.7; }
+}
+
+.joint-circle {
+  animation: joint-pulse 2s ease-in-out infinite;
+}
+
+.joint-circle:nth-child(2) { animation-delay: 0.2s; }
+.joint-circle:nth-child(3) { animation-delay: 0.4s; }
+.joint-circle:nth-child(4) { animation-delay: 0.6s; }
+.joint-circle:nth-child(5) { animation-delay: 0.8s; }
+.joint-circle:nth-child(6) { animation-delay: 1.0s; }
+.joint-circle:nth-child(7) { animation-delay: 1.2s; }
+
+/* Card diagnostic shuffler */
+@keyframes card-slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.diagnostic-card-enter {
+  animation: card-slide-up 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
