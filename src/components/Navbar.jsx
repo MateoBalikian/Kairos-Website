@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const links = [
     { label: 'Sobre', href: '#sobre' },
-    { label: 'Avaliações', href: '#avaliacoes' },
+    { label: 'Avaliações', href: '#ciencia' },
     { label: 'Produtos', href: '#produtos' },
     { label: 'LACAE', href: '#lacae' },
   ]

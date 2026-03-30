@@ -1,0 +1,12 @@
+﻿commit dbd3cad2494f03a290a4e6fb90c3def706961705
+Author: MateoBalikian <balikianmateo30@gmail.com>
+Date:   Fri Mar 13 18:48:18 2026 -0300
+
+    feat: initial KAIROS website ΓÇö React + Vite + Tailwind CSS
+    
+    Landing page for KAIROS Brazilian sports science AI company.
+    Includes: Navbar, Hero (typewriter + live data), StatsBar, Features,
+    Philosophy, Protocol, Products (Trocker + NMR), Waitlist form, Footer.
+    GSAP animations, DM Sans + DM Mono typography, dark design system.
+    
+    Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>

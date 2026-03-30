@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ArrowRight, ChevronDown } from 'lucide-react'
+import { mediaUrl } from '../lib/supabase'
 
 const dataPoints = [
   { label: 'VO2', value: '68.4', unit: 'ml/kg/min' },
@@ -85,6 +86,53 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-[100dvh] flex items-center overflow-hidden bg-white"
     >
+      {/* Video is intentionally positioned outside the grid so it bleeds to the viewport edge */}
+      <div className="hidden lg:block absolute top-0 right-0 h-full w-[60%] z-0">
+        <video
+          src={mediaUrl('gui-tracked.mp4')}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover object-top"
+        />
+        {/* Blend só na borda esquerda — transição suave para o branco do texto */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent" style={{ width: '40%' }} />
+        <div className="absolute left-0 top-0 h-full w-[35%] bg-gradient-to-r from-white to-transparent" />
+
+        {/* Badge Ao vivo */}
+        <div className="absolute top-8 right-8 flex items-center gap-2 bg-white/80 backdrop-blur-md border border-[#E5E5E2] rounded-full px-3 py-1.5 shadow-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+          <span className="font-mono text-[10px] text-[#0A0A0A] uppercase tracking-widest">Ao vivo</span>
+        </div>
+
+        {/* Data overlay card */}
+        <div className="absolute bottom-16 right-8 bg-white/90 backdrop-blur-md border border-[#E5E5E2] rounded-3xl p-5 w-60 shadow-[0_8px_40px_rgba(10,36,99,0.14)]">
+          <div className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-widest mb-3">Análise em tempo real</div>
+          <div className="space-y-2.5">
+            {[
+              { label: 'VO₂ máx', value: '68.4 ml/kg/min' },
+              { label: 'Risco lesão', value: 'BAIXO' },
+              { label: 'Performance', value: '94/100' },
+            ].map((item) => (
+              <div key={item.label} className="flex justify-between items-center">
+                <span className="text-xs text-[#4A4A47]">{item.label}</span>
+                <span className="font-mono text-xs font-semibold text-[#0A2463]">{item.value}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 pt-3 border-t border-[#E5E5E2]">
+            <div className="flex justify-between mb-1.5">
+              <span className="font-mono text-[10px] text-[#4A4A47]">Rastreamento</span>
+              <span className="font-mono text-[10px] text-[#0A2463]">98%</span>
+            </div>
+            <div className="w-full h-1 bg-[#E5E5E2] rounded-full overflow-hidden">
+              <div className="h-full bg-[#0A2463] rounded-full" style={{ width: '98%' }} />
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Left content */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 xl:px-16">
         <div className="grid lg:grid-cols-[40%_60%] gap-0 items-center min-h-[100dvh]">
@@ -160,34 +208,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Image column */}
-          <div className="hidden lg:block relative h-screen">
-            <div className="absolute inset-0">
-              <img
-                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1400&q=85&auto=format&fit=crop"
-                alt="Atleta em análise biomecânica"
-                className="w-full h-full object-cover"
-              />
-              {/* Editorial overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/10 to-transparent" />
-              {/* Data overlay card */}
-              <div className="absolute bottom-16 right-8 bg-white/90 backdrop-blur-sm border border-[#E5E5E2] rounded-3xl p-5 w-56 float-data shadow-[0_8px_32px_rgba(10,36,99,0.12)]">
-                <div className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-widest mb-3">Análise em tempo real</div>
-                <div className="space-y-2">
-                  {[
-                    { label: 'VO₂ máx', value: '68.4 ml/kg/min', color: 'text-[#0A2463]' },
-                    { label: 'Risco lesão', value: 'BAIXO', color: 'text-[#0A2463]' },
-                    { label: 'Performance', value: '94/100', color: 'text-[#0A2463]' },
-                  ].map((item) => (
-                    <div key={item.label} className="flex justify-between items-center">
-                      <span className="text-xs text-[#4A4A47]">{item.label}</span>
-                      <span className={`font-mono text-xs font-medium ${item.color}`}>{item.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          <div className="hidden lg:block" />
         </div>
       </div>
 

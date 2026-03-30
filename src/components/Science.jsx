@@ -1,0 +1,351 @@
+import { useState, useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ChevronLeft, ChevronRight, Wind, Activity, Zap, FlaskConical } from 'lucide-react'
+import { mediaUrl } from '../lib/supabase'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const evaluations = [
+  {
+    id: 'vo2max',
+    num: '01',
+    icon: Wind,
+    title: 'VO₂máx',
+    subtitle: 'Consumo Máximo de Oxigênio',
+    image: mediaUrl('vo2max.png'),
+    tag: 'Capacidade Aeróbica',
+    cta_headline: 'Descubra o limite real do seu sistema cardiorrespiratório',
+    description:
+      'O VO₂máx representa o volume máximo de oxigênio que o organismo consegue captar, transportar e utilizar por minuto durante exercício máximo. É considerado o indicador-ouro da capacidade cardiorrespiratória e preditor direto de desempenho em esportes de endurance.',
+    science:
+      'O atleta é monitorado em tempo real por ergoespirometria durante teste incremental em esteira ou cicloergômetro. A KAIROS integra consumo ventilatório, frequência cardíaca e percepção subjetiva de esforço, gerando um perfil funcional preciso e replicável.',
+    metrics: [
+      { label: 'Precisão', value: '±2%' },
+      { label: 'Variáveis', value: '12+' },
+      { label: 'Correlação', value: 'r=0.94' },
+    ],
+  },
+  {
+    id: 'lactato',
+    num: '02',
+    icon: Activity,
+    title: 'Limiar Anaeróbico',
+    subtitle: 'Avaliação por Lactato Sanguíneo',
+    image: mediaUrl('lactato1280.png'),
+    tag: 'Limiar Metabólico',
+    cta_headline: 'Treine nas zonas certas e pare de desperdiçar esforço',
+    description:
+      'O limiar de lactato é a intensidade a partir da qual a produção supera a remoção pelo organismo. Define o ritmo sustentável em competições e é a referência mais sensível para prescrição de treino verdadeiramente individualizado.',
+    science:
+      'Coletas de sangue capilar a cada estágio incremental. A KAIROS analisa a cinética do lactato com algoritmos de detecção de ponto de inflexão, identificando LT1, LT2/MLSS e zonas fisiologicamente fundamentadas.',
+    metrics: [
+      { label: 'Coletas', value: '6–8' },
+      { label: 'Zonas', value: '5' },
+      { label: 'Precisão LT2', value: '±3W' },
+    ],
+  },
+  {
+    id: 'wingate',
+    num: '03',
+    icon: Zap,
+    title: 'Teste de Wingate',
+    subtitle: 'Potência Anaeróbica Máxima',
+    image: mediaUrl('wingate.png'),
+    tag: 'Força & Potência',
+    cta_headline: 'Descubra a sua força máxima e potência anaeróbica',
+    description:
+      'Padrão-ouro para avaliação de potência anaeróbica de membros inferiores. Em 30 segundos de pedalada máxima mensura-se pico de potência, potência média e índice de fadiga — variáveis críticas em esportes explosivos.',
+    science:
+      'A KAIROS captura a curva de potência instante a instante (10 ms), calculando potência absoluta e relativa (W/kg), índice de fadiga e taxa de declínio com comparação a bancos de dados normativos estratificados.',
+    metrics: [
+      { label: 'Duração', value: '30s' },
+      { label: 'Métricas', value: '8' },
+      { label: 'Resolução', value: '10ms' },
+    ],
+  },
+]
+
+export default function Science() {
+  const [active, setActive] = useState(0)
+  const sectionRef = useRef(null)
+  const autoRef = useRef(null)
+  const imgRefs = useRef([])
+  const contentRef = useRef(null)
+
+  const current = evaluations[active]
+
+  const goTo = (index) => {
+    if (index === active) return
+    gsap.to(contentRef.current, {
+      opacity: 0, y: 12, duration: 0.2, ease: 'power2.in',
+      onComplete: () => {
+        setActive(index)
+        gsap.fromTo(contentRef.current,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
+        )
+      }
+    })
+  }
+
+  const startAuto = () => {
+    clearInterval(autoRef.current)
+    autoRef.current = setInterval(() => {
+      setActive(prev => (prev + 1) % evaluations.length)
+    }, 6000)
+  }
+
+  useEffect(() => {
+    startAuto()
+    return () => clearInterval(autoRef.current)
+  }, [])
+
+  const handleNav = (i) => { goTo(i); startAuto() }
+
+  // Scroll entrance — elements are visible by default, animation is additive
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.sci-head > *', {
+        opacity: 0, y: 24,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', once: true },
+      })
+      gsap.from('.sci-panel', {
+        opacity: 0, y: 36,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.sci-panel', start: 'top 80%', once: true },
+      })
+      gsap.from('.sci-sidebar > *', {
+        opacity: 0, x: 20,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.sci-sidebar', start: 'top 78%', once: true },
+      })
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section
+      ref={sectionRef}
+      id="ciencia"
+      className="py-24 lg:py-32 px-6 bg-[#0A0A0A] overflow-hidden"
+    >
+      <div className="max-w-[1400px] mx-auto">
+
+        {/* Header */}
+        <div className="sci-head mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-6 h-px bg-[#0A2463]" />
+              <span className="font-mono text-[10px] text-[#6B6B67] uppercase tracking-widest">
+                Nossas avaliações
+              </span>
+            </div>
+            <h2 className="font-sans text-3xl lg:text-5xl text-white tracking-tight leading-tight">
+              Avaliações que revelam o{' '}
+              <span className="font-bold" style={{ color: '#4B7BF5' }}>seu potencial real</span>
+            </h2>
+          </div>
+          <p className="text-[#6B6B67] text-sm leading-relaxed max-w-sm lg:text-right">
+            Diagnósticos fisiológicos de elite, antes exclusivos de centros olímpicos. Agora disponíveis para atletas, times e clubes que levam performance a sério.
+          </p>
+        </div>
+
+        {/* Main layout */}
+        <div className="grid lg:grid-cols-[1fr_360px] gap-6">
+
+          {/* Left: Big panel */}
+          <div className="sci-panel relative bg-[#111111] rounded-3xl overflow-hidden" style={{ minHeight: 800, isolation: 'isolate' }}>
+
+            {/* Background image — all 3 stacked, only active visible */}
+            {evaluations.map((ev, i) => (
+              <div
+                key={ev.id}
+                ref={el => imgRefs.current[i] = el}
+                className="absolute inset-0 transition-opacity duration-700"
+                style={{ opacity: i === active ? 1 : 0 }}
+              >
+                <img
+                  src={ev.image}
+                  alt={ev.title}
+                  className="absolute inset-0 w-full h-full object-cover object-center block"
+                />
+                <div className="absolute inset-0" style={{
+                  background: 'linear-gradient(to top, #111111 0%, rgba(17,17,17,0.6) 40%, transparent 100%), linear-gradient(to right, rgba(17,17,17,0.5) 0%, transparent 55%)'
+                }} />
+              </div>
+            ))}
+
+            {/* Oversized number */}
+            <div
+              className="absolute top-6 right-8 font-mono font-bold text-white/5 select-none leading-none"
+              style={{ fontSize: 'clamp(80px, 14vw, 160px)' }}
+            >
+              {current.num}
+            </div>
+
+            {/* Content overlay */}
+            <div ref={contentRef} className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-12" style={{ minHeight: 560 }}>
+
+              {/* Tag */}
+              <span className="inline-flex w-fit font-mono text-[10px] uppercase tracking-widest border border-white/20 text-white/60 px-3 py-1.5 rounded-full mb-5 backdrop-blur-sm">
+                {current.tag}
+              </span>
+
+              {/* Title */}
+              <div className="flex items-center gap-3 mb-3">
+                <h3 className="font-sans font-bold text-3xl lg:text-4xl text-white leading-none">
+                  {current.title}
+                </h3>
+              </div>
+              <p className="font-mono text-xs text-white/50 mb-5">{current.subtitle}</p>
+
+              {/* CTA headline */}
+              <p className="font-sans font-semibold text-lg text-white leading-snug mb-3">
+                {current.cta_headline}
+              </p>
+
+              {/* Description */}
+              <p className="text-sm text-white/70 leading-relaxed max-w-lg mb-7">
+                {current.description}
+              </p>
+
+              {/* Metrics row */}
+              <div className="flex flex-wrap gap-3">
+                {current.metrics.map((m) => (
+                  <div
+                    key={m.label}
+                    className="bg-white/8 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-2.5 text-center"
+                  >
+                    <p className="font-mono font-bold text-white text-base leading-none">{m.value}</p>
+                    <p className="font-mono text-[9px] text-white/40 uppercase tracking-wide mt-1">{m.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA button */}
+              <a
+                href="#waitlist"
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="inline-flex items-center gap-2 mt-6 px-5 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-90"
+                style={{ background: '#4B7BF5', color: 'white' }}
+              >
+                Agende sua avaliação
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            {/* Bottom nav bar */}
+            <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-between px-8 lg:px-12 py-5">
+              <div className="flex gap-2">
+                {evaluations.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleNav(i)}
+                    className="transition-all duration-400 rounded-full"
+                    style={{
+                      width: i === active ? 28 : 6,
+                      height: 6,
+                      background: i === active ? '#4B7BF5' : 'rgba(255,255,255,0.2)'
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleNav((active - 1 + evaluations.length) % evaluations.length)}
+                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-white/40 hover:text-white transition-all duration-200"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  onClick={() => handleNav((active + 1) % evaluations.length)}
+                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-white/40 hover:text-white transition-all duration-200"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Sidebar */}
+          <div className="sci-sidebar flex flex-col gap-4">
+
+            {/* Methodology box */}
+            <div className="bg-[#111111] rounded-3xl p-6 flex-1">
+              <div className="flex items-center gap-2 mb-4">
+                <FlaskConical size={14} style={{ color: '#4B7BF5' }} />
+                <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: '#4B7BF5' }}>
+                  Metodologia KAIROS
+                </span>
+              </div>
+              <p className="text-sm text-[#8B8B87] leading-relaxed">{current.science}</p>
+            </div>
+
+            {/* Evaluation tabs */}
+            <div className="bg-[#111111] rounded-3xl p-3 flex flex-col gap-1">
+              {evaluations.map((ev, i) => {
+                const TabIcon = ev.icon
+                return (
+                  <button
+                    key={ev.id}
+                    onClick={() => handleNav(i)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-2xl text-left transition-all duration-200 group"
+                    style={{
+                      background: i === active ? 'rgba(75,123,245,0.12)' : 'transparent',
+                      borderLeft: i === active ? '2px solid #4B7BF5' : '2px solid transparent',
+                    }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200"
+                      style={{
+                        background: i === active ? 'rgba(75,123,245,0.2)' : 'rgba(255,255,255,0.05)',
+                      }}
+                    >
+                      <TabIcon
+                        size={14}
+                        style={{ color: i === active ? '#4B7BF5' : '#6B6B67' }}
+                      />
+                    </div>
+                    <div>
+                      <p
+                        className="text-sm font-medium leading-none mb-0.5"
+                        style={{ color: i === active ? 'white' : '#6B6B67' }}
+                      >
+                        {ev.title}
+                      </p>
+                      <p className="font-mono text-[10px] text-[#4A4A47]">{ev.subtitle}</p>
+                    </div>
+                    <span
+                      className="ml-auto font-mono text-[10px]"
+                      style={{ color: i === active ? '#4B7BF5' : '#3A3A37' }}
+                    >
+                      {ev.num}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Bottom badge */}
+            <div className="bg-[#111111] rounded-3xl px-5 py-4 flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#4B7BF5', boxShadow: '0 0 6px #4B7BF5' }} />
+              <p className="text-xs text-[#6B6B67] leading-relaxed">
+                Protocolos baseados em literatura científica revisada por pares. Precisão clínica aplicada ao esporte.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
