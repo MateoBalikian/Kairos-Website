@@ -21,7 +21,7 @@ const columns = [
   {
     title: 'Contato',
     links: [
-      { label: 'contato@kairos.com', href: 'mailto:contato@kairos.com' },
+      { label: 'contato@kairostechs.com', href: 'mailto:contato@kairostechs.com' },
       { label: 'Parcerias', href: '#' },
       { label: 'Imprensa', href: '#' },
     ],
@@ -30,7 +30,7 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A2463] rounded-t-[3rem] mt-auto">
+    <footer className="bg-[#0A2463] rounded-t-[3rem] mt-auto" style={{ borderRadius: '2.5rem 2.5rem 0 0', marginTop: '-2.5rem', position: 'relative', zIndex: 1 }}>
       <div className="max-w-[1400px] mx-auto px-8 lg:px-12 pt-16 pb-8">
 
         {/* Top row */}
@@ -38,7 +38,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="max-w-xs">
             <div className="font-mono text-lg tracking-[0.3em] font-medium text-white uppercase mb-3">
-              KAIROS
+              KAIRÓS
             </div>
             <p className="text-sm text-white/50 leading-relaxed">
               Ciência aplicada ao momento certo.
@@ -64,14 +64,14 @@ export default function Footer() {
               className="btn-magnetic btn-slide inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#0A2463] bg-white rounded-full"
             >
               <div className="slide-fill bg-[#F8F8F6]" />
-              <span>Entrar na lista de espera</span>
+              <span>Entre em contato</span>
             </a>
             <a
-              href="mailto:contato@kairos.com"
+              href="mailto:contato@kairostechs.com"
               className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors duration-200 justify-center"
             >
               <Mail size={14} />
-              contato@kairos.com
+              contato@kairostechs.com
             </a>
           </div>
         </div>

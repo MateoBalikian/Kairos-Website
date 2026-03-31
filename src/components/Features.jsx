@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 /* ─── Card 1: Diagnostics List ─── */
 const diagnostics = [
@@ -34,11 +31,10 @@ function DiagnosticList() {
           <button
             key={i}
             onClick={() => setActive(i)}
-            className={`flex items-start gap-3 p-4 rounded-2xl transition-all duration-400 text-left w-full ${
-              active === i
+            className={`flex items-start gap-3 p-4 rounded-2xl transition-all duration-400 text-left w-full ${active === i
                 ? 'bg-[#0A2463] shadow-[0_4px_20px_rgba(10,36,99,0.22)]'
                 : 'bg-[#F8F8F6] hover:bg-[#EFEFED]'
-            }`}
+              }`}
           >
             <span className={`text-lg mt-0.5 leading-none ${active === i ? 'text-white/70' : 'text-[#0A2463]'}`}>
               {d.icon}
@@ -77,30 +73,39 @@ const telemetryLines = [
 ]
 
 function TelemetryCard() {
-  const [lines, setLines] = useState([])
-  const [typing, setTyping] = useState('')
-  const [lineIdx, setLineIdx] = useState(0)
-  const [charIdx, setCharIdx] = useState(0)
+  const [display, setDisplay] = useState({ lines: [], typing: '' })
+  const animRef = useRef({ lineIdx: 0, charIdx: 0 })
 
   useEffect(() => {
-    const line = telemetryLines[lineIdx]
-    if (!line) {
-      const t = setTimeout(() => { setLines([]); setLineIdx(0); setCharIdx(0) }, 2500)
-      return () => clearTimeout(t)
+    let timer
+
+    function tick() {
+      const { lineIdx, charIdx } = animRef.current
+      const line = telemetryLines[lineIdx]
+
+      if (!line) {
+        timer = setTimeout(() => {
+          setDisplay({ lines: [], typing: '' })
+          animRef.current = { lineIdx: 0, charIdx: 0 }
+          timer = setTimeout(tick, 100)
+        }, 2500)
+        return
+      }
+
+      if (charIdx <= line.text.length) {
+        setDisplay(d => ({ ...d, typing: line.text.slice(0, charIdx) }))
+        animRef.current.charIdx++
+        timer = setTimeout(tick, 22)
+      } else {
+        setDisplay(d => ({ lines: [...d.lines, line], typing: '' }))
+        animRef.current = { lineIdx: lineIdx + 1, charIdx: 0 }
+        timer = setTimeout(tick, 220)
+      }
     }
-    if (charIdx <= line.text.length) {
-      const t = setTimeout(() => { setTyping(line.text.slice(0, charIdx)); setCharIdx((c) => c + 1) }, 22)
-      return () => clearTimeout(t)
-    } else {
-      const t = setTimeout(() => {
-        setLines((prev) => [...prev, line])
-        setTyping('')
-        setCharIdx(0)
-        setLineIdx((i) => i + 1)
-      }, 220)
-      return () => clearTimeout(t)
-    }
-  }, [charIdx, lineIdx])
+
+    timer = setTimeout(tick, 22)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <div className="bg-[#0A2463] rounded-4xl p-6 h-full flex flex-col">
@@ -110,30 +115,30 @@ function TelemetryCard() {
           <span className="font-mono text-[10px] text-[#7BA7E8] uppercase tracking-widest">Processando ao vivo</span>
         </div>
         <div className="flex gap-1.5">
-          {[0,1,2].map(i => <span key={i} className="w-2 h-2 rounded-full bg-white/15" />)}
+          {[0, 1, 2].map(i => <span key={i} className="w-2 h-2 rounded-full bg-white/15" />)}
         </div>
       </div>
 
       <div className="flex-1 flex flex-col gap-2 font-mono text-sm overflow-hidden">
-        {lines.map((line, i) => (
+        {display.lines.map((line, i) => (
           <div
             key={i}
             className={
               line.type === 'highlight'
                 ? 'text-[#7BA7E8] font-semibold'
                 : line.type === 'success'
-                ? 'text-white font-medium'
-                : line.type === 'muted'
-                ? 'text-white/40'
-                : 'text-white/80'
+                  ? 'text-white font-medium'
+                  : line.type === 'muted'
+                    ? 'text-white/40'
+                    : 'text-white/80'
             }
           >
             {line.text}
           </div>
         ))}
-        {typing && (
+        {display.typing && (
           <div className="text-white/90 flex items-end">
-            {typing}
+            {display.typing}
             <span className="cursor-blink ml-0.5 text-[#7BA7E8]">|</span>
           </div>
         )}
@@ -204,19 +209,17 @@ function ScheduleCard() {
               return (
                 <div
                   key={dIdx}
-                  className={`h-10 rounded-xl flex items-center justify-center px-1 transition-all duration-500 ${
-                    slot
+                  className={`h-10 rounded-xl flex items-center justify-center px-1 transition-all duration-500 ${slot
                       ? isActive
                         ? 'bg-[#0A2463] scale-[1.06] shadow-[0_4px_12px_rgba(10,36,99,0.28)]'
                         : 'bg-[#F8F8F6] border border-[#E5E5E2]'
                       : 'bg-transparent'
-                  }`}
+                    }`}
                 >
                   {slot && (
                     <span
-                      className={`text-[8px] font-mono text-center leading-tight px-0.5 ${
-                        isActive ? 'text-white font-semibold' : 'text-[#4A4A47]'
-                      }`}
+                      className={`text-[8px] font-mono text-center leading-tight px-0.5 ${isActive ? 'text-white font-semibold' : 'text-[#4A4A47]'
+                        }`}
                     >
                       {slot.label}
                     </span>
@@ -237,6 +240,19 @@ function ScheduleCard() {
   )
 }
 
+/* ─── Shared hover handlers for feature cards ─── */
+const cardHoverProps = {
+  style: { transition: 'transform 0.3s ease, box-shadow 0.3s ease' },
+  onMouseEnter: (e) => {
+    e.currentTarget.style.transform = 'translateY(-8px)'
+    e.currentTarget.style.boxShadow = '0 20px 40px rgba(75, 123, 245, 0.15)'
+  },
+  onMouseLeave: (e) => {
+    e.currentTarget.style.transform = ''
+    e.currentTarget.style.boxShadow = ''
+  },
+}
+
 /* ─── Main section ─── */
 export default function Features() {
   const sectionRef = useRef(null)
@@ -247,7 +263,7 @@ export default function Features() {
         sectionRef.current.querySelectorAll('.feature-card'),
         { opacity: 0, y: 40 },
         {
-          opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.15,
+          opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', stagger: 0.15,
           scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
         }
       )
@@ -264,26 +280,26 @@ export default function Features() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="avaliacoes" className="py-24 lg:py-32 px-6 bg-white">
+    <section ref={sectionRef} id="sobre" className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
       <div className="max-w-[1400px] mx-auto">
         <div className="features-headline mb-16">
-          <span className="font-mono text-xs text-[#4A4A47] uppercase tracking-widest">
+          <span className="font-mono text-xs uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.5)' }}>
             O que nos torna únicos
           </span>
-          <h2 className="font-sans font-semibold text-3xl lg:text-4xl text-[#0A0A0A] tracking-tight mt-3 max-w-2xl">
-            Por que a KAIROS é diferente de{' '}
-            <span className="text-[#0A2463]">tudo que você já viu</span>
+          <h2 className="font-sans font-semibold text-3xl lg:text-4xl text-white tracking-tight mt-3 max-w-2xl">
+            Por que a KAIRÓS é diferente de{' '}
+            <span className="text-white">tudo que você já viu</span>
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-5 h-auto lg:h-[540px]">
-          <div className="feature-card h-[500px] lg:h-full">
+          <div className="feature-card h-[500px] lg:h-full" {...cardHoverProps}>
             <DiagnosticList />
           </div>
-          <div className="feature-card h-[500px] lg:h-full">
+          <div className="feature-card h-[500px] lg:h-full" {...cardHoverProps}>
             <TelemetryCard />
           </div>
-          <div className="feature-card h-[500px] lg:h-full">
+          <div className="feature-card h-[500px] lg:h-full" {...cardHoverProps}>
             <ScheduleCard />
           </div>
         </div>

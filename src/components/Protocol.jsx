@@ -1,8 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 /* ─── SVG Animations ─── */
 function PoseEstimation() {
@@ -46,7 +43,7 @@ function PoseEstimation() {
           y1={joints[a].y}
           x2={joints[b].x}
           y2={joints[b].y}
-          stroke="#0A2463"
+          stroke="#7BA7E8"
           strokeWidth="1.5"
           strokeOpacity="0.6"
         />
@@ -59,14 +56,14 @@ function PoseEstimation() {
             cx={j.x}
             cy={j.y}
             r="7"
-            fill="#0A2463"
+            fill="#7BA7E8"
             fillOpacity="0.05"
           />
           <circle
             cx={j.x}
             cy={j.y}
             r="4"
-            fill="#0A2463"
+            fill="#7BA7E8"
             className="joint-circle"
             style={{ animationDelay: `${i * 0.15}s` }}
           />
@@ -74,8 +71,8 @@ function PoseEstimation() {
       ))}
 
       {/* Angle annotations */}
-      <text x="148" y="135" fontSize="7" fill="#0A2463" opacity="0.5" fontFamily="DM Mono">142°</text>
-      <text x="20" y="135" fontSize="7" fill="#0A2463" opacity="0.5" fontFamily="DM Mono">138°</text>
+      <text x="148" y="135" fontSize="7" fill="#7BA7E8" opacity="0.5" fontFamily="DM Mono">142°</text>
+      <text x="20" y="135" fontSize="7" fill="#7BA7E8" opacity="0.5" fontFamily="DM Mono">138°</text>
     </svg>
   )
 }
@@ -88,7 +85,7 @@ function LaserScan() {
         {Array.from({ length: 48 }).map((_, i) => (
           <div
             key={i}
-            className="rounded-sm bg-[#0A2463] transition-opacity duration-500"
+            className="rounded-sm bg-[#7BA7E8] transition-opacity duration-500"
             style={{
               opacity: 0.05 + (Math.sin(i * 0.8) + 1) * 0.15,
               height: '100%',
@@ -99,7 +96,7 @@ function LaserScan() {
 
       {/* Laser line */}
       <div
-        className="absolute top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-[#0A2463] to-transparent opacity-70"
+        className="absolute top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-[#7BA7E8] to-transparent opacity-70"
         style={{
           animation: 'scan-line 2.5s ease-in-out infinite',
           left: '0',
@@ -107,7 +104,7 @@ function LaserScan() {
       />
 
       {/* Data labels */}
-      <div className="absolute top-2 left-2 font-mono text-[9px] text-[#0A2463] opacity-40">
+      <div className="absolute top-2 left-2 font-mono text-[9px] text-[#7BA7E8] opacity-40">
         {['cadência', 'força', 'torque', 'potência'].map((l) => (
           <div key={l}>{l}</div>
         ))}
@@ -141,7 +138,7 @@ function EKGWave() {
         ref={pathRef}
         d="M0,40 L40,40 L55,40 L60,10 L65,70 L70,15 L75,40 L100,40 L115,40 L120,10 L125,70 L130,15 L135,40 L200,40 L215,40 L220,10 L225,70 L230,15 L235,40 L300,40 L315,40 L320,10 L325,70 L330,15 L335,40 L400,40"
         fill="none"
-        stroke="#0A2463"
+        stroke="#7BA7E8"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -206,14 +203,14 @@ export default function Protocol() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32 px-6 bg-white">
+    <section ref={sectionRef} className="py-24 lg:py-32 px-6 bg-[#0A0A0A] rounded-t-[2rem]" style={{ borderRadius: '2.5rem 2.5rem 0 0', marginTop: '-2.5rem', position: 'relative', zIndex: 1 }}>
       <div className="max-w-[1400px] mx-auto">
 
         <div className="mb-16">
-          <span className="font-mono text-xs text-[#4A4A47] uppercase tracking-widest">Como funciona</span>
-          <h2 className="font-sans font-light text-3xl lg:text-4xl xl:text-5xl text-[#0A0A0A] tracking-tight mt-3 max-w-xl">
+          <span className="font-mono text-xs text-white/50 uppercase tracking-widest">Como funciona</span>
+          <h2 className="font-sans font-light text-3xl lg:text-4xl xl:text-5xl text-white tracking-tight mt-3 max-w-xl">
             Do movimento ao{' '}
-            <span className="font-bold text-[#0A2463]">diagnóstico científico</span>
+            <span className="font-bold text-[#7BA7E8]">diagnóstico científico</span>
           </h2>
         </div>
 
@@ -221,11 +218,11 @@ export default function Protocol() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className="protocol-card bg-[#F8F8F6] border border-[#E5E5E2] rounded-4xl p-8 flex flex-col"
+              className="protocol-card bg-white/5 border border-white/10 rounded-4xl p-8 flex flex-col"
             >
               <div className="flex items-start justify-between mb-6">
-                <span className="font-mono text-4xl font-light text-[#0A2463]/20">{step.number}</span>
-                <span className="font-mono text-[10px] text-[#0A2463] border border-[#0A2463]/20 rounded-full px-2 py-1">
+                <span className="font-mono text-4xl font-light text-white/20">{step.number}</span>
+                <span className="font-mono text-[10px] text-white/70 border border-white/20 rounded-full px-2 py-1">
                   {step.tag}
                 </span>
               </div>
@@ -234,8 +231,8 @@ export default function Protocol() {
                 {step.animation}
               </div>
 
-              <h3 className="font-sans font-medium text-xl text-[#0A0A0A] mb-3">{step.title}</h3>
-              <p className="text-sm text-[#4A4A47] leading-relaxed">{step.description}</p>
+              <h3 className="font-sans font-medium text-xl text-white mb-3">{step.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>{step.description}</p>
             </div>
           ))}
         </div>

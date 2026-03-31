@@ -4,7 +4,8 @@
       "Bash(start http://localhost:3000)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://mzgmfqpvecolhniqxoty.supabase.co/storage/v1/object/public/kairos-media/vo2max.png\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://mzgmfqpvecolhniqxoty.supabase.co/storage/v1/object/public/kairos-media/lactato.png\")",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://mzgmfqpvecolhniqxoty.supabase.co/storage/v1/object/public/kairos-media/wingate.png\")"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://mzgmfqpvecolhniqxoty.supabase.co/storage/v1/object/public/kairos-media/wingate.png\")",
+      "Read(//c/Users/mateo/.claude/projects/c--Users-mateo-Desktop-site-kairos/79f151da-61ae-4458-b0fe-619aa8c6bc2f/tool-results/**)"
     ]
   }
 }

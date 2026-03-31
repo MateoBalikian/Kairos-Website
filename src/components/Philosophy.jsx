@@ -1,8 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function Philosophy() {
   const sectionRef = useRef(null)
@@ -51,7 +48,8 @@ export default function Philosophy() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-28 lg:py-40 px-6 bg-[#0A2463] overflow-hidden"
+      className="relative py-28 lg:py-40 px-6 bg-[#0A2463] overflow-hidden rounded-t-[2rem]"
+      style={{ borderRadius: '2.5rem 2.5rem 0 0', marginTop: '-2.5rem', position: 'relative', zIndex: 1 }}
       id="lacae"
     >
       {/* Background lab image */}
@@ -76,7 +74,7 @@ export default function Philosophy() {
 
         {/* Label */}
         <div className="philosophy-item mb-16">
-          <span className="font-mono text-xs text-[#7BA7E8]/60 uppercase tracking-widest">O manifesto da KAIROS</span>
+          <span className="font-mono text-xs text-[#7BA7E8]/60 uppercase tracking-widest">O manifesto da KAIRÓS</span>
         </div>
 
         {/* Contrast block 1 */}
@@ -95,7 +93,7 @@ export default function Philosophy() {
         {/* Contrast block 2 */}
         <div className="philosophy-item mb-16 lg:mb-20">
           <p className="font-sans font-light text-lg lg:text-xl text-white/40 mb-3">
-            A KAIROS foca em:
+            A KAIRÓS foca em:
           </p>
           <p className="font-bold text-6xl lg:text-8xl xl:text-[7rem] text-[#7BA7E8] leading-none tracking-tight">
             Ciência de verdade.
@@ -106,7 +104,7 @@ export default function Philosophy() {
         <div className="philosophy-item max-w-2xl">
           <p className="text-base lg:text-lg text-white/60 leading-relaxed">
             Enquanto outros vendem dashboards, nós entregamos diagnósticos. Cada avaliação
-            da KAIROS é construída sobre metodologia científica validada, conduzida por
+            da KAIRÓS é construída sobre metodologia científica validada, conduzida por
             pesquisadores com publicações em revistas internacionais, dentro de um laboratório
             universitário real.
           </p>

@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Eye, FlaskConical, ArrowUpRight } from 'lucide-react'
+import { Eye, FlaskConical } from 'lucide-react'
 import { mediaUrl } from '../lib/supabase'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const products = [
   {
@@ -13,6 +10,7 @@ const products = [
     badge: null,
     badgeStyle: {},
     icon: Eye,
+    cta: { label: 'Quero começar agora →', style: 'gradient' },
     description:
       'Plataforma de rastreamento inteligente de jogadores para análise tática e física no futebol. Transforme qualquer vídeo de jogo ou treino em dados precisos de desempenho coletivo e individual.',
     features: [
@@ -38,6 +36,7 @@ const products = [
     badge: 'LACAE',
     badgeStyle: { background: '#F8F8F6', color: '#4A4A47', border: '1px solid #E5E5E2' },
     icon: FlaskConical,
+    cta: { label: 'Quero saber mais →', style: 'white' },
     description:
       'Perfil metabólico completo via Ressonância Magnética Nuclear. Correlação entre marcadores metabólicos e desempenho esportivo — metodologia de pesquisa científica aplicada ao atleta.',
     features: [
@@ -56,23 +55,29 @@ const products = [
   },
 ]
 
-const INTERVAL_MS = 5000
+const INTERVAL_MS = 8000
 
 export default function Products() {
   const [active, setActive] = useState(0)
+  const [panelVisible, setPanelVisible] = useState(true)
   const sectionRef = useRef(null)
   const panelRef = useRef(null)
   const progressBarRef = useRef(null)
   const intervalRef = useRef(null)
   const rafRef = useRef(null)
   const startTimeRef = useRef(null)
+  const switchingToRef = useRef(null)
 
-  const animatePanel = useCallback(() => {
-    gsap.fromTo(
-      panelRef.current,
-      { opacity: 0, y: 12 },
-      { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }
-    )
+  // Fade switch: out 150ms → swap → in 300ms
+  const switchTo = useCallback((next) => {
+    if (switchingToRef.current !== null) return
+    switchingToRef.current = next
+    setPanelVisible(false)
+    setTimeout(() => {
+      setActive(next)
+      switchingToRef.current = null
+      setPanelVisible(true)
+    }, 150)
   }, [])
 
   const startTimer = useCallback(() => {
@@ -92,18 +97,17 @@ export default function Products() {
     intervalRef.current = setInterval(() => {
       setActive(prev => {
         const next = (prev + 1) % products.length
-        animatePanel()
-        return next
+        switchTo(next)
+        return prev
       })
       startTimeRef.current = performance.now()
       if (progressBarRef.current) progressBarRef.current.style.width = '0%'
     }, INTERVAL_MS)
-  }, [animatePanel])
+  }, [switchTo])
 
   const handleTab = (index) => {
     if (index === active) return
-    animatePanel()
-    setActive(index)
+    switchTo(index)
     startTimer()
   }
 
@@ -136,6 +140,7 @@ export default function Products() {
     }, sectionRef)
     return () => ctx.revert()
   }, [])
+
 
   const product = products[active]
   const Icon = product.icon
@@ -188,10 +193,18 @@ export default function Products() {
         <div
           ref={panelRef}
           className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] mb-6"
-          style={{ background: '#111111', borderRadius: '1.25rem', overflow: 'hidden', border: '0.5px solid #1a1a1a' }}
+          style={{
+            background: '#111111',
+            borderRadius: '1.25rem',
+            overflow: 'hidden',
+            border: '0.5px solid #1a1a1a',
+            minHeight: '520px',
+            opacity: panelVisible ? 1 : 0,
+            transition: panelVisible ? 'opacity 300ms ease' : 'opacity 150ms ease',
+          }}
         >
-          <div style={{ background: '#0A0A0A', minHeight: '480px', overflow: 'hidden' }}>
-            {product.media}
+          <div style={{ background: '#0A0A0A', height: '480px', overflow: 'hidden' }}>
+            <div style={{ width: '100%', height: '100%', objectFit: 'cover' }}>{product.media}</div>
           </div>
 
           <div
@@ -221,6 +234,7 @@ export default function Products() {
                 {product.description}
               </p>
 
+
               <ul className="space-y-3">
                 {product.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
@@ -242,23 +256,34 @@ export default function Products() {
               )}
             </div>
 
-            {product.id === 'trocker' ? (
-              <a
-                href="#waitlist"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className="mt-6 inline-flex items-center gap-2 text-sm font-medium hover:-translate-y-px transition-transform duration-200 cursor-pointer"
-                style={{ color: '#4B7BF5' }}
-              >
-                Quero começar agora <ArrowUpRight size={16} />
-              </a>
-            ) : (
-              <button className="mt-8 inline-flex items-center gap-2 text-sm font-medium hover:-translate-y-px transition-transform duration-200 self-start" style={{ color: '#4B7BF5' }}>
-                Saiba mais <ArrowUpRight size={16} />
-              </button>
-            )}
+            <a
+              href="#waitlist"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: product.cta.style === 'gradient'
+                  ? 'linear-gradient(135deg, #4B7BF5, #0A2463)'
+                  : 'white',
+                color: product.cta.style === 'gradient' ? 'white' : '#0A0A0A',
+                padding: '14px 28px',
+                borderRadius: '99px',
+                fontWeight: '600',
+                fontSize: '0.95rem',
+                letterSpacing: product.cta.style === 'gradient' ? '0.02em' : undefined,
+                marginTop: '24px',
+                transition: 'opacity 0.2s ease',
+                cursor: 'pointer',
+              }}
+            >
+              {product.cta.label}
+            </a>
           </div>
         </div>
 

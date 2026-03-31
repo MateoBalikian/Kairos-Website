@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, CheckCircle } from 'lucide-react'
-
-gsap.registerPlugin(ScrollTrigger)
+import { CheckCircle } from 'lucide-react'
 
 const profiles = [
   'Treinador / Técnico',
@@ -21,6 +18,7 @@ export default function Waitlist() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     profile: '',
     message: '',
   })
@@ -80,99 +78,120 @@ export default function Waitlist() {
     setSubmitted(true)
   }
 
+  const setField = (field) => (e) => setFormData({ ...formData, [field]: e.target.value })
+
   const inputClass =
-    'w-full bg-white border border-[#E5E5E2] rounded-2xl px-4 py-3.5 text-sm text-[#0A0A0A] placeholder-[#4A4A47]/50 focus:outline-none focus:border-[#0A2463] focus:ring-1 focus:ring-[#0A2463]/20 transition-colors duration-200 font-sans'
+    'w-full rounded-2xl px-4 py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 font-sans'
+  const inputStyle = {
+    background: 'rgba(255,255,255,0.05)',
+    border: '1px solid rgba(255,255,255,0.15)',
+    color: 'white',
+  }
+  const labelClass = 'font-mono text-[10px] uppercase tracking-wider block mb-1.5'
+  const labelStyle = { color: 'rgba(255,255,255,0.5)' }
 
   return (
-    <section ref={sectionRef} id="waitlist" className="py-24 lg:py-32 px-6 bg-[#F8F8F6]">
+    <section ref={sectionRef} id="waitlist" className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
       <div className="max-w-[640px] mx-auto waitlist-content">
 
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="font-mono text-xs text-[#4A4A47] uppercase tracking-widest block mb-4">
-            Acesso antecipado
+          <span className="font-mono text-xs uppercase tracking-widest block mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            VAGAS LIMITADAS
           </span>
-          <h2 className="font-sans font-light text-3xl lg:text-4xl xl:text-5xl text-[#0A0A0A] tracking-tight mb-4">
-            Seja o primeiro a{' '}
-            <span className="font-bold text-[#0A2463]">acessar a KAIROS</span>
+          <h2 className="font-sans font-light text-3xl lg:text-4xl xl:text-5xl text-white tracking-tight mb-4">
+            Treine com a vantagem que{' '}
+            <span style={{ color: '#4B7BF5' }}>times olímpicos têm</span>
+            <br />
+            <span style={{ color: '#4B7BF5' }}>— com a KAIRÓS.</span>
           </h2>
-          <p className="text-base text-[#4A4A47] leading-relaxed">
-            Estamos em desenvolvimento. Selecione seu perfil e entre na lista — você receberá
-            acesso antecipado e atualizações diretas da equipe.
+          <p className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            Diagnósticos fisiológicos de precisão que antes só existiam em centros de elite. Cadastre-se e nossa equipe entrará em contato.
           </p>
         </div>
 
         {submitted ? (
-          <div className="bg-white border border-[#E5E5E2] rounded-4xl p-12 text-center">
-            <div className="w-12 h-12 bg-[#0A2463]/5 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle size={24} className="text-[#0A2463]" />
+          <div className="rounded-4xl p-12 text-center" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'rgba(255,255,255,0.1)' }}>
+              <CheckCircle size={24} className="text-[#7BA7E8]" />
             </div>
-            <h3 className="font-sans font-medium text-xl text-[#0A0A0A] mb-2">Você está na lista!</h3>
-            <p className="text-sm text-[#4A4A47]">
+            <h3 className="font-sans font-medium text-xl text-white mb-2">Você está na lista!</h3>
+            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
               Entraremos em contato em breve com atualizações exclusivas.
             </p>
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="bg-white border border-[#E5E5E2] rounded-4xl p-8 space-y-4"
+            className="rounded-4xl p-8 space-y-4"
+            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
           >
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-wider block mb-1.5">
-                  Nome completo
-                </label>
+                <label className={labelClass} style={labelStyle}>Nome completo</label>
                 <input
                   type="text"
                   required
                   placeholder="Seu nome"
                   className={inputClass}
+                  style={inputStyle}
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={setField('name')}
                 />
               </div>
               <div>
-                <label className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-wider block mb-1.5">
-                  E-mail
-                </label>
+                <label className={labelClass} style={labelStyle}>E-mail</label>
                 <input
                   type="email"
                   required
                   placeholder="seu@email.com"
                   className={inputClass}
+                  style={inputStyle}
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={setField('email')}
                 />
               </div>
             </div>
 
             <div>
-              <label className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-wider block mb-1.5">
-                Perfil
-              </label>
+              <label className={labelClass} style={labelStyle}>Telefone / WhatsApp</label>
+              <input
+                type="tel"
+                placeholder="Seu telefone ou WhatsApp"
+                className={inputClass}
+                style={inputStyle}
+                value={formData.phone}
+                onChange={setField('phone')}
+              />
+            </div>
+
+            <div>
+              <label className={labelClass} style={labelStyle}>Perfil</label>
               <select
                 required
                 className={`${inputClass} appearance-none cursor-pointer`}
+                style={{ ...inputStyle, background: 'rgba(20,20,20,0.8)' }}
                 value={formData.profile}
-                onChange={(e) => setFormData({ ...formData, profile: e.target.value })}
+                onChange={setField('profile')}
               >
-                <option value="">Selecione seu perfil</option>
+                <option value="" style={{ background: '#0A0A0A' }}>Selecione seu perfil</option>
                 {profiles.map((p) => (
-                  <option key={p} value={p}>{p}</option>
+                  <option key={p} value={p} style={{ background: '#0A0A0A' }}>{p}</option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-wider block mb-1.5">
-                Como você usaria a KAIROS? <span className="text-[#4A4A47]/50">(opcional)</span>
+              <label className={labelClass} style={labelStyle}>
+                Como você usaria a KAIRÓS? <span style={{ color: 'rgba(255,255,255,0.3)' }}>(opcional)</span>
               </label>
               <textarea
                 rows={3}
                 placeholder="Conte-nos sobre seu contexto e necessidades..."
                 className={`${inputClass} resize-none`}
+                style={inputStyle}
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                onChange={setField('message')}
               />
             </div>
 
@@ -183,13 +202,12 @@ export default function Waitlist() {
                 className="btn-slide inline-flex items-center gap-2 px-8 py-4 text-sm font-medium text-white bg-[#0A2463] rounded-full shadow-[0_8px_32px_rgba(10,36,99,0.25)]"
               >
                 <div className="slide-fill bg-[#1E3A8A]" />
-                <span>Quero acesso antecipado</span>
-                <ArrowRight size={16} />
+                <span>Entre em contato →</span>
               </button>
             </div>
 
-            <p className="text-center font-mono text-[10px] text-[#4A4A47]/50 pt-1">
-              Sem spam. Apenas atualizações da KAIROS.
+            <p className="text-center font-mono text-[10px] pt-1" style={{ color: 'rgba(255,255,255,0.3)' }}>
+              Sem spam. Apenas novidades da KAIRÓS.
             </p>
           </form>
         )}

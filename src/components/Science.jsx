@@ -4,8 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ChevronLeft, ChevronRight, Wind, Activity, Zap, FlaskConical } from 'lucide-react'
 import { mediaUrl } from '../lib/supabase'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const evaluations = [
   {
     id: 'vo2max',
@@ -32,7 +30,7 @@ const evaluations = [
     icon: Activity,
     title: 'Limiar Anaeróbico',
     subtitle: 'Avaliação por Lactato Sanguíneo',
-    image: mediaUrl('lactato1280.png'),
+    image: mediaUrl('limiarlactato.png'),
     tag: 'Limiar Metabólico',
     cta_headline: 'Treine nas zonas certas e pare de desperdiçar esforço',
     description:
@@ -70,8 +68,10 @@ export default function Science() {
   const [active, setActive] = useState(0)
   const sectionRef = useRef(null)
   const autoRef = useRef(null)
-  const imgRefs = useRef([])
+  const imgElRefs = useRef([])
   const contentRef = useRef(null)
+  const [barWidth, setBarWidth] = useState(0)
+  const [barTransition, setBarTransition] = useState('none')
 
   const current = evaluations[active]
 
@@ -103,7 +103,20 @@ export default function Science() {
 
   const handleNav = (i) => { goTo(i); startAuto() }
 
-  // Scroll entrance — elements are visible by default, animation is additive
+  // Progress bar — reset and restart on active change
+  useEffect(() => {
+    setBarTransition('none')
+    setBarWidth(0)
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setBarTransition('width 6s linear')
+        setBarWidth(100)
+      })
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [active])
+
+  // Scroll entrance animations
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.sci-head > *', {
@@ -130,11 +143,33 @@ export default function Science() {
     return () => ctx.revert()
   }, [])
 
+  // Parallax on images
+  useEffect(() => {
+    const triggers = []
+    imgElRefs.current.forEach((img) => {
+      if (!img) return
+      gsap.set(img, { y: '-30%' })
+      const st = ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+        onUpdate: (self) => {
+          const y = gsap.utils.interpolate(-30, 30, self.progress)
+          gsap.set(img, { y: `${y}%` })
+        },
+      })
+      triggers.push(st)
+    })
+    return () => triggers.forEach(st => st.kill())
+  }, [])
+
   return (
     <section
       ref={sectionRef}
       id="ciencia"
-      className="py-24 lg:py-32 px-6 bg-[#0A0A0A] overflow-hidden"
+      className="py-24 lg:py-32 px-6 bg-[#0A0A0A] overflow-hidden rounded-t-[2rem]"
+      style={{ borderRadius: '2.5rem 2.5rem 0 0', marginTop: '-2.5rem', position: 'relative', zIndex: 1 }}
     >
       <div className="max-w-[1400px] mx-auto">
 
@@ -167,14 +202,21 @@ export default function Science() {
             {evaluations.map((ev, i) => (
               <div
                 key={ev.id}
-                ref={el => imgRefs.current[i] = el}
-                className="absolute inset-0 transition-opacity duration-700"
+                className="absolute inset-0 transition-opacity duration-700 overflow-hidden"
                 style={{ opacity: i === active ? 1 : 0 }}
               >
                 <img
+                  ref={el => imgElRefs.current[i] = el}
                   src={ev.image}
                   alt={ev.title}
-                  className="absolute inset-0 w-full h-full object-cover object-center block"
+                  className="block"
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '110%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }}
                 />
                 <div className="absolute inset-0" style={{
                   background: 'linear-gradient(to top, #111111 0%, rgba(17,17,17,0.6) 40%, transparent 100%), linear-gradient(to right, rgba(17,17,17,0.5) 0%, transparent 55%)'
@@ -229,20 +271,21 @@ export default function Science() {
                 ))}
               </div>
 
-              {/* CTA button */}
-              <a
-                href="#waitlist"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className="inline-flex items-center gap-2 mt-6 px-5 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-90"
-                style={{ background: '#4B7BF5', color: 'white' }}
-              >
-                Agende sua avaliação
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              {/* Progress bar */}
+              <div style={{ width: '100%', height: '2px', background: 'rgba(255,255,255,0.1)', borderRadius: 9999, marginTop: '12px' }}>
+                <div
+                  style={{
+                    height: 2,
+                    width: `${barWidth}%`,
+                    background: '#4B7BF5',
+                    borderRadius: 9999,
+                    transition: barTransition,
+                  }}
+                />
+              </div>
+
             </div>
+
 
             {/* Bottom nav bar */}
             <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-between px-8 lg:px-12 py-5">
@@ -289,6 +332,20 @@ export default function Science() {
                 </span>
               </div>
               <p className="text-sm text-[#8B8B87] leading-relaxed">{current.science}</p>
+              <a
+                href="#waitlist"
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="inline-flex items-center justify-center gap-2 mt-5 px-4 py-2.5 rounded-full text-sm font-medium w-full transition-all duration-200 hover:opacity-90"
+                style={{ background: '#4B7BF5', color: 'white' }}
+              >
+                Agende sua avaliação
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
             </div>
 
             {/* Evaluation tabs */}

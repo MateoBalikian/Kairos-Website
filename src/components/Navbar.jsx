@@ -1,81 +1,128 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { mediaUrl } from '../lib/supabase'
+
+const links = [
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Avaliações', href: '#ciencia' },
+  { label: 'Produtos', href: '#produtos' },
+  { label: 'LACAE', href: '#lacae' },
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => setScrolled(window.scrollY > 80)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const links = [
-    { label: 'Sobre', href: '#sobre' },
-    { label: 'Avaliações', href: '#ciencia' },
-    { label: 'Produtos', href: '#produtos' },
-    { label: 'LACAE', href: '#lacae' },
-  ]
-
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <nav
-        className={`flex items-center gap-6 px-6 py-3 rounded-full transition-all duration-500 ${
-          scrolled
-            ? 'bg-white/80 backdrop-blur-xl border border-[#E5E5E2] shadow-[0_8px_32px_rgba(10,36,99,0.08)]'
-            : 'bg-transparent'
-        }`}
-      >
+    <header
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        background: scrolled ? 'rgba(0,0,0,0.85)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(8px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
+        transition: 'background 0.3s ease, backdrop-filter 0.3s ease',
+      }}
+    >
+      <div className="flex items-center justify-between px-8 py-4" style={{ position: 'relative' }}>
+
         {/* Logo */}
-        <a
-          href="#"
-          className="font-mono text-sm tracking-[0.25em] font-medium text-[#0A2463] uppercase mr-2"
-        >
-          KAIROS
+        <a href="#" style={{ position: 'absolute', left: '32px', top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}>
+          <img
+            src={mediaUrl('logokairos.png')}
+            alt="KAIROS"
+            style={{
+              height: '48px',
+              width: 'auto',
+              display: 'block',
+              filter: 'brightness(0) invert(1)',
+            }}
+          />
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Espaçador */}
+        <div style={{ width: '200px' }} />
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="px-3 py-1.5 text-sm text-[#4A4A47] hover:text-[#0A2463] transition-colors duration-200 hover:-translate-y-px"
+              style={{
+                color: 'white',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+                letterSpacing: '0.3px',
+                textDecoration: 'none',
+                opacity: 1,
+                transition: 'opacity 0.2s ease',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
             >
               {link.label}
             </a>
           ))}
+
+          <a
+            href="#waitlist"
+            style={{
+              background: '#0A2463',
+              color: 'white',
+              borderRadius: 99,
+              padding: '8px 20px',
+              fontSize: '0.85rem',
+              fontWeight: 600,
+              textDecoration: 'none',
+              transition: 'opacity 0.2s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+          >
+            Entre em contato
+          </a>
         </div>
 
-        {/* CTA */}
-        <a
-          href="#waitlist"
-          className="hidden md:inline-flex btn-magnetic btn-slide items-center px-4 py-2 text-sm font-medium text-white bg-[#0A2463] rounded-full"
-        >
-          <div className="slide-fill bg-[#1E3A8A]" />
-          <span>Lista de espera</span>
-        </a>
-
-        {/* Mobile menu toggle */}
+        {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-[#0A2463] p-1"
+          className="md:hidden"
           aria-label="Menu"
+          style={{ color: 'white', background: 'none', border: 'none', cursor: 'pointer' }}
         >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
-      </nav>
+      </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="absolute top-full mt-2 left-4 right-4 bg-white/95 backdrop-blur-xl border border-[#E5E5E2] rounded-3xl p-4 shadow-lg">
+        <div
+          style={{
+            background: 'rgba(0,0,0,0.92)',
+            backdropFilter: 'blur(8px)',
+            padding: '16px 32px 24px',
+          }}
+        >
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="block px-4 py-3 text-sm text-[#4A4A47] hover:text-[#0A2463] border-b border-[#E5E5E2] last:border-0"
+              style={{
+                display: 'block',
+                color: 'white',
+                fontWeight: 600,
+                fontSize: '0.95rem',
+                padding: '12px 0',
+                textDecoration: 'none',
+                borderBottom: '1px solid rgba(255,255,255,0.1)',
+              }}
             >
               {link.label}
             </a>
@@ -83,7 +130,18 @@ export default function Navbar() {
           <a
             href="#waitlist"
             onClick={() => setMenuOpen(false)}
-            className="block mt-3 px-4 py-3 text-sm font-medium text-white bg-[#0A2463] rounded-2xl text-center"
+            style={{
+              display: 'block',
+              marginTop: '16px',
+              background: '#0A2463',
+              color: 'white',
+              borderRadius: 99,
+              padding: '10px 20px',
+              fontSize: '0.85rem',
+              fontWeight: 600,
+              textDecoration: 'none',
+              textAlign: 'center',
+            }}
           >
             Lista de espera
           </a>
