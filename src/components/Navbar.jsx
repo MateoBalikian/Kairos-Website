@@ -32,12 +32,12 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-8 py-4" style={{ position: 'relative' }}>
 
         {/* Logo */}
-        <a href="#" style={{ position: 'absolute', left: '32px', top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}>
+        <a href="#" style={{ position: 'absolute', left: '32px', top: '140%', transform: 'translateY(-50%)', zIndex: 10 }}>
           <img
             src={mediaUrl('logokairos.png')}
             alt="KAIROS"
             style={{
-              height: '48px',
+              height: '500px',
               width: 'auto',
               display: 'block',
               filter: 'brightness(0) invert(1)',

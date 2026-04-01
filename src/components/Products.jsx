@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 import { Eye, FlaskConical } from 'lucide-react'
 import { mediaUrl } from '../lib/supabase'
 
@@ -65,6 +67,7 @@ export default function Products() {
   const progressBarRef = useRef(null)
   const intervalRef = useRef(null)
   const rafRef = useRef(null)
+  const mediaRef = useRef(null)
   const startTimeRef = useRef(null)
   const switchingToRef = useRef(null)
 
@@ -141,6 +144,23 @@ export default function Products() {
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    if (!mediaRef.current) return
+    const el = mediaRef.current
+    gsap.set(el, { y: '-10%' })
+    const st = ScrollTrigger.create({
+      trigger: el,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: true,
+      onUpdate: (self) => {
+        const y = gsap.utils.interpolate(-10, 10, self.progress)
+        gsap.set(el, { y: `${y}%` })
+      },
+    })
+    return () => st.kill()
+  }, [active])
+
 
   const product = products[active]
   const Icon = product.icon
@@ -204,7 +224,7 @@ export default function Products() {
           }}
         >
           <div style={{ background: '#0A0A0A', height: '480px', overflow: 'hidden' }}>
-            <div style={{ width: '100%', height: '100%', objectFit: 'cover' }}>{product.media}</div>
+            <div ref={mediaRef} style={{ width: '100%', height: '100%', objectFit: 'cover' }}>{product.media}</div>
           </div>
 
           <div
