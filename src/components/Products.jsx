@@ -240,7 +240,7 @@ export default function Products() {
           </div>
 
           <div className="flex flex-col gap-2 flex-shrink-0">
-            <div className="flex gap-2">
+            <div className="flex gap-2 overflow-x-auto pb-1">
               {products.map((p, i) => {
                 const TabIcon = p.icon
                 const isActive = i === active
@@ -279,12 +279,12 @@ export default function Products() {
             borderRadius: '1.25rem',
             overflow: 'hidden',
             border: '0.5px solid #1a1a1a',
-            minHeight: '520px',
+            minHeight: 'auto',
             opacity: panelVisible ? 1 : 0,
             transition: panelVisible ? 'opacity 300ms ease' : 'opacity 150ms ease',
           }}
         >
-          <div style={{ background: '#0A0A0A', height: '480px', overflow: 'hidden' }}>
+          <div style={{ background: '#0A0A0A', height: 'min(480px, 56vw)', minHeight: '240px', overflow: 'hidden' }}>
             <div ref={mediaRef} style={{ width: '100%', height: '100%', objectFit: 'cover' }}>{product.media}</div>
           </div>
 

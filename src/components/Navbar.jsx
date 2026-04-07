@@ -44,18 +44,20 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#"
-          onClick={(e) => {
-            e.preventDefault()
-            if (window.lenis) window.lenis.scrollTo(0, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
-            else window.scrollTo({ top: 0, behavior: 'smooth' })
+          onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo(0, { duration: 1.4 }) }}
+          style={{
+            position: 'absolute',
+            left: '32px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 10,
           }}
-          style={{ position: 'absolute', left: '32px', top: '140%', transform: 'translateY(-50%)', zIndex: 10 }}
         >
           <img
-            src={mediaUrl('logokairos.png')}
-            alt="KAIROS"
+            src={mediaUrl('logokairos1.png')}
+            alt="KAIRÓS"
             style={{
-              height: '500px',
+              height: '40px',
               width: 'auto',
               display: 'block',
               filter: 'brightness(0) invert(1)',

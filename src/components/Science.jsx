@@ -199,7 +199,7 @@ export default function Science() {
         <div className="grid lg:grid-cols-[1fr_360px] gap-6">
 
           {/* Left: Big panel */}
-          <div className="sci-panel relative bg-[#111111] rounded-3xl overflow-hidden" style={{ minHeight: 800, isolation: 'isolate' }}>
+          <div className="sci-panel relative bg-[#111111] rounded-3xl overflow-hidden" style={{ minHeight: 'min(560px, 80vw)', isolation: 'isolate' }}>
 
             {/* Background image — all 3 stacked, only active visible */}
             {evaluations.map((ev, i) => (
@@ -230,13 +230,13 @@ export default function Science() {
             {/* Oversized number */}
             <div
               className="absolute top-6 right-8 font-mono font-bold text-white/5 select-none leading-none"
-              style={{ fontSize: 'clamp(80px, 14vw, 160px)' }}
+              style={{ fontSize: 'clamp(60px, 18vw, 160px)' }}
             >
               {current.num}
             </div>
 
             {/* Content overlay */}
-            <div ref={contentRef} className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-12" style={{ minHeight: 560 }}>
+            <div ref={contentRef} className="relative z-10 h-full flex flex-col justify-end p-8 lg:p-12" style={{ minHeight: 'min(560px, 80vw)' }}>
 
               {/* Tag */}
               <span className="inline-flex w-fit font-mono text-[10px] uppercase tracking-widest border border-white/20 text-white/60 px-3 py-1.5 rounded-full mb-5 backdrop-blur-sm">
@@ -325,7 +325,7 @@ export default function Science() {
           </div>
 
           {/* Right: Sidebar */}
-          <div className="sci-sidebar flex flex-col gap-4">
+          <div className="sci-sidebar flex flex-col gap-4 mt-6 lg:mt-0">
 
             {/* Methodology box */}
             <div className="bg-[#111111] rounded-3xl p-6 flex-1">

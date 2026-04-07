@@ -92,14 +92,14 @@ export default function Waitlist() {
 
   return (
     <section ref={sectionRef} id="waitlist" className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
-      <div className="max-w-[640px] mx-auto waitlist-content">
+      <div className="max-w-[640px] mx-auto waitlist-content px-0">
 
         {/* Header */}
         <div className="text-center mb-12">
           <span className="font-mono text-xs uppercase tracking-widest block mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
             VAGAS LIMITADAS
           </span>
-          <h2 className="font-sans font-light text-3xl lg:text-4xl xl:text-5xl text-white tracking-tight mb-4">
+          <h2 className="font-sans font-light text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white tracking-tight mb-4">
             Treine com a vantagem que{' '}
             <span style={{ color: '#4B7BF5' }}>times olímpicos têm</span>
             <br />
@@ -126,7 +126,7 @@ export default function Waitlist() {
             className="rounded-4xl p-8 space-y-4"
             style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
           >
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className={labelClass} style={labelStyle}>Nome completo</label>
                 <input

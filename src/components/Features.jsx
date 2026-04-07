@@ -292,14 +292,14 @@ export default function Features() {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-5 h-auto lg:h-[540px]">
-          <div className="feature-card h-[500px] lg:h-full" {...cardHoverProps}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 h-auto lg:h-[540px]">
+          <div className="feature-card h-auto min-h-[420px] lg:h-full" {...cardHoverProps}>
             <DiagnosticList />
           </div>
-          <div className="feature-card h-[500px] lg:h-full" {...cardHoverProps}>
+          <div className="feature-card h-auto min-h-[420px] lg:h-full" {...cardHoverProps}>
             <TelemetryCard />
           </div>
-          <div className="feature-card h-[500px] lg:h-full" {...cardHoverProps}>
+          <div className="feature-card h-auto min-h-[420px] lg:h-full" {...cardHoverProps}>
             <ScheduleCard />
           </div>
         </div>

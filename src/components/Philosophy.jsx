@@ -6,7 +6,7 @@ const IMG_PADDING = 12
 const TextParallaxContent = ({ imgUrl, subheading, heading, children }) => {
   return (
     <div style={{ paddingLeft: IMG_PADDING, paddingRight: IMG_PADDING }}>
-      <div className="relative h-[150vh]">
+      <div className="relative h-[120vh] lg:h-[150vh]">
         <StickyImage imgUrl={imgUrl} />
         <OverlayCopy heading={heading} subheading={subheading} />
       </div>
@@ -63,7 +63,7 @@ const OverlayCopy = ({ subheading, heading }) => {
       <p className="mb-3 text-center text-xl md:text-2xl font-light text-white/60 font-sans">
         {subheading}
       </p>
-      <p className="text-center text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight font-sans">
+      <p className="text-center text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight font-sans">
         {heading}
       </p>
     </motion.div>
@@ -71,7 +71,7 @@ const OverlayCopy = ({ subheading, heading }) => {
 }
 
 const ContentBlock = ({ children }) => (
-  <div className="bg-[#0A0A0A] px-8 py-16 md:py-24">
+  <div className="bg-[#0A0A0A] px-5 py-12 md:px-8 md:py-24">
     <div className="max-w-[1200px] mx-auto">
       {children}
     </div>
@@ -89,7 +89,7 @@ export default function Philosophy() {
         heading="essa tecnologia existiu apenas em centros olímpicos."
       >
         <ContentBlock>
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
             <div>
               <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">O manifesto da KAIRÓS</span>
               <h3 className="font-sans font-bold text-3xl lg:text-4xl text-white mt-4 leading-tight">

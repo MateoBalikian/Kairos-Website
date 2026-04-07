@@ -36,9 +36,9 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-8 lg:px-12 pt-16 pb-8">
 
         {/* Top row */}
-        <div className="grid lg:grid-cols-[1fr_auto] gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:gap-12 mb-16">
           {/* Brand */}
-          <div className="max-w-xs">
+          <div className="max-w-xs mx-auto lg:mx-0 text-center lg:text-left">
             <div className="font-mono text-lg tracking-[0.3em] font-medium text-white uppercase mb-3">
               KAIRÓS
             </div>

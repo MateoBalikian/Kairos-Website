@@ -129,7 +129,7 @@ export default function HealthNutrition() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {cards.map((card) => {
             const Icon = card.icon
             return (
@@ -139,7 +139,7 @@ export default function HealthNutrition() {
                 style={{
                   background: '#111111',
                   border: '1px solid rgba(255,255,255,0.07)',
-                  minHeight: 480,
+                  minHeight: 'auto',
                 }}
               >
                 <div>

@@ -51,15 +51,28 @@ const institutes = [
   },
 ]
 
-const CARD_W = 260
 const GAP = 16
-const VISIBLE = 3
-const MAX_TRANSLATE = (institutes.length - VISIBLE) * (CARD_W + GAP)
+const getCardW = () => typeof window !== 'undefined' && window.innerWidth < 768 ? window.innerWidth - 48 : 260
+const getVisible = () => typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 3
 
 export default function Institutes() {
   const [cur, setCur] = useState(0)
   const [paused, setPaused] = useState(false)
-  const steps = institutes.length - VISIBLE + 1
+  const [cardW, setCardW] = useState(260)
+  const [visible, setVisible] = useState(3)
+
+  useEffect(() => {
+    const update = () => {
+      setCardW(getCardW())
+      setVisible(getVisible())
+    }
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  const steps = institutes.length - visible + 1
+  const MAX_TRANSLATE = (institutes.length - visible) * (cardW + GAP)
 
   useEffect(() => {
     if (paused) return
@@ -127,7 +140,7 @@ export default function Institutes() {
             style={{
               display: 'flex',
               gap: GAP,
-              transform: `translateX(-${Math.min(cur * (CARD_W + GAP), MAX_TRANSLATE)}px)`,
+              transform: `translateX(-${Math.min(cur * (cardW + GAP), MAX_TRANSLATE)}px)`,
               transition: 'transform 0.45s cubic-bezier(0.4,0,0.2,1)',
             }}
           >
@@ -136,7 +149,7 @@ export default function Institutes() {
                 key={i}
                 style={{
                   flexShrink: 0,
-                  width: CARD_W,
+                  width: cardW,
                   borderRadius: 14,
                   overflow: 'hidden',
                   border: '1px solid rgba(255,255,255,0.08)',

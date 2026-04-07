@@ -122,6 +122,7 @@ export default function Methodology() {
         pointerEvents: 'none',
         zIndex: 2,
       }} />
+      <div className="hidden lg:block">
       {/* Spacer topo */}
       <div style={{ height: '30vh' }} />
 
@@ -337,6 +338,125 @@ export default function Methodology() {
       }} />
       {/* Spacer fundo */}
       <div style={{ height: '30vh' }} />
+      </div>
+
+      {/* Mobile layout */}
+      <div className="lg:hidden px-6 py-20">
+        <div className="mb-12">
+          <span style={{
+            fontFamily: 'DM Mono, monospace',
+            fontSize: 11,
+            color: 'rgba(255,255,255,0.3)',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            display: 'block',
+            marginBottom: 16,
+          }}>
+            Nossa metodologia
+          </span>
+          <h2 style={{
+            fontFamily: 'DM Sans, sans-serif',
+            fontSize: '2rem',
+            fontWeight: 300,
+            color: 'white',
+            letterSpacing: '-0.03em',
+            lineHeight: 1.15,
+          }}>
+            Como a KAIRÓS transforma{' '}
+            <strong style={{ fontWeight: 800, color: '#4B7BF5' }}>
+              dados em performance
+            </strong>
+          </h2>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          {steps.map((step, i) => (
+            <div key={i} style={{
+              background: '#111111',
+              borderRadius: 16,
+              overflow: 'hidden',
+              border: '1px solid rgba(255,255,255,0.07)',
+            }}>
+              {/* Imagem */}
+              <div style={{ height: 200, overflow: 'hidden' }}>
+                <img
+                  src={step.img}
+                  alt={step.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: step.imgPos || 'center',
+                  }}
+                />
+              </div>
+              {/* Conteúdo */}
+              <div style={{ padding: '20px' }}>
+                <span style={{
+                  fontFamily: 'DM Mono, monospace',
+                  fontSize: 10,
+                  color: 'rgba(255,255,255,0.2)',
+                  letterSpacing: '0.15em',
+                  display: 'block',
+                  marginBottom: 8,
+                }}>
+                  {step.num} / 04
+                </span>
+                <span style={{
+                  fontFamily: 'DM Mono, monospace',
+                  fontSize: 10,
+                  color: '#4B7BF5',
+                  background: 'rgba(75,123,245,0.1)',
+                  border: '1px solid rgba(75,123,245,0.2)',
+                  borderRadius: 99,
+                  padding: '3px 12px',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  display: 'inline-block',
+                  marginBottom: 12,
+                }}>
+                  {step.tag}
+                </span>
+                <h3 style={{
+                  fontFamily: 'DM Sans, sans-serif',
+                  fontSize: '1.4rem',
+                  fontWeight: 800,
+                  color: 'white',
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1.2,
+                  marginBottom: 10,
+                }}>
+                  {step.title}
+                </h3>
+                <p style={{
+                  fontFamily: 'DM Sans, sans-serif',
+                  fontSize: 14,
+                  color: 'rgba(255,255,255,0.5)',
+                  lineHeight: 1.7,
+                  marginBottom: 16,
+                }}>
+                  {step.desc}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {step.techs.map((tech) => (
+                    <span key={tech} style={{
+                      fontFamily: 'DM Mono, monospace',
+                      fontSize: 10,
+                      color: 'rgba(255,255,255,0.3)',
+                      background: 'rgba(255,255,255,0.05)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: 4,
+                      padding: '3px 10px',
+                    }}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }

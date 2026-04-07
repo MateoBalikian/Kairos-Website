@@ -66,11 +66,11 @@ export default function Cases() {
 
         {/* Card do atleta */}
         <div
-          className="grid lg:grid-cols-2 gap-0 overflow-hidden"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden"
           style={{ borderRadius: '1.5rem', border: '1px solid rgba(255,255,255,0.08)' }}
         >
           {/* Foto */}
-          <div className="relative overflow-hidden" style={{ minHeight: 520 }}>
+          <div className="relative overflow-hidden" style={{ minHeight: 300 }}>
             <img
               ref={imgRef}
               src={mediaUrl('gustavo-carvalho.jpeg')}
@@ -110,7 +110,7 @@ export default function Cases() {
           {/* Conteúdo */}
           <div
             ref={contentRef}
-            className="flex flex-col justify-center p-10 lg:p-14"
+            className="flex flex-col justify-center p-6 lg:p-14"
             style={{ background: '#111111' }}
           >
             {/* Nome */}
