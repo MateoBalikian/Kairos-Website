@@ -13,11 +13,12 @@ const evaluations = [
     subtitle: 'Consumo Máximo de Oxigênio',
     image: mediaUrl('vo2max.png'),
     tag: 'Capacidade Aeróbica',
-    cta_headline: 'Descubra o limite real do seu sistema cardiorrespiratório',
+    modalities: ['Ciclistas', 'Triatletas', 'Corredores', 'Nadadores'],
+    cta_headline: 'Descubra o teto aeróbico que está te limitando',
     description:
-      'O VO₂máx representa o volume máximo de oxigênio que o organismo consegue captar, transportar e utilizar por minuto durante exercício máximo. É considerado o indicador-ouro da capacidade cardiorrespiratória e preditor direto de desempenho em esportes de endurance.',
+      'Seu VO₂máx define o quanto de oxigênio seu corpo consegue usar em esforço máximo. É esse número que separa atletas que travam nos momentos decisivos dos que aceleram. Meça com precisão de laboratório e saiba exatamente onde investir no seu treinamento.',
     science:
-      'O atleta é monitorado em tempo real por ergoespirometria durante teste incremental em esteira ou cicloergômetro. A KAIROS integra consumo ventilatório, frequência cardíaca e percepção subjetiva de esforço, gerando um perfil funcional preciso e replicável.',
+      'O atleta é monitorado em tempo real por ergoespirometria durante teste incremental em esteira ou cicloergômetro. A KAIRÓS integra consumo ventilatório, frequência cardíaca e percepção subjetiva de esforço, gerando um perfil funcional preciso e replicável.',
     metrics: [
       { label: 'Precisão', value: '±2%' },
       { label: 'Variáveis', value: '12+' },
@@ -32,11 +33,12 @@ const evaluations = [
     subtitle: 'Avaliação por Lactato Sanguíneo',
     image: mediaUrl('limiarlactato.png'),
     tag: 'Limiar Metabólico',
-    cta_headline: 'Treine nas zonas certas e pare de desperdiçar esforço',
+    modalities: ['Ciclistas', 'Triatletas', 'Corredores'],
+    cta_headline: 'Pare de treinar no escuro',
     description:
-      'O limiar de lactato é a intensidade a partir da qual a produção supera a remoção pelo organismo. Define o ritmo sustentável em competições e é a referência mais sensível para prescrição de treino verdadeiramente individualizado.',
+      'Você sabe em qual intensidade seu corpo começa a acumular fadiga de verdade? Sem essa resposta, qualquer plano de treino é um chute. O limiar anaeróbico define a linha entre progredir e estagnar — e a KAIRÓS te mostra exatamente onde ela está.',
     science:
-      'Coletas de sangue capilar a cada estágio incremental. A KAIROS analisa a cinética do lactato com algoritmos de detecção de ponto de inflexão, identificando LT1, LT2/MLSS e zonas fisiologicamente fundamentadas.',
+      'Coletas de sangue capilar a cada estágio incremental. A KAIRÓS analisa a cinética do lactato com algoritmos de detecção de ponto de inflexão, identificando LT1, LT2/MLSS e zonas fisiologicamente fundamentadas.',
     metrics: [
       { label: 'Coletas', value: '6–8' },
       { label: 'Zonas', value: '5' },
@@ -51,11 +53,12 @@ const evaluations = [
     subtitle: 'Potência Anaeróbica Máxima',
     image: mediaUrl('wingate.png'),
     tag: 'Força & Potência',
-    cta_headline: 'Descubra a sua força máxima e potência anaeróbica',
+    modalities: ['Futebolistas', 'Ciclistas', 'Sprinters'],
+    cta_headline: 'Quanto de potência você realmente tem?',
     description:
-      'Padrão-ouro para avaliação de potência anaeróbica de membros inferiores. Em 30 segundos de pedalada máxima mensura-se pico de potência, potência média e índice de fadiga — variáveis críticas em esportes explosivos.',
+      'Nos 30 segundos mais intensos da sua vida esportiva, o que o seu corpo entrega? O Wingate revela seu pico de potência, sua média e o quanto você cai — dados que definem sprints, acelerações e toda situação de esforço explosivo no esporte.',
     science:
-      'A KAIROS captura a curva de potência instante a instante (10 ms), calculando potência absoluta e relativa (W/kg), índice de fadiga e taxa de declínio com comparação a bancos de dados normativos estratificados.',
+      'A KAIRÓS captura a curva de potência instante a instante (10 ms), calculando potência absoluta e relativa (W/kg), índice de fadiga e taxa de declínio com comparação a bancos de dados normativos estratificados.',
     metrics: [
       { label: 'Duração', value: '30s' },
       { label: 'Métricas', value: '8' },
@@ -240,6 +243,7 @@ export default function Science() {
                 {current.tag}
               </span>
 
+
               {/* Title */}
               <div className="flex items-center gap-3 mb-3">
                 <h3 className="font-sans font-bold text-3xl lg:text-4xl text-white leading-none">
@@ -332,6 +336,23 @@ export default function Science() {
                 </span>
               </div>
               <p className="text-sm text-[#8B8B87] leading-relaxed">{current.science}</p>
+
+              {/* Badges de modalidade */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {current.modalities.map((mod) => (
+                  <span
+                    key={mod}
+                    className="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full"
+                    style={{
+                      background: 'rgba(75,123,245,0.1)',
+                      border: '1px solid rgba(75,123,245,0.2)',
+                      color: '#4B7BF5',
+                    }}
+                  >
+                    {mod}
+                  </span>
+                ))}
+              </div>
               <a
                 href="#waitlist"
                 onClick={(e) => {

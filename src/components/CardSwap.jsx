@@ -13,7 +13,7 @@ const makeSlot = (i, distX, distY, total) => ({
 const placeNow = (el, slot, skew) =>
   gsap.set(el, { x: slot.x, y: slot.y, z: slot.z, xPercent: -50, yPercent: -50, skewY: skew, transformOrigin: 'center center', zIndex: slot.zIndex, force3D: true });
 
-const CardSwap = ({ width = 500, height = 400, cardDistance = 60, verticalDistance = 70, delay = 3000, pauseOnHover = false, onCardClick, skewAmount = 6, easing = 'elastic', children }) => {
+const CardSwap = ({ width = 500, height = 400, cardDistance = 60, verticalDistance = 70, delay = 2000, pauseOnHover = false, onCardClick, skewAmount = 6, easing = 'elastic', children }) => {
   const config = easing === 'elastic'
     ? { ease: 'elastic.out(0.6,0.9)', durDrop: 2, durMove: 2, durReturn: 2, promoteOverlap: 0.9, returnDelay: 0.05 }
     : { ease: 'power1.inOut', durDrop: 0.8, durMove: 0.8, durReturn: 0.8, promoteOverlap: 0.45, returnDelay: 0.2 };

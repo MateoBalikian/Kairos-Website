@@ -5,6 +5,7 @@ import { mediaUrl } from '../lib/supabase'
 export default function Hero() {
   const containerRef = useRef(null)
   const contentRef = useRef(null)
+  const modalitiesRef = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -13,6 +14,16 @@ export default function Hero() {
         { opacity: 0, y: 40 },
         { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', stagger: 0.14, delay: 0.4 }
       )
+
+      gsap.set(modalitiesRef.current, { y: 20 })
+
+      gsap.to(modalitiesRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: 1.2,
+      })
     }, containerRef)
     return () => ctx.revert()
   }, [])
@@ -67,6 +78,33 @@ export default function Hero() {
           Integramos inteligência artificial, visão computacional e metabolômica
           para transformar a forma como entendemos o corpo humano em movimento.
         </p>
+
+        {/* Modalidades */}
+        <div
+          ref={modalitiesRef}
+          className="flex flex-wrap gap-2 mt-5"
+          style={{ opacity: 0 }}
+        >
+          {['Ciclistas', 'Triatletas', 'Nadadores', 'Corredores', 'Futebolistas'].map((m) => (
+            <span
+              key={m}
+              style={{
+                fontFamily: 'DM Mono, monospace',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                color: 'rgba(255,255,255,0.6)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: 99,
+                padding: '4px 14px',
+                letterSpacing: '0.05em',
+                backdropFilter: 'blur(4px)',
+                background: 'rgba(255,255,255,0.04)',
+              }}
+            >
+              {m}
+            </span>
+          ))}
+        </div>
 
         <a
           href="#produtos"

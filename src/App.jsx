@@ -1,9 +1,11 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Features from './components/Features'
+import Methodology from './components/Methodology'
 import Areas from './components/Areas'
 import Institutes from './components/Institutes'
 import Philosophy from './components/Philosophy'
+import Cases from './components/Cases'
 import Protocol from './components/Protocol'
 import Science from './components/Science'
 import Products from './components/Products'
@@ -17,10 +19,12 @@ export default function App() {
       <main>
         <Hero />
         <Features />
+        <Methodology />
         <Areas />
         <Science />
         <Products />
         <Philosophy />
+        <Cases />
         <Protocol />
         <Institutes />
         <Waitlist />
