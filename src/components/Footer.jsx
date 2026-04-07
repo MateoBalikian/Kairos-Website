@@ -2,20 +2,21 @@ import { Mail, ExternalLink } from 'lucide-react'
 
 const columns = [
   {
-    title: 'Empresa',
+    title: 'Navegação',
     links: [
-      { label: 'Sobre', href: '#sobre' },
-      { label: 'LACAE', href: '#lacae' },
-      { label: 'Pesquisa', href: '#' },
-      { label: 'Time', href: '#' },
+      { label: 'Metodologia', href: '#metodologia' },
+      { label: 'Avaliações', href: '#ciencia' },
+      { label: 'Aplicações', href: '#produtos' },
+      { label: 'Ciência', href: '#lacae' },
     ],
   },
   {
-    title: 'Produtos',
+    title: 'Aplicações',
     links: [
-      { label: 'Trocker', href: '#produtos' },
-      { label: 'Metabolômica', href: '#produtos' },
-      { label: 'Em breve', href: '#' },
+      { label: 'Futebol', href: '#produtos', productId: 'futebol' },
+      { label: 'Ciclismo', href: '#produtos', productId: 'ciclismo' },
+      { label: 'Natação', href: '#produtos', productId: 'natacao' },
+      { label: 'Saúde & Nutrição', href: '#produtos' },
     ],
   },
   {
@@ -27,6 +28,7 @@ const columns = [
     ],
   },
 ]
+
 
 export default function Footer() {
   return (
@@ -61,6 +63,12 @@ export default function Footer() {
           <div className="flex flex-col justify-start gap-3">
             <a
               href="#waitlist"
+              onClick={(e) => {
+                e.preventDefault()
+                const t = document.querySelector('#waitlist')
+                if (window.lenis) window.lenis.scrollTo(t, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
+                else t?.scrollIntoView({ behavior: 'smooth' })
+              }}
               className="btn-magnetic btn-slide inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#0A2463] bg-white rounded-full"
             >
               <div className="slide-fill bg-[#F8F8F6]" />
@@ -87,7 +95,21 @@ export default function Footer() {
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <a
+                      key={link.label}
                       href={link.href}
+                      onClick={(e) => {
+                        if (link.href.startsWith('#')) {
+                          e.preventDefault()
+                          const target = document.querySelector(link.href)
+                          if (window.lenis) window.lenis.scrollTo(target, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
+                          else target?.scrollIntoView({ behavior: 'smooth' })
+                          if (link.productId) {
+                            setTimeout(() => {
+                              window.dispatchEvent(new CustomEvent('selectProduct', { detail: link.productId }))
+                            }, 100)
+                          }
+                        }
+                      }}
                       className="text-sm text-white/50 hover:text-white transition-colors duration-200 hover:-translate-y-px inline-block"
                     >
                       {link.label}

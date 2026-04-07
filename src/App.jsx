@@ -6,15 +6,16 @@ import Areas from './components/Areas'
 import Institutes from './components/Institutes'
 import Philosophy from './components/Philosophy'
 import Cases from './components/Cases'
-import Protocol from './components/Protocol'
+
 import Science from './components/Science'
 import Products from './components/Products'
+import HealthNutrition from './components/HealthNutrition'
 import Waitlist from './components/Waitlist'
 import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0A0A0A]">
       <Navbar />
       <main>
         <Hero />
@@ -23,9 +24,10 @@ export default function App() {
         <Areas />
         <Science />
         <Products />
+        <HealthNutrition />
         <Philosophy />
         <Cases />
-        <Protocol />
+
         <Institutes />
         <Waitlist />
       </main>

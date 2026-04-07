@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const lenis = new Lenis()
+window.lenis = lenis
 const lenisRafCallback = (time) => lenis.raf(time * 1000)
 gsap.ticker.add(lenisRafCallback)
 gsap.ticker.lagSmoothing(0)

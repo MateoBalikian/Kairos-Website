@@ -332,7 +332,7 @@ export default function Science() {
               <div className="flex items-center gap-2 mb-4">
                 <FlaskConical size={14} style={{ color: '#4B7BF5' }} />
                 <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: '#4B7BF5' }}>
-                  Metodologia KAIROS
+                  Metodologia KAIRÓS
                 </span>
               </div>
               <p className="text-sm text-[#8B8B87] leading-relaxed">{current.science}</p>
@@ -357,14 +357,16 @@ export default function Science() {
                 href="#waitlist"
                 onClick={(e) => {
                   e.preventDefault()
-                  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+                  const t = document.querySelector('#waitlist')
+                  if (window.lenis) window.lenis.scrollTo(t, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
+                  else t?.scrollIntoView({ behavior: 'smooth' })
                 }}
                 className="inline-flex items-center justify-center gap-2 mt-5 px-4 py-2.5 rounded-full text-sm font-medium w-full transition-all duration-200 hover:opacity-90"
                 style={{ background: '#4B7BF5', color: 'white' }}
               >
                 Agende sua avaliação
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
             </div>

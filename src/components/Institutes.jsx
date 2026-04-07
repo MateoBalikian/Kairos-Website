@@ -54,6 +54,7 @@ const institutes = [
 const CARD_W = 260
 const GAP = 16
 const VISIBLE = 3
+const MAX_TRANSLATE = (institutes.length - VISIBLE) * (CARD_W + GAP)
 
 export default function Institutes() {
   const [cur, setCur] = useState(0)
@@ -126,7 +127,7 @@ export default function Institutes() {
             style={{
               display: 'flex',
               gap: GAP,
-              transform: `translateX(-${cur * (CARD_W + GAP)}px)`,
+              transform: `translateX(-${Math.min(cur * (CARD_W + GAP), MAX_TRANSLATE)}px)`,
               transition: 'transform 0.45s cubic-bezier(0.4,0,0.2,1)',
             }}
           >

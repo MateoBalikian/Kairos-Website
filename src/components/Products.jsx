@@ -2,25 +2,31 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
-import { Eye, FlaskConical } from 'lucide-react'
+import { Activity, Zap, Wind } from 'lucide-react'
 import { mediaUrl } from '../lib/supabase'
 
 const products = [
   {
-    id: 'trocker',
-    name: 'Trocker',
-    badge: null,
-    badgeStyle: {},
-    icon: Eye,
-    cta: { label: 'Quero começar agora →', style: 'gradient' },
+    id: 'futebol',
+    name: 'Futebol',
+    badge: 'Trocker · LACAE',
+    badgeStyle: { background: 'rgba(75,123,245,0.12)', color: '#4B7BF5', border: '1px solid rgba(75,123,245,0.25)' },
+    icon: Activity,
+    cta: { label: 'Quero aplicar no meu time →', style: 'gradient' },
     description:
-      'Plataforma de rastreamento inteligente de jogadores para análise tática e física no futebol. Transforme qualquer vídeo de jogo ou treino em dados precisos de desempenho coletivo e individual.',
+      'Rastreamento automático de múltiplos atletas durante o Teste Yo-Yo IR1 — distância percorrida, velocidade de pico e índice de fadiga calculados frame a frame, sem câmeras especiais ou sensores.',
     features: [
-      'Rastreamento de múltiplos atletas',
-      'Análise de sprints, saltos e direção',
-      'Mapas de calor e posicionamento tático',
-      'Detecção de padrões de fadiga',
+      'Rastreamento multi-atleta simultâneo',
+      'Distância percorrida por estágio',
+      'Detecção automática de fadiga',
+      'Exportação de laudo em PDF',
     ],
+    highlight: {
+      label1: 'Distância máxima',
+      value1: '1.760m',
+      label2: 'Velocidade de pico',
+      value2: '18.4 km/h',
+    },
     media: (
       <video
         src={mediaUrl('trocker-demo.mp4')}
@@ -33,29 +39,71 @@ const products = [
     ),
   },
   {
-    id: 'nmr',
-    name: 'Metabolômica por RMN',
-    badge: 'LACAE',
-    badgeStyle: { background: '#F8F8F6', color: '#4A4A47', border: '1px solid #E5E5E2' },
-    icon: FlaskConical,
-    cta: { label: 'Quero saber mais →', style: 'white' },
+    id: 'ciclismo',
+    name: 'Ciclismo',
+    badge: 'Pose Estimation · LACAE',
+    badgeStyle: { background: 'rgba(75,123,245,0.12)', color: '#4B7BF5', border: '1px solid rgba(75,123,245,0.25)' },
+    icon: Zap,
+    cta: { label: 'Quero avaliar minha pedalada →', style: 'gradient' },
     description:
-      'Perfil metabólico completo via Ressonância Magnética Nuclear. Correlação entre marcadores metabólicos e desempenho esportivo — metodologia de pesquisa científica aplicada ao atleta.',
+      'Keypoints rastreados em tempo real identificam ângulo do joelho, quadril e cotovelo durante a pedalada. Combinado com o Wingate, entregamos posição ideal na bike e zonas de potência personalizadas.',
     features: [
-      'Perfil de 200+ metabólitos',
-      'Correlação com desempenho',
-      'Diagnóstico nutricional preciso',
-      'Monitoramento longitudinal',
+      'Análise biomecânica da pedalada',
+      'Detecção de assimetrias e compensações',
+      'Potência anaeróbica via Wingate',
+      'Prescrição de zonas de treino',
     ],
+    highlight: {
+      label1: 'Ângulo ideal do joelho',
+      value1: '142°',
+      label2: 'Potência de pico',
+      value2: '9.1 W/kg',
+    },
     media: (
-      <img
-        src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80&auto=format&fit=crop"
-        alt="Metabolômica por RMN"
+      <video
+        src={mediaUrl('henrique.mp4')}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+      />
+    ),
+  },
+  {
+    id: 'natacao',
+    name: 'Natação',
+    badge: 'VO₂máx · RMN · LACAE',
+    badgeStyle: { background: 'rgba(75,123,245,0.12)', color: '#4B7BF5', border: '1px solid rgba(75,123,245,0.25)' },
+    icon: Wind,
+    cta: { label: 'Quero meu perfil fisiológico →', style: 'gradient' },
+    description:
+      'Keypoints rastreados em tempo real identificam padrões de braçada, assimetrias e eficiência técnica durante a nado. Combinado com VO₂máx e metabolômica por RMN, entregamos o perfil fisiológico completo da nadadora.',
+    features: [
+      'Análise biomecânica da braçada por pose estimation',
+      'Detecção de assimetrias e compensações técnicas',
+      'VO₂máx e limiar anaeróbico em protocolo aquático',
+      'Perfil metabólico completo por RMN',
+    ],
+    highlight: {
+      label1: 'VO₂máx',
+      value1: '71 ml/kg/min',
+      label2: 'Metabólitos analisados',
+      value2: '200+',
+    },
+    media: (
+      <video
+        src={mediaUrl('nado_web.mp4')}
+        autoPlay
+        loop
+        muted
+        playsInline
         className="w-full h-full object-cover"
       />
     ),
   },
 ]
+
 
 const INTERVAL_MS = 8000
 
@@ -144,6 +192,19 @@ export default function Products() {
     return () => ctx.revert()
   }, [])
 
+  // Listener para seleção de produto via evento (ex: links do Footer)
+  useEffect(() => {
+    const handler = (e) => {
+      const idx = products.findIndex((p) => p.id === e.detail)
+      if (idx !== -1) {
+        switchTo(idx)
+        startTimer()
+      }
+    }
+    window.addEventListener('selectProduct', handler)
+    return () => window.removeEventListener('selectProduct', handler)
+  }, [switchTo, startTimer])
+
   useEffect(() => {
     if (!mediaRef.current) return
     const el = mediaRef.current
@@ -171,10 +232,10 @@ export default function Products() {
 
         <div className="products-header mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <div>
-            <span className="font-mono text-xs text-[#6B6B67] uppercase tracking-widest">Nossa tecnologia</span>
+            <span className="font-mono text-xs text-[#6B6B67] uppercase tracking-widest">Nossas aplicações</span>
             <h2 className="font-sans font-light text-3xl lg:text-4xl xl:text-5xl text-white tracking-tight mt-3">
-              Instrumentos científicos{' '}
-              <span className="font-bold text-[#4B7BF5]">para alto rendimento</span>
+              Ciência aplicada{' '}
+              <span className="font-bold text-[#4B7BF5]">a cada modalidade</span>
             </h2>
           </div>
 
@@ -264,14 +325,31 @@ export default function Products() {
                 ))}
               </ul>
 
-              {product.id === 'trocker' && (
-                <div className="mt-4 p-4 rounded-2xl" style={{ background: 'rgba(75,123,245,0.08)', border: '0.5px solid rgba(75,123,245,0.2)' }}>
-                  <p className="text-sm font-semibold leading-snug mb-1" style={{ color: '#4B7BF5' }}>
-                    Use IA para elevar o desempenho do seu time
-                  </p>
-                  <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                    Atletas, analistas e clubes já estão transformando dados em vantagem competitiva. Faça parte.
-                  </p>
+
+              {product.highlight && (
+                <div className="mt-5 grid grid-cols-2 gap-3">
+                  <div
+                    className="rounded-2xl p-4 text-center"
+                    style={{ background: 'rgba(75,123,245,0.08)', border: '1px solid rgba(75,123,245,0.15)' }}
+                  >
+                    <p className="font-mono font-bold text-xl text-white leading-none">
+                      {product.highlight.value1}
+                    </p>
+                    <p className="font-mono text-[10px] text-white/40 uppercase tracking-wide mt-1.5">
+                      {product.highlight.label1}
+                    </p>
+                  </div>
+                  <div
+                    className="rounded-2xl p-4 text-center"
+                    style={{ background: 'rgba(75,123,245,0.08)', border: '1px solid rgba(75,123,245,0.15)' }}
+                  >
+                    <p className="font-mono font-bold text-xl text-white leading-none">
+                      {product.highlight.value2}
+                    </p>
+                    <p className="font-mono text-[10px] text-white/40 uppercase tracking-wide mt-1.5">
+                      {product.highlight.label2}
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
@@ -280,7 +358,9 @@ export default function Products() {
               href="#waitlist"
               onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
+                const t = document.querySelector('#waitlist')
+                if (window.lenis) window.lenis.scrollTo(t, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
+                else t?.scrollIntoView({ behavior: 'smooth' })
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
@@ -307,13 +387,7 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="rounded-3xl px-8 py-5 flex items-center gap-3" style={{ background: '#111111', border: '0.5px solid rgba(255,255,255,0.1)' }}>
-          <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: 'rgba(75,123,245,0.5)' }} />
-          <p className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            <span className="font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>Outros módulos em desenvolvimento:</span>{' '}
-            análise de natação, corrida, monitoramento em tempo real, integração fisiológica.
-          </p>
-        </div>
+
       </div>
     </section>
   )

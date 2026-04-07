@@ -14,6 +14,7 @@ const steps = [
     techs: ['YOLO', 'Pose Estimation', 'BoxMOT', 'Markerless'],
     img: mediaUrl('imgatletismoia.jpeg'),
     bg: '#0a0f1a',
+    imgPos: 'center 50%',
   },
   {
     num: '02',
@@ -23,6 +24,7 @@ const steps = [
     techs: ['VO₂máx', 'Ergoespirometria', 'Lactato', 'Wingate'],
     img: mediaUrl('vo2.png'),
     bg: '#0a0a0f',
+    imgPos: 'center 35%',
   },
   {
     num: '03',
@@ -32,6 +34,7 @@ const steps = [
     techs: ['RMN', 'Metabolômica', '200+ Metabólitos', 'IQB · UFAL'],
     img: mediaUrl('metabolomica.png'),
     bg: '#0a0d0f',
+    imgPos: 'center 50%',
   },
   {
     num: '04',
@@ -41,6 +44,7 @@ const steps = [
     techs: ['Prescrição de Treino', 'Nutrição de Precisão', 'Monitoramento'],
     img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80&auto=format&fit=crop',
     bg: '#0f0a0a',
+    imgPos: 'center 40%',
   },
 ]
 
@@ -59,11 +63,12 @@ export default function Methodology() {
 
       const imgs = gsap.utils.toArray('.meth-img-wrapper img')
 
-      // Estado inicial — todas visíveis com clipPath inset(0)
-      // A ordem z-index garante que 01 aparece na frente
-      gsap.set(imgs, {
-        clipPath: 'inset(0)',
-        objectPosition: '0px 0%',
+      // Estado inicial — cada imagem com seu próprio imgPos
+      imgs.forEach((img, i) => {
+        gsap.set(img, {
+          clipPath: 'inset(0)',
+          objectPosition: steps[i].imgPos,
+        })
       })
 
       const mainTimeline = gsap.timeline({
@@ -90,12 +95,6 @@ export default function Methodology() {
             }, 0)
             .to(currentImage, {
               clipPath: 'inset(0px 0px 100%)',
-              objectPosition: '0px 60%',
-              duration: 1.5,
-              ease: 'none',
-            }, 0)
-            .to(nextImage, {
-              objectPosition: '0px 40%',
               duration: 1.5,
               ease: 'none',
             }, 0)
@@ -111,8 +110,18 @@ export default function Methodology() {
   return (
     <section
       ref={sectionRef}
-      style={{ backgroundColor: steps[0].bg }}
+      id="metodologia"
+      style={{ backgroundColor: steps[0].bg, position: 'relative' }}
     >
+      {/* Fade entrada */}
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0, right: 0,
+        height: '180px',
+        background: 'linear-gradient(to bottom, #0A0A0A, transparent)',
+        pointerEvents: 'none',
+        zIndex: 2,
+      }} />
       {/* Spacer topo */}
       <div style={{ height: '30vh' }} />
 
@@ -155,9 +164,9 @@ export default function Methodology() {
         className="meth-arch"
         style={{
           display: 'flex',
-          gap: 60,
+          gap: 120,
           justifyContent: 'space-between',
-          maxWidth: 1100,
+          maxWidth: 1500,
           margin: '0 auto',
           padding: '0 2rem',
         }}
@@ -168,6 +177,7 @@ export default function Methodology() {
           flexDirection: 'column',
           minWidth: 320,
           maxWidth: 400,
+          paddingLeft: '2rem',
         }}>
           {steps.map((step, i) => (
             <div
@@ -182,11 +192,11 @@ export default function Methodology() {
                 {/* número */}
                 <span style={{
                   fontFamily: 'DM Mono, monospace',
-                  fontSize: 11,
+                  fontSize: 13,
                   color: 'rgba(255,255,255,0.2)',
                   letterSpacing: '0.15em',
                   display: 'block',
-                  marginBottom: 14,
+                  marginBottom: 16,
                 }}>
                   {step.num} / 04
                 </span>
@@ -194,7 +204,7 @@ export default function Methodology() {
                 {/* tag */}
                 <span style={{
                   fontFamily: 'DM Mono, monospace',
-                  fontSize: 10,
+                  fontSize: 12,
                   color: '#4B7BF5',
                   background: 'rgba(75,123,245,0.1)',
                   border: '1px solid rgba(75,123,245,0.2)',
@@ -211,7 +221,7 @@ export default function Methodology() {
                 {/* título */}
                 <h3 style={{
                   fontFamily: 'DM Sans, sans-serif',
-                  fontSize: 'clamp(2rem, 3vw, 2.75rem)',
+                  fontSize: 'clamp(2.25rem, 3.5vw, 3.25rem)',
                   fontWeight: 800,
                   color: 'white',
                   letterSpacing: '-0.03em',
@@ -234,7 +244,7 @@ export default function Methodology() {
                 {/* descrição */}
                 <p style={{
                   fontFamily: 'DM Sans, sans-serif',
-                  fontSize: 16,
+                  fontSize: 18,
                   color: 'rgba(255,255,255,0.5)',
                   lineHeight: 1.75,
                   letterSpacing: '-0.01em',
@@ -248,7 +258,7 @@ export default function Methodology() {
                   {step.techs.map((tech) => (
                     <span key={tech} style={{
                       fontFamily: 'DM Mono, monospace',
-                      fontSize: 10,
+                      fontSize: 11,
                       color: 'rgba(255,255,255,0.3)',
                       background: 'rgba(255,255,255,0.05)',
                       border: '1px solid rgba(255,255,255,0.08)',
@@ -273,7 +283,7 @@ export default function Methodology() {
             flexShrink: 1,
             height: '100vh',
             width: '100%',
-            maxWidth: 580,
+            maxWidth: 780,
             position: 'relative',
           }}
         >
@@ -287,7 +297,8 @@ export default function Methodology() {
                 top: '50%',
                 left: 0,
                 transform: 'translateY(-50%)',
-                height: '80vh',
+                height: 'auto',
+                aspectRatio: '4 / 3',
                 width: '100%',
                 borderRadius: 16,
                 overflow: 'hidden',
@@ -300,7 +311,7 @@ export default function Methodology() {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  objectPosition: 'center',
+                  objectPosition: step.imgPos,
                   display: 'block',
                 }}
               />
@@ -310,28 +321,20 @@ export default function Methodology() {
                 inset: 0,
                 background: 'linear-gradient(to top, rgba(10,10,10,0.45) 0%, transparent 50%)',
               }} />
-              {/* badge etapa */}
-              <div style={{ position: 'absolute', bottom: 20, left: 20 }}>
-                <span style={{
-                  fontFamily: 'DM Mono, monospace',
-                  fontSize: 10,
-                  color: 'rgba(255,255,255,0.55)',
-                  background: 'rgba(0,0,0,0.4)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: 99,
-                  padding: '5px 14px',
-                  backdropFilter: 'blur(8px)',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                }}>
-                  {step.num} · {step.tag}
-                </span>
-              </div>
             </div>
           ))}
         </div>
       </div>
 
+      {/* Fade saída */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0, left: 0, right: 0,
+        height: '180px',
+        background: 'linear-gradient(to top, #0A0A0A, transparent)',
+        pointerEvents: 'none',
+        zIndex: 2,
+      }} />
       {/* Spacer fundo */}
       <div style={{ height: '30vh' }} />
     </section>

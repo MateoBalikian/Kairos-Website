@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 
 /* ─── Card 1: Diagnostics List ─── */
 const diagnostics = [
-  { tag: 'VO₂ máximo', desc: 'Consumo máximo de oxigênio', badge: 'Ergoespirometria', icon: '◎' },
+  { tag: 'Avaliações Fisiológicas', desc: 'VO₂máx, limiar anaeróbico e potência explosiva', badge: 'LACAE', icon: '◎' },
   { tag: 'Metabolômica por RMN', desc: 'Perfil metabólico completo via ressonância nuclear', badge: 'RMN', icon: '⬡' },
   { tag: 'Biomecânica computacional', desc: 'Visão computacional sem sensores ou câmeras especiais', badge: 'Pose estimation', icon: '◈' },
   { tag: 'Predição de lesão', desc: 'Modelo XGBoost com 99.5% de precisão', badge: '99.5%', icon: '◉' },
@@ -20,9 +20,9 @@ function DiagnosticList() {
   return (
     <div className="bg-white border border-[#E5E5E2] rounded-4xl p-6 h-full flex flex-col">
       <div className="mb-5">
-        <span className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-widest">Avaliações exclusivas</span>
+        <span className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-widest">Nossa metodologia</span>
         <p className="font-sans font-semibold text-base text-[#0A0A0A] mt-1 leading-snug">
-          4 protocolos que nenhuma outra empresa no Brasil oferece
+          4 protocolos integrados. Um diagnóstico completo.
         </p>
       </div>
 
@@ -284,7 +284,7 @@ export default function Features() {
       <div className="max-w-[1400px] mx-auto">
         <div className="features-headline mb-16">
           <span className="font-mono text-xs uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.5)' }}>
-            O que nos torna únicos
+            A CIÊNCIA DA ELITE, AGORA ACESSÍVEL
           </span>
           <h2 className="font-sans font-semibold text-3xl lg:text-4xl text-white tracking-tight mt-3 max-w-2xl">
             Por que a KAIRÓS é diferente de{' '}

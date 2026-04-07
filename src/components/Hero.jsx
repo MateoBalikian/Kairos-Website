@@ -107,10 +107,15 @@ export default function Hero() {
         </div>
 
         <a
-          href="#produtos"
+          href="#metodologia"
           onClick={(e) => {
             e.preventDefault()
-            document.getElementById('produtos')?.scrollIntoView({ behavior: 'smooth' })
+            if (window.lenis) {
+              const target = document.querySelector('#metodologia')
+              window.lenis.scrollTo(target, { duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+            } else {
+              document.querySelector('#metodologia')?.scrollIntoView({ behavior: 'smooth' })
+            }
           }}
           className="inline-flex items-center gap-3 cursor-pointer hover:opacity-90 transition-opacity duration-200"
           style={{

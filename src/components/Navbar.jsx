@@ -3,10 +3,10 @@ import { Menu, X } from 'lucide-react'
 import { mediaUrl } from '../lib/supabase'
 
 const links = [
-  { label: 'Sobre', href: '#sobre' },
+  { label: 'Metodologia', href: '#metodologia' },
   { label: 'Avaliações', href: '#ciencia' },
-  { label: 'Produtos', href: '#produtos' },
-  { label: 'LACAE', href: '#lacae' },
+  { label: 'Aplicações', href: '#produtos' },
+  { label: 'Ciência', href: '#lacae' },
 ]
 
 export default function Navbar() {
@@ -18,6 +18,16 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const smoothScroll = (href) => {
+    const target = document.querySelector(href)
+    if (!target) return
+    if (window.lenis) {
+      window.lenis.scrollTo(target, { duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+    } else {
+      target.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <header
@@ -32,7 +42,15 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-8 py-4" style={{ position: 'relative' }}>
 
         {/* Logo */}
-        <a href="#" style={{ position: 'absolute', left: '32px', top: '140%', transform: 'translateY(-50%)', zIndex: 10 }}>
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault()
+            if (window.lenis) window.lenis.scrollTo(0, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
+            else window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+          style={{ position: 'absolute', left: '32px', top: '140%', transform: 'translateY(-50%)', zIndex: 10 }}
+        >
           <img
             src={mediaUrl('logokairos.png')}
             alt="KAIROS"
@@ -54,6 +72,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
+              onClick={(e) => { e.preventDefault(); smoothScroll(link.href) }}
               style={{
                 color: 'white',
                 fontWeight: 600,
@@ -62,6 +81,7 @@ export default function Navbar() {
                 textDecoration: 'none',
                 opacity: 1,
                 transition: 'opacity 0.2s ease',
+                cursor: 'pointer',
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
@@ -72,6 +92,7 @@ export default function Navbar() {
 
           <a
             href="#waitlist"
+            onClick={(e) => { e.preventDefault(); smoothScroll('#waitlist') }}
             style={{
               background: '#0A2463',
               color: 'white',
@@ -81,6 +102,7 @@ export default function Navbar() {
               fontWeight: 600,
               textDecoration: 'none',
               transition: 'opacity 0.2s ease',
+              cursor: 'pointer',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
@@ -113,7 +135,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll(link.href) }}
               style={{
                 display: 'block',
                 color: 'white',
@@ -122,6 +144,7 @@ export default function Navbar() {
                 padding: '12px 0',
                 textDecoration: 'none',
                 borderBottom: '1px solid rgba(255,255,255,0.1)',
+                cursor: 'pointer',
               }}
             >
               {link.label}
@@ -129,7 +152,7 @@ export default function Navbar() {
           ))}
           <a
             href="#waitlist"
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll('#waitlist') }}
             style={{
               display: 'block',
               marginTop: '16px',
@@ -141,6 +164,7 @@ export default function Navbar() {
               fontWeight: 600,
               textDecoration: 'none',
               textAlign: 'center',
+              cursor: 'pointer',
             }}
           >
             Lista de espera
