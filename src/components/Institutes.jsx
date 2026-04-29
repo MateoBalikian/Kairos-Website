@@ -4,7 +4,7 @@ const institutes = [
   {
     sigla: 'UFAL',
     nome: 'Universidade Federal de Alagoas',
-    desc: 'Ecossistema central de pesquisa, inovação e desenvolvimento tecnológico da KAIRÓS.',
+    desc: 'Ecossistema central de pesquisa, inovação e desenvolvimento tecnológico da Veltron.',
     img: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80&auto=format&fit=crop',
   },
   {

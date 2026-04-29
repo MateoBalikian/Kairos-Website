@@ -18,7 +18,7 @@ const evaluations = [
     description:
       'Seu VO₂máx define o quanto de oxigênio seu corpo consegue usar em esforço máximo. É esse número que separa atletas que travam nos momentos decisivos dos que aceleram. Meça com precisão de laboratório e saiba exatamente onde investir no seu treinamento.',
     science:
-      'O atleta é monitorado em tempo real por ergoespirometria durante teste incremental em esteira ou cicloergômetro. A KAIRÓS integra consumo ventilatório, frequência cardíaca e percepção subjetiva de esforço, gerando um perfil funcional preciso e replicável.',
+      'O atleta é monitorado em tempo real por ergoespirometria durante teste incremental em esteira ou cicloergômetro. A Veltron integra consumo ventilatório, frequência cardíaca e percepção subjetiva de esforço, gerando um perfil funcional preciso e replicável.',
     metrics: [
       { label: 'Precisão', value: '±2%' },
       { label: 'Variáveis', value: '12+' },
@@ -36,9 +36,9 @@ const evaluations = [
     modalities: ['Ciclistas', 'Triatletas', 'Corredores'],
     cta_headline: 'Pare de treinar no escuro',
     description:
-      'Você sabe em qual intensidade seu corpo começa a acumular fadiga de verdade? Sem essa resposta, qualquer plano de treino é um chute. O limiar anaeróbico define a linha entre progredir e estagnar — e a KAIRÓS te mostra exatamente onde ela está.',
+      'Você sabe em qual intensidade seu corpo começa a acumular fadiga de verdade? Sem essa resposta, qualquer plano de treino é um chute. O limiar anaeróbico define a linha entre progredir e estagnar — e a Veltron te mostra exatamente onde ela está.',
     science:
-      'Coletas de sangue capilar a cada estágio incremental. A KAIRÓS analisa a cinética do lactato com algoritmos de detecção de ponto de inflexão, identificando LT1, LT2/MLSS e zonas fisiologicamente fundamentadas.',
+      'Coletas de sangue capilar a cada estágio incremental. A Veltron analisa a cinética do lactato com algoritmos de detecção de ponto de inflexão, identificando LT1, LT2/MLSS e zonas fisiologicamente fundamentadas.',
     metrics: [
       { label: 'Coletas', value: '6–8' },
       { label: 'Zonas', value: '5' },
@@ -58,7 +58,7 @@ const evaluations = [
     description:
       'Nos 30 segundos mais intensos da sua vida esportiva, o que o seu corpo entrega? O Wingate revela seu pico de potência, sua média e o quanto você cai — dados que definem sprints, acelerações e toda situação de esforço explosivo no esporte.',
     science:
-      'A KAIRÓS captura a curva de potência instante a instante (10 ms), calculando potência absoluta e relativa (W/kg), índice de fadiga e taxa de declínio com comparação a bancos de dados normativos estratificados.',
+      'A Veltron captura a curva de potência instante a instante (10 ms), calculando potência absoluta e relativa (W/kg), índice de fadiga e taxa de declínio com comparação a bancos de dados normativos estratificados.',
     metrics: [
       { label: 'Duração', value: '30s' },
       { label: 'Métricas', value: '8' },
@@ -332,7 +332,7 @@ export default function Science() {
               <div className="flex items-center gap-2 mb-4">
                 <FlaskConical size={14} style={{ color: '#4B7BF5' }} />
                 <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: '#4B7BF5' }}>
-                  Metodologia KAIRÓS
+                  Metodologia Veltron
                 </span>
               </div>
               <p className="text-sm text-[#8B8B87] leading-relaxed">{current.science}</p>

@@ -145,7 +145,7 @@ export default function Cases() {
             {/* Avaliações */}
             <div>
               <p className="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-4">
-                Avaliações realizadas na KAIRÓS
+                Avaliações realizadas na Veltron
               </p>
               <div className="flex flex-col gap-2">
                 {avaliacoes.map((av, i) => (
@@ -166,7 +166,7 @@ export default function Cases() {
             {/* Texto de validação */}
             <p className="font-sans text-sm text-white/40 leading-relaxed mt-8 pt-8 border-t border-white/8">
               Performance comprovada em prova. Precisão validada em laboratório.
-              A KAIRÓS integra fisiologia, biomecânica e metabolômica para transformar
+              A Veltron integra fisiologia, biomecânica e metabolômica para transformar
               dados em decisões de alta performance.
             </p>
           </div>

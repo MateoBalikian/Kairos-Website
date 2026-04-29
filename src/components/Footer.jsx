@@ -40,7 +40,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="max-w-xs mx-auto lg:mx-0 text-center lg:text-left">
             <div className="font-mono text-lg tracking-[0.3em] font-medium text-white uppercase mb-3">
-              KAIRÓS
+              Veltron
             </div>
             <p className="text-sm text-white/50 leading-relaxed">
               Ciência aplicada ao momento certo.
@@ -124,7 +124,7 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-mono text-[11px] text-white/30">
-            © 2025 KAIROS — Ciência aplicada ao desempenho humano
+            © 2025 Veltron — Ciência aplicada ao desempenho humano
           </p>
           <div className="flex items-center gap-4">
             <a href="#" className="font-mono text-[11px] text-white/30 hover:text-white/60 transition-colors duration-200">

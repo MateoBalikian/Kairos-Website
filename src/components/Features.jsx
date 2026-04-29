@@ -32,8 +32,8 @@ function DiagnosticList() {
             key={i}
             onClick={() => setActive(i)}
             className={`flex items-start gap-3 p-4 rounded-2xl transition-all duration-400 text-left w-full ${active === i
-                ? 'bg-[#0A2463] shadow-[0_4px_20px_rgba(10,36,99,0.22)]'
-                : 'bg-[#F8F8F6] hover:bg-[#EFEFED]'
+              ? 'bg-[#0A2463] shadow-[0_4px_20px_rgba(10,36,99,0.22)]'
+              : 'bg-[#F8F8F6] hover:bg-[#EFEFED]'
               }`}
           >
             <span className={`text-lg mt-0.5 leading-none ${active === i ? 'text-white/70' : 'text-[#0A2463]'}`}>
@@ -210,10 +210,10 @@ function ScheduleCard() {
                 <div
                   key={dIdx}
                   className={`h-10 rounded-xl flex items-center justify-center px-1 transition-all duration-500 ${slot
-                      ? isActive
-                        ? 'bg-[#0A2463] scale-[1.06] shadow-[0_4px_12px_rgba(10,36,99,0.28)]'
-                        : 'bg-[#F8F8F6] border border-[#E5E5E2]'
-                      : 'bg-transparent'
+                    ? isActive
+                      ? 'bg-[#0A2463] scale-[1.06] shadow-[0_4px_12px_rgba(10,36,99,0.28)]'
+                      : 'bg-[#F8F8F6] border border-[#E5E5E2]'
+                    : 'bg-transparent'
                     }`}
                 >
                   {slot && (
@@ -287,7 +287,7 @@ export default function Features() {
             A CIÊNCIA DA ELITE, AGORA ACESSÍVEL
           </span>
           <h2 className="font-sans font-semibold text-3xl lg:text-4xl text-white tracking-tight mt-3 max-w-2xl">
-            Por que a KAIRÓS é diferente de{' '}
+            Por que a Veltron é diferente de{' '}
             <span className="text-white">tudo que você já viu</span>
           </h2>
         </div>

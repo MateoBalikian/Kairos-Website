@@ -125,7 +125,7 @@ export default function HealthNutrition() {
             </h2>
           </div>
           <p className="text-[#6B6B67] text-sm leading-relaxed max-w-sm lg:text-right">
-            A mesma base tecnológica da KAIRÓS — metabolômica por RMN e avaliação fisiológica — aplicada ao diagnóstico preventivo e à nutrição personalizada.
+            A mesma base tecnológica da Veltron — metabolômica por RMN e avaliação fisiológica — aplicada ao diagnóstico preventivo e à nutrição personalizada.
           </p>
         </div>
 

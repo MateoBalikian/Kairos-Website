@@ -103,7 +103,7 @@ export default function Waitlist() {
             Treine com a vantagem que{' '}
             <span style={{ color: '#4B7BF5' }}>times olímpicos têm</span>
             <br />
-            <span style={{ color: '#4B7BF5' }}>— com a KAIRÓS.</span>
+            <span style={{ color: '#4B7BF5' }}>— com a Veltron.</span>
           </h2>
           <p className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>
             Diagnósticos fisiológicos de precisão que antes só existiam em centros de elite. Cadastre-se e nossa equipe entrará em contato.
@@ -183,7 +183,7 @@ export default function Waitlist() {
 
             <div>
               <label className={labelClass} style={labelStyle}>
-                Como você usaria a KAIRÓS? <span style={{ color: 'rgba(255,255,255,0.3)' }}>(opcional)</span>
+                Como você usaria a Veltron? <span style={{ color: 'rgba(255,255,255,0.3)' }}>(opcional)</span>
               </label>
               <textarea
                 rows={3}
@@ -207,7 +207,7 @@ export default function Waitlist() {
             </div>
 
             <p className="text-center font-mono text-[10px] pt-1" style={{ color: 'rgba(255,255,255,0.3)' }}>
-              Sem spam. Apenas novidades da KAIRÓS.
+              Sem spam. Apenas novidades da Veltron.
             </p>
           </form>
         )}

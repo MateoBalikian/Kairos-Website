@@ -54,8 +54,8 @@ export default function Navbar() {
           }}
         >
           <img
-            src={mediaUrl('logokairos1.png')}
-            alt="KAIRÓS"
+            src={mediaUrl('veltronlogocortado.png')}
+            alt="Veltron"
             style={{
               height: '40px',
               width: 'auto',

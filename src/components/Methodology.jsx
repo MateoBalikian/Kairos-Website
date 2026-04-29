@@ -123,221 +123,221 @@ export default function Methodology() {
         zIndex: 2,
       }} />
       <div className="hidden lg:block">
-      {/* Spacer topo */}
-      <div style={{ height: '30vh' }} />
+        {/* Spacer topo */}
+        <div style={{ height: '30vh' }} />
 
-      {/* Header */}
-      <div style={{
-        maxWidth: 1100,
-        margin: '0 auto',
-        padding: '0 2rem',
-        marginBottom: '10vh',
-      }}>
-        <span style={{
-          fontFamily: 'DM Mono, monospace',
-          fontSize: 11,
-          color: 'rgba(255,255,255,0.3)',
-          letterSpacing: '0.12em',
-          textTransform: 'uppercase',
-          display: 'block',
-          marginBottom: 16,
-        }}>
-          Nossa metodologia
-        </span>
-        <h2 style={{
-          fontFamily: 'DM Sans, sans-serif',
-          fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-          fontWeight: 300,
-          color: 'white',
-          letterSpacing: '-0.03em',
-          lineHeight: 1.15,
-          maxWidth: 700,
-        }}>
-          Como a KAIRÓS transforma{' '}
-          <strong style={{ fontWeight: 800, color: '#4B7BF5' }}>
-            dados em performance
-          </strong>
-        </h2>
-      </div>
-
-      {/* Arch — estrutura idêntica ao original */}
-      <div
-        className="meth-arch"
-        style={{
-          display: 'flex',
-          gap: 120,
-          justifyContent: 'space-between',
-          maxWidth: 1500,
+        {/* Header */}
+        <div style={{
+          maxWidth: 1100,
           margin: '0 auto',
           padding: '0 2rem',
-        }}
-      >
-        {/* LEFT — textos scrolláveis, cada bloco 100vh, centrado verticalmente */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minWidth: 320,
-          maxWidth: 400,
-          paddingLeft: '2rem',
+          marginBottom: '10vh',
         }}>
-          {steps.map((step, i) => (
-            <div
-              key={i}
-              style={{
-                height: '100vh',
-                display: 'grid',
-                placeItems: 'center',
-              }}
-            >
-              <div>
-                {/* número */}
-                <span style={{
-                  fontFamily: 'DM Mono, monospace',
-                  fontSize: 13,
-                  color: 'rgba(255,255,255,0.2)',
-                  letterSpacing: '0.15em',
-                  display: 'block',
-                  marginBottom: 16,
-                }}>
-                  {step.num} / 04
-                </span>
-
-                {/* tag */}
-                <span style={{
-                  fontFamily: 'DM Mono, monospace',
-                  fontSize: 12,
-                  color: '#4B7BF5',
-                  background: 'rgba(75,123,245,0.1)',
-                  border: '1px solid rgba(75,123,245,0.2)',
-                  borderRadius: 99,
-                  padding: '4px 14px',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  display: 'inline-block',
-                  marginBottom: 20,
-                }}>
-                  {step.tag}
-                </span>
-
-                {/* título */}
-                <h3 style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: 'clamp(2.25rem, 3.5vw, 3.25rem)',
-                  fontWeight: 800,
-                  color: 'white',
-                  letterSpacing: '-0.03em',
-                  lineHeight: 1.1,
-                  marginBottom: 16,
-                }}>
-                  {step.title}
-                </h3>
-
-                {/* linha azul */}
-                <div style={{
-                  width: 36,
-                  height: 2,
-                  background: '#4B7BF5',
-                  borderRadius: 99,
-                  marginBottom: 20,
-                  opacity: 0.5,
-                }} />
-
-                {/* descrição */}
-                <p style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: 18,
-                  color: 'rgba(255,255,255,0.5)',
-                  lineHeight: 1.75,
-                  letterSpacing: '-0.01em',
-                  marginBottom: 24,
-                }}>
-                  {step.desc}
-                </p>
-
-                {/* tech badges */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                  {step.techs.map((tech) => (
-                    <span key={tech} style={{
-                      fontFamily: 'DM Mono, monospace',
-                      fontSize: 11,
-                      color: 'rgba(255,255,255,0.3)',
-                      background: 'rgba(255,255,255,0.05)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      borderRadius: 4,
-                      padding: '3px 10px',
-                    }}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+          <span style={{
+            fontFamily: 'DM Mono, monospace',
+            fontSize: 11,
+            color: 'rgba(255,255,255,0.3)',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            display: 'block',
+            marginBottom: 16,
+          }}>
+            Nossa metodologia
+          </span>
+          <h2 style={{
+            fontFamily: 'DM Sans, sans-serif',
+            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            fontWeight: 300,
+            color: 'white',
+            letterSpacing: '-0.03em',
+            lineHeight: 1.15,
+            maxWidth: 700,
+          }}>
+            Como a Veltron transforma{' '}
+            <strong style={{ fontWeight: 800, color: '#4B7BF5' }}>
+              dados em performance
+            </strong>
+          </h2>
         </div>
 
-        {/* RIGHT — pinned via ScrollTrigger
-            Imagens absolutas empilhadas
-            data-index: 01 = steps.length (frente), 04 = 1 (fundo) */}
+        {/* Arch — estrutura idêntica ao original */}
         <div
-          className="meth-right"
+          className="meth-arch"
           style={{
-            flexShrink: 1,
-            height: '100vh',
-            width: '100%',
-            maxWidth: 780,
-            position: 'relative',
+            display: 'flex',
+            gap: 120,
+            justifyContent: 'space-between',
+            maxWidth: 1500,
+            margin: '0 auto',
+            padding: '0 2rem',
           }}
         >
-          {steps.map((step, i) => (
-            <div
-              key={i}
-              className="meth-img-wrapper"
-              data-index={steps.length - i}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: 0,
-                transform: 'translateY(-50%)',
-                height: 'auto',
-                aspectRatio: '4 / 3',
-                width: '100%',
-                borderRadius: 16,
-                overflow: 'hidden',
-              }}
-            >
-              <img
-                src={step.img}
-                alt={step.title}
+          {/* LEFT — textos scrolláveis, cada bloco 100vh, centrado verticalmente */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            minWidth: 320,
+            maxWidth: 400,
+            paddingLeft: '2rem',
+          }}>
+            {steps.map((step, i) => (
+              <div
+                key={i}
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: step.imgPos,
-                  display: 'block',
+                  height: '100vh',
+                  display: 'grid',
+                  placeItems: 'center',
                 }}
-              />
-              {/* overlay escuro sutil no fundo */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(to top, rgba(10,10,10,0.45) 0%, transparent 50%)',
-              }} />
-            </div>
-          ))}
-        </div>
-      </div>
+              >
+                <div>
+                  {/* número */}
+                  <span style={{
+                    fontFamily: 'DM Mono, monospace',
+                    fontSize: 13,
+                    color: 'rgba(255,255,255,0.2)',
+                    letterSpacing: '0.15em',
+                    display: 'block',
+                    marginBottom: 16,
+                  }}>
+                    {step.num} / 04
+                  </span>
 
-      {/* Fade saída */}
-      <div style={{
-        position: 'absolute',
-        bottom: 0, left: 0, right: 0,
-        height: '180px',
-        background: 'linear-gradient(to top, #0A0A0A, transparent)',
-        pointerEvents: 'none',
-        zIndex: 2,
-      }} />
-      {/* Spacer fundo */}
-      <div style={{ height: '30vh' }} />
+                  {/* tag */}
+                  <span style={{
+                    fontFamily: 'DM Mono, monospace',
+                    fontSize: 12,
+                    color: '#4B7BF5',
+                    background: 'rgba(75,123,245,0.1)',
+                    border: '1px solid rgba(75,123,245,0.2)',
+                    borderRadius: 99,
+                    padding: '4px 14px',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    display: 'inline-block',
+                    marginBottom: 20,
+                  }}>
+                    {step.tag}
+                  </span>
+
+                  {/* título */}
+                  <h3 style={{
+                    fontFamily: 'DM Sans, sans-serif',
+                    fontSize: 'clamp(2.25rem, 3.5vw, 3.25rem)',
+                    fontWeight: 800,
+                    color: 'white',
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1.1,
+                    marginBottom: 16,
+                  }}>
+                    {step.title}
+                  </h3>
+
+                  {/* linha azul */}
+                  <div style={{
+                    width: 36,
+                    height: 2,
+                    background: '#4B7BF5',
+                    borderRadius: 99,
+                    marginBottom: 20,
+                    opacity: 0.5,
+                  }} />
+
+                  {/* descrição */}
+                  <p style={{
+                    fontFamily: 'DM Sans, sans-serif',
+                    fontSize: 18,
+                    color: 'rgba(255,255,255,0.5)',
+                    lineHeight: 1.75,
+                    letterSpacing: '-0.01em',
+                    marginBottom: 24,
+                  }}>
+                    {step.desc}
+                  </p>
+
+                  {/* tech badges */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                    {step.techs.map((tech) => (
+                      <span key={tech} style={{
+                        fontFamily: 'DM Mono, monospace',
+                        fontSize: 11,
+                        color: 'rgba(255,255,255,0.3)',
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: 4,
+                        padding: '3px 10px',
+                      }}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT — pinned via ScrollTrigger
+            Imagens absolutas empilhadas
+            data-index: 01 = steps.length (frente), 04 = 1 (fundo) */}
+          <div
+            className="meth-right"
+            style={{
+              flexShrink: 1,
+              height: '100vh',
+              width: '100%',
+              maxWidth: 780,
+              position: 'relative',
+            }}
+          >
+            {steps.map((step, i) => (
+              <div
+                key={i}
+                className="meth-img-wrapper"
+                data-index={steps.length - i}
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: 0,
+                  transform: 'translateY(-50%)',
+                  height: 'auto',
+                  aspectRatio: '4 / 3',
+                  width: '100%',
+                  borderRadius: 16,
+                  overflow: 'hidden',
+                }}
+              >
+                <img
+                  src={step.img}
+                  alt={step.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: step.imgPos,
+                    display: 'block',
+                  }}
+                />
+                {/* overlay escuro sutil no fundo */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(10,10,10,0.45) 0%, transparent 50%)',
+                }} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Fade saída */}
+        <div style={{
+          position: 'absolute',
+          bottom: 0, left: 0, right: 0,
+          height: '180px',
+          background: 'linear-gradient(to top, #0A0A0A, transparent)',
+          pointerEvents: 'none',
+          zIndex: 2,
+        }} />
+        {/* Spacer fundo */}
+        <div style={{ height: '30vh' }} />
       </div>
 
       {/* Mobile layout */}
@@ -362,7 +362,7 @@ export default function Methodology() {
             letterSpacing: '-0.03em',
             lineHeight: 1.15,
           }}>
-            Como a KAIRÓS transforma{' '}
+            Como a Veltron transforma{' '}
             <strong style={{ fontWeight: 800, color: '#4B7BF5' }}>
               dados em performance
             </strong>

@@ -91,7 +91,7 @@ export default function Philosophy() {
         <ContentBlock>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
             <div>
-              <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">O manifesto da KAIRÓS</span>
+              <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">O manifesto da Veltron</span>
               <h3 className="font-sans font-bold text-3xl lg:text-4xl text-white mt-4 leading-tight">
                 Reservada para poucos.<br />
                 <span className="text-[#4B7BF5]">Agora disponível para todos.</span>
@@ -109,7 +109,7 @@ export default function Philosophy() {
       {/* Seção 2 */}
       <TextParallaxContent
         imgUrl="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1400&q=80&auto=format&fit=crop"
-        subheading="A KAIRÓS"
+        subheading="A Veltron"
         heading="mudou isso."
       >
         <ContentBlock>
@@ -123,7 +123,7 @@ export default function Philosophy() {
             </div>
             <div>
               <p className="text-white/60 text-base lg:text-lg leading-relaxed mb-8">
-                A KAIRÓS é uma deep tech vinculada ao ecossistema de inovação da{' '}
+                A Veltron é uma deep tech vinculada ao ecossistema de inovação da{' '}
                 <span className="text-white font-medium">Universidade Federal de Alagoas (UFAL)</span>,
                 com pesquisa clínica validada no{' '}
                 <span className="text-white font-medium">Hospital Universitário Professor Alberto Antunes (HUPAA/EBSERH)</span>.

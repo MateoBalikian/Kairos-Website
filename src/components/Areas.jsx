@@ -90,7 +90,7 @@ export default function Areas() {
                       </ul>
                     </div>
                     <div className="mt-4 pt-4 border-t border-white/8">
-                      <span className="font-mono text-[10px] text-white/30 uppercase tracking-widest">KAIRÓS · UFAL</span>
+                      <span className="font-mono text-[10px] text-white/30 uppercase tracking-widest">Veltron · UFAL</span>
                     </div>
                   </Card>
                 )
