@@ -1,37 +1,18 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Features from './components/Features'
-import Methodology from './components/Methodology'
-import Areas from './components/Areas'
-import Institutes from './components/Institutes'
-import Philosophy from './components/Philosophy'
-import Cases from './components/Cases'
-
-import Science from './components/Science'
-import Products from './components/Products'
-import HealthNutrition from './components/HealthNutrition'
-import Waitlist from './components/Waitlist'
-import Footer from './components/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Futebol from './pages/Futebol'
+import Ciclismo from './pages/Ciclismo'
+import Natacao from './pages/Natacao'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
-      <Navbar />
-      <main>
-        <Hero />
-        <Features />
-        <Methodology />
-        <Areas />
-        <Science />
-        <Products />
-        <HealthNutrition />
-        <Philosophy />
-        <Cases />
-
-        <Institutes />
-        <Waitlist />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/futebol" element={<Futebol />} />
+        <Route path="/ciclismo" element={<Ciclismo />} />
+        <Route path="/natacao" element={<Natacao />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

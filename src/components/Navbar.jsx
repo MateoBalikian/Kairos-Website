@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { mediaUrl } from '../lib/supabase'
 
 const links = [
@@ -96,13 +95,13 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
           </div>
         ) : (
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/"
+            <a href="/"
               style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}
             >
               ← Veltron
-            </Link>
+            </a>
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
             <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.85rem' }}>Futebol</span>
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
