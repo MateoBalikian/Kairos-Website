@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { mediaUrl } from '../lib/supabase'
 
 const links = [
@@ -9,7 +10,7 @@ const links = [
   { label: 'Ciência', href: '#lacae' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ forceDark = false, hideLinks = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -33,9 +34,9 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: scrolled ? 'rgba(0,0,0,0.85)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(8px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
+        background: forceDark || scrolled ? 'rgba(0,0,0,0.95)' : 'transparent',
+        backdropFilter: forceDark || scrolled ? 'blur(8px)' : 'none',
+        borderBottom: forceDark || scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
         transition: 'background 0.3s ease, backdrop-filter 0.3s ease',
       }}
     >
@@ -69,49 +70,55 @@ export default function Navbar() {
         <div style={{ width: '200px' }} />
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
+        {!hideLinks ? (
+          <div className="hidden md:flex items-center gap-8">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => { e.preventDefault(); smoothScroll(link.href) }}
+                style={{ color: 'white', fontWeight: 600, fontSize: '0.9rem', letterSpacing: '0.3px', textDecoration: 'none', opacity: 1, transition: 'opacity 0.2s ease', cursor: 'pointer' }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+              >
+                {link.label}
+              </a>
+            ))}
             <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => { e.preventDefault(); smoothScroll(link.href) }}
-              style={{
-                color: 'white',
-                fontWeight: 600,
-                fontSize: '0.9rem',
-                letterSpacing: '0.3px',
-                textDecoration: 'none',
-                opacity: 1,
-                transition: 'opacity 0.2s ease',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
+              href="#waitlist"
+              onClick={(e) => { e.preventDefault(); smoothScroll('#waitlist') }}
+              style={{ background: '#0A2463', color: 'white', borderRadius: 99, padding: '8px 20px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', transition: 'opacity 0.2s ease' }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
             >
-              {link.label}
+              Entre em contato
             </a>
-          ))}
-
-          <a
-            href="#waitlist"
-            onClick={(e) => { e.preventDefault(); smoothScroll('#waitlist') }}
-            style={{
-              background: '#0A2463',
-              color: 'white',
-              borderRadius: 99,
-              padding: '8px 20px',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              textDecoration: 'none',
-              transition: 'opacity 0.2s ease',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-          >
-            Entre em contato
-          </a>
-        </div>
+          </div>
+        ) : (
+          <div className="hidden md:flex items-center gap-6">
+            <Link to="/"
+              style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}
+            >
+              ← Veltron
+            </Link>
+            <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
+            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.85rem' }}>Futebol</span>
+            <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
+            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.85rem' }}>Ciclismo</span>
+            <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
+            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.85rem' }}>Natação</span>
+            <a href="#agendar"
+              onClick={(e) => { e.preventDefault(); document.getElementById('agendar')?.scrollIntoView({ behavior: 'smooth' }) }}
+              style={{ background: '#0A2463', color: 'white', borderRadius: 99, padding: '8px 20px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', transition: 'opacity 0.2s ease' }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+            >
+              Fale conosco
+            </a>
+          </div>
+        )}
 
         {/* Mobile toggle */}
         <button
@@ -133,44 +140,48 @@ export default function Navbar() {
             padding: '16px 32px 24px',
           }}
         >
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll(link.href) }}
-              style={{
-                display: 'block',
-                color: 'white',
-                fontWeight: 600,
-                fontSize: '0.95rem',
-                padding: '12px 0',
-                textDecoration: 'none',
-                borderBottom: '1px solid rgba(255,255,255,0.1)',
-                cursor: 'pointer',
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#waitlist"
-            onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll('#waitlist') }}
-            style={{
-              display: 'block',
-              marginTop: '16px',
-              background: '#0A2463',
-              color: 'white',
-              borderRadius: 99,
-              padding: '10px 20px',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              textDecoration: 'none',
-              textAlign: 'center',
-              cursor: 'pointer',
-            }}
-          >
-            Lista de espera
-          </a>
+          {!hideLinks && (
+            <>
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll(link.href) }}
+                  style={{
+                    display: 'block',
+                    color: 'white',
+                    fontWeight: 600,
+                    fontSize: '0.95rem',
+                    padding: '12px 0',
+                    textDecoration: 'none',
+                    borderBottom: '1px solid rgba(255,255,255,0.1)',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="#waitlist"
+                onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll('#waitlist') }}
+                style={{
+                  display: 'block',
+                  marginTop: '16px',
+                  background: '#0A2463',
+                  color: 'white',
+                  borderRadius: 99,
+                  padding: '10px 20px',
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                }}
+              >
+                Lista de espera
+              </a>
+            </>
+          )}
         </div>
       )}
     </header>
