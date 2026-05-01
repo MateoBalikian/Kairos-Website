@@ -163,6 +163,11 @@ export default function Futebol() {
   const v4 = useCounter(200, 1800, metricsStarted)
 
   useEffect(() => {
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true })
+    } else {
+      window.scrollTo(0, 0)
+    }
     const ctx = gsap.context(() => {
       gsap.fromTo(
         heroRef.current.querySelectorAll('.hi'),
@@ -195,6 +200,16 @@ export default function Futebol() {
 
   const av = avaliacoes[activeAv]
 
+  const smoothScrollTo = (id) => {
+    const target = document.getElementById(id)
+    if (!target) return
+    if (window.lenis) {
+      window.lenis.scrollTo(target, { duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+    } else {
+      target.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
       <Navbar forceDark hideLinks />
@@ -225,7 +240,7 @@ export default function Futebol() {
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>{t}</span>
             ))}
           </div>
-          <a href="#agendar" className="hi inline-flex items-center gap-3 mt-8 hover:opacity-90 transition-opacity"
+          <a href="#agendar" onClick={(e) => { e.preventDefault(); smoothScrollTo('agendar') }} className="hi inline-flex items-center gap-3 mt-8 hover:opacity-90 transition-opacity"
             style={{ background: 'white', borderRadius: 99, padding: '14px 28px', color: '#0A0A0A', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '1.5px', textDecoration: 'none' }}>
             FALE CONOSCO
             <span className="inline-flex items-center justify-center w-7 h-7 rounded-full" style={{ background: '#0A0A0A' }}>
@@ -416,10 +431,10 @@ export default function Futebol() {
                   <div className="flex flex-col gap-4">
                     {av.oQueRevela.map((item, i) => (
                       <div key={i} className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 font-mono text-xs font-bold"
-                          style={{ background: `${av.cor}20`, color: av.cor }}>
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
+                        <span
+                          className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
+                          style={{ background: av.cor }}
+                        />
                         <p className="text-sm text-white/70 leading-relaxed">{item}</p>
                       </div>
                     ))}
@@ -534,6 +549,7 @@ export default function Futebol() {
               ))}
               <div className="pt-2 flex justify-center">
                 <button ref={btnRef}
+                  onClick={(e) => { e.preventDefault(); smoothScrollTo('agendar') }}
                   className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full"
                   style={{ background: 'linear-gradient(135deg, #4B7BF5, #0A2463)', boxShadow: '0 8px 32px rgba(75,123,245,0.25)' }}>
                   Fale conosco <ChevronRight size={16} />

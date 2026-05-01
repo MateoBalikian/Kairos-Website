@@ -3,10 +3,10 @@ import { Menu, X } from 'lucide-react'
 import { mediaUrl } from '../lib/supabase'
 
 const links = [
-  { label: 'Metodologia', href: '#metodologia' },
-  { label: 'Avaliações', href: '#ciencia' },
-  { label: 'Aplicações', href: '#produtos' },
-  { label: 'Ciência', href: '#lacae' },
+  { label: 'Futebol', href: '/futebol', isRoute: true },
+  { label: 'Ciclismo', href: '/ciclismo', isRoute: true },
+  { label: 'Natação', href: '/natacao', isRoute: true },
+  { label: 'Diferenciais', href: '#diferenciais', isRoute: false },
 ]
 
 export default function Navbar({ forceDark = false, hideLinks = false }) {
@@ -72,16 +72,36 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
         {!hideLinks ? (
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); smoothScroll(link.href) }}
-                style={{ color: 'white', fontWeight: 600, fontSize: '0.9rem', letterSpacing: '0.3px', textDecoration: 'none', opacity: 1, transition: 'opacity 0.2s ease', cursor: 'pointer' }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-              >
-                {link.label}
-              </a>
+              link.isRoute ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  style={{ color: 'white', fontWeight: 600, fontSize: '0.9rem', letterSpacing: '0.3px', textDecoration: 'none', opacity: 1, transition: 'opacity 0.2s ease' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (window.lenis) {
+                      const target = document.querySelector(link.href)
+                      if (target) window.lenis.scrollTo(target, { duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+                    } else {
+                      document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }}
+                  style={{ color: 'white', fontWeight: 600, fontSize: '0.9rem', letterSpacing: '0.3px', textDecoration: 'none', opacity: 1, transition: 'opacity 0.2s ease', cursor: 'pointer' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+                >
+                  {link.label}
+                </a>
+              )
             ))}
             <a
               href="#waitlist"
@@ -103,13 +123,37 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
               ← Veltron
             </a>
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
-            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.85rem' }}>Futebol</span>
+            <a href="/futebol"
+              style={{ color: window.location.pathname === '/futebol' ? 'white' : 'rgba(255,255,255,0.4)', fontSize: '0.85rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = window.location.pathname === '/futebol' ? 'white' : 'rgba(255,255,255,0.4)')}>
+              Futebol
+            </a>
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.85rem' }}>Ciclismo</span>
+            <a href="/ciclismo"
+              style={{ color: window.location.pathname === '/ciclismo' ? 'white' : 'rgba(255,255,255,0.4)', fontSize: '0.85rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = window.location.pathname === '/ciclismo' ? 'white' : 'rgba(255,255,255,0.4)')}>
+              Ciclismo
+            </a>
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.85rem' }}>Natação</span>
+            <a href="/natacao"
+              style={{ color: window.location.pathname === '/natacao' ? 'white' : 'rgba(255,255,255,0.4)', fontSize: '0.85rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = window.location.pathname === '/natacao' ? 'white' : 'rgba(255,255,255,0.4)')}>
+              Natação
+            </a>
             <a href="#agendar"
-              onClick={(e) => { e.preventDefault(); document.getElementById('agendar')?.scrollIntoView({ behavior: 'smooth' }) }}
+              onClick={(e) => {
+                e.preventDefault()
+                const target = document.getElementById('agendar')
+                if (!target) return
+                if (window.lenis) {
+                  window.lenis.scrollTo(target, { duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+                } else {
+                  target.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
               style={{ background: '#0A2463', color: 'white', borderRadius: 99, padding: '8px 20px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', transition: 'opacity 0.2s ease' }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
@@ -142,23 +186,51 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
           {!hideLinks && (
             <>
               {links.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll(link.href) }}
-                  style={{
-                    display: 'block',
-                    color: 'white',
-                    fontWeight: 600,
-                    fontSize: '0.95rem',
-                    padding: '12px 0',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid rgba(255,255,255,0.1)',
-                    cursor: 'pointer',
-                  }}
-                >
-                  {link.label}
-                </a>
+                link.isRoute ? (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    style={{
+                      display: 'block',
+                      color: 'white',
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                      padding: '12px 0',
+                      textDecoration: 'none',
+                      borderBottom: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setMenuOpen(false)
+                      if (window.lenis) {
+                        const target = document.querySelector(link.href)
+                        if (target) window.lenis.scrollTo(target, { duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+                      } else {
+                        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
+                      }
+                    }}
+                    style={{
+                      display: 'block',
+                      color: 'white',
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                      padding: '12px 0',
+                      textDecoration: 'none',
+                      borderBottom: '1px solid rgba(255,255,255,0.1)',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
               <a
                 href="#waitlist"
