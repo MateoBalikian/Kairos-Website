@@ -179,3 +179,8 @@ body::before {
 .diagnostic-card-enter {
   animation: card-slide-up 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
+
+html, body, #root {
+  background-color: #0A0A0A;
+  min-height: 100%;
+}
