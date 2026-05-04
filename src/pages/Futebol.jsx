@@ -30,7 +30,7 @@ function GraficoLactato() {
     <svg width="100%" viewBox="0 0 560 340" style={{ display: 'block' }}>
       <rect x="0" y="0" width="560" height="340" fill="#0d0d0d" rx="12" />
       <text x="280" y="28" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="13" fontWeight="700" fill="white">Treinamento pelo Limiar de Lactato</text>
-      <text x="280" y="44" textAnchor="middle" fontFamily="DM Mono, monospace" fontSize="9" fill="rgba(255,255,255,0.3)" letterSpacing="2">LACAE · UFAL</text>
+      <text x="280" y="44" textAnchor="middle" fontFamily="DM Mono, monospace" fontSize="9" fill="rgba(255,255,255,0.3)" letterSpacing="2">Veltron</text>
       <line x1="60" y1="270" x2="520" y2="270" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
       <line x1="60" y1="210" x2="520" y2="210" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" strokeDasharray="4 4" />
       <line x1="60" y1="150" x2="520" y2="150" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" strokeDasharray="4 4" />
@@ -64,7 +64,7 @@ function GraficoMetabolomica() {
     <svg width="100%" viewBox="0 0 400 220" style={{ display: 'block' }}>
       <rect x="0" y="0" width="400" height="220" fill="#0d0d0d" rx="12" />
       <text x="200" y="18" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="11" fontWeight="700" fill="white">Analise de Componentes Principais (PCA)</text>
-      <text x="200" y="30" textAnchor="middle" fontFamily="DM Mono, monospace" fontSize="8" fill="rgba(255,255,255,0.3)" letterSpacing="1">Separacao metabolica por RMN · IQB · UFAL</text>
+      <text x="200" y="30" textAnchor="middle" fontFamily="DM Mono, monospace" fontSize="8" fill="rgba(255,255,255,0.3)" letterSpacing="1">Separação metabólica por RMN · Veltron</text>
       <line x1="30" y1="175" x2="380" y2="175" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
       <line x1="30" y1="40" x2="30" y2="175" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
       <text x="205" y="192" textAnchor="middle" fontFamily="DM Mono, monospace" fontSize="8" fill="rgba(255,255,255,0.3)">PC1 (14.4%)</text>
@@ -96,7 +96,7 @@ const avaliacoes = [
       'Potencial aerobico nao desenvolvido em jogadores subutilizados',
       'Comparativo entre posicoes: quem precisa de mais base aerobica',
     ],
-    comoFazemos: 'Ergoespirometria com mascara de captacao de gases no LACAE · UFAL. Protocolo incremental em esteira ou cicloergometro, conduzido por pesquisadores com publicacoes cientificas.',
+    comoFazemos: 'Ergoespirometria com mascara de captacao de gases na Veltron. Protocolo incremental em esteira ou cicloergometro, conduzido por pesquisadores com publicacoes cientificas.',
     grafico: null,
     cor: '#4B7BF5',
   },
@@ -112,7 +112,7 @@ const avaliacoes = [
       'Como prescrever treino de alta intensidade sem acumular fadiga cronica',
       'Quem esta sendo sobrecarregado e quem esta sendo subutilizado',
     ],
-    comoFazemos: 'Protocolo incremental com coletas de sangue capilar a cada estagio. Analise da cinetica do lactato com identificacao de LT1, LT2/MLSS. Conduzido no LACAE · UFAL.',
+    comoFazemos: 'Protocolo incremental com coletas de sangue capilar a cada estagio. Analise da cinetica do lactato com identificacao de LT1, LT2/MLSS. Conduzido na Veltron.',
     grafico: 'lactato',
     cor: '#7BA7E8',
   },
@@ -144,7 +144,7 @@ const avaliacoes = [
       'Resposta metabolica individual ao treinamento',
       'Base para prescricao nutricional individual com precisao de laboratorio',
     ],
-    comoFazemos: 'Coleta simples de urina ou sangue. Analise por Ressonancia Magnetica Nuclear no IQB · UFAL em parceria com o Hospital Universitario HUPAA · EBSERH.',
+    comoFazemos: 'Coleta simples de urina ou sangue. Analise por Ressonancia Magnetica Nuclear pela nossa equipe.',
     grafico: 'metabolomica',
     cor: '#7BA7E8',
   },
@@ -309,7 +309,7 @@ export default function Futebol() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-mono text-[10px] text-[#7BA7E8] uppercase tracking-widest mb-0.5">Camada 01 · LACAE · UFAL</p>
+                  <p className="font-mono text-[10px] text-[#7BA7E8] uppercase tracking-widest mb-0.5">Camada 01 · Veltron</p>
                   <h3 className="font-sans font-bold text-xl text-white">Avaliações Fisiológicas</h3>
                 </div>
               </div>
@@ -504,8 +504,8 @@ export default function Futebol() {
             {[
               { val: `${v1.toLocaleString('pt-BR')}m`, label: 'Distancia maxima no Yo-Yo IR1', sub: 'Trocker · IA' },
               { val: `${(v2 / 10).toFixed(1)} km/h`, label: 'Velocidade de pico', sub: 'Sem GPS' },
-              { val: `${(v3 / 10).toFixed(1)}%`, label: 'Precisao do modelo preditivo', sub: 'XGBoost · LACAE' },
-              { val: `${v4}+`, label: 'Metabolitos analisados', sub: 'RMN · IQB · UFAL' },
+              { val: `${(v3 / 10).toFixed(1)}%`, label: 'Precisao do modelo preditivo', sub: 'XGBoost · Veltron' },
+              { val: `${v4}+`, label: 'Metabolitos analisados', sub: 'Metabolômica · Veltron' },
             ].map((m, i) => (
               <div key={i} className="rounded-3xl p-6 text-center"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
@@ -528,7 +528,7 @@ export default function Futebol() {
             <span className="font-bold" style={{ color: '#4B7BF5' }}>de verdade?</span>
           </h2>
           <p className="text-white/45 text-sm leading-relaxed mb-10">
-            Nossa equipe do LACAE · UFAL entra em contato em ate 24h para agendar o protocolo completo.
+            Nossa equipe entrará em contato em breve.
           </p>
           <div className="rounded-3xl p-8 text-left"
             style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>

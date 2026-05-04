@@ -54,7 +54,7 @@ export default function Footer() {
             <div className="mt-6 inline-flex items-center gap-2 border border-white/10 rounded-full px-3 py-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#7BA7E8] animate-pulse" />
               <span className="font-mono text-[10px] text-[#7BA7E8] uppercase tracking-wider">
-                LACAE — Sistema Ativo
+                Veltron — Sistema Ativo
               </span>
             </div>
           </div>

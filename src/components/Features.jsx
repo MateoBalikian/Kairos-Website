@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 
 /* ─── Card 1: Diagnostics List ─── */
 const diagnostics = [
-  { tag: 'Avaliações Fisiológicas', desc: 'VO₂máx, limiar anaeróbico e potência explosiva', badge: 'LACAE', icon: '◎' },
+  { tag: 'Avaliações Fisiológicas', desc: 'VO₂máx, limiar anaeróbico e potência explosiva', badge: 'Veltron', icon: '◎' },
   { tag: 'Metabolômica por RMN', desc: 'Perfil metabólico completo via ressonância nuclear', badge: 'RMN', icon: '⬡' },
   { tag: 'Biomecânica computacional', desc: 'Visão computacional sem sensores ou câmeras especiais', badge: 'Pose estimation', icon: '◈' },
   { tag: 'Predição de lesão', desc: 'Modelo XGBoost com 99.5% de precisão', badge: '99.5%', icon: '◉' },
@@ -182,7 +182,7 @@ function ScheduleCard() {
   return (
     <div className="bg-white border border-[#E5E5E2] rounded-4xl p-6 h-full flex flex-col">
       <div className="mb-5">
-        <span className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-widest">LACAE — Semana atual</span>
+        <span className="font-mono text-[10px] text-[#4A4A47] uppercase tracking-widest">Veltron — Semana atual</span>
         <p className="font-sans font-semibold text-base text-[#0A0A0A] mt-1 leading-snug">
           Agenda de avaliações científicas
         </p>

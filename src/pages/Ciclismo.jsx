@@ -37,7 +37,7 @@ const diferenciais = [
     tag: 'FISIOLOGIA',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>),
     titulo: 'VO₂máx e Limiar Anaeróbico',
-    desc: 'Protocolos laboratoriais no LACAE · UFAL que definem suas zonas de treino exatas e revelam onde sua performance está limitada.',
+    desc: 'Protocolos laboratoriais na Veltron que definem suas zonas de treino exatas e revelam onde sua performance está limitada.',
     cor: '#7BA7E8',
   },
   {
@@ -57,7 +57,7 @@ const diferenciais = [
 ]
 
 const passos = [
-  { num: '01', titulo: 'Avaliação no LACAE', desc: 'VO₂máx, limiar anaeróbico, Wingate e coleta para metabolômica por RMN. Protocolo conduzido por pesquisadores da UFAL.' },
+  { num: '01', titulo: 'Avaliação na Veltron', desc: 'VO₂máx, limiar anaeróbico, Wingate e coleta para metabolômica por RMN. Protocolo conduzido por nossa equipe.' },
   { num: '02', titulo: 'Análise biomecânica', desc: 'Você pedala enquanto a IA rastreia cada articulação. Ângulo do joelho, quadril, cotovelo — medido em tempo real.' },
   { num: '03', titulo: 'Laudo + Plano', desc: 'Fisiologia + biomecânica + metabolômica integrados. Você recebe o diagnóstico, o plano de treino e a prescrição nutricional.' },
 ]
@@ -317,7 +317,7 @@ export default function Ciclismo() {
               style={{ background: '#0d0d0d', borderBottom: '1px solid rgba(75,123,245,0.15)' }}>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#4B7BF5' }} />
-                <span className="font-mono text-[10px] text-[#4B7BF5] uppercase tracking-widest">Veltron · Laudo Ciclismo · LACAE · UFAL</span>
+                <span className="font-mono text-[10px] text-[#4B7BF5] uppercase tracking-widest">Veltron · Laudo de Ciclismo</span>
               </div>
               <span className="font-mono text-[10px] text-white/20">PROTOCOLO COMPLETO</span>
             </div>
@@ -326,7 +326,7 @@ export default function Ciclismo() {
                 { label: 'ÂNGULO JOELHO', val: `${v1}°`, sub: 'Ideal: 135–145°', col: '#4B7BF5' },
                 { label: 'POT. DE PICO', val: `${(v2 / 10).toFixed(1)} W/kg`, sub: 'Wingate · 30s', col: '#7BA7E8' },
                 { label: 'VO₂MÁX', val: `${v3} ml/kg/min`, sub: 'Ergoespirometria', col: '#4B7BF5' },
-                { label: 'METABÓLITOS', val: `${v4}+`, sub: 'RMN · IQB · UFAL', col: '#7BA7E8' },
+                { label: 'METABÓLITOS', val: `${v4}+`, sub: 'Metabolômica · Veltron', col: '#7BA7E8' },
               ].map((m, i) => (
                 <div key={i} className="p-6 lg:p-8 flex flex-col gap-2"
                   style={{ borderRight: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
@@ -473,7 +473,7 @@ export default function Ciclismo() {
             <span className="font-bold" style={{ color: '#4B7BF5' }}>dados reais?</span>
           </h2>
           <p className="text-white/45 text-sm leading-relaxed mb-10">
-            Nossa equipe do LACAE · UFAL entra em contato em até 24h para agendar seu protocolo completo.
+            Nossa equipe entrará em contato em breve.
           </p>
           <div className="rounded-3xl p-8 text-left"
             style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>

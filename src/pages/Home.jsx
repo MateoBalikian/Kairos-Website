@@ -45,7 +45,7 @@ const diferenciais = [
   {
     tag: 'FISIOLOGIA',
     titulo: 'VO₂máx',
-    desc: 'O teto aeróbico de cada atleta. Medido com precisão de laboratório no LACAE · UFAL.',
+    desc: 'O teto aeróbico de cada atleta. Medido com precisão de laboratório na Veltron.',
     cor: '#7BA7E8',
   },
   {
@@ -68,7 +68,7 @@ const diferenciais = [
   },
 ]
 
-const institutos = ['UFAL', 'LACAE', 'IQB', 'HUPAA · EBSERH', 'IEFE', 'IC']
+const institutos = ['Veltron', 'IEFE', 'IC']
 
 export default function Home() {
   const heroRef = useRef(null)
@@ -154,7 +154,7 @@ export default function Home() {
           </p>
 
           <div className="hi flex flex-wrap gap-2 mt-5">
-            {['VO₂máx', 'Limiar Anaeróbico', 'Metabolômica por RMN', 'Rastreamento por IA', 'LACAE · UFAL'].map(t => (
+            {['VO₂máx', 'Limiar Anaeróbico', 'Metabolômica por RMN', 'Rastreamento por IA', 'Veltron'].map(t => (
               <span key={t}
                 className="font-mono text-[11px] text-white/50 border border-white/12 rounded-full px-3 py-1"
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>
@@ -324,7 +324,7 @@ export default function Home() {
                 <span style={{ color: '#7BA7E8' }}>Aplicação real.</span>
               </h2>
               <p className="text-white/50 text-sm leading-relaxed mt-3">
-                Deep tech vinculada à UFAL. Pesquisa clínica validada no HUPAA · EBSERH. Metodologia revisada por pares.
+                Deep tech com pesquisa clínica validada. Metodologia revisada por pares.
               </p>
             </div>
 
@@ -350,7 +350,7 @@ export default function Home() {
               { val: '99.5%', label: 'Precisão do modelo preditivo' },
               { val: '200+', label: 'Metabólitos por RMN' },
               { val: '4', label: 'Protocolos integrados' },
-              { val: 'UFAL', label: 'Universidade Federal de Alagoas' },
+              { val: 'Veltron', label: 'Tecnologia de performance' },
             ].map((s, i) => (
               <div key={i} className="text-center">
                 <p className="font-mono font-bold text-2xl lg:text-3xl text-white">{s.val}</p>

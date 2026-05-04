@@ -9,7 +9,7 @@ const products = [
   {
     id: 'futebol',
     name: 'Futebol',
-    badge: 'Trocker · LACAE',
+    badge: 'Trocker · Veltron',
     badgeStyle: { background: 'rgba(75,123,245,0.12)', color: '#4B7BF5', border: '1px solid rgba(75,123,245,0.25)' },
     icon: Activity,
     cta: { label: 'Quero aplicar no meu time →', style: 'gradient' },
@@ -41,7 +41,7 @@ const products = [
   {
     id: 'ciclismo',
     name: 'Ciclismo',
-    badge: 'Pose Estimation · LACAE',
+    badge: 'Pose Estimation · Veltron',
     badgeStyle: { background: 'rgba(75,123,245,0.12)', color: '#4B7BF5', border: '1px solid rgba(75,123,245,0.25)' },
     icon: Zap,
     cta: { label: 'Quero avaliar minha pedalada →', style: 'gradient' },
@@ -73,7 +73,7 @@ const products = [
   {
     id: 'natacao',
     name: 'Natação',
-    badge: 'VO₂máx · RMN · LACAE',
+    badge: 'VO₂máx · RMN · Veltron',
     badgeStyle: { background: 'rgba(75,123,245,0.12)', color: '#4B7BF5', border: '1px solid rgba(75,123,245,0.25)' },
     icon: Wind,
     cta: { label: 'Quero meu perfil fisiológico →', style: 'gradient' },

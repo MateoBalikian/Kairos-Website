@@ -33,8 +33,8 @@ const diferenciais = [
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" />
       </svg>
     ),
-    titulo: 'Análise de braçada por IA',
-    desc: 'Rastreamento de articulações quadro a quadro. A IA detecta cada detalhe da técnica — sem câmeras especiais, sem sensores.',
+    titulo: 'Visão Computacional',
+    desc: 'Rastreamento Dinâmico de Esqueleto com Pose Estimation sub-milimétrica. Monitoramos a Neutralidade Postural Axial e a Angularidade de EVF em tempo real, sem marcadores.',
     cor: '#4B7BF5',
   },
   {
@@ -44,8 +44,8 @@ const diferenciais = [
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
       </svg>
     ),
-    titulo: 'Métricas biomecânicas',
-    desc: 'Cadência de braçadas, score SWOLF, posição corporal, rotação de quadril e análise de pernada — tudo em um relatório.',
+    titulo: 'Indicadores Biomecânicos',
+    desc: 'Frequência de Ciclos, Índice SWOLF, Antebraço Vertical Precoce (EVF), Cruzamento de Linha Média e Frequência de Pernada — dados cinemáticos de precisão.',
     cor: '#7BA7E8',
   },
   {
@@ -55,8 +55,8 @@ const diferenciais = [
         <circle cx="12" cy="12" r="10" /><path d="M8 12h8M12 8v8" />
       </svg>
     ),
-    titulo: 'Avaliação fisiológica completa',
-    desc: 'VO₂máx e limiar anaeróbico medidos com precisão de laboratório no LACAE · UFAL. Zonas de treino individuais para cada nadador.',
+    titulo: 'Perfilagem Metabólica Invasiva',
+    desc: 'Mapeamos os Domínios de Intensidade (Moderado, Pesado e Severo) através da cinética do Limiar de Lactato. Determinamos o Limiar Metabólico (L2) para prescrição científica.',
     cor: '#4B7BF5',
   },
   {
@@ -66,19 +66,19 @@ const diferenciais = [
         <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" />
       </svg>
     ),
-    titulo: 'Metabolômica por RMN',
-    desc: '200+ metabólitos que revelam recuperação real, adaptação ao treino e deficiências nutricionais invisíveis.',
+    titulo: 'Core Engine AI',
+    desc: 'Nossa IA cruza a Eficiência Mecânica com o custo metabólico. Identifica padrões de ruptura técnica e o V-Efficiency Index do atleta nos Domínios Severos.',
     cor: '#7BA7E8',
   },
 ]
 
 const metricas = [
-  { icon: '🏊', titulo: 'Cadência de braçadas', desc: 'Frequência e contagem por comprimento, comparada à eficiência ideal para o estilo.' },
-  { icon: '⚡', titulo: 'Score SWOLF', desc: 'Índice que combina velocidade e economia de movimento em um único número.' },
-  { icon: '📐', titulo: 'Posição corporal', desc: 'Alinhamento horizontal, inclinação do quadril e postura durante o ciclo de nado.' },
-  { icon: '🔄', titulo: 'Rotação de quadril', desc: 'Amplitude e simetria da rotação lateral — um dos principais fatores de propulsão.' },
-  { icon: '🦵', titulo: 'Análise de pernada', desc: 'Frequência, amplitude e eficiência das pernas — detecta assimetrias e perdas.' },
-  { icon: '📄', titulo: 'Relatório em PDF', desc: 'Documento completo com dados, gráficos e recomendações de coaching personalizadas.' },
+  { icon: '🏊', titulo: 'Frequência de Ciclos (FC)', desc: 'Número de ciclos completos por minuto. Substitui o conceito genérico de cadência de braçada.' },
+  { icon: '⚡', titulo: 'Índice SWOLF', desc: 'Medida de eficiência que combina tempo e número de braçadas. Quanto menor, maior a eficiência.' },
+  { icon: '📐', titulo: 'Neutralidade Postural Axial', desc: 'Alinhamento do eixo corporal durante a fase de deslize — Streamline e estabilidade hidrodinâmica.' },
+  { icon: '🔄', titulo: 'Antebraço Vertical Precoce (EVF)', desc: 'Angularidade do antebraço após o catch. Principal indicador de eficiência propulsiva.' },
+  { icon: '🦵', titulo: 'Domínios de Intensidade', desc: 'Mapeamento dos domínios Moderado, Pesado e Severo pela cinética do Limiar de Lactato.' },
+  { icon: '📄', titulo: 'V-Score de Rendimento', desc: 'Índice proprietário Veltron de 0 a 100 consolidando eficiência mecânica e energética.' },
 ]
 
 const passos = [
@@ -207,13 +207,13 @@ export default function Natacao() {
 
             <h1 className="hi font-sans font-bold text-white"
               style={{ fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', lineHeight: 1.02 }}>
-              Analise seu nado com{' '}
-              <span style={{ color: '#4B7BF5' }}>Inteligência Artificial</span>
+              Precisão que{' '}
+              <span style={{ color: '#4B7BF5' }}>redefine o pódio.</span>
             </h1>
 
             <p className="hi mt-6 text-white/60 leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', maxWidth: 520 }}>
-              Envie um vídeo e receba em minutos um relatório completo com dados biomecânicos, análise de técnica e avaliação fisiológica personalizada.
+              A integração entre Visão Computacional e Perfilagem Metabólica para mapear a eficiência mecânica e energética do seu atleta.
             </p>
 
             <div className="hi flex flex-wrap gap-2 mt-6">
@@ -259,11 +259,10 @@ export default function Natacao() {
             </span>
             <h2 className="font-sans mt-3 leading-tight"
               style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', fontWeight: 800, color: '#0A0A0A' }}>
-              Muito além da análise de vídeo.<br />
-              <span style={{ color: '#0A2463' }}>A ciência completa do nadador.</span>
+              A Tríade da Excelência Veltron.
             </h2>
             <p className="mt-4 text-[#4A4A47] leading-relaxed" style={{ fontSize: '1.05rem' }}>
-              Combinamos IA para análise biomecânica com avaliações fisiológicas de laboratório. Nenhuma outra plataforma oferece os dois.
+              Visão Computacional, Perfilagem Metabólica Invasiva e Core Engine AI — integradas em um único diagnóstico de alta precisão.
             </p>
           </div>
 
@@ -296,8 +295,8 @@ export default function Natacao() {
           <div className="mt-6 rounded-3xl px-8 py-6 flex flex-col lg:flex-row items-center justify-between gap-4"
             style={{ background: '#0A2463' }}>
             <p className="font-sans font-bold text-xl lg:text-2xl text-white text-center lg:text-left">
-              "Enquanto outros analisam o vídeo,{' '}
-              <span style={{ color: '#7BA7E8' }}>nós analisamos o nadador."</span>
+              "Identificamos o exato Limiar de Lactato onde a{' '}
+              <span style={{ color: '#7BA7E8' }}>Eficiência Mecânica do seu nadador colapsa."</span>
             </p>
             <button
               onClick={() => smoothScrollTo('agendar')}
@@ -316,18 +315,18 @@ export default function Natacao() {
             <div>
               <span className="font-mono text-xs text-white/30 uppercase tracking-widest">IA em ação</span>
               <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
-                Nossa IA analisando{' '}
-                <span className="font-bold" style={{ color: '#4B7BF5' }}>cada detalhe do seu nado</span>
+                Rastreamento Dinâmico de{' '}
+                <span className="font-bold" style={{ color: '#4B7BF5' }}>Esqueleto em ação</span>
               </h2>
               <p className="text-white/55 text-base leading-relaxed mb-6">
-                O sistema detecta articulações e rastreia o corpo quadro a quadro — identificando assimetrias, perdas de propulsão e erros técnicos que o olho humano não captura.
+                A IA Veltron reconstrói o gesto técnico através de Pose Estimation sub-milimétrica. Monitoramos a Neutralidade Postural Axial e a resiliência mecânica em tempo real, sem necessidade de marcadores físicos.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Detecção de 17 pontos articulares por frame',
-                  'Análise de simetria entre lado direito e esquerdo',
-                  'Identificação de falhas na rotação de quadril',
-                  'Comparação com padrões biomecânicos ideais',
+                  'Neutralidade Postural Axial — alinhamento durante o ciclo',
+                  'Angularidade de EVF — antebraço vertical precoce',
+                  'Cruzamento de Linha Média — desvio lateral da tração',
+                  'Ponto de ruptura técnica nos Domínios Severos',
                 ].map(f => (
                   <li key={f} className="flex items-start gap-3 text-sm text-white/65">
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style={{ background: '#4B7BF5' }} />
@@ -350,8 +349,8 @@ export default function Natacao() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {[
               { val: `${v1}+`, label: 'Atletas analisados', sub: 'E crescendo' },
-              { val: '<5min', label: 'Para receber o relatório', sub: 'Após envio do vídeo' },
-              { val: `${v2}+`, label: 'Métricas analisadas', sub: 'Por análise' },
+              { val: 'V-SCORE', label: 'Índice proprietário de performance', sub: '0 a 100 pontos' },
+              { val: `${v2}+`, label: 'Indicadores cinemáticos', sub: 'Por análise' },
             ].map((s, i) => (
               <div key={i} className="rounded-3xl p-8 text-center"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
@@ -404,8 +403,8 @@ export default function Natacao() {
           <div className="mb-14">
             <span className="font-mono text-xs text-white/30 uppercase tracking-widest">O que está incluído</span>
             <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
-              Tudo que você precisa saber{' '}
-              <span className="font-bold" style={{ color: '#4B7BF5' }}>sobre seu nado</span>
+              Indicadores Técnicos{' '}
+              <span className="font-bold" style={{ color: '#4B7BF5' }}>e Biomecânicos</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -426,11 +425,11 @@ export default function Natacao() {
         <div className="max-w-[560px] mx-auto text-center">
           <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Próximo passo</span>
           <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-4">
-            Pronto para descobrir o que está{' '}
-            <span className="font-bold" style={{ color: '#4B7BF5' }}>freando seu nado?</span>
+            A medalha é uma{' '}
+            <span className="font-bold" style={{ color: '#4B7BF5' }}>consequência dos dados.</span>
           </h2>
           <p className="text-white/45 text-sm leading-relaxed mb-10">
-            Nossa equipe entra em contato em até 24h para agendar sua análise.
+            Implemente a análise Veltron e substitua a percepção subjetiva pela certeza biomecânica e metabólica.
           </p>
           <div className="rounded-3xl p-8 text-left"
             style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
@@ -439,7 +438,7 @@ export default function Natacao() {
                 { label: 'Nome completo', ph: 'Seu nome', type: 'text' },
                 { label: 'E-mail', ph: 'seu@email.com', type: 'email' },
                 { label: 'Telefone / WhatsApp', ph: 'Seu telefone', type: 'tel' },
-                { label: 'Estilo principal', ph: 'Ex: Crawl, Costas, Peito...', type: 'text' },
+                { label: 'Estilo principal', ph: 'Ex: Crawl, Costas, Borboleta...', type: 'text' },
               ].map(f => (
                 <div key={f.label}>
                   <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"

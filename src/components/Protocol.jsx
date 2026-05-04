@@ -152,9 +152,9 @@ const steps = [
     number: '01',
     title: 'Avaliação Inicial',
     description:
-      'VO₂ máximo, metabolômica por RMN, biomecânica por visão computacional e análise fisiológica completa — tudo em um único protocolo integrado, conduzido por pesquisadores do LACAE.',
+      'VO₂ máximo, metabolômica por RMN, biomeccânica por visão computacional e análise fisiológica completa — tudo em um único protocolo integrado, conduzido por nossa equipe.',
     animation: <PoseEstimation />,
-    tag: 'Protocolo LACAE',
+    tag: 'Protocolo Veltron',
   },
   {
     number: '02',
