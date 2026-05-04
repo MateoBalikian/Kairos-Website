@@ -33,9 +33,9 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
     <header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: forceDark || scrolled ? 'rgba(0,0,0,0.95)' : 'transparent',
-        backdropFilter: forceDark || scrolled ? 'blur(8px)' : 'none',
-        borderBottom: forceDark || scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
+        background: (scrolled || menuOpen) ? 'rgba(0,0,0,0.95)' : 'transparent',
+        backdropFilter: (scrolled || menuOpen) ? 'blur(8px)' : 'none',
+        borderBottom: (scrolled || menuOpen) ? '1px solid rgba(255,255,255,0.08)' : 'none',
         transition: 'background 0.3s ease, backdrop-filter 0.3s ease',
       }}
     >
