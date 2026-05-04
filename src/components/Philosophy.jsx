@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 
-const IMG_PADDING = 12
+const IMG_PADDING = typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : 12
 
 const TextParallaxContent = ({ imgUrl, subheading, heading, children }) => {
   return (
@@ -35,7 +35,7 @@ const StickyImage = ({ imgUrl }) => {
         scale,
       }}
       ref={targetRef}
-      className="sticky z-0 overflow-hidden rounded-3xl"
+      className="sticky z-0 overflow-hidden rounded-none lg:rounded-3xl"
     >
       <motion.div
         className="absolute inset-0"
