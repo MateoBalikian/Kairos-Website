@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { mediaUrl } from '../lib/supabase'
+import { mediaUrl, saveLead } from '../lib/supabase'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -156,6 +156,9 @@ export default function Futebol() {
   const btnRef = useRef(null)
   const [metricsStarted, setMetricsStarted] = useState(false)
   const [activeAv, setActiveAv] = useState(0)
+  const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [formData, setFormData] = useState({ nome: '', email: '', telefone: '', profile: '', message: '' })
 
   const v1 = useCounter(1760, 1800, metricsStarted)
   const v2 = useCounter(184, 1800, metricsStarted)
@@ -530,33 +533,100 @@ export default function Futebol() {
           <p className="text-white/45 text-sm leading-relaxed mb-10">
             Nossa equipe entrará em contato em breve.
           </p>
-          <div className="rounded-3xl p-8 text-left"
-            style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-            <div className="space-y-4">
-              {[
-                { label: 'Nome completo', ph: 'Seu nome', type: 'text' },
-                { label: 'E-mail', ph: 'seu@email.com', type: 'email' },
-                { label: 'Telefone / WhatsApp', ph: 'Seu telefone', type: 'tel' },
-                { label: 'Clube ou time', ph: 'Nome do clube ou time', type: 'text' },
-              ].map(f => (
-                <div key={f.label}>
+          {submitted ? (
+            <div className="rounded-3xl p-8 text-left" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div className="text-center py-12">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
+                  style={{ background: 'rgba(75,123,245,0.15)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <h3 className="font-sans font-bold text-xl text-white mb-2">Mensagem enviada!</h3>
+                <p className="text-sm text-white/50">Nossa equipe entrará em contato em breve.</p>
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-3xl p-8 text-left"
+              style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div className="space-y-4">
+                <div>
                   <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
-                    style={{ color: 'rgba(255,255,255,0.35)' }}>{f.label}</label>
-                  <input type={f.type} placeholder={f.ph}
+                    style={{ color: 'rgba(255,255,255,0.35)' }}>Nome completo</label>
+                  <input type="text" placeholder="Seu nome"
+                    value={formData.nome}
+                    onChange={(e) => setFormData({...formData, nome: e.target.value})}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
-              ))}
-              <div className="pt-2 flex justify-center">
-                <button ref={btnRef}
-                  onClick={(e) => { e.preventDefault(); smoothScrollTo('agendar') }}
-                  className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full"
-                  style={{ background: 'linear-gradient(135deg, #4B7BF5, #0A2463)', boxShadow: '0 8px 32px rgba(75,123,245,0.25)' }}>
-                  Fale conosco <ChevronRight size={16} />
-                </button>
+                <div>
+                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
+                    style={{ color: 'rgba(255,255,255,0.35)' }}>E-mail</label>
+                  <input type="email" placeholder="seu@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
+                </div>
+                <div>
+                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
+                    style={{ color: 'rgba(255,255,255,0.35)' }}>Telefone / WhatsApp</label>
+                  <input type="tel" placeholder="Seu telefone ou WhatsApp"
+                    value={formData.telefone}
+                    onChange={(e) => setFormData({...formData, telefone: e.target.value})}
+                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
+                </div>
+                <div>
+                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
+                    style={{ color: 'rgba(255,255,255,0.35)' }}>Perfil</label>
+                  <select
+                    value={formData.profile}
+                    onChange={(e) => setFormData({...formData, profile: e.target.value})}
+                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors appearance-none cursor-pointer"
+                    style={{ background: 'rgba(20,20,20,0.8)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }}>
+                    <option value="" style={{ background: '#0A0A0A' }}>Selecione seu perfil</option>
+                    {['Atleta', 'Treinador / Técnico', 'Clube / Federação', 'Profissional de Saúde', 'Outro'].map(p => (
+                      <option key={p} value={p} style={{ background: '#0A0A0A' }}>{p}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
+                    style={{ color: 'rgba(255,255,255,0.35)' }}>Como você usaria a Veltron? <span style={{ color: 'rgba(255,255,255,0.3)' }}>(opcional)</span></label>
+                  <textarea
+                    rows={3}
+                    placeholder="Conte-nos sobre seu contexto e necessidades..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors resize-none"
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
+                </div>
+                <div className="pt-2 flex justify-center">
+                  <button ref={btnRef}
+                    onClick={async () => {
+                      if (!formData.nome || !formData.email) return
+                      setLoading(true)
+                      const { error } = await saveLead({
+                        nome: formData.nome,
+                        email: formData.email,
+                        telefone: formData.telefone,
+                        pagina: 'futebol',
+                        campo_extra: formData.profile,
+                        campo_extra_label: 'Perfil',
+                      })
+                      setLoading(false)
+                      if (!error) setSubmitted(true)
+                    }}
+                    disabled={loading}
+                    className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full cursor-pointer"
+                    style={{ background: 'linear-gradient(135deg, #4B7BF5, #0A2463)', boxShadow: '0 8px 32px rgba(75,123,245,0.25)', opacity: loading ? 0.7 : 1 }}>
+                    {loading ? 'Enviando...' : <>Fale conosco <ChevronRight size={16} /></>}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
