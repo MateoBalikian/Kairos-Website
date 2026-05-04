@@ -33,9 +33,9 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
     <header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: (scrolled || menuOpen) ? 'rgba(0,0,0,0.95)' : 'transparent',
-        backdropFilter: (scrolled || menuOpen) ? 'blur(8px)' : 'none',
-        borderBottom: (scrolled || menuOpen) ? '1px solid rgba(255,255,255,0.08)' : 'none',
+        background: (scrolled || forceDark || menuOpen) ? 'rgba(0,0,0,0.95)' : 'transparent',
+        backdropFilter: (scrolled || forceDark || menuOpen) ? 'blur(8px)' : 'none',
+        borderBottom: (scrolled || forceDark || menuOpen) ? '1px solid rgba(255,255,255,0.08)' : 'none',
         transition: 'background 0.3s ease, backdrop-filter 0.3s ease',
       }}
     >
@@ -176,80 +176,52 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div
-          style={{
-            background: 'rgba(0,0,0,0.92)',
-            backdropFilter: 'blur(8px)',
-            padding: '16px 32px 24px',
-          }}
-        >
-          {!hideLinks && (
+        <div style={{
+          background: 'rgba(0,0,0,0.98)',
+          backdropFilter: 'blur(12px)',
+          padding: '16px 32px 24px',
+        }}>
+          {!hideLinks ? (
             <>
               {links.map((link) => (
                 link.isRoute ? (
-                  <a
-                    key={link.label}
-                    href={link.href}
+                  <a key={link.label} href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    style={{
-                      display: 'block',
-                      color: 'white',
-                      fontWeight: 600,
-                      fontSize: '0.95rem',
-                      padding: '12px 0',
-                      textDecoration: 'none',
-                      borderBottom: '1px solid rgba(255,255,255,0.1)',
-                    }}
-                  >
+                    style={{ display: 'block', color: 'white', fontWeight: 600, fontSize: '0.95rem', padding: '12px 0', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                     {link.label}
                   </a>
                 ) : (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      setMenuOpen(false)
-                      if (window.lenis) {
-                        const target = document.querySelector(link.href)
-                        if (target) window.lenis.scrollTo(target, { duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
-                      } else {
-                        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
-                      }
-                    }}
-                    style={{
-                      display: 'block',
-                      color: 'white',
-                      fontWeight: 600,
-                      fontSize: '0.95rem',
-                      padding: '12px 0',
-                      textDecoration: 'none',
-                      borderBottom: '1px solid rgba(255,255,255,0.1)',
-                      cursor: 'pointer',
-                    }}
-                  >
+                  <a key={link.label} href={link.href}
+                    onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll(link.href) }}
+                    style={{ display: 'block', color: 'white', fontWeight: 600, fontSize: '0.95rem', padding: '12px 0', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer' }}>
                     {link.label}
                   </a>
                 )
               ))}
-              <a
-                href="#waitlist"
+              <a href="#waitlist"
                 onClick={(e) => { e.preventDefault(); setMenuOpen(false); smoothScroll('#waitlist') }}
-                style={{
-                  display: 'block',
-                  marginTop: '16px',
-                  background: '#0A2463',
-                  color: 'white',
-                  borderRadius: 99,
-                  padding: '10px 20px',
-                  fontSize: '0.85rem',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                }}
-              >
-                Lista de espera
+                style={{ display: 'block', marginTop: '16px', background: '#0A2463', color: 'white', borderRadius: 99, padding: '10px 20px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', textAlign: 'center' }}>
+                Entre em contato
+              </a>
+            </>
+          ) : (
+            <>
+              {[
+                { label: '← Veltron', href: '/' },
+                { label: 'Futebol', href: '/futebol' },
+                { label: 'Ciclismo', href: '/ciclismo' },
+                { label: 'Natação', href: '/natacao' },
+              ].map((link) => (
+                <a key={link.label} href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  style={{ display: 'block', color: 'white', fontWeight: 600, fontSize: '0.95rem', padding: '12px 0', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                  {link.label}
+                </a>
+              ))}
+              <a href="#agendar"
+                onClick={(e) => { e.preventDefault(); setMenuOpen(false); document.getElementById('agendar')?.scrollIntoView({ behavior: 'smooth' }) }}
+                style={{ display: 'block', marginTop: '16px', background: '#0A2463', color: 'white', borderRadius: 99, padding: '10px 20px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', textAlign: 'center' }}>
+                Fale conosco
               </a>
             </>
           )}
