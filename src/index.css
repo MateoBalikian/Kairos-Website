@@ -215,18 +215,16 @@ select:-webkit-autofill {
   -webkit-text-fill-color: currentColor;
 }
 
-/* Navbar safe area — covers Dynamic Island / notch on iOS */
-@supports (padding-top: env(safe-area-inset-top)) {
-  .navbar-safe-area {
-    height: env(safe-area-inset-top);
-    background: rgba(0, 0, 0, 0.95);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    pointer-events: none;
-  }
+/* Navbar safe area — covers Dynamic Island / notch on iOS and Android */
+.navbar-safe-area {
+  height: env(safe-area-inset-top, 0px);
+  background: #0A0A0A;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 /* Prevent horizontal scroll on mobile */
