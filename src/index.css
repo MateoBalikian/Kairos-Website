@@ -184,3 +184,33 @@ html, body, #root {
   background-color: #0A0A0A;
   min-height: 100%;
 }
+
+/* Forçar color scheme dark — evita inversão de cores no Android modo noturno */
+:root {
+  color-scheme: only light;
+}
+
+/* Seções brancas — forçar cores explicitamente */
+[style*="background: rgb(255, 255, 255)"],
+[style*="background: #ffffff"],
+[style*="background: white"] {
+  color-scheme: light;
+  -webkit-text-fill-color: initial;
+}
+
+/* Inputs — evitar fundo azul/amarelo do autofill no mobile */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.05) inset !important;
+  -webkit-text-fill-color: white !important;
+  caret-color: white;
+}
+
+/* Garantir que textos escuros na seção branca não sejam invertidos */
+.text-\[\#0A0A0A\],
+.text-\[\#4A4A47\] {
+  -webkit-text-fill-color: currentColor;
+}
