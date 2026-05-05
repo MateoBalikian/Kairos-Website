@@ -217,7 +217,7 @@ select:-webkit-autofill {
 
 /* Navbar safe area — covers Dynamic Island / notch on iOS and Android */
 .navbar-safe-area {
-  height: env(safe-area-inset-top, 0px);
+  height: var(--sat, env(safe-area-inset-top, 0px));
   background: #0A0A0A;
   position: fixed;
   top: 0;
