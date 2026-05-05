@@ -30,7 +30,20 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
   }
 
   return (
-    <header
+    <>
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 'env(safe-area-inset-top)',
+          background: 'rgba(0,0,0,0.95)',
+          zIndex: 51,
+          pointerEvents: 'none',
+        }}
+      />
+      <header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
         background: (scrolled || forceDark || menuOpen) ? 'rgba(0,0,0,0.95)' : 'transparent',
@@ -229,5 +242,6 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
         </div>
       )}
     </header>
+  </>
   )
 }
