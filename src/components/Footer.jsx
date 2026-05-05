@@ -4,7 +4,7 @@ const columns = [
   {
     title: 'Aplicações',
     links: [
-      { label: 'Futebol', href: '/futebol', isRoute: true },
+      { label: 'Corrida', href: '/corrida', isRoute: true },
       { label: 'Ciclismo', href: '/ciclismo', isRoute: true },
       { label: 'Natação', href: '/natacao', isRoute: true },
     ],

@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react'
 import { mediaUrl } from '../lib/supabase'
 
 const links = [
-  { label: 'Futebol', href: '/futebol', isRoute: true },
+  { label: 'Corrida', href: '/corrida', isRoute: true },
   { label: 'Ciclismo', href: '/ciclismo', isRoute: true },
   { label: 'Natação', href: '/natacao', isRoute: true },
   { label: 'Diferenciais', href: '#diferenciais', isRoute: false },
@@ -126,11 +126,11 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
               ← Veltron
             </a>
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
-            <a href="/futebol"
-              style={{ color: window.location.pathname === '/futebol' ? 'white' : 'rgba(255,255,255,0.4)', fontSize: '0.85rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
+            <a href="/corrida"
+              style={{ color: window.location.pathname === '/corrida' ? 'white' : 'rgba(255,255,255,0.4)', fontSize: '0.85rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = window.location.pathname === '/futebol' ? 'white' : 'rgba(255,255,255,0.4)')}>
-              Futebol
+              onMouseLeave={(e) => (e.currentTarget.style.color = window.location.pathname === '/corrida' ? 'white' : 'rgba(255,255,255,0.4)')}>
+              Corrida
             </a>
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
             <a href="/ciclismo"
@@ -211,7 +211,7 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
             <>
               {[
                 { label: '← Veltron', href: '/' },
-                { label: 'Futebol', href: '/futebol' },
+                { label: 'Corrida', href: '/corrida' },
                 { label: 'Ciclismo', href: '/ciclismo' },
                 { label: 'Natação', href: '/natacao' },
               ].map((link) => (
