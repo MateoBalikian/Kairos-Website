@@ -214,3 +214,23 @@ select:-webkit-autofill {
 .text-\[\#4A4A47\] {
   -webkit-text-fill-color: currentColor;
 }
+
+/* Navbar safe area — covers Dynamic Island / notch on iOS */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .navbar-safe-area {
+    height: env(safe-area-inset-top);
+    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    pointer-events: none;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}

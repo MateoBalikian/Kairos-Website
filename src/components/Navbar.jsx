@@ -31,6 +31,7 @@ export default function Navbar({ forceDark = false, hideLinks = false }) {
 
   return (
     <>
+      <div className="navbar-safe-area" />
       <div
         style={{
           position: 'fixed',
