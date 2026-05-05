@@ -396,7 +396,7 @@ export default function Corrida() {
             </div>
             <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
               <img
-                src={mediaUrl('imgatletismoia')}
+                src={mediaUrl('imgatletismoia.jpeg')}
                 alt="Pose Estimation - Análise Biomecânica Veltron"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
@@ -499,7 +499,7 @@ export default function Corrida() {
             <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: 'rgba(34,211,238,0.1)' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" strokeWidth="2" strokeLinecap="round">
-                <polyline points="20 6 9 17 4 12"/>
+                <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
             <div>
@@ -529,7 +529,7 @@ export default function Corrida() {
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
                   style={{ background: 'rgba(75,123,245,0.15)' }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                    <polyline points="20 6 9 17 4 12"/>
+                    <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
                 <h3 className="font-sans font-bold text-xl text-white mb-2">Mensagem enviada!</h3>
@@ -545,7 +545,7 @@ export default function Corrida() {
                     style={{ color: 'rgba(255,255,255,0.35)' }}>Nome completo</label>
                   <input type="text" placeholder="Seu nome"
                     value={formData.nome}
-                    onChange={(e) => setFormData({...formData, nome: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
@@ -554,7 +554,7 @@ export default function Corrida() {
                     style={{ color: 'rgba(255,255,255,0.35)' }}>E-mail</label>
                   <input type="email" placeholder="seu@email.com"
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
@@ -563,7 +563,7 @@ export default function Corrida() {
                     style={{ color: 'rgba(255,255,255,0.35)' }}>Telefone / WhatsApp</label>
                   <input type="tel" placeholder="Seu telefone ou WhatsApp"
                     value={formData.telefone}
-                    onChange={(e) => setFormData({...formData, telefone: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
@@ -572,7 +572,7 @@ export default function Corrida() {
                     style={{ color: 'rgba(255,255,255,0.35)' }}>Perfil</label>
                   <select
                     value={formData.profile}
-                    onChange={(e) => setFormData({...formData, profile: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, profile: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors appearance-none cursor-pointer"
                     style={{ background: 'rgba(20,20,20,0.8)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }}>
                     <option value="" style={{ background: '#0A0A0A' }}>Selecione seu perfil</option>
@@ -588,7 +588,7 @@ export default function Corrida() {
                     rows={3}
                     placeholder="Conte-nos sobre seu contexto e necessidades..."
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors resize-none"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
