@@ -2,29 +2,19 @@ import { Mail, ExternalLink } from 'lucide-react'
 
 const columns = [
   {
-    title: 'Navegação',
-    links: [
-      { label: 'Metodologia', href: '#metodologia' },
-      { label: 'Avaliações', href: '#ciencia' },
-      { label: 'Aplicações', href: '#produtos' },
-      { label: 'Ciência', href: '#lacae' },
-    ],
-  },
-  {
     title: 'Aplicações',
     links: [
-      { label: 'Futebol', href: '#produtos', productId: 'futebol' },
-      { label: 'Ciclismo', href: '#produtos', productId: 'ciclismo' },
-      { label: 'Natação', href: '#produtos', productId: 'natacao' },
-      { label: 'Saúde & Nutrição', href: '#produtos' },
+      { label: 'Futebol', href: '/futebol', isRoute: true },
+      { label: 'Ciclismo', href: '/ciclismo', isRoute: true },
+      { label: 'Natação', href: '/natacao', isRoute: true },
     ],
   },
   {
     title: 'Contato',
     links: [
-      { label: 'contato@kairostechs.com', href: 'mailto:contato@kairostechs.com' },
+      { label: 'contato@veltrontech.com.br', href: 'mailto:contato@veltrontech.com.br' },
+      { label: '@veltrontech_', href: 'https://instagram.com/veltrontech_', external: true },
       { label: 'Parcerias', href: '#' },
-      { label: 'Imprensa', href: '#' },
     ],
   },
 ]
@@ -75,17 +65,17 @@ export default function Footer() {
               <span>Entre em contato</span>
             </a>
             <a
-              href="mailto:contato@kairostechs.com"
+              href="mailto:contato@veltrontech.com.br"
               className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors duration-200 justify-center"
             >
               <Mail size={14} />
-              contato@kairostechs.com
+              contato@veltrontech.com.br
             </a>
           </div>
         </div>
 
         {/* Links grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 mb-16 border-t border-white/10 pt-10">
+        <div className="grid grid-cols-2 lg:grid-cols-2 gap-8 mb-16 border-t border-white/10 pt-10">
           {columns.map((col) => (
             <div key={col.title}>
               <p className="font-mono text-[10px] text-white/30 uppercase tracking-widest mb-4">
@@ -94,26 +84,38 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      onClick={(e) => {
-                        if (link.href.startsWith('#')) {
-                          e.preventDefault()
-                          const target = document.querySelector(link.href)
-                          if (window.lenis) window.lenis.scrollTo(target, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
-                          else target?.scrollIntoView({ behavior: 'smooth' })
-                          if (link.productId) {
-                            setTimeout(() => {
-                              window.dispatchEvent(new CustomEvent('selectProduct', { detail: link.productId }))
-                            }, 100)
+                    {link.isRoute ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-white/50 hover:text-white transition-colors duration-200 hover:-translate-y-px inline-block"
+                      >
+                        {link.label}
+                      </a>
+                    ) : link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-white/50 hover:text-white transition-colors duration-200 hover:-translate-y-px inline-block"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <a
+                        href={link.href}
+                        onClick={(e) => {
+                          if (link.href.startsWith('#')) {
+                            e.preventDefault()
+                            const target = document.querySelector(link.href)
+                            if (window.lenis) window.lenis.scrollTo(target, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
+                            else target?.scrollIntoView({ behavior: 'smooth' })
                           }
-                        }
-                      }}
-                      className="text-sm text-white/50 hover:text-white transition-colors duration-200 hover:-translate-y-px inline-block"
-                    >
-                      {link.label}
-                    </a>
+                        }}
+                        className="text-sm text-white/50 hover:text-white transition-colors duration-200 hover:-translate-y-px inline-block"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
