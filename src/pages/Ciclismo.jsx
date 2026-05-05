@@ -29,37 +29,37 @@ const diferenciais = [
   {
     tag: 'BIOMECÂNICA',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>),
-    titulo: 'Bike fit por visão computacional',
-    desc: 'Keypoints rastreados identificam ângulo do joelho, quadril e cotovelo. Posição ideal na bike definida com dados, não com feeling.',
+    titulo: 'Pose Estimation na Pedalada',
+    desc: 'Rastreamento sub-milimétrico de quadril, joelho e tornozelo via IA (YOLO-Pose). Detectamos assimetrias de pedalada imperceptíveis ao olho humano e reconstruímos o ciclo completo de movimento.',
     cor: '#4B7BF5',
   },
   {
     tag: 'FISIOLOGIA',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>),
-    titulo: 'VO₂máx e Limiar Anaeróbico',
-    desc: 'Protocolos laboratoriais na Veltron que definem suas zonas de treino exatas e revelam onde sua performance está limitada.',
+    titulo: 'Lactacidemia: LT1, LT2 e MLSS',
+    desc: 'Construção da curva Lactato × Potência com coleta capilar a cada estágio. Identificação exata do LT1 (Limiar Aeróbio) e LT2 (OBLA) para prescrição milimétrica de zonas de treinamento.',
     cor: '#7BA7E8',
   },
   {
-    tag: 'POTÊNCIA',
+    tag: 'INTEGRAÇÃO',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>),
-    titulo: 'Teste de Wingate',
-    desc: 'Potência anaeróbica máxima em 30 segundos. O teste que revela se você tem explosão para o sprint decisivo.',
+    titulo: 'V-Metabolic Cycling',
+    desc: 'O diferencial Veltron: identificamos em qual potência (W) o atleta começa a perder eficiência mecânica e aumentar o custo energético. A relação direta entre erro técnico e aumento de lactato.',
     cor: '#4B7BF5',
   },
   {
     tag: 'METABOLÔMICA',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" /></svg>),
     titulo: 'Metabolômica por RMN',
-    desc: '200+ metabólitos que explicam por que as pernas pesam mesmo após o descanso — e o que fazer a respeito.',
+    desc: '200+ metabólitos que explicam o custo metabólico por ciclo de pedalada — por que as pernas pesam mesmo após descanso e o que fazer para otimizar a recuperação.',
     cor: '#7BA7E8',
   },
 ]
 
 const passos = [
-  { num: '01', titulo: 'Avaliação na Veltron', desc: 'VO₂máx, limiar anaeróbico, Wingate e coleta para metabolômica por RMN. Protocolo conduzido por nossa equipe.' },
-  { num: '02', titulo: 'Análise biomecânica', desc: 'Você pedala enquanto a IA rastreia cada articulação. Ângulo do joelho, quadril, cotovelo — medido em tempo real.' },
-  { num: '03', titulo: 'Laudo + Plano', desc: 'Fisiologia + biomecânica + metabolômica integrados. Você recebe o diagnóstico, o plano de treino e a prescrição nutricional.' },
+  { num: '01', titulo: 'Avaliação fisiológica na Veltron', desc: 'VO₂máx, curva de lactato (LT1/LT2/MLSS), Wingate e coleta para metabolômica por RMN. Protocolo conduzido por pesquisadores em ambiente laboratorial.' },
+  { num: '02', titulo: 'Análise biomecânica na bike', desc: 'Você pedala enquanto a IA rastreia quadril, joelho e tornozelo em tempo real. Identificamos assimetrias, ângulos críticos e o ponto de ruptura técnica sob fadiga.' },
+  { num: '03', titulo: 'Diagnóstico V-Metabolic integrado', desc: 'Biomecânica + fisiologia + metabolômica unidos em um único laudo. Você descobre em qual potência sua técnica colapsa, quais zonas treinar e como recuperar melhor.' },
 ]
 
 export default function Ciclismo() {
@@ -142,7 +142,7 @@ export default function Ciclismo() {
               <span className="inline-flex items-center gap-1.5 font-mono text-xs px-3 py-1.5 rounded-full"
                 style={{ background: 'rgba(75,123,245,0.15)', border: '1px solid rgba(75,123,245,0.3)', color: '#4B7BF5' }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4B7BF5] animate-pulse" />
-                Análise de Ciclismo
+                Ciclismo de Elite: IA &amp; Biometabólica
               </span>
             </div>
             <h1 className="hi font-sans font-bold text-white"
@@ -151,7 +151,7 @@ export default function Ciclismo() {
               <span style={{ color: '#4B7BF5' }}>A Veltron explica<br />por que você<br />perdeu potência.</span>
             </h1>
             <p className="hi mt-6 text-white/55 leading-relaxed" style={{ fontSize: '1rem', maxWidth: 400 }}>
-              Bike fit por IA + fisiologia de laboratório + metabolômica por RMN. O diagnóstico que nenhum wattímetro entrega.
+              A análise integrada que mapeia o Custo Metabólico da Técnica — correlacionando Visão Computacional com a curva de Lactato × Potência para identificar o colapso técnico no domínio severo.
             </p>
             <div className="hi flex flex-wrap items-center gap-4 mt-8">
               <button onClick={() => smoothScrollTo('agendar')}
@@ -326,10 +326,10 @@ export default function Ciclismo() {
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4">
               {[
-                { label: 'ÂNGULO JOELHO', val: `${v1}°`, sub: 'Ideal: 135–145°', col: '#4B7BF5' },
-                { label: 'POT. DE PICO', val: `${(v2 / 10).toFixed(1)} W/kg`, sub: 'Wingate · 30s', col: '#7BA7E8' },
-                { label: 'VO₂MÁX', val: `${v3} ml/kg/min`, sub: 'Ergoespirometria', col: '#4B7BF5' },
-                { label: 'METABÓLITOS', val: `${v4}+`, sub: 'Metabolômica · Veltron', col: '#7BA7E8' },
+                { label: 'CADÊNCIA IDEAL', val: `${v1}`, sub: 'Assinatura de torque angular', col: '#4B7BF5' },
+                { label: 'SIMETRIA DE PEDALADA', val: `${v2}%`, sub: 'L/R precisão laboratorial', col: '#7BA7E8' },
+                { label: 'ÂNGULO CRÍTICO JOELHO', val: `${v3}°`, sub: 'Fase propulsiva otimizada', col: '#4B7BF5' },
+                { label: 'METABÓLITOS ANALISADOS', val: `${v4}+`, sub: 'Perfil por RMN', col: '#7BA7E8' },
               ].map((m, i) => (
                 <div key={i} className="p-6 lg:p-8 flex flex-col gap-2"
                   style={{ borderRight: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
