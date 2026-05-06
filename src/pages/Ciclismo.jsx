@@ -278,15 +278,15 @@ export default function Ciclismo() {
                   <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: d.cor }} />
                   <div>
                     <p className="font-mono text-[9px] uppercase tracking-widest mb-1" style={{ color: d.cor }}>{d.tag}</p>
-                    <p className="font-sans font-bold text-base mb-1" style={{ color: 'white' }}>{d.titulo}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{d.desc}</p>
+                    <p className="font-sans font-bold text-base text-white mb-1">{d.titulo}</p>
+                    <p className="text-xs text-white/45 leading-relaxed">{d.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
 
             {/* Desktop: cards originais */}
-            <div className="hidden md:grid md:grid-cols-2 gap-5">
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {diferenciais.map((d, i) => (
                 <div key={i} className="dif-card rounded-3xl p-8 flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300"
                   style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
