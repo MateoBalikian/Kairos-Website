@@ -80,7 +80,7 @@ const ContentBlock = ({ children }) => (
 
 export default function Philosophy() {
   return (
-    <section id="lacae" className="bg-[#0A0A0A]" style={{ borderRadius: '2.5rem 2.5rem 0 0', marginTop: '-2.5rem', position: 'relative', zIndex: 1 }}>
+    <section id="filosofia" className="bg-[#0A0A0A]" style={{ borderRadius: '2.5rem 2.5rem 0 0', marginTop: '-2.5rem', position: 'relative', zIndex: 1 }}>
 
       {/* Seção 1 */}
       <TextParallaxContent
@@ -99,7 +99,7 @@ export default function Philosophy() {
             </div>
             <div>
               <p className="text-white/60 text-base lg:text-lg leading-relaxed">
-                Diagnósticos fisiológicos de precisão — VO₂máx, metabolômica por RMN, biomecânica computacional — eram ferramentas exclusivas de grandes centros esportivos e laboratórios de pesquisa de elite. Atletas comuns, times regionais e profissionais de saúde simplesmente não tinham acesso.
+                Diagnósticos fisiológicos de precisão — VO₂máx, metabolômica, biomecânica computacional — eram ferramentas exclusivas de grandes centros esportivos e laboratórios de elite. Atletas comuns, times regionais e profissionais de saúde simplesmente não tinham acesso.
               </p>
             </div>
           </div>
@@ -115,26 +115,22 @@ export default function Philosophy() {
         <ContentBlock>
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
-              <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">Base institucional</span>
+              <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">Nossa abordagem</span>
               <h3 className="font-sans font-bold text-3xl lg:text-4xl text-white mt-4 leading-tight">
-                Ciência universitária.<br />
-                <span className="text-[#4B7BF5]">Aplicação real.</span>
+                Ciência aplicada.<br />
+                <span className="text-[#4B7BF5]">Resultado real.</span>
               </h3>
             </div>
             <div>
               <p className="text-white/60 text-base lg:text-lg leading-relaxed mb-8">
-                A Veltron é uma deep tech vinculada ao ecossistema de inovação da{' '}
-                <span className="text-white font-medium">Universidade Federal de Alagoas (UFAL)</span>,
-                com pesquisa clínica validada no{' '}
-                <span className="text-white font-medium">Hospital Universitário Professor Alberto Antunes (HUPAA/EBSERH)</span>.
-                Cada avaliação é construída sobre metodologia científica revisada por pares.
+                A Veltron integra avaliação fisiológica de laboratório com rastreamento por inteligência artificial em um único diagnóstico. Cada protocolo é construído sobre metodologia científica validada — entregue com a precisão que antes só existia no alto rendimento.
               </p>
               <div className="flex flex-wrap gap-8">
                 {[
-                  { val: 'UFAL', desc: 'Universidade Federal de Alagoas' },
+                  { val: 'VO₂máx', desc: 'Capacidade aeróbica real' },
                   { val: '99.5%', desc: 'Precisão do modelo preditivo' },
-                  { val: 'HUPAA', desc: 'Pesquisa clínica translacional' },
-                  { val: 'RMN', desc: 'Ressonância Magnética Nuclear' },
+                  { val: 'RMN', desc: '200+ metabólitos analisados' },
+                  { val: 'IA', desc: 'Rastreamento frame a frame' },
                 ].map((s) => (
                   <div key={s.val}>
                     <div className="font-mono text-xl font-medium text-[#4B7BF5]">{s.val}</div>

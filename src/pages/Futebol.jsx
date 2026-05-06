@@ -102,7 +102,7 @@ const avaliacoes = [
   },
   {
     tag: 'Limiar de Fadiga',
-    titulo: 'Limiar Anaeróbico',
+    titulo: 'Limiar de Lactato',
     subtitulo: 'A intensidade exata onde a fadiga comeca',
     problema: 'GPS mostra que seu volante correu 12km. Mas nao mostra que 4km foram acima do limiar - acumulando lactato, perdendo precisao tecnica, chegando ao intervalo ja comprometido.',
     oQueMede: 'O ponto de intensidade onde o lactato sanguineo comeca a acumular mais rapido do que o corpo consegue remover. Acima desse ponto, a fadiga se instala rapidamente.',
@@ -134,9 +134,9 @@ const avaliacoes = [
   },
   {
     tag: '200+ Metabolitos · RMN',
-    titulo: 'Metabolômica por RMN',
+    titulo: 'Metabolômica',
     subtitulo: 'O que acontece dentro do atleta que o exame comum nao mostra',
-    problema: 'Seu atleta dormiu 8h, treinou bem, parece recuperado. Mas rendeu 60% no jogo seguinte. A metabolomica por RMN revela o que o olho - e o GPS - nao conseguem ver.',
+    problema: 'Seu atleta dormiu 8h, treinou bem, parece recuperado. Mas rendeu 60% no jogo seguinte. A metabolômica revela o que o olho - e o GPS - nao conseguem ver.',
     oQueMede: 'O perfil completo de 200+ metabolitos via Ressonancia Magnetica Nuclear - aminoacidos, acidos organicos, lipideos e marcadores de estresse oxidativo que revelam o estado real de recuperacao e adaptacao ao treino.',
     oQueRevela: [
       'Se o atleta realmente recuperou entre dois jogos',
@@ -238,7 +238,7 @@ export default function Futebol() {
             GPS mostra distancia e velocidade. A Veltron mostra o que esta dentro do atleta - capacidade aerobica, limiar de fadiga, estado metabolico real - integrados com rastreamento por IA.
           </p>
           <div className="hi flex flex-wrap gap-2 mt-5">
-            {['VO2max', 'Limiar Anaeróbico', 'Wingate', 'Metabolômica por RMN', 'Rastreamento por IA'].map(t => (
+            {['VO2max', 'Limiar de Lactato', 'Wingate', 'Metabolômica', 'Rastreamento por IA'].map(t => (
               <span key={t} className="font-mono text-[11px] text-white/50 border border-white/15 rounded-full px-3 py-1"
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>{t}</span>
             ))}
@@ -320,7 +320,7 @@ export default function Futebol() {
                 Medimos o que está dentro do atleta — capacidade aeróbica, limiar de fadiga, potência anaeróbica e perfil metabólico completo. Dados que o GPS jamais vai capturar.
               </p>
               <div className="grid grid-cols-2 gap-3">
-                {['VO₂máx', 'Limiar Anaeróbico', 'Teste de Wingate', 'Metabolômica por RMN'].map((item, i) => (
+                {['VO₂máx', 'Limiar de Lactato', 'Teste de Wingate', 'Metabolômica'].map((item, i) => (
                   <div key={i} className="rounded-2xl px-4 py-3 flex items-center gap-2"
                     style={{ background: 'rgba(123,167,232,0.06)', border: '1px solid rgba(123,167,232,0.12)' }}>
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#7BA7E8' }}/>

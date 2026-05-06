@@ -80,7 +80,23 @@ const metricas = [
   { icon: '🦵', titulo: 'Domínios de Intensidade', desc: 'Moderado, Pesado e Severo — mapeados pela cinética do lactato. Treino prescrito com precisão de laboratório.' },
 ]
 
-
+const passos = [
+  {
+    num: '01',
+    titulo: 'Filme ou envie o vídeo',
+    desc: 'Use qualquer celular. Filmagem lateral ou frontal, pelo menos 10 segundos de nado. Mantenha o celular fixo — quanto mais estável, mais precisa é a análise.',
+  },
+  {
+    num: '02',
+    titulo: 'Nossa IA processa tudo',
+    desc: 'O sistema detecta articulações, rastreia o corpo quadro a quadro e extrai métricas com precisão de laboratório.',
+  },
+  {
+    num: '03',
+    titulo: 'Você recebe seu relatório',
+    desc: 'PDF completo com dados, gráficos e recomendações. Pronto pra você e pro seu treinador.',
+  },
+]
 
 export default function Natacao() {
   const heroRef = useRef(null)
@@ -353,75 +369,31 @@ export default function Natacao() {
       </section>
 
       {/* ─── COMO FUNCIONA ─── */}
-      <section className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-20">
-            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">O processo</span>
+      <section id="como-funciona" className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+        <div className="max-w-[800px] mx-auto">
+          <div className="mb-16">
+            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Processo</span>
             <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
-              Da piscina ao diagnóstico{' '}
-              <span className="font-bold" style={{ color: '#4B7BF5' }}>em 3 passos.</span>
+              Simples assim —{' '}
+              <span className="font-bold" style={{ color: '#4B7BF5' }}>3 passos</span>
             </h2>
           </div>
-
-          <div className="grid lg:grid-cols-3 gap-6 relative">
-            <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
-              style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.4), rgba(123,167,232,0.4))' }} />
-
-            {[
-              {
-                step: '01',
-                icon: '📱',
-                titulo: 'Envie o vídeo',
-                descricao: 'Filme com qualquer celular — lateral ou frontal, pelo menos 10 segundos de nado. Sem câmeras especiais, sem marcadores no corpo.',
-                cor: '#4B7BF5',
-              },
-              {
-                step: '02',
-                icon: '🧪',
-                titulo: 'Avaliação presencial',
-                descricao: 'Na Veltron, realizamos os protocolos fisiológicos: coleta de lactato, VO₂máx e metabolômica. Conduzido por pesquisadores.',
-                cor: '#7BA7E8',
-              },
-              {
-                step: '03',
-                icon: '📊',
-                titulo: 'Diagnóstico integrado',
-                descricao: 'Biomecânica + fisiologia + metabolômica em um único laudo. Você recebe recomendações individualizadas para técnica e treino.',
-                cor: '#4B7BF5',
-              },
-            ].map((item, i) => (
-              <div key={i} className="rounded-3xl p-8 flex flex-col gap-5 relative"
-                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-widest"
-                    style={{ color: item.cor }}>
-                    PASSO {item.step}
-                  </span>
-                  <span className="text-2xl">{item.icon}</span>
+          <div className="relative">
+            <div className="absolute left-[27px] top-8 bottom-8 w-px"
+              style={{ background: 'linear-gradient(to bottom, #4B7BF5, #7BA7E8)' }} />
+            <div className="flex flex-col gap-12">
+              {passos.map((p, i) => (
+                <div key={i} className="passo-item flex items-start gap-6">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 z-10"
+                    style={{ background: '#111111', border: '1px solid rgba(75,123,245,0.3)' }}>
+                    <span className="font-mono text-sm font-bold" style={{ color: '#4B7BF5' }}>{p.num}</span>
+                  </div>
+                  <div className="pt-2">
+                    <h3 className="font-sans font-bold text-xl text-white mb-2">{p.titulo}</h3>
+                    <p className="text-sm text-white/50 leading-relaxed">{p.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-sans font-bold text-xl text-white mb-3">{item.titulo}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed">{item.descricao}</p>
-                </div>
-                <div className="h-0.5 rounded-full mt-auto"
-                  style={{ background: `linear-gradient(90deg, ${item.cor}, transparent)` }} />
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6"
-            style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(75,123,245,0.1)' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
-            </div>
-            <div>
-              <p className="font-sans font-bold text-white text-sm mb-1">Diagnóstico completo e individualizado</p>
-              <p className="text-white/40 text-xs leading-relaxed">
-                Dados fisiológicos e biomecânicos unidos em um único laudo. Ciência aplicada diretamente à sua natação.
-              </p>
+              ))}
             </div>
           </div>
         </div>

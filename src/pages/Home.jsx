@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Link } from 'react-router-dom'
@@ -13,13 +13,13 @@ gsap.registerPlugin(ScrollTrigger)
 
 const modalidades = [
   {
-    slug: 'futebol',
-    label: 'Futebol',
+    slug: 'corrida',
+    label: 'Corrida',
     tag: 'Sport Tech',
-    desc: 'Rastreamento por IA + fisiologia de laboratório para clubes e atletas.',
-    img: mediaUrl('trocker-demo.mp4'),
+    desc: 'Pose estimation + cinética do lactato + metabolômica para corredores de rua e atletas de pista.',
+    img: mediaUrl('herocorrida.mp4'),
     isVideo: true,
-    color: '#4B7BF5',
+    color: '#22d3ee',
   },
   {
     slug: 'ciclismo',
@@ -34,7 +34,7 @@ const modalidades = [
     slug: 'natacao',
     label: 'Natação',
     tag: 'Sport Tech',
-    desc: 'Análise de braçada por pose estimation + VO₂máx + metabolômica por RMN.',
+    desc: 'Análise de braçada por pose estimation + VO₂máx + metabolômica.',
     img: mediaUrl('nado_web.mp4'),
     isVideo: true,
     color: '#4B7BF5',
@@ -43,32 +43,90 @@ const modalidades = [
 
 const diferenciais = [
   {
-    tag: 'FISIOLOGIA',
-    titulo: 'VO₂máx',
-    desc: 'O teto aeróbico de cada atleta. Medido com precisão de laboratório na Veltron.',
+    tag: 'CAPTURA',
+    titulo: 'Qualquer celular',
+    desc: 'Transforme qualquer smartphone em um laboratório de biomecânica. Sem câmeras especiais, sem sensores, sem equipamentos caros.',
+    cor: '#4B7BF5',
+  },
+  {
+    tag: 'INTELIGÊNCIA ARTIFICIAL',
+    titulo: 'Análise em tempo real',
+    desc: 'Nossa IA identifica articulações e membros automaticamente, convertendo vídeos comuns em dados biomecânicos de precisão.',
     cor: '#7BA7E8',
   },
   {
     tag: 'FISIOLOGIA',
-    titulo: 'Limiar Anaeróbico',
-    desc: 'A intensidade exata onde a fadiga começa. Coleta de lactato sanguíneo estágio a estágio.',
+    titulo: 'Cinética do Lactato',
+    desc: 'O padrão-ouro da fisiologia do exercício. Identificamos LT1 e LT2 com precisão laboratorial — a métrica definitiva de intensidade.',
     cor: '#4B7BF5',
   },
   {
     tag: 'METABOLÔMICA',
-    titulo: 'Metabolômica por RMN',
-    desc: '200+ metabólitos que revelam recuperação, adaptação e deficiências nutricionais invisíveis.',
+    titulo: 'Assinatura Molecular',
+    desc: '200+ metabólitos que revelam o que nenhum exame convencional enxerga — recuperação, adaptação e deficiências invisíveis.',
     cor: '#7BA7E8',
-  },
-  {
-    tag: 'IA',
-    titulo: 'IA em Campo',
-    desc: 'Inteligência artificial que rastreia cada atleta frame a frame — sem câmeras especiais, sem GPS, sem sensores.',
-    cor: '#4B7BF5',
   },
 ]
 
-const institutos = ['Veltron', 'IEFE', 'IC']
+const institutos = ['Veltron', 'Maceió, AL', 'Brasil']
+
+function FaqSection() {
+  const [open, setOpen] = React.useState(null)
+
+  const faqs = [
+    {
+      q: 'Preciso de algum equipamento especial para fazer a análise?',
+      a: 'Não. Para a análise biomecânica basta gravar um vídeo com qualquer smartphone — sem câmeras especiais, sem sensores e sem marcadores no corpo. Para as avaliações fisiológicas (VO₂máx, curva de lactato e metabolômica), você comparece presencialmente na Veltron em Maceió.',
+    },
+    {
+      q: 'Quanto tempo leva para receber o diagnóstico?',
+      a: 'Após a avaliação presencial e o envio do vídeo, você recebe o laudo completo em até 48 horas. O relatório integra biomecânica, fisiologia e metabolômica em um único documento com recomendações individualizadas.',
+    },
+    {
+      q: 'Para que tipo de atleta a Veltron é indicada?',
+      a: 'Para qualquer atleta que queira tomar decisões de treino baseadas em dados reais — do corredor de rua que quer melhorar seu pace até o ciclista que quer otimizar potência e recuperação. Também atendemos treinadores, equipes e profissionais de saúde que trabalham com esporte.',
+    },
+    {
+      q: 'O que é o Limiar de Lactato e por que é mais preciso que zonas de frequência cardíaca?',
+      a: 'O Limiar de Lactato é o ponto exato de intensidade onde o lactato sanguíneo começa a se acumular mais rápido do que o corpo consegue remover. É determinado com coleta capilar real — não estimado por algoritmo. Zonas de frequência cardíaca variam com temperatura, hidratação e fadiga. O lactato não mente.',
+    },
+    {
+      q: 'O que é metabolômica e por que ela importa para o meu treino?',
+      a: 'Metabolômica é a análise de mais de 200 metabólitos do seu sangue — moléculas que revelam o que está acontecendo dentro das células. Ela identifica deficiências nutricionais invisíveis em exames convencionais, marcadores de overtraining antes dos sintomas aparecerem e o status real de recuperação muscular.',
+    },
+    {
+      q: 'A Veltron atende apenas atletas de Maceió?',
+      a: 'As avaliações fisiológicas presenciais são realizadas em Maceió, AL. A análise biomecânica por vídeo pode ser feita remotamente — você grava, envia e recebe o diagnóstico de qualquer lugar do Brasil.',
+    },
+  ]
+
+  return (
+    <div className="flex flex-col gap-3">
+      {faqs.map((faq, i) => (
+        <div key={i}
+          className="rounded-2xl overflow-hidden cursor-pointer"
+          style={{ background: '#111111', border: `1px solid ${open === i ? 'rgba(75,123,245,0.3)' : 'rgba(255,255,255,0.07)'}`, transition: 'border-color 0.3s ease' }}
+          onClick={() => setOpen(open === i ? null : i)}>
+          <div className="flex items-center justify-between px-6 py-5 gap-4">
+            <p className="font-sans font-semibold text-sm text-white leading-snug">{faq.q}</p>
+            <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: open === i ? 'rgba(75,123,245,0.15)' : 'rgba(255,255,255,0.05)', transition: 'background 0.3s ease' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={open === i ? '#4B7BF5' : 'rgba(255,255,255,0.4)'} strokeWidth="2.5" strokeLinecap="round"
+                style={{ transform: open === i ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease, stroke 0.3s ease' }}>
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+          </div>
+          {open === i && (
+            <div className="px-6 pb-5">
+              <p className="text-sm text-white/50 leading-relaxed">{faq.a}</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default function Home() {
   const heroRef = useRef(null)
@@ -144,17 +202,17 @@ export default function Home() {
 
           <h1 className="hi font-sans font-bold text-white mt-4"
             style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', lineHeight: 1.05 }}>
-            A ciência que estava<br />
-            <span style={{ color: '#4B7BF5' }}>só nos centros olímpicos.</span>
+            O fim do treino<br />
+            <span style={{ color: '#4B7BF5' }}>às cegas.</span>
           </h1>
 
           <p className="hi mt-5 text-white/65 leading-relaxed"
             style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', maxWidth: 540 }}>
-            Avaliações fisiológicas de laboratório — VO₂máx, limiar anaeróbico, metabolômica por RMN — integradas com rastreamento por inteligência artificial. Para atletas, times e profissionais de saúde.
+            Eliminamos a incerteza dos wearables e apps. A Veltron traduz movimento em cinética do lactato, metabolômica e biomecânica — a tríade que realmente determina performance.
           </p>
 
           <div className="hi flex flex-wrap gap-2 mt-5">
-            {['VO₂máx', 'Limiar Anaeróbico', 'Metabolômica por RMN', 'Rastreamento por IA', 'Veltron'].map(t => (
+            {['VO₂máx', 'Limiar de Lactato', 'Metabolômica', 'Rastreamento por IA', 'Veltron'].map(t => (
               <span key={t}
                 className="font-mono text-[11px] text-white/50 border border-white/12 rounded-full px-3 py-1"
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>
@@ -177,6 +235,81 @@ export default function Home() {
               <ArrowRight size={13} color="white" />
             </span>
           </a>
+        </div>
+      </section>
+
+      {/* ─── COMO FUNCIONA ─── */}
+      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-20">
+            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Como funciona</span>
+            <h2 className="font-sans font-light text-3xl lg:text-5xl text-white tracking-tight mt-3">
+              Simples assim.{' '}
+              <span className="font-bold" style={{ color: '#4B7BF5' }}>3 passos.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
+            <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
+              style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.5), rgba(123,167,232,0.5))' }} />
+
+            {[
+              {
+                step: '01',
+                emoji: '📱',
+                titulo: 'Grave com qualquer celular',
+                descricao: 'Sem câmeras especiais. Sem sensores. Sem equipamentos caros. Seu smartphone já é suficiente — em esteira, piscina, bike ou pista.',
+                cor: '#4B7BF5',
+              },
+              {
+                step: '02',
+                emoji: '☁️',
+                titulo: 'Envie para a Veltron',
+                descricao: 'Upload simples pela nossa plataforma. Nossa equipe recebe, processa e integra com os dados fisiológicos da sua avaliação presencial.',
+                cor: '#7BA7E8',
+              },
+              {
+                step: '03',
+                emoji: '📊',
+                titulo: 'Receba seu diagnóstico',
+                descricao: 'Um laudo completo: biomecânica + fisiologia + metabolômica. Dados reais sobre como seu corpo se move e o que ele consome para fazer isso.',
+                cor: '#4B7BF5',
+              },
+            ].map((item, i) => (
+              <div key={i} className="rounded-3xl p-8 flex flex-col gap-5"
+                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] font-bold uppercase tracking-widest"
+                    style={{ color: item.cor }}>
+                    PASSO {item.step}
+                  </span>
+                  <span className="text-2xl">{item.emoji}</span>
+                </div>
+                <div>
+                  <h3 className="font-sans font-bold text-xl text-white mb-3">{item.titulo}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{item.descricao}</p>
+                </div>
+                <div className="h-0.5 rounded-full mt-auto"
+                  style={{ background: `linear-gradient(90deg, ${item.cor}, transparent)` }} />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6"
+            style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: 'rgba(75,123,245,0.1)' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div>
+              <p className="font-sans font-bold text-white text-sm mb-1">Sem burocracia. Sem equipamentos especiais.</p>
+              <p className="text-white/40 text-xs leading-relaxed">
+                A tecnologia que estava só nos centros olímpicos agora cabe no seu bolso.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -225,12 +358,17 @@ export default function Home() {
           </div>
 
           {/* Frase de impacto */}
-          <div className="mt-8 rounded-3xl px-8 py-6 flex flex-col lg:flex-row items-center justify-between gap-4"
-            style={{ background: '#0A0A0A' }}>
-            <p className="font-sans font-bold text-xl lg:text-2xl text-white text-center lg:text-left">
-              "Enquanto outros medem o movimento,{' '}
-              <span style={{ color: '#7BA7E8' }}>nós medimos o atleta."</span>
-            </p>
+          <div className="mt-8 rounded-3xl px-8 py-8 flex flex-col lg:flex-row items-center justify-between gap-6"
+            style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="max-w-xl">
+              <p className="font-sans font-bold text-xl lg:text-2xl text-white text-center lg:text-left mb-2">
+                Não entregamos dados isolados.{' '}
+                <span style={{ color: '#7BA7E8' }}>Entregamos uma síntese inteligente do movimento humano.</span>
+              </p>
+              <p className="text-white/40 text-sm text-center lg:text-left">
+                Movimento mecânico + resposta do lactato + perfil molecular. Os três fatores que nenhum GPS ou wearable consegue medir.
+              </p>
+            </div>
             <a href="#modalidades"
               onClick={(e) => { e.preventDefault(); smoothScrollTo('modalidades') }}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-[#0A2463] bg-white whitespace-nowrap hover:opacity-90 transition-opacity flex-shrink-0">
@@ -317,14 +455,14 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
             <div className="max-w-md">
               <span className="font-mono text-xs text-white/40 uppercase tracking-widest">
-                Base institucional
+                Padrão-ouro
               </span>
               <h2 className="font-sans font-bold text-2xl lg:text-3xl text-white mt-3 leading-snug">
-                Ciência universitária.<br />
-                <span style={{ color: '#7BA7E8' }}>Aplicação real.</span>
+                Precisão de laboratório.<br />
+                <span style={{ color: '#7BA7E8' }}>No campo e na pista.</span>
               </h2>
               <p className="text-white/50 text-sm leading-relaxed mt-3">
-                Deep tech com pesquisa clínica validada. Metodologia revisada por pares.
+                Cada métrica validada pelo padrão-ouro da fisiologia do exercício. Do laboratório ao diagnóstico.
               </p>
             </div>
 
@@ -344,19 +482,57 @@ export default function Home() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12 pt-12"
-            style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-            {[
-              { val: '99.5%', label: 'Precisão do modelo preditivo' },
-              { val: '200+', label: 'Metabólitos por RMN' },
-              { val: '4', label: 'Protocolos integrados' },
-              { val: 'Veltron', label: 'Tecnologia de performance' },
-            ].map((s, i) => (
-              <div key={i} className="text-center">
-                <p className="font-mono font-bold text-2xl lg:text-3xl text-white">{s.val}</p>
-                <p className="font-mono text-[10px] text-white/35 uppercase tracking-wide mt-1">{s.label}</p>
-              </div>
-            ))}
+          <div className="mt-12 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {[
+                {
+                  num: '01',
+                  tag: 'Visão Computacional',
+                  titulo: 'Captura Simplificada',
+                  desc: 'Transforme qualquer smartphone em um laboratório de biomecânica de alta precisão. Nossa IA rastreia 17 pontos articulares frame a frame — sem câmeras especiais, sem sensores, sem marcadores no corpo.',
+                  detalhe: 'Pose Estimation · YOLO · 120 FPS',
+                  cor: '#4B7BF5',
+                },
+                {
+                  num: '02',
+                  tag: 'Fisiologia',
+                  titulo: 'Cinética do Lactato',
+                  desc: 'O padrão-ouro da fisiologia do exercício. Identificamos LT1 e LT2 com coleta capilar real — a métrica definitiva para prescrição de zonas de treino e controle de intensidade.',
+                  detalhe: 'LT1 · LT2 · MLSS · OBLA',
+                  cor: '#7BA7E8',
+                },
+                {
+                  num: '03',
+                  tag: 'Metabolômica',
+                  titulo: 'Assinatura Molecular',
+                  desc: '200+ metabólitos que revelam o que nenhum exame convencional enxerga. Eficiência mitocondrial, status imunológico e marcadores de overtraining antes dos sintomas aparecerem.',
+                  detalhe: '200+ Metabólitos · Perfil Celular',
+                  cor: '#22d3ee',
+                },
+              ].map((p, i) => (
+                <div key={i} className="rounded-3xl p-8 flex flex-col gap-4 relative overflow-hidden"
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                  <div className="flex items-start justify-between">
+                    <span className="font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full"
+                      style={{ background: `${p.cor}15`, border: `1px solid ${p.cor}30`, color: p.cor }}>
+                      {p.tag}
+                    </span>
+                    <span className="font-mono text-[11px] font-bold" style={{ color: 'rgba(255,255,255,0.1)' }}>
+                      {p.num}
+                    </span>
+                  </div>
+                  <h3 className="font-sans font-bold text-xl text-white">{p.titulo}</h3>
+                  <p className="text-sm text-white/45 leading-relaxed flex-1">{p.desc}</p>
+                  <div className="pt-4 mt-auto" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                    <span className="font-mono text-[10px] tracking-widest" style={{ color: p.cor, opacity: 0.7 }}>
+                      {p.detalhe}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5"
+                    style={{ background: `linear-gradient(90deg, ${p.cor}60, transparent)` }} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -366,6 +542,21 @@ export default function Home() {
 
       {/* ─── WAITLIST ─── */}
       <Waitlist />
+
+      {/* ─── FAQ ─── */}
+      <section className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+        <div className="max-w-[800px] mx-auto">
+          <div className="mb-16">
+            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Dúvidas frequentes</span>
+            <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
+              Perguntas{' '}
+              <span className="font-bold" style={{ color: '#4B7BF5' }}>frequentes.</span>
+            </h2>
+          </div>
+
+          <FaqSection />
+        </div>
+      </section>
 
       <Footer />
     </div>
