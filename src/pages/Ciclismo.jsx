@@ -271,7 +271,7 @@ export default function Ciclismo() {
           </div>
           <>
             {/* Mobile: lista */}
-            <div className="flex flex-col md:hidden">
+            <div className="flex flex-col sm:hidden">
               {diferenciais.map((d, i) => (
                 <div key={i} className="flex gap-4 items-start py-5"
                   style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
@@ -286,7 +286,7 @@ export default function Ciclismo() {
             </div>
 
             {/* Desktop: cards originais */}
-            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {diferenciais.map((d, i) => (
                 <div key={i} className="dif-card rounded-3xl p-8 flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300"
                   style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>

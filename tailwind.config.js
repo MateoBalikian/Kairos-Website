@@ -28,6 +28,9 @@ export default {
         '4xl': '2rem',
         '5xl': '3rem',
       },
+      screens: {
+        'xs': '480px',
+      },
     },
   },
   plugins: [],
