@@ -121,7 +121,7 @@ export default function Ciclismo() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-[100dvh] bg-[#0A0A0A]">
       <Navbar forceDark hideLinks />
 
       {/* ─── HERO — SPLIT COM PAINEL DE DADOS ─── */}

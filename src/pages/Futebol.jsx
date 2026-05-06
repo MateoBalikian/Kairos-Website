@@ -214,11 +214,11 @@ export default function Futebol() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-[100dvh] bg-[#0A0A0A]">
       <Navbar forceDark hideLinks />
 
       {/* HERO */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden bg-black">
+      <section ref={heroRef} className="relative min-h-[100dvh] overflow-hidden bg-black">
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover"
           src={mediaUrl('dois.mp4')} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%)' }} />

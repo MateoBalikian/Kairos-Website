@@ -117,7 +117,7 @@ export default function Ciclismo() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen min-h-[100dvh] bg-[#0A0A0A]">
       <Navbar forceDark hideLinks />
 
       {/* ─── HERO — SPLIT COM PAINEL DE DADOS ─── */}
@@ -269,41 +269,23 @@ export default function Ciclismo() {
               Combinamos análise biomecânica por IA com avaliações fisiológicas de laboratório. Dois dados que sozinhos não explicam nada — juntos, mudam tudo.
             </p>
           </div>
-          <>
-            {/* Mobile: lista */}
-            <div className="flex flex-col sm:hidden">
-              {diferenciais.map((d, i) => (
-                <div key={i} className="flex gap-4 items-start py-5"
-                  style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-                  <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: d.cor }} />
-                  <div>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mb-1" style={{ color: d.cor }}>{d.tag}</p>
-                    <p className="font-sans font-bold text-base mb-1" style={{ color: 'white' }}>{d.titulo}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{d.desc}</p>
-                  </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {diferenciais.map((d, i) => (
+              <div key={i} className="dif-card rounded-3xl p-8 flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300"
+                style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
+                <div className="flex items-start justify-between">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${d.cor}12`, color: d.cor }}>{d.icon}</div>
+                  <span className="font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    style={{ background: `${d.cor}12`, border: `1px solid ${d.cor}30`, color: d.cor }}>{d.tag}</span>
                 </div>
-              ))}
-            </div>
-
-            {/* Desktop: cards originais */}
-            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {diferenciais.map((d, i) => (
-                <div key={i} className="dif-card rounded-3xl p-8 flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300"
-                  style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
-                  <div className="flex items-start justify-between">
-                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: `${d.cor}12`, color: d.cor }}>{d.icon}</div>
-                    <span className="font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full"
-                      style={{ background: `${d.cor}12`, border: `1px solid ${d.cor}30`, color: d.cor }}>{d.tag}</span>
-                  </div>
-                  <div>
-                    <h3 className="font-sans font-bold text-xl mb-2" style={{ color: '#0A0A0A' }}>{d.titulo}</h3>
-                    <p className="text-sm leading-relaxed" style={{ color: '#4A4A47' }}>{d.desc}</p>
-                  </div>
+                <div>
+                  <h3 className="font-sans font-bold text-xl mb-2" style={{ color: '#0A0A0A' }}>{d.titulo}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#4A4A47' }}>{d.desc}</p>
                 </div>
-              ))}
-            </div>
-          </>
+              </div>
+            ))}
+          </div>
           <div className="mt-6 rounded-3xl px-8 py-6 flex flex-col lg:flex-row items-center justify-between gap-4"
             style={{ background: '#0A0A0A' }}>
             <p className="font-sans font-bold text-xl lg:text-2xl text-white text-center lg:text-left">

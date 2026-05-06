@@ -174,11 +174,11 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-[100dvh] bg-[#0A0A0A]">
       <Navbar />
 
       {/* ─── HERO ─── */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden bg-black">
+      <section ref={heroRef} className="relative min-h-[100dvh] overflow-hidden bg-black">
         <video autoPlay muted loop playsInline
           className="absolute inset-0 w-full h-full object-cover"
           src={mediaUrl('heromidia.mp4')} />

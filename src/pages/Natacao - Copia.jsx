@@ -177,11 +177,11 @@ export default function Natacao() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-[100dvh] bg-[#0A0A0A]">
       <Navbar forceDark hideLinks />
 
       {/* ─── HERO ─── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden"
+      <section ref={heroRef} className="relative min-h-[100dvh] flex items-center overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #0A0A0A 0%, #0d1a2e 50%, #0A0A0A 100%)' }}>
 
         {/* Decoração de fundo */}
@@ -192,7 +192,7 @@ export default function Natacao() {
             style={{ background: 'radial-gradient(circle, #7BA7E8 0%, transparent 70%)' }} />
         </div>
 
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 py-32 lg:py-0">
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 py-16 lg:py-0">
           <div className="max-w-[680px]">
 
             <div className="hi flex items-center gap-3 mb-8">
