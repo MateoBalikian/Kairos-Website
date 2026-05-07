@@ -98,7 +98,7 @@ const avaliacoes = [
     ],
     comoFazemos: 'Upload de vídeo em esteira ou outdoor. O algoritmo Veltron rastreia 17 pontos articulares frame a frame e gera relatório com índices de eficiência e alertas técnicos.',
     grafico: null,
-    cor: '#22d3ee',
+    cor: '#4B7BF5',
   },
   {
     tag: 'Fisiologia',
@@ -224,11 +224,11 @@ export default function Corrida() {
               <ArrowLeft size={14} /> Veltron
             </Link>
             <span className="text-white/20">·</span>
-            <span className="font-mono text-xs text-[#22d3ee] uppercase tracking-widest">Running Elite: Vision IA &amp; Metatreadmill</span>
+            <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">Running Elite: Vision IA &amp; Metatreadmill</span>
           </div>
           <h1 className="hi font-sans font-bold text-white" style={{ fontSize: 'clamp(2.2rem,5vw,4.5rem)', lineHeight: 1.05 }}>
             A Ciência da<br />
-            <span style={{ background: 'linear-gradient(90deg, #22d3ee, #4B7BF5)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Economia de Corrida</span>
+            <span style={{ color: '#4B7BF5' }}>Economia de Corrida</span>
           </h1>
           <p className="hi mt-5 text-white/70 leading-relaxed" style={{ fontSize: 'clamp(1rem,1.5vw,1.15rem)', maxWidth: 520 }}>
             A única plataforma que correlaciona Cinemetria em Tempo Real com Cinética do Lactato para identificar o colapso técnico sob fadiga.
@@ -264,7 +264,6 @@ export default function Corrida() {
             <div className="flex flex-col gap-2 flex-shrink-0">
               {[
                 'Pace por GPS',
-                'VO₂ estimado por app',
                 'Cadência por relógio',
               ].map(c => (
                 <div key={c} className="flex items-center gap-2">
@@ -373,7 +372,7 @@ export default function Corrida() {
               <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Visão Computacional</span>
               <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-6">
                 Cada articulação,{' '}
-                <span className="font-bold" style={{ color: '#22d3ee' }}>frame a frame.</span>
+                <span className="font-bold" style={{ color: '#4B7BF5' }}>frame a frame.</span>
               </h2>
               <p className="text-white/50 text-sm leading-relaxed mb-6">
                 O algoritmo Veltron rastreia 17 pontos articulares em tempo real.
@@ -388,7 +387,7 @@ export default function Corrida() {
                   'Relatório gerado automaticamente após o upload do vídeo',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-white/60">
-                    <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#22d3ee' }} />
+                    <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#4B7BF5' }} />
                     {item}
                   </li>
                 ))}
@@ -433,54 +432,145 @@ export default function Corrida() {
         </div>
       </section>
 
+      {/* ─── CORE ENGINE AI ─── */}
+      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
+              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+                Core Engine AI —{' '}
+                <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
+              </h2>
+              <p className="text-white/50 text-base leading-relaxed mb-8">
+                Uma inteligência artificial desenvolvida para cruzar biomecânica, limiar de lactato e metabolômica simultaneamente. Não entrega dados isolados — entrega o diagnóstico completo do corredor em um único laudo.
+              </p>
+              <div className="flex flex-col gap-4">
+                {[
+                  { titulo: 'Cruza os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
+                  { titulo: 'Interpreta padrões', desc: 'Identifica em qual velocidade o colapso técnico e o aumento de lactato se encontram.' },
+                  { titulo: 'Gera o diagnóstico', desc: 'Aponta o ponto exato onde sua economia de corrida colapsa — e o que fazer para mudar isso.' },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: 'rgba(75,123,245,0.15)' }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2.5" strokeLinecap="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-sans font-bold text-sm text-white mb-1">{item.titulo}</p>
+                      <p className="text-sm text-white/45 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-3xl p-8 flex flex-col gap-4" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div className="flex flex-col gap-3">
+                {[
+                  { tag: 'Biomecânica', titulo: 'Pose Estimation', cor: '#4B7BF5' },
+                  { tag: 'Fisiologia', titulo: 'Limiar de Lactato', cor: '#4B7BF5' },
+                  { tag: 'Metabolômica', titulo: 'Assinatura Molecular', cor: '#4B7BF5' },
+                ].map((item, i) => (
+                  <div key={i}>
+                    <div className="flex items-center gap-4 rounded-2xl px-5 py-4"
+                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                      <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: item.cor }} />
+                      <div className="flex-1">
+                        <p className="text-xs text-white/35 mb-0.5">{item.tag}</p>
+                        <p className="text-sm font-semibold text-white">{item.titulo}</p>
+                      </div>
+                    </div>
+                    {i < 2 && (
+                      <div className="flex justify-center py-1">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(75,123,245,0.4)" strokeWidth="2" strokeLinecap="round">
+                          <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+              <div className="flex items-center gap-3 px-2">
+                <div className="flex-1 h-px" style={{ background: 'rgba(75,123,245,0.3)' }} />
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                </svg>
+                <div className="flex-1 h-px" style={{ background: 'rgba(75,123,245,0.3)' }} />
+              </div>
+              <div className="rounded-2xl px-5 py-5 flex items-center gap-4" style={{ background: '#4B7BF5' }}>
+                <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'rgba(255,255,255,0.2)' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+                    <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/>
+                    <path d="M12 6v6l4 2"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs text-white/70 mb-0.5">Inteligência Artificial</p>
+                  <p className="font-bold text-white text-base">Core Engine AI</p>
+                </div>
+                <div className="ml-auto">
+                  <p className="text-xs text-white/60 text-right">Diagnóstico</p>
+                  <p className="text-sm font-bold text-white text-right">Integrado</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* COMO FUNCIONA */}
       <section className="py-24 lg:py-32 px-6" style={{ background: '#080808' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-20">
-            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">O processo</span>
+            <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O processo</span>
             <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
               Do vídeo ao diagnóstico{' '}
-              <span className="font-bold" style={{ color: '#22d3ee' }}>em 3 passos.</span>
+              <span className="font-bold" style={{ color: '#4B7BF5' }}>em 3 passos.</span>
             </h2>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6 relative">
             {/* Linha conectora desktop */}
             <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
-              style={{ background: 'linear-gradient(90deg, rgba(34,211,238,0.4), rgba(75,123,245,0.4))' }} />
+              style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.4), rgba(75,123,245,0.4))' }} />
 
             {[
               {
                 step: '01',
-                icon: '📹',
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>),
                 titulo: 'Envie o vídeo',
                 descricao: 'Grave seu treino em esteira ou outdoor com qualquer celular. Sem câmeras especiais, sem marcadores no corpo.',
-                cor: '#22d3ee',
+                cor: '#4B7BF5',
               },
               {
                 step: '02',
-                icon: '🧬',
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>),
                 titulo: 'Avaliação presencial',
-                descricao: 'Na Veltron, realizamos os protocolos fisiológicos: coleta de lactato, VO₂máx e metabolômica. Conduzido por pesquisadores.',
+                descricao: 'Na Veltron, realizamos os protocolos fisiológicos: coleta de lactato e metabolômica. Conduzido por pesquisadores.',
                 cor: '#4B7BF5',
               },
               {
                 step: '03',
-                icon: '📊',
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>),
                 titulo: 'Diagnóstico integrado',
                 descricao: 'Você recebe um laudo completo: biomecânica + fisiologia unidos em um único relatório com recomendações individualizadas.',
-                cor: '#7BA7E8',
+                cor: '#4B7BF5',
               },
             ].map((item, i) => (
               <div key={i} className="rounded-3xl p-8 flex flex-col gap-5 relative"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 {/* Número do passo */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-widest"
-                    style={{ color: item.cor }}>
-                    PASSO {item.step}
+                  <span className="font-sans font-bold text-2xl" style={{ color: item.cor }}>
+                    {item.step}
                   </span>
-                  <span className="text-2xl">{item.icon}</span>
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'rgba(75,123,245,0.1)', color: '#4B7BF5' }}>
+                    {item.icon}
+                  </div>
                 </div>
                 <div>
                   <h3 className="font-sans font-bold text-xl text-white mb-3">{item.titulo}</h3>
@@ -495,10 +585,10 @@ export default function Corrida() {
 
           {/* Resultado final */}
           <div className="mt-8 rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6"
-            style={{ background: 'rgba(34,211,238,0.04)', border: '1px solid rgba(34,211,238,0.12)' }}>
+            style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(34,211,238,0.1)' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" strokeWidth="2" strokeLinecap="round">
+              style={{ background: 'rgba(75,123,245,0.1)' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>

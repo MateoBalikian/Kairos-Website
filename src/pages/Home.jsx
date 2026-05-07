@@ -25,7 +25,7 @@ const modalidades = [
     slug: 'ciclismo',
     label: 'Ciclismo',
     tag: 'Sport Tech',
-    desc: 'Bike fit biomecânico + potência anaeróbica + perfil metabólico completo.',
+    desc: 'Bike fit biomecânico + limiar de lactato + perfil metabólico completo.',
     img: mediaUrl('henrique.mp4'),
     isVideo: true,
     color: '#7BA7E8',
@@ -34,7 +34,7 @@ const modalidades = [
     slug: 'natacao',
     label: 'Natação',
     tag: 'Sport Tech',
-    desc: 'Análise de braçada por pose estimation + VO₂máx + metabolômica.',
+    desc: 'Análise de braçada por pose estimation + metabolômica.',
     img: mediaUrl('nado_web.mp4'),
     isVideo: true,
     color: '#4B7BF5',
@@ -43,28 +43,28 @@ const modalidades = [
 
 const diferenciais = [
   {
-    tag: 'CAPTURA',
-    titulo: 'Qualquer celular',
-    desc: 'Transforme qualquer smartphone em um laboratório de biomecânica. Sem câmeras especiais, sem sensores, sem equipamentos caros.',
+    tag: 'BIOMECÂNICA',
+    titulo: 'Pose Estimation',
+    desc: 'Nossa IA rastreia 17 pontos articulares em tempo real, sem marcadores no corpo. Oscilação, assimetria e alinhamento — visíveis frame a frame.',
     cor: '#4B7BF5',
   },
   {
-    tag: 'INTELIGÊNCIA ARTIFICIAL',
-    titulo: 'Análise em tempo real',
-    desc: 'Nossa IA identifica articulações e membros automaticamente, convertendo vídeos comuns em dados biomecânicos de precisão.',
-    cor: '#7BA7E8',
-  },
-  {
     tag: 'FISIOLOGIA',
-    titulo: 'Cinética do Lactato',
-    desc: 'O padrão-ouro da fisiologia do exercício. Identificamos LT1 e LT2 com precisão laboratorial — a métrica definitiva de intensidade.',
+    titulo: 'Limiar de Lactato',
+    desc: 'O padrão-ouro da fisiologia do exercício. Identificamos LT1 e LT2 com coleta capilar real — a métrica definitiva para prescrição de zonas de treino.',
     cor: '#4B7BF5',
   },
   {
     tag: 'METABOLÔMICA',
     titulo: 'Assinatura Molecular',
     desc: '200+ metabólitos que revelam o que nenhum exame convencional enxerga — recuperação, adaptação e deficiências invisíveis.',
-    cor: '#7BA7E8',
+    cor: '#4B7BF5',
+  },
+  {
+    tag: 'INTELIGÊNCIA ARTIFICIAL',
+    titulo: 'Core Engine AI',
+    desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. O ponto onde os 3 se tornam 1.',
+    cor: '#4B7BF5',
   },
 ]
 
@@ -76,7 +76,7 @@ function FaqSection() {
   const faqs = [
     {
       q: 'Preciso de algum equipamento especial para fazer a análise?',
-      a: 'Não. Para a análise biomecânica basta gravar um vídeo com qualquer smartphone — sem câmeras especiais, sem sensores e sem marcadores no corpo. Para as avaliações fisiológicas (VO₂máx, curva de lactato e metabolômica), você comparece presencialmente na Veltron em Maceió.',
+      a: 'Não. Para a análise biomecânica basta gravar um vídeo com qualquer smartphone — sem câmeras especiais, sem sensores e sem marcadores no corpo. Para as avaliações fisiológicas (curva de lactato e metabolômica), você comparece presencialmente na Veltron em Maceió.',
     },
     {
       q: 'Quanto tempo leva para receber o diagnóstico?',
@@ -113,7 +113,7 @@ function FaqSection() {
               style={{ background: open === i ? 'rgba(75,123,245,0.15)' : 'rgba(255,255,255,0.05)', transition: 'background 0.3s ease' }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={open === i ? '#4B7BF5' : 'rgba(255,255,255,0.4)'} strokeWidth="2.5" strokeLinecap="round"
                 style={{ transform: open === i ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease, stroke 0.3s ease' }}>
-                <polyline points="6 9 12 15 18 9"/>
+                <polyline points="6 9 12 15 18 9" />
               </svg>
             </div>
           </div>
@@ -195,15 +195,15 @@ export default function Home() {
           }}>
 
           <div className="hi">
-            <span className="font-mono text-xs text-white/40 uppercase tracking-widest">
+            <span className="font-sans text-xs text-white/40 uppercase tracking-widest">
               Deep Tech · Ciência do Esporte · Maceió, AL
             </span>
           </div>
 
           <h1 className="hi font-sans font-bold text-white mt-4"
             style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', lineHeight: 1.05 }}>
-            O fim do treino<br />
-            <span style={{ color: '#4B7BF5' }}>às cegas.</span>
+            Transformando movimento em<br />
+            <span style={{ color: '#4B7BF5' }}>inteligência competitiva.</span>
           </h1>
 
           <p className="hi mt-5 text-white/65 leading-relaxed"
@@ -212,9 +212,9 @@ export default function Home() {
           </p>
 
           <div className="hi flex flex-wrap gap-2 mt-5">
-            {['VO₂máx', 'Limiar de Lactato', 'Metabolômica', 'Rastreamento por IA', 'Veltron'].map(t => (
+            {['Limiar de Lactato', 'Metabolômica', 'Rastreamento por IA', 'Veltron'].map(t => (
               <span key={t}
-                className="font-mono text-[11px] text-white/50 border border-white/12 rounded-full px-3 py-1"
+                className="font-sans text-[11px] text-white/50 border border-white/12 rounded-full px-3 py-1"
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>
                 {t}
               </span>
@@ -242,7 +242,7 @@ export default function Home() {
       <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-20">
-            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Como funciona</span>
+            <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Como funciona</span>
             <h2 className="font-sans font-light text-3xl lg:text-5xl text-white tracking-tight mt-3">
               Simples assim.{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>3 passos.</span>
@@ -256,21 +256,21 @@ export default function Home() {
             {[
               {
                 step: '01',
-                emoji: '📱',
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>),
                 titulo: 'Grave com qualquer celular',
                 descricao: 'Sem câmeras especiais. Sem sensores. Sem equipamentos caros. Seu smartphone já é suficiente — em esteira, piscina, bike ou pista.',
                 cor: '#4B7BF5',
               },
               {
                 step: '02',
-                emoji: '☁️',
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>),
                 titulo: 'Envie para a Veltron',
                 descricao: 'Upload simples pela nossa plataforma. Nossa equipe recebe, processa e integra com os dados fisiológicos da sua avaliação presencial.',
-                cor: '#7BA7E8',
+                cor: '#4B7BF5',
               },
               {
                 step: '03',
-                emoji: '📊',
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>),
                 titulo: 'Receba seu diagnóstico',
                 descricao: 'Um laudo completo: biomecânica + fisiologia + metabolômica. Dados reais sobre como seu corpo se move e o que ele consome para fazer isso.',
                 cor: '#4B7BF5',
@@ -279,11 +279,13 @@ export default function Home() {
               <div key={i} className="rounded-3xl p-8 flex flex-col gap-5"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-widest"
-                    style={{ color: item.cor }}>
-                    PASSO {item.step}
+                  <span className="font-sans font-bold text-2xl" style={{ color: item.cor }}>
+                    {item.step}
                   </span>
-                  <span className="text-2xl">{item.emoji}</span>
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'rgba(75,123,245,0.1)', color: '#4B7BF5' }}>
+                    {item.icon}
+                  </div>
                 </div>
                 <div>
                   <h3 className="font-sans font-bold text-xl text-white mb-3">{item.titulo}</h3>
@@ -300,7 +302,7 @@ export default function Home() {
             <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: 'rgba(75,123,245,0.1)' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                <polyline points="20 6 9 17 4 12"/>
+                <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
             <div>
@@ -319,7 +321,7 @@ export default function Home() {
 
           {/* Header */}
           <div className="max-w-3xl mb-16">
-            <span className="font-mono text-xs text-[#0A2463] uppercase tracking-widest">
+            <span className="font-sans text-xs text-[#0A2463] uppercase tracking-widest">
               Por que a Veltron
             </span>
             <h2 className="font-sans mt-3 leading-tight"
@@ -339,11 +341,13 @@ export default function Home() {
               <div key={i} className="dif-item rounded-3xl p-7 flex flex-col gap-4"
                 style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
                 <span
-                  className="font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full inline-block mb-4"
+                  className="font-sans text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full inline-block mb-4"
                   style={{
-                    background: `${d.cor}15`,
-                    border: `1px solid ${d.cor}40`,
-                    color: d.cor,
+                    background: d.cor,
+                    border: `1px solid ${d.cor}`,
+                    color: 'white',
+                    fontSize: '10px',
+                    fontFamily: 'sans-serif',
                   }}>
                   {d.tag}
                 </span>
@@ -418,7 +422,7 @@ export default function Home() {
                 {/* Conteúdo */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    <span className="font-sans text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full"
                       style={{
                         background: `${mod.color}20`,
                         border: `1px solid ${mod.color}40`,
@@ -449,89 +453,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── CREDIBILIDADE ─── */}
-      <section style={{ background: '#0A0A0A' }} className="py-20 px-6">
+      {/* ─── CORE ENGINE AI ─── */}
+      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-            <div className="max-w-md">
-              <span className="font-mono text-xs text-white/40 uppercase tracking-widest">
-                Padrão-ouro
-              </span>
-              <h2 className="font-sans font-bold text-2xl lg:text-3xl text-white mt-3 leading-snug">
-                Precisão de laboratório.<br />
-                <span style={{ color: '#7BA7E8' }}>No campo e na pista.</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
+              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+                Core Engine AI —{' '}
+                <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed mt-3">
-                Cada métrica validada pelo padrão-ouro da fisiologia do exercício. Do laboratório ao diagnóstico.
+              <p className="text-white/50 text-base leading-relaxed mb-8">
+                Uma inteligência artificial desenvolvida para cruzar biomecânica, limiar de lactato e metabolômica simultaneamente. Não entrega dados isolados — entrega o diagnóstico completo do atleta em um único laudo.
               </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-end">
-              {institutos.map((inst, i) => (
-                <div key={i}
-                  className="rounded-2xl px-5 py-3 font-mono text-sm font-medium"
-                  style={{
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: 'rgba(255,255,255,0.7)',
-                  }}>
-                  {inst}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-12 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              {[
-                {
-                  num: '01',
-                  tag: 'Visão Computacional',
-                  titulo: 'Captura Simplificada',
-                  desc: 'Transforme qualquer smartphone em um laboratório de biomecânica de alta precisão. Nossa IA rastreia 17 pontos articulares frame a frame — sem câmeras especiais, sem sensores, sem marcadores no corpo.',
-                  detalhe: 'Pose Estimation · YOLO · 120 FPS',
-                  cor: '#4B7BF5',
-                },
-                {
-                  num: '02',
-                  tag: 'Fisiologia',
-                  titulo: 'Cinética do Lactato',
-                  desc: 'O padrão-ouro da fisiologia do exercício. Identificamos LT1 e LT2 com coleta capilar real — a métrica definitiva para prescrição de zonas de treino e controle de intensidade.',
-                  detalhe: 'LT1 · LT2 · MLSS · OBLA',
-                  cor: '#7BA7E8',
-                },
-                {
-                  num: '03',
-                  tag: 'Metabolômica',
-                  titulo: 'Assinatura Molecular',
-                  desc: '200+ metabólitos que revelam o que nenhum exame convencional enxerga. Eficiência mitocondrial, status imunológico e marcadores de overtraining antes dos sintomas aparecerem.',
-                  detalhe: '200+ Metabólitos · Perfil Celular',
-                  cor: '#22d3ee',
-                },
-              ].map((p, i) => (
-                <div key={i} className="rounded-3xl p-8 flex flex-col gap-4 relative overflow-hidden"
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                  <div className="flex items-start justify-between">
-                    <span className="font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full"
-                      style={{ background: `${p.cor}15`, border: `1px solid ${p.cor}30`, color: p.cor }}>
-                      {p.tag}
-                    </span>
-                    <span className="font-mono text-[11px] font-bold" style={{ color: 'rgba(255,255,255,0.1)' }}>
-                      {p.num}
-                    </span>
+              <div className="flex flex-col gap-4">
+                {[
+                  { titulo: 'Cruza os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
+                  { titulo: 'Interpreta padrões', desc: 'Identifica correlações invisíveis à análise humana isolada de cada dado.' },
+                  { titulo: 'Gera o diagnóstico', desc: 'Aponta o ponto exato onde a técnica colapsa e o que fazer para mudar isso.' },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: 'rgba(75,123,245,0.15)' }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2.5" strokeLinecap="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-sans font-bold text-sm text-white mb-1">{item.titulo}</p>
+                      <p className="text-sm text-white/45 leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="font-sans font-bold text-xl text-white">{p.titulo}</h3>
-                  <p className="text-sm text-white/45 leading-relaxed flex-1">{p.desc}</p>
-                  <div className="pt-4 mt-auto" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                    <span className="font-mono text-[10px] tracking-widest" style={{ color: p.cor, opacity: 0.7 }}>
-                      {p.detalhe}
-                    </span>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-3xl p-8 flex flex-col gap-4" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div className="flex flex-col gap-3">
+                {[
+                  { tag: 'Biomecânica', titulo: 'Pose Estimation', cor: '#4B7BF5' },
+                  { tag: 'Fisiologia', titulo: 'Limiar de Lactato', cor: '#4B7BF5' },
+                  { tag: 'Metabolômica', titulo: 'Assinatura Molecular', cor: '#4B7BF5' },
+                ].map((item, i) => (
+                  <div key={i}>
+                    <div className="flex items-center gap-4 rounded-2xl px-5 py-4"
+                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                      <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: item.cor }} />
+                      <div className="flex-1">
+                        <p className="text-xs text-white/35 mb-0.5">{item.tag}</p>
+                        <p className="text-sm font-semibold text-white">{item.titulo}</p>
+                      </div>
+                    </div>
+                    {i < 2 && (
+                      <div className="flex justify-center py-1">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(75,123,245,0.4)" strokeWidth="2" strokeLinecap="round">
+                          <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                        </svg>
+                      </div>
+                    )}
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5"
-                    style={{ background: `linear-gradient(90deg, ${p.cor}60, transparent)` }} />
+                ))}
+              </div>
+              <div className="flex items-center gap-3 px-2">
+                <div className="flex-1 h-px" style={{ background: 'rgba(75,123,245,0.3)' }} />
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                </svg>
+                <div className="flex-1 h-px" style={{ background: 'rgba(75,123,245,0.3)' }} />
+              </div>
+              <div className="rounded-2xl px-5 py-5 flex items-center gap-4" style={{ background: '#4B7BF5' }}>
+                <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'rgba(255,255,255,0.2)' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+                    <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/>
+                    <path d="M12 6v6l4 2"/>
+                  </svg>
                 </div>
-              ))}
+                <div>
+                  <p className="text-xs text-white/70 mb-0.5">Inteligência Artificial</p>
+                  <p className="font-bold text-white text-base">Core Engine AI</p>
+                </div>
+                <div className="ml-auto">
+                  <p className="text-xs text-white/60 text-right">Diagnóstico</p>
+                  <p className="text-sm font-bold text-white text-right">Integrado</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -547,7 +552,7 @@ export default function Home() {
       <section className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[800px] mx-auto">
           <div className="mb-16">
-            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Dúvidas frequentes</span>
+            <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Dúvidas frequentes</span>
             <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
               Perguntas{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>frequentes.</span>

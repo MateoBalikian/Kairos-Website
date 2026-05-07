@@ -85,22 +85,6 @@ function GraficoMetabolomica() {
 
 const avaliacoes = [
   {
-    tag: 'Capacidade Aeróbica',
-    titulo: 'VO2max',
-    subtitulo: 'O teto aerobico de cada jogador',
-    problema: 'Seu jogador trava nos ultimos 20 minutos. Sem VO2max, voce nunca vai saber se e falta de preparo, de estrategia ou de recuperacao.',
-    oQueMede: 'O volume maximo de oxigenio que o sistema cardiovascular consegue entregar aos musculos em esforco maximo. E o numero que separa jogadores que aceleram no segundo tempo dos que travam.',
-    oQueRevela: [
-      'Quem tem capacidade aerobica para sustentar alta intensidade nos 90 minutos',
-      'Zonas de treino individuais precisas - sem achismo',
-      'Potencial aerobico nao desenvolvido em jogadores subutilizados',
-      'Comparativo entre posicoes: quem precisa de mais base aerobica',
-    ],
-    comoFazemos: 'Ergoespirometria com mascara de captacao de gases na Veltron. Protocolo incremental em esteira ou cicloergometro, conduzido por pesquisadores com publicacoes cientificas.',
-    grafico: null,
-    cor: '#4B7BF5',
-  },
-  {
     tag: 'Limiar de Fadiga',
     titulo: 'Limiar de Lactato',
     subtitulo: 'A intensidade exata onde a fadiga comeca',
@@ -115,22 +99,6 @@ const avaliacoes = [
     comoFazemos: 'Protocolo incremental com coletas de sangue capilar a cada estagio. Analise da cinetica do lactato com identificacao de LT1, LT2/MLSS. Conduzido na Veltron.',
     grafico: 'lactato',
     cor: '#7BA7E8',
-  },
-  {
-    tag: 'Potencia Explosiva',
-    titulo: 'Teste de Wingate',
-    subtitulo: 'A potencia anaerobica maxima em 30 segundos',
-    problema: 'Dois atacantes com o mesmo sprint de 30m. Qual deles vai ganhar o duelo na area apos 80 minutos de jogo? Sem Wingate, e chute.',
-    oQueMede: 'A capacidade de gerar potencia maxima em esforco anaerobico curto e intenso - o tipo de esforco que decide disputas de bola, arrancadas, saltos e recuperacoes defensivas.',
-    oQueRevela: [
-      'Potencia de pico - capacidade explosiva maxima de cada jogador',
-      'Indice de fadiga - quem mantem a explosividade no fim do jogo',
-      'Perfil de potencia por posicao: atacantes, laterais, volantes',
-      'Resposta ao treinamento de forca e potencia ao longo da temporada',
-    ],
-    comoFazemos: 'Cicloergometro Monark com resistencia maxima por 30 segundos. Software de analise em tempo real. Protocolo padrao com warm-up e cooldown supervisionados.',
-    grafico: null,
-    cor: '#4B7BF5',
   },
   {
     tag: '200+ Metabolitos · RMN',
@@ -238,7 +206,7 @@ export default function Futebol() {
             GPS mostra distancia e velocidade. A Veltron mostra o que esta dentro do atleta - capacidade aerobica, limiar de fadiga, estado metabolico real - integrados com rastreamento por IA.
           </p>
           <div className="hi flex flex-wrap gap-2 mt-5">
-            {['VO2max', 'Limiar de Lactato', 'Wingate', 'Metabolômica', 'Rastreamento por IA'].map(t => (
+            {['Limiar de Lactato', 'Metabolômica', 'Rastreamento por IA'].map(t => (
               <span key={t} className="font-mono text-[11px] text-white/50 border border-white/15 rounded-full px-3 py-1"
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>{t}</span>
             ))}
@@ -317,10 +285,10 @@ export default function Futebol() {
                 </div>
               </div>
               <p className="text-sm text-white/50 leading-relaxed mb-6">
-                Medimos o que está dentro do atleta — capacidade aeróbica, limiar de fadiga, potência anaeróbica e perfil metabólico completo. Dados que o GPS jamais vai capturar.
+                Medimos o que está dentro do atleta — capacidade aeróbica, limiar de fadiga e perfil metabólico completo. Dados que o GPS jamais vai capturar.
               </p>
               <div className="grid grid-cols-2 gap-3">
-                {['VO₂máx', 'Limiar de Lactato', 'Teste de Wingate', 'Metabolômica'].map((item, i) => (
+                {['Limiar de Lactato', 'Metabolômica'].map((item, i) => (
                   <div key={i} className="rounded-2xl px-4 py-3 flex items-center gap-2"
                     style={{ background: 'rgba(123,167,232,0.06)', border: '1px solid rgba(123,167,232,0.12)' }}>
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#7BA7E8' }}/>

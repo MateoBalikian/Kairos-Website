@@ -99,7 +99,7 @@ export default function Philosophy() {
             </div>
             <div>
               <p className="text-white/60 text-base lg:text-lg leading-relaxed">
-                Diagnósticos fisiológicos de precisão — VO₂máx, metabolômica, biomecânica computacional — eram ferramentas exclusivas de grandes centros esportivos e laboratórios de elite. Atletas comuns, times regionais e profissionais de saúde simplesmente não tinham acesso.
+                Diagnósticos fisiológicos de precisão — metabolômica, biomecânica computacional — eram ferramentas exclusivas de grandes centros esportivos e laboratórios de elite. Atletas comuns, times regionais e profissionais de saúde simplesmente não tinham acesso.
               </p>
             </div>
           </div>
@@ -127,7 +127,6 @@ export default function Philosophy() {
               </p>
               <div className="flex flex-wrap gap-8">
                 {[
-                  { val: 'VO₂máx', desc: 'Capacidade aeróbica real' },
                   { val: '99.5%', desc: 'Precisão do modelo preditivo' },
                   { val: 'RMN', desc: '200+ metabólitos analisados' },
                   { val: 'IA', desc: 'Rastreamento frame a frame' },
