@@ -6,6 +6,7 @@ import Natacao from './pages/Natacao'
 import PoseEstimation from './pages/PoseEstimation'
 import Futebol from './pages/Futebol'
 import LimiarLactato from './pages/LimiarLactato'
+import Metabolomica from './pages/Metabolomica'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/pose-estimation" element={<PoseEstimation />} />
         <Route path="/futebol" element={<Futebol />} />
         <Route path="/limiar-de-lactato" element={<LimiarLactato />} />
+        <Route path="/metabolomica" element={<Metabolomica />} />
       </Routes>
     </BrowserRouter>
   )
