@@ -170,7 +170,7 @@ export default function Natacao() {
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-[#0A0A0A]">
-      <Navbar forceDark hideLinks />
+      <Navbar />
 
       {/* ─── HERO ─── */}
       <section ref={heroRef} className="relative min-h-screen min-h-[100dvh] flex items-center overflow-hidden"

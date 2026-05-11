@@ -31,7 +31,7 @@ export default function PoseEstimation() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
-      <Navbar forceDark hideLinks={false} />
+      <Navbar />
 
       {/* ─── HERO ─── */}
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
@@ -52,6 +52,7 @@ export default function PoseEstimation() {
                 Enviou um vídeo. Recebeu um laudo biomecânico completo. Sem câmeras especiais, sem marcadores no corpo — só a câmera do seu celular e nossa IA.
               </p>
               <a href="#enviar" className="pe-hi inline-flex items-center gap-3 hover:opacity-90 transition-opacity"
+                onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#enviar') }}
                 style={{ background: 'white', borderRadius: 99, padding: '14px 28px', color: '#0A0A0A', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none' }}>
                 ENVIE SEU VÍDEO AGORA
                 <span className="inline-flex items-center justify-center w-7 h-7 rounded-full" style={{ background: '#0A0A0A' }}>
@@ -294,6 +295,7 @@ export default function PoseEstimation() {
                 </div>
               </div>
               <a href="#enviar"
+                onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#enviar') }}
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity"
                 style={{ background: '#4B7BF5', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
                 QUERO MINHA ANÁLISE
@@ -353,6 +355,7 @@ export default function PoseEstimation() {
                 </div>
               </div>
               <a href="#enviar"
+                onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#enviar') }}
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity"
                 style={{ background: 'white', borderRadius: 99, padding: '14px 28px', color: '#0A2463', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
                 QUERO MEU ACOMPANHAMENTO

@@ -126,7 +126,7 @@ export default function Ciclismo() {
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-[#0A0A0A]">
-      <Navbar forceDark hideLinks />
+      <Navbar />
 
       {/* ─── HERO — SPLIT COM PAINEL DE DADOS ─── */}
       <section ref={heroRef} className="relative grid grid-cols-1 lg:grid-cols-2 overflow-hidden"
