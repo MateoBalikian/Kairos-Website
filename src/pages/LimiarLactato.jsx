@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function LimiarLactato() {
   const heroRef = useRef(null)
-  const [form, setForm] = useState({ nome: '', email: '', esporte: '', mensagem: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', esporte: '', experiencia: '', jaFezTeste: '', periodo: '', mensagem: '' })
   const [status, setStatus] = useState('idle')
 
   useEffect(() => {
@@ -26,6 +26,19 @@ export default function LimiarLactato() {
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'limiar-de-lactato', created_at: new Date().toISOString() }])
       setStatus('success')
+      const msg = `Olá! Vim pelo site da Veltron 🩸
+
+*Avaliação de Limiar de Lactato*
+
+Nome: ${form.nome}
+WhatsApp: ${form.whatsapp}
+E-mail: ${form.email}
+Esporte: ${form.esporte || 'Não informado'}
+Experiência: ${form.experiencia || 'Não informado'}
+Já fez teste de lactato: ${form.jaFezTeste || 'Não informado'}
+Melhor período: ${form.periodo || 'Não informado'}
+${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
     } catch { setStatus('error') }
   }
 
@@ -459,11 +472,13 @@ export default function LimiarLactato() {
             <div className="rounded-3xl p-10 text-center" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <p className="font-sans font-bold text-white text-xl mb-2">Recebemos sua mensagem!</p>
               <p className="text-white/50 text-sm">Entraremos em contato em breve para agendar sua avaliação.</p>
+              <p className="text-white/50 text-sm">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
             </div>
           ) : (
             <div className="flex flex-col gap-4">
               {[
                 { key: 'nome', label: 'Nome completo', type: 'text', placeholder: 'Seu nome' },
+                { key: 'whatsapp', label: 'WhatsApp', type: 'tel', placeholder: '(82) 99999-9999' },
                 { key: 'email', label: 'E-mail', type: 'email', placeholder: 'seu@email.com' },
               ].map((field) => (
                 <div key={field.key} className="flex flex-col gap-2">
@@ -474,10 +489,10 @@ export default function LimiarLactato() {
                 </div>
               ))}
               <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Esporte</label>
+                <label className="font-sans font-semibold text-sm text-white">Esporte principal</label>
                 <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })}
                   style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione seu esporte</option>
+                  <option value="">Selecione</option>
                   <option value="corrida">Corrida</option>
                   <option value="ciclismo">Ciclismo</option>
                   <option value="natacao">Natação</option>
@@ -486,8 +501,39 @@ export default function LimiarLactato() {
                 </select>
               </div>
               <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Treina há quanto tempo?</label>
+                <select value={form.experiencia} onChange={(e) => setForm({ ...form, experiencia: e.target.value })}
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                  <option value="">Selecione</option>
+                  <option value="menos-1-ano">Menos de 1 ano</option>
+                  <option value="1-3-anos">1-3 anos</option>
+                  <option value="3-5-anos">3-5 anos</option>
+                  <option value="mais-5-anos">Mais de 5 anos</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Já fez teste de lactato antes?</label>
+                <select value={form.jaFezTeste} onChange={(e) => setForm({ ...form, jaFezTeste: e.target.value })}
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                  <option value="">Selecione</option>
+                  <option value="sim">Sim</option>
+                  <option value="nao">Não</option>
+                  <option value="nao-sei">Não sei o que é</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Melhor período pra agendar</label>
+                <select value={form.periodo} onChange={(e) => setForm({ ...form, periodo: e.target.value })}
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                  <option value="">Selecione</option>
+                  <option value="manha">Manhã</option>
+                  <option value="tarde">Tarde</option>
+                  <option value="qualquer">Qualquer um</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
-                <textarea placeholder="Conte um pouco sobre seu objetivo ou dúvida..." value={form.mensagem}
+                <textarea placeholder="Algo mais que queira nos dizer..." value={form.mensagem}
                   onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
                   style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)', resize: 'none' }} />
               </div>

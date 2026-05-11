@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { mediaUrl, saveLead } from '../lib/supabase'
+import { mediaUrl, supabase } from '../lib/supabase'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -96,9 +96,8 @@ export default function Natacao() {
   const statsRef = useRef(null)
   const btnRef = useRef(null)
   const [statsStarted, setStatsStarted] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [formData, setFormData] = useState({ nome: '', email: '', telefone: '', profile: '', message: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', plano: '', objetivo: '', mensagem: '' })
+  const [status, setStatus] = useState('idle')
 
   const v1 = useCounter(1000, 2000, statsStarted)
   const v2 = useCounter(7, 2000, statsStarted)
@@ -582,7 +581,7 @@ export default function Natacao() {
           <p className="text-white/45 text-sm leading-relaxed mb-10">
             Implemente a análise Veltron e substitua a percepção subjetiva pela certeza biomecânica e metabólica.
           </p>
-          {submitted ? (
+          {status === 'success' ? (
             <div className="rounded-3xl p-8 text-left" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div className="text-center py-12">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
@@ -593,84 +592,67 @@ export default function Natacao() {
                 </div>
                 <h3 className="font-sans font-bold text-xl text-white mb-2">Mensagem enviada!</h3>
                 <p className="text-sm text-white/50">Nossa equipe entrará em contato em breve.</p>
+                <p className="text-white/50 text-sm mt-2">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
               </div>
             </div>
           ) : (
             <div className="rounded-3xl p-8 text-left"
               style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-              <div className="space-y-4">
-                <div>
-                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
-                    style={{ color: 'rgba(255,255,255,0.35)' }}>Nome completo</label>
-                  <input type="text" placeholder="Seu nome"
-                    value={formData.nome}
-                    onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
-                </div>
-                <div>
-                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
-                    style={{ color: 'rgba(255,255,255,0.35)' }}>E-mail</label>
-                  <input type="email" placeholder="seu@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
-                </div>
-                <div>
-                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
-                    style={{ color: 'rgba(255,255,255,0.35)' }}>Telefone / WhatsApp</label>
-                  <input type="tel" placeholder="Seu telefone ou WhatsApp"
-                    value={formData.telefone}
-                    onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
-                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
-                </div>
-                <div>
-                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
-                    style={{ color: 'rgba(255,255,255,0.35)' }}>Perfil</label>
-                  <select
-                    value={formData.profile}
-                    onChange={(e) => setFormData({ ...formData, profile: e.target.value })}
-                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors appearance-none cursor-pointer"
-                    style={{ background: 'rgba(20,20,20,0.8)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }}>
-                    <option value="" style={{ background: '#0A0A0A' }}>Selecione seu perfil</option>
-                    {['Atleta', 'Treinador / Técnico', 'Clube / Federação', 'Profissional de Saúde', 'Outro'].map(p => (
-                      <option key={p} value={p} style={{ background: '#0A0A0A' }}>{p}</option>
-                    ))}
+              <div className="flex flex-col gap-4">
+                {[
+                  { key: 'nome', label: 'Nome completo', type: 'text', placeholder: 'Seu nome' },
+                  { key: 'whatsapp', label: 'WhatsApp', type: 'tel', placeholder: '(82) 99999-9999' },
+                  { key: 'email', label: 'E-mail', type: 'email', placeholder: 'seu@email.com' },
+                ].map((field) => (
+                  <div key={field.key} className="flex flex-col gap-2">
+                    <label className="font-sans font-semibold text-sm text-white">{field.label}</label>
+                    <input type={field.type} placeholder={field.placeholder} value={form[field.key]}
+                      onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
+                      style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }} />
+                  </div>
+                ))}
+                <div className="flex flex-col gap-2">
+                  <label className="font-sans font-semibold text-sm text-white">Plano de interesse</label>
+                  <select value={form.plano} onChange={(e) => setForm({ ...form, plano: e.target.value })}
+                    style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                    <option value="">Selecione</option>
+                    <option value="avulso">Análise avulsa - R$70</option>
+                    <option value="acompanhamento">Acompanhamento 3 vídeos - R$250</option>
+                    <option value="nao-sei">Ainda não sei</option>
                   </select>
                 </div>
-                <div>
-                  <label className="font-mono text-[10px] uppercase tracking-wider block mb-1.5"
-                    style={{ color: 'rgba(255,255,255,0.35)' }}>Como você usaria a Veltron? <span style={{ color: 'rgba(255,255,255,0.3)' }}>(opcional)</span></label>
-                  <textarea
-                    rows={3}
-                    placeholder="Conte-nos sobre seu contexto e necessidades..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors resize-none"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
+                <div className="flex flex-col gap-2">
+                  <label className="font-sans font-semibold text-sm text-white">Objetivo</label>
+                  <select value={form.objetivo} onChange={(e) => setForm({ ...form, objetivo: e.target.value })}
+                    style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                    <option value="">Selecione</option>
+                    <option value="melhorar-bracada">Melhorar braçada</option>
+                    <option value="prevenir-lesao">Prevenir lesão</option>
+                    <option value="acompanhar-evolucao">Acompanhar evolução</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
+                  <textarea placeholder="Algo mais que queira nos dizer..." value={form.mensagem}
+                    onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
+                    style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)', resize: 'none' }} />
                 </div>
                 <div className="pt-2 flex justify-center">
                   <button ref={btnRef}
                     onClick={async () => {
-                      if (!formData.nome || !formData.email) return
-                      setLoading(true)
-                      const { error } = await saveLead({
-                        nome: formData.nome,
-                        email: formData.email,
-                        telefone: formData.telefone,
-                        pagina: 'natacao',
-                        campo_extra: formData.profile,
-                        campo_extra_label: 'Perfil',
-                      })
-                      setLoading(false)
-                      if (!error) setSubmitted(true)
+                      setStatus('loading')
+                      try {
+                        await supabase.from('leads').insert([{ ...form, pagina: 'natacao', created_at: new Date().toISOString() }])
+                        setStatus('success')
+                        const msg = `Olá! Vim pelo site da Veltron 🏊\n\n*Análise Biomecânica — Natação*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\nPlano: ${form.plano || 'Não informado'}\nObjetivo: ${form.objetivo || 'Não informado'}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+                        window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+                      } catch { setStatus('error') }
                     }}
-                    disabled={loading}
+                    disabled={status === 'loading'}
                     className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full cursor-pointer"
-                    style={{ background: 'linear-gradient(135deg, #4B7BF5, #0A2463)', boxShadow: '0 8px 32px rgba(75,123,245,0.25)', opacity: loading ? 0.7 : 1 }}>
-                    {loading ? 'Enviando...' : <>Quero minha análise <ChevronRight size={16} /></>}
+                    style={{ background: 'linear-gradient(135deg, #4B7BF5, #0A2463)', boxShadow: '0 8px 32px rgba(75,123,245,0.25)', opacity: status === 'loading' ? 0.7 : 1 }}>
+                    {status === 'loading' ? 'Enviando...' : <>Quero minha análise <ChevronRight size={16} /></>}
                   </button>
                 </div>
               </div>

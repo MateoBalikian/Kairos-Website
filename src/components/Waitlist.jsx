@@ -2,28 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { CheckCircle } from 'lucide-react'
-import { saveLead } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const profiles = [
-  'Atleta',
-  'Treinador / Técnico',
-  'Clube / Federação',
-  'Profissional de Saúde',
-  'Pesquisador / Acadêmico',
-  'Outro',
-]
 
 export default function Waitlist() {
   const sectionRef = useRef(null)
   const btnRef = useRef(null)
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [erro, setErro] = useState(null)
-  const [formData, setFormData] = useState({
-    nome: '', email: '', telefone: '', profile: '', message: ''
-  })
+  const [status, setStatus] = useState('idle')
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', servico: '', esporte: '', mensagem: '' })
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -48,36 +35,28 @@ export default function Waitlist() {
     btn.addEventListener('mousemove', mv)
     btn.addEventListener('mouseleave', ml)
     return () => { btn.removeEventListener('mousemove', mv); btn.removeEventListener('mouseleave', ml) }
-  }, [submitted])
-
-  const setField = (field) => (e) => setFormData({ ...formData, [field]: e.target.value })
+  }, [status])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!formData.nome || !formData.email) return
-    setLoading(true)
-    setErro(null)
-    const { error } = await saveLead({
-      nome: formData.nome,
-      email: formData.email,
-      telefone: formData.telefone,
-      pagina: 'home',
-      campo_extra: formData.profile,
-      campo_extra_label: 'Perfil',
-    })
-    setLoading(false)
-    if (error) {
-      setErro('Erro ao enviar. Tente novamente.')
-      console.error('Erro Supabase:', error)
-    } else {
-      setSubmitted(true)
-    }
+    if (!form.nome || !form.email) return
+    setStatus('loading')
+    try {
+      await supabase.from('leads').insert([{ ...form, pagina: 'home', created_at: new Date().toISOString() }])
+      setStatus('success')
+      const msg = `Olá! Vim pelo site da Veltron 👋
+
+Nome: ${form.nome}
+WhatsApp: ${form.whatsapp}
+E-mail: ${form.email}
+Interesse: ${form.servico || 'Não informado'}
+Esporte: ${form.esporte || 'Não informado'}
+${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+    } catch { setStatus('error') }
   }
 
-  const inputClass = 'w-full rounded-2xl px-4 py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 font-sans'
-  const inputStyle = { background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)', color: 'white' }
-  const labelClass = 'font-mono text-[10px] uppercase tracking-wider block mb-1.5'
-  const labelStyle = { color: 'rgba(255,255,255,0.5)' }
+  const fieldStyle = { border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }
 
   return (
     <section ref={sectionRef} id="waitlist" className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
@@ -97,7 +76,7 @@ export default function Waitlist() {
           </p>
         </div>
 
-        {submitted ? (
+        {status === 'success' ? (
           <div className="rounded-3xl p-12 text-center" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
             <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'rgba(75,123,245,0.15)' }}>
               <CheckCircle size={24} color="#4B7BF5" />
@@ -106,64 +85,68 @@ export default function Waitlist() {
             <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
               Nossa equipe entrará em contato em breve.
             </p>
+            <p className="text-white/50 text-sm mt-2">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="rounded-3xl p-8 space-y-4"
+          <form onSubmit={handleSubmit} className="rounded-3xl p-8"
             style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label className={labelClass} style={labelStyle}>Nome completo</label>
-                <input type="text" required placeholder="Seu nome"
-                  className={inputClass} style={inputStyle}
-                  value={formData.nome} onChange={setField('nome')} />
+            <div className="flex flex-col gap-4">
+              {[
+                { key: 'nome', label: 'Nome completo', type: 'text', placeholder: 'Seu nome' },
+                { key: 'whatsapp', label: 'WhatsApp', type: 'tel', placeholder: '(82) 99999-9999' },
+                { key: 'email', label: 'E-mail', type: 'email', placeholder: 'seu@email.com' },
+              ].map((field) => (
+                <div key={field.key} className="flex flex-col gap-2">
+                  <label className="font-sans font-semibold text-sm text-white">{field.label}</label>
+                  <input type={field.type} placeholder={field.placeholder} value={form[field.key]}
+                    onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
+                    style={fieldStyle} />
+                </div>
+              ))}
+              <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Qual serviço te interessa?</label>
+                <select value={form.servico} onChange={(e) => setForm({ ...form, servico: e.target.value })} style={fieldStyle}>
+                  <option value="">Selecione</option>
+                  <option value="biomecanica">Análise Biomecânica por vídeo</option>
+                  <option value="lactato">Limiar de Lactato</option>
+                  <option value="metabolomica">Metabolômica</option>
+                  <option value="combo">Combo Completo</option>
+                  <option value="nao-sei">Não sei ainda</option>
+                </select>
               </div>
-              <div>
-                <label className={labelClass} style={labelStyle}>E-mail</label>
-                <input type="email" required placeholder="seu@email.com"
-                  className={inputClass} style={inputStyle}
-                  value={formData.email} onChange={setField('email')} />
+              <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Esporte</label>
+                <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })} style={fieldStyle}>
+                  <option value="">Selecione</option>
+                  <option value="corrida">Corrida</option>
+                  <option value="ciclismo">Ciclismo</option>
+                  <option value="natacao">Natação</option>
+                  <option value="triathlon">Triathlon</option>
+                  <option value="outro">Outro</option>
+                </select>
               </div>
-            </div>
-            <div>
-              <label className={labelClass} style={labelStyle}>Telefone / WhatsApp</label>
-              <input type="tel" placeholder="Seu telefone ou WhatsApp"
-                className={inputClass} style={inputStyle}
-                value={formData.telefone} onChange={setField('telefone')} />
-            </div>
-            <div>
-              <label className={labelClass} style={labelStyle}>Perfil</label>
-              <select required className={`${inputClass} appearance-none cursor-pointer`}
-                style={{ ...inputStyle, background: 'rgba(20,20,20,0.8)' }}
-                value={formData.profile} onChange={setField('profile')}>
-                <option value="" style={{ background: '#0A0A0A' }}>Selecione seu perfil</option>
-                {profiles.map((p) => (
-                  <option key={p} value={p} style={{ background: '#0A0A0A' }}>{p}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className={labelClass} style={labelStyle}>
-                Como você usaria a Veltron? <span style={{ color: 'rgba(255,255,255,0.3)' }}>(opcional)</span>
-              </label>
-              <textarea rows={3} placeholder="Conte-nos sobre seu contexto e necessidades..."
-                className={`${inputClass} resize-none`} style={inputStyle}
-                value={formData.message} onChange={setField('message')} />
-            </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
+                <textarea placeholder="Conte um pouco sobre seu objetivo..." value={form.mensagem}
+                  onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
+                  style={{ ...fieldStyle, resize: 'none' }} />
+              </div>
 
-            {erro && (
-              <p className="text-center text-sm" style={{ color: '#ff6b6b' }}>{erro}</p>
-            )}
+              {status === 'error' && (
+                <p className="text-center text-sm" style={{ color: '#ff6b6b' }}>Erro ao enviar. Tente novamente.</p>
+              )}
 
-            <div className="pt-2 flex justify-center">
-              <button ref={btnRef} type="submit" disabled={loading}
-                className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full transition-opacity hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg, #4B7BF5, #0A2463)', boxShadow: '0 8px 32px rgba(75,123,245,0.25)', opacity: loading ? 0.7 : 1 }}>
-                {loading ? 'Enviando...' : 'Entre em contato →'}
-              </button>
+              <div className="pt-2 flex justify-center">
+                <button ref={btnRef} type="submit" disabled={status === 'loading'}
+                  className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full transition-opacity hover:opacity-90"
+                  style={{ background: 'linear-gradient(135deg, #4B7BF5, #0A2463)', boxShadow: '0 8px 32px rgba(75,123,245,0.25)', opacity: status === 'loading' ? 0.7 : 1 }}>
+                  {status === 'loading' ? 'Enviando...' : 'Entre em contato →'}
+                </button>
+              </div>
+              <p className="text-center font-mono text-[10px] pt-1" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                Sem spam. Apenas novidades da Veltron.
+              </p>
             </div>
-            <p className="text-center font-mono text-[10px] pt-1" style={{ color: 'rgba(255,255,255,0.3)' }}>
-              Sem spam. Apenas novidades da Veltron.
-            </p>
           </form>
         )}
       </div>

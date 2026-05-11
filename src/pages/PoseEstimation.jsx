@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function PoseEstimation() {
   const heroRef = useRef(null)
-  const [form, setForm] = useState({ nome: '', email: '', esporte: '', mensagem: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', esporte: '', plano: '', objetivo: '', mensagem: '' })
   const [status, setStatus] = useState('idle')
 
   useEffect(() => {
@@ -26,6 +26,18 @@ export default function PoseEstimation() {
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'pose-estimation', created_at: new Date().toISOString() }])
       setStatus('success')
+      const msg = `Olá! Vim pelo site da Veltron 🏃‍♂️
+
+*Análise Biomecânica por Vídeo*
+
+Nome: ${form.nome}
+WhatsApp: ${form.whatsapp}
+E-mail: ${form.email}
+Esporte: ${form.esporte || 'Não informado'}
+Plano: ${form.plano || 'Não informado'}
+Objetivo: ${form.objetivo || 'Não informado'}
+${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
     } catch { setStatus('error') }
   }
 
@@ -382,11 +394,13 @@ export default function PoseEstimation() {
             <div className="rounded-3xl p-10 text-center" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <p className="font-sans font-bold text-white text-xl mb-2">Recebemos sua mensagem!</p>
               <p className="text-white/50 text-sm">Entraremos em contato em breve para receber seu vídeo.</p>
+              <p className="text-white/50 text-sm">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
             </div>
           ) : (
             <div className="flex flex-col gap-4">
               {[
                 { key: 'nome', label: 'Nome completo', type: 'text', placeholder: 'Seu nome' },
+                { key: 'whatsapp', label: 'WhatsApp', type: 'tel', placeholder: '(82) 99999-9999' },
                 { key: 'email', label: 'E-mail', type: 'email', placeholder: 'seu@email.com' },
               ].map((field) => (
                 <div key={field.key} className="flex flex-col gap-2">
@@ -407,8 +421,29 @@ export default function PoseEstimation() {
                 </select>
               </div>
               <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Plano de interesse</label>
+                <select value={form.plano} onChange={(e) => setForm({ ...form, plano: e.target.value })}
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                  <option value="">Selecione</option>
+                  <option value="avulso">Análise avulsa (1 vídeo)</option>
+                  <option value="acompanhamento">Acompanhamento (3 vídeos)</option>
+                  <option value="nao-sei">Ainda não sei</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Qual seu objetivo?</label>
+                <select value={form.objetivo} onChange={(e) => setForm({ ...form, objetivo: e.target.value })}
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                  <option value="">Selecione</option>
+                  <option value="melhorar-tecnica">Melhorar técnica</option>
+                  <option value="prevenir-lesao">Prevenir lesão</option>
+                  <option value="acompanhar-evolucao">Acompanhar evolução</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
-                <textarea placeholder="Conte um pouco sobre seu objetivo..." value={form.mensagem}
+                <textarea placeholder="Algo mais que queira nos dizer..." value={form.mensagem}
                   onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
                   style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)', resize: 'none' }} />
               </div>

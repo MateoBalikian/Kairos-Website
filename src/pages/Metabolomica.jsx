@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function Metabolomica() {
   const heroRef = useRef(null)
-  const [form, setForm] = useState({ nome: '', email: '', esporte: '', mensagem: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', esporte: '', jaFezExame: '', suplementacao: '', periodo: '', mensagem: '' })
   const [status, setStatus] = useState('idle')
   const [faqOpen, setFaqOpen] = useState(null)
 
@@ -27,6 +27,19 @@ export default function Metabolomica() {
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'metabolomica', created_at: new Date().toISOString() }])
       setStatus('success')
+      const msg = `Olá! Vim pelo site da Veltron 🧬
+
+*Avaliação Metabolômica*
+
+Nome: ${form.nome}
+WhatsApp: ${form.whatsapp}
+E-mail: ${form.email}
+Esporte: ${form.esporte || 'Não informado'}
+Já fez metabolômica: ${form.jaFezExame || 'Não informado'}
+Usa suplementação: ${form.suplementacao || 'Não informado'}
+Melhor período: ${form.periodo || 'Não informado'}
+${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
     } catch { setStatus('error') }
   }
 
@@ -352,11 +365,13 @@ export default function Metabolomica() {
             <div className="rounded-3xl p-10 text-center" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <p className="font-sans font-bold text-white text-xl mb-2">Recebemos sua mensagem!</p>
               <p className="text-white/50 text-sm">Entraremos em contato em breve para agendar sua coleta.</p>
+              <p className="text-white/50 text-sm">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
             </div>
           ) : (
             <div className="flex flex-col gap-4">
               {[
                 { key: 'nome', label: 'Nome completo', type: 'text', placeholder: 'Seu nome' },
+                { key: 'whatsapp', label: 'WhatsApp', type: 'tel', placeholder: '(82) 99999-9999' },
                 { key: 'email', label: 'E-mail', type: 'email', placeholder: 'seu@email.com' },
               ].map((field) => (
                 <div key={field.key} className="flex flex-col gap-2">
@@ -367,10 +382,10 @@ export default function Metabolomica() {
                 </div>
               ))}
               <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Esporte</label>
+                <label className="font-sans font-semibold text-sm text-white">Esporte principal</label>
                 <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })}
                   style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione seu esporte</option>
+                  <option value="">Selecione</option>
                   <option value="corrida">Corrida</option>
                   <option value="ciclismo">Ciclismo</option>
                   <option value="natacao">Natação</option>
@@ -379,8 +394,37 @@ export default function Metabolomica() {
                 </select>
               </div>
               <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Já fez análise metabolômica antes?</label>
+                <select value={form.jaFezExame} onChange={(e) => setForm({ ...form, jaFezExame: e.target.value })}
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                  <option value="">Selecione</option>
+                  <option value="sim">Sim</option>
+                  <option value="nao">Não</option>
+                  <option value="nao-sei">Não sei o que é</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Usa suplementação?</label>
+                <select value={form.suplementacao} onChange={(e) => setForm({ ...form, suplementacao: e.target.value })}
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                  <option value="">Selecione</option>
+                  <option value="sim">Sim</option>
+                  <option value="nao">Não</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-sans font-semibold text-sm text-white">Melhor período pra agendar</label>
+                <select value={form.periodo} onChange={(e) => setForm({ ...form, periodo: e.target.value })}
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
+                  <option value="">Selecione</option>
+                  <option value="manha">Manhã</option>
+                  <option value="tarde">Tarde</option>
+                  <option value="qualquer">Qualquer um</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
-                <textarea placeholder="Conte um pouco sobre seu objetivo..." value={form.mensagem}
+                <textarea placeholder="Algo mais que queira nos dizer..." value={form.mensagem}
                   onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
                   style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)', resize: 'none' }} />
               </div>
