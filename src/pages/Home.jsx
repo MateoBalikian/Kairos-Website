@@ -47,24 +47,32 @@ const diferenciais = [
     titulo: 'Pose Estimation',
     desc: 'Nossa IA rastreia 17 pontos articulares em tempo real, sem marcadores no corpo. Oscilação, assimetria e alinhamento — visíveis frame a frame.',
     cor: '#4B7BF5',
+    cta: 'Envie seu vídeo',
+    link: '/pose-estimation',
   },
   {
     tag: 'FISIOLOGIA',
     titulo: 'Limiar de Lactato',
     desc: 'O padrão-ouro da fisiologia do exercício. Identificamos LT1 e LT2 com coleta capilar real — a métrica definitiva para prescrição de zonas de treino.',
     cor: '#4B7BF5',
+    cta: 'Agende sua análise',
+    link: '/limiar-de-lactato',
   },
   {
     tag: 'METABOLÔMICA',
     titulo: 'Assinatura Molecular',
     desc: '200+ metabólitos que revelam o que nenhum exame convencional enxerga — recuperação, adaptação e deficiências invisíveis.',
     cor: '#4B7BF5',
+    cta: 'Agende sua análise',
+    link: '/metabolomica',
   },
   {
     tag: 'INTELIGÊNCIA ARTIFICIAL',
     titulo: 'Core Engine AI',
     desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. O ponto onde os 3 se tornam 1.',
     cor: '#4B7BF5',
+    cta: 'Conheça a tecnologia',
+    link: '#contato',
   },
 ]
 
@@ -315,54 +323,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SKELETON VIDEO ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-            {/* Vídeo */}
-            <div className="rounded-3xl overflow-hidden relative"
-              style={{ border: '1px solid rgba(255,255,255,0.07)', aspectRatio: '16/10', boxShadow: 'inset 0 0 40px 40px #0A0A0A' }}>
-              <video
-                autoPlay muted loop playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-                src={mediaUrl('skeleton.mp4')}
-              />
-            </div>
-
-            {/* Texto */}
-            <div>
-              <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Inteligência Artificial</span>
-              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
-                A IA que vê o que{' '}
-                <span className="font-bold" style={{ color: '#4B7BF5' }}>o olho humano não vê.</span>
-              </h2>
-              <p className="text-white/50 text-base leading-relaxed mb-6">
-                Nosso algoritmo de Pose Estimation rastreia cada articulação em tempo real, frame a frame. Sem marcadores, sem sensores, sem equipamentos especiais — só a câmera do seu celular.
-              </p>
-              <div className="flex flex-col gap-3">
-                {[
-                  '17 pontos articulares rastreados simultaneamente',
-                  'Análise frame a frame em tempo real',
-                  'Funciona com qualquer câmera ou celular',
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'rgba(75,123,245,0.15)' }}>
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="3" strokeLinecap="round">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                    </div>
-                    <p className="text-sm text-white/60">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       {/* ─── DIFERENCIAL — seção de alto contraste ─── */}
       <section ref={difRef} id="diferenciais" style={{ background: '#ffffff' }}>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24 lg:py-32">
@@ -405,11 +365,18 @@ export default function Home() {
                 <p className="text-sm leading-relaxed" style={{ color: '#4A4A47' }}>
                   {d.desc}
                 </p>
-                {d.tag === 'BIOMECÂNICA' && (
-                  <a href="/pose-estimation" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '12px', color: '#4B7BF5', fontSize: '0.8rem', fontWeight: 600, textDecoration: 'none' }}>
-                    Saiba mais →
-                  </a>
-                )}
+                <a href={d.link}
+                  className="inline-flex items-center gap-2 mt-auto pt-4 group/cta"
+                  style={{
+                    color: '#0A2463',
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    letterSpacing: '0.3px',
+                  }}>
+                  {d.cta}
+                  <span className="inline-block transition-transform duration-200 group-hover/cta:translate-x-1">→</span>
+                </a>
               </div>
             ))}
           </div>

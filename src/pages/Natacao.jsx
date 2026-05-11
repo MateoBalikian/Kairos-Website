@@ -36,6 +36,8 @@ const diferenciais = [
     titulo: 'Pose Estimation na Natação',
     desc: 'Nossa IA identifica 17 pontos articulares em tempo real, sem marcadores no corpo. Oscilação, alinhamento e assimetria de braçada — mapeados frame a frame com precisão submilimétrica.',
     cor: '#4B7BF5',
+    cta: 'Envie seu vídeo',
+    link: '/pose-estimation',
   },
   {
     tag: 'FISIOLOGIA',
@@ -47,6 +49,8 @@ const diferenciais = [
     titulo: 'Limiar de Lactato',
     desc: 'Identificamos seus domínios de intensidade reais — Moderado, Pesado e Severo — com coleta capilar a cada estágio. Zonas de treino baseadas em biologia, não em estimativa.',
     cor: '#4B7BF5',
+    cta: 'Agende sua análise',
+    link: '/limiar-de-lactato',
   },
   {
     tag: 'METABOLÔMICA',
@@ -58,6 +62,8 @@ const diferenciais = [
     titulo: 'Assinatura Molecular',
     desc: '200+ metabólitos que revelam recuperação, adaptação e deficiências invisíveis nos exames convencionais. A biologia do seu nadador, decifrada.',
     cor: '#4B7BF5',
+    cta: 'Agende sua análise',
+    link: '/metabolomica',
   },
   {
     tag: 'INTELIGÊNCIA ARTIFICIAL',
@@ -69,6 +75,8 @@ const diferenciais = [
     titulo: 'Core Engine AI',
     desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. Identifica o ponto exato onde sua técnica colapsa — e o que fazer para mudar isso.',
     cor: '#4B7BF5',
+    cta: 'Conheça a tecnologia',
+    link: '#contato',
   },
 ]
 
@@ -274,6 +282,18 @@ export default function Natacao() {
                     {d.desc}
                   </p>
                 </div>
+                <a href={d.link}
+                  className="inline-flex items-center gap-2 mt-auto pt-4 group/cta"
+                  style={{
+                    color: '#0A2463',
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    letterSpacing: '0.3px',
+                  }}>
+                  {d.cta}
+                  <span className="inline-block transition-transform duration-200 group-hover/cta:translate-x-1">→</span>
+                </a>
               </div>
             ))}
           </div>

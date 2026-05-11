@@ -32,6 +32,8 @@ const diferenciais = [
     titulo: 'Pose Estimation na Pedalada',
     desc: 'Nossa IA identifica quadril, joelho e tornozelo em tempo real, sem marcadores no corpo. Assimetrias imperceptíveis ao olho humano ficam visíveis — e corrigíveis.',
     cor: '#4B7BF5',
+    cta: 'Envie seu vídeo',
+    link: '/pose-estimation',
   },
   {
     tag: 'FISIOLOGIA',
@@ -39,6 +41,8 @@ const diferenciais = [
     titulo: 'Limiar de Lactato',
     desc: 'Curva Lactato × Potência com coleta capilar real. Identificamos seu LT1 e LT2 para prescrição exata de zonas de treino.',
     cor: '#4B7BF5',
+    cta: 'Agende sua análise',
+    link: '/limiar-de-lactato',
   },
   {
     tag: 'METABOLÔMICA',
@@ -46,6 +50,8 @@ const diferenciais = [
     titulo: 'Assinatura Molecular',
     desc: '200+ metabólitos que explicam por que as pernas pesam mesmo após descanso — e o que fazer para recuperar melhor.',
     cor: '#4B7BF5',
+    cta: 'Agende sua análise',
+    link: '/metabolomica',
   },
   {
     tag: 'INTELIGÊNCIA ARTIFICIAL',
@@ -53,6 +59,8 @@ const diferenciais = [
     titulo: 'Core Engine AI',
     desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. Identifica em qual potência sua técnica colapsa — e o que fazer para mudar isso.',
     cor: '#4B7BF5',
+    cta: 'Conheça a tecnologia',
+    link: '#contato',
   },
 ]
 
@@ -270,6 +278,18 @@ export default function Ciclismo() {
                   <h3 className="font-sans font-bold text-xl mb-2" style={{ color: '#0A0A0A' }}>{d.titulo}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: '#4A4A47' }}>{d.desc}</p>
                 </div>
+                <a href={d.link}
+                  className="inline-flex items-center gap-2 mt-auto pt-4 group/cta"
+                  style={{
+                    color: '#0A2463',
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    letterSpacing: '0.3px',
+                  }}>
+                  {d.cta}
+                  <span className="inline-block transition-transform duration-200 group-hover/cta:translate-x-1">→</span>
+                </a>
               </div>
             ))}
           </div>
@@ -447,7 +467,7 @@ export default function Ciclismo() {
                 <span style={{ color: '#0A2463' }}>Sem sair de casa.</span>
               </h2>
               <p className="mt-4 text-[#4A4A47] leading-relaxed" style={{ fontSize: '1rem', maxWidth: 480 }}>
-                Você envia suas medidas e a Veltron calcula a posição ideal para sua fisiologia e objetivo. Evite lesões por posição incorreta e melhore sua performance sem precisar ir a um estúdio.
+                A nossa IA auxilia o treinador a calcular a posição ideal para sua fisiologia e objetivo. Você envia suas medidas, o algoritmo processa e entrega os dados que o profissional precisa para ajustar seu posicionamento — sem precisar ir a um estúdio.
               </p>
 
               {/* Medidas que pedimos */}

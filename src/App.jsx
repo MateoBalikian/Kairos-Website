@@ -4,6 +4,7 @@ import Corrida from './pages/Corrida'
 import Ciclismo from './pages/Ciclismo'
 import Natacao from './pages/Natacao'
 import PoseEstimation from './pages/PoseEstimation'
+import Futebol from './pages/Futebol'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/ciclismo" element={<Ciclismo />} />
         <Route path="/natacao" element={<Natacao />} />
         <Route path="/pose-estimation" element={<PoseEstimation />} />
+        <Route path="/futebol" element={<Futebol />} />
       </Routes>
     </BrowserRouter>
   )

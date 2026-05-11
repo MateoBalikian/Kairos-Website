@@ -188,7 +188,7 @@ export default function Futebol() {
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[100dvh] overflow-hidden bg-black">
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover"
-          src={mediaUrl('dois.mp4')} />
+          src={mediaUrl('gol_miguel.mp4')} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%)' }} />
         <div className="absolute z-10 left-[clamp(24px,5vw,72px)] right-[clamp(24px,5vw,64px)] bottom-[clamp(80px,12vh,140px)] max-w-[640px]">
           <div className="hi flex items-center gap-3 mb-6">
@@ -276,7 +276,7 @@ export default function Futebol() {
                 <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(123,167,232,0.12)', border: '1px solid rgba(123,167,232,0.2)' }}>
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7BA7E8" strokeWidth="2" strokeLinecap="round">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                   </svg>
                 </div>
                 <div>
@@ -291,7 +291,7 @@ export default function Futebol() {
                 {['Limiar de Lactato', 'Metabolômica'].map((item, i) => (
                   <div key={i} className="rounded-2xl px-4 py-3 flex items-center gap-2"
                     style={{ background: 'rgba(123,167,232,0.06)', border: '1px solid rgba(123,167,232,0.12)' }}>
-                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#7BA7E8' }}/>
+                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#7BA7E8' }} />
                     <span className="text-sm text-white/70 font-mono text-xs">{item}</span>
                   </div>
                 ))}
@@ -305,7 +305,7 @@ export default function Futebol() {
                 <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(75,123,245,0.12)', border: '1px solid rgba(75,123,245,0.2)' }}>
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" />
                   </svg>
                 </div>
                 <div>
@@ -320,7 +320,7 @@ export default function Futebol() {
                 {['Rastreamento multi-atleta', 'Distância por estágio', 'Velocidade de pico', 'Detecção de fadiga'].map((item, i) => (
                   <div key={i} className="rounded-2xl px-4 py-3 flex items-center gap-2"
                     style={{ background: 'rgba(75,123,245,0.06)', border: '1px solid rgba(75,123,245,0.12)' }}>
-                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#4B7BF5' }}/>
+                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#4B7BF5' }} />
                     <span className="text-sm text-white/70 font-mono text-xs">{item}</span>
                   </div>
                 ))}
@@ -334,7 +334,7 @@ export default function Futebol() {
             <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
               style={{ background: 'rgba(75,123,245,0.15)' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                <polyline points="20 6 9 17 4 12"/>
+                <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
             <div>
@@ -507,7 +507,7 @@ export default function Futebol() {
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
                   style={{ background: 'rgba(75,123,245,0.15)' }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                    <polyline points="20 6 9 17 4 12"/>
+                    <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
                 <h3 className="font-sans font-bold text-xl text-white mb-2">Mensagem enviada!</h3>
@@ -523,7 +523,7 @@ export default function Futebol() {
                     style={{ color: 'rgba(255,255,255,0.35)' }}>Nome completo</label>
                   <input type="text" placeholder="Seu nome"
                     value={formData.nome}
-                    onChange={(e) => setFormData({...formData, nome: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
@@ -532,7 +532,7 @@ export default function Futebol() {
                     style={{ color: 'rgba(255,255,255,0.35)' }}>E-mail</label>
                   <input type="email" placeholder="seu@email.com"
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
@@ -541,7 +541,7 @@ export default function Futebol() {
                     style={{ color: 'rgba(255,255,255,0.35)' }}>Telefone / WhatsApp</label>
                   <input type="tel" placeholder="Seu telefone ou WhatsApp"
                     value={formData.telefone}
-                    onChange={(e) => setFormData({...formData, telefone: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
@@ -550,7 +550,7 @@ export default function Futebol() {
                     style={{ color: 'rgba(255,255,255,0.35)' }}>Perfil</label>
                   <select
                     value={formData.profile}
-                    onChange={(e) => setFormData({...formData, profile: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, profile: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors appearance-none cursor-pointer"
                     style={{ background: 'rgba(20,20,20,0.8)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }}>
                     <option value="" style={{ background: '#0A0A0A' }}>Selecione seu perfil</option>
@@ -566,7 +566,7 @@ export default function Futebol() {
                     rows={3}
                     placeholder="Conte-nos sobre seu contexto e necessidades..."
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full rounded-2xl px-4 py-3.5 text-sm font-sans focus:outline-none transition-colors resize-none"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }} />
                 </div>
