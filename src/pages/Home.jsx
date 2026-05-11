@@ -256,21 +256,21 @@ export default function Home() {
             {[
               {
                 step: '01',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>),
                 titulo: 'Grave com qualquer celular',
                 descricao: 'Sem câmeras especiais. Sem sensores. Sem equipamentos caros. Seu smartphone já é suficiente — em esteira, piscina, bike ou pista.',
                 cor: '#4B7BF5',
               },
               {
                 step: '02',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><polyline points="16 16 12 12 8 16" /><line x1="12" y1="12" x2="12" y2="21" /><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" /></svg>),
                 titulo: 'Envie para a Veltron',
                 descricao: 'Upload simples pela nossa plataforma. Nossa equipe recebe, processa e integra com os dados fisiológicos da sua avaliação presencial.',
                 cor: '#4B7BF5',
               },
               {
                 step: '03',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>),
                 titulo: 'Receba seu diagnóstico',
                 descricao: 'Um laudo completo: biomecânica + fisiologia + metabolômica. Dados reais sobre como seu corpo se move e o que ele consome para fazer isso.',
                 cor: '#4B7BF5',
@@ -311,6 +311,54 @@ export default function Home() {
                 A tecnologia que estava só nos centros olímpicos agora cabe no seu bolso.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SKELETON VIDEO ─── */}
+      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Vídeo */}
+            <div className="rounded-3xl overflow-hidden relative"
+              style={{ border: '1px solid rgba(255,255,255,0.07)', aspectRatio: '16/10', boxShadow: 'inset 0 0 40px 40px #0A0A0A' }}>
+              <video
+                autoPlay muted loop playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                src={mediaUrl('skeleton.mp4')}
+              />
+            </div>
+
+            {/* Texto */}
+            <div>
+              <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Inteligência Artificial</span>
+              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+                A IA que vê o que{' '}
+                <span className="font-bold" style={{ color: '#4B7BF5' }}>o olho humano não vê.</span>
+              </h2>
+              <p className="text-white/50 text-base leading-relaxed mb-6">
+                Nosso algoritmo de Pose Estimation rastreia cada articulação em tempo real, frame a frame. Sem marcadores, sem sensores, sem equipamentos especiais — só a câmera do seu celular.
+              </p>
+              <div className="flex flex-col gap-3">
+                {[
+                  '17 pontos articulares rastreados simultaneamente',
+                  'Análise frame a frame em tempo real',
+                  'Funciona com qualquer câmera ou celular',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'rgba(75,123,245,0.15)' }}>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="3" strokeLinecap="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </div>
+                    <p className="text-sm text-white/60">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -357,6 +405,11 @@ export default function Home() {
                 <p className="text-sm leading-relaxed" style={{ color: '#4A4A47' }}>
                   {d.desc}
                 </p>
+                {d.tag === 'BIOMECÂNICA' && (
+                  <a href="/pose-estimation" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '12px', color: '#4B7BF5', fontSize: '0.8rem', fontWeight: 600, textDecoration: 'none' }}>
+                    Saiba mais →
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -476,7 +529,7 @@ export default function Home() {
                     <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{ background: 'rgba(75,123,245,0.15)' }}>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2.5" strokeLinecap="round">
-                        <polyline points="20 6 9 17 4 12"/>
+                        <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </div>
                     <div>
@@ -506,7 +559,7 @@ export default function Home() {
                     {i < 2 && (
                       <div className="flex justify-center py-1">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(75,123,245,0.4)" strokeWidth="2" strokeLinecap="round">
-                          <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                          <line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" />
                         </svg>
                       </div>
                     )}
@@ -516,7 +569,7 @@ export default function Home() {
               <div className="flex items-center gap-3 px-2">
                 <div className="flex-1 h-px" style={{ background: 'rgba(75,123,245,0.3)' }} />
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                  <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                  <line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" />
                 </svg>
                 <div className="flex-1 h-px" style={{ background: 'rgba(75,123,245,0.3)' }} />
               </div>
@@ -524,8 +577,8 @@ export default function Home() {
                 <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(255,255,255,0.2)' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-                    <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/>
-                    <path d="M12 6v6l4 2"/>
+                    <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" />
+                    <path d="M12 6v6l4 2" />
                   </svg>
                 </div>
                 <div>
