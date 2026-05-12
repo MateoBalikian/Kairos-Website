@@ -11,6 +11,64 @@ export default function Waitlist() {
   const btnRef = useRef(null)
   const [status, setStatus] = useState('idle')
   const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', servico: '', esporte: '', mensagem: '' })
+  const [errors, setErrors] = useState({})
+
+  const servicoLabels = {
+    biomecanica: 'Análise Biomecânica por Vídeo',
+    lactato: 'Teste de Limiar de Lactato',
+    metabolomica: 'Metabolômica',
+    combo: 'Combo Completo',
+    'nao-sei': 'Ainda não decidi',
+  }
+  const esporteLabels = {
+    corrida: 'Corrida',
+    ciclismo: 'Ciclismo',
+    natacao: 'Natação',
+    triathlon: 'Triathlon',
+    outro: 'Outro',
+  }
+  const esporteEmojis = {
+    corrida: '🏃',
+    ciclismo: '🚴',
+    natacao: '🏊',
+    triathlon: '🏅',
+    outro: '⚽',
+  }
+
+  const buildWhatsAppMessage = (f) => {
+    const emoji = esporteEmojis[f.esporte] || '🏃'
+    const servicoLabel = servicoLabels[f.servico] || f.servico
+    const esporteLabel = esporteLabels[f.esporte] || f.esporte
+    return (
+      `Olá! Meu nome é ${f.nome} e gostaria de saber mais sobre os serviços da Veltron ${emoji}\n\n` +
+      `📋 Minhas informações:\n` +
+      `- WhatsApp: ${f.whatsapp}\n` +
+      `- E-mail: ${f.email}\n\n` +
+      `🎯 Interesse: ${servicoLabel}\n` +
+      `${emoji} Esporte: ${esporteLabel}` +
+      (f.mensagem ? `\n\n💬 "${f.mensagem}"` : '') +
+      `\n\nPoderiam me passar mais detalhes sobre esse serviço? Agradeço desde já!`
+    )
+  }
+
+  const validate = (f) => {
+    const errs = {}
+    if (!f.nome.trim()) errs.nome = 'Preencha seu nome'
+    if (!f.whatsapp.trim()) errs.whatsapp = 'Preencha seu WhatsApp'
+    if (!f.email.trim()) {
+      errs.email = 'Preencha seu e-mail'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email)) {
+      errs.email = 'E-mail inválido (ex: nome@email.com)'
+    }
+    if (!f.servico) errs.servico = 'Selecione um serviço'
+    if (!f.esporte) errs.esporte = 'Selecione um esporte'
+    return errs
+  }
+
+  const updateField = (key, value) => {
+    setForm((prev) => ({ ...prev, [key]: value }))
+    setErrors((prev) => ({ ...prev, [key]: undefined }))
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,19 +97,16 @@ export default function Waitlist() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!form.nome || !form.email) return
+    const errs = validate(form)
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs)
+      return
+    }
     setStatus('loading')
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'home', created_at: new Date().toISOString() }])
       setStatus('success')
-      const msg = `Olá! Vim pelo site da Veltron 👋
-
-Nome: ${form.nome}
-WhatsApp: ${form.whatsapp}
-E-mail: ${form.email}
-Interesse: ${form.servico || 'Não informado'}
-Esporte: ${form.esporte || 'Não informado'}
-${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+      const msg = buildWhatsAppMessage(form)
       window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
     } catch { setStatus('error') }
   }
@@ -99,36 +154,47 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 <div key={field.key} className="flex flex-col gap-2">
                   <label className="font-sans font-semibold text-sm text-white">{field.label}</label>
                   <input type={field.type} placeholder={field.placeholder} value={form[field.key]}
-                    onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
-                    style={fieldStyle} />
+                    onChange={(e) => updateField(field.key, e.target.value)}
+                    style={{ ...fieldStyle, ...(errors[field.key] ? { border: '1px solid rgba(255,107,107,0.6)' } : {}) }} />
+                  {errors[field.key] && (
+                    <span style={{ fontSize: '0.75rem', color: '#ff6b6b' }}>{errors[field.key]}</span>
+                  )}
                 </div>
               ))}
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Qual serviço te interessa?</label>
-                <select value={form.servico} onChange={(e) => setForm({ ...form, servico: e.target.value })} style={fieldStyle}>
-                  <option value="">Selecione</option>
-                  <option value="biomecanica">Análise Biomecânica por vídeo</option>
-                  <option value="lactato">Limiar de Lactato</option>
-                  <option value="metabolomica">Metabolômica</option>
-                  <option value="combo">Combo Completo</option>
-                  <option value="nao-sei">Não sei ainda</option>
+                <select value={form.servico} onChange={(e) => updateField('servico', e.target.value)}
+                  style={{ ...fieldStyle, ...(errors.servico ? { border: '1px solid rgba(255,107,107,0.6)' } : {}) }}>
+                  <option value="" style={{ color: '#1a1a1a', background: '#ffffff' }}>Selecione</option>
+                  <option value="biomecanica" style={{ color: '#1a1a1a', background: '#ffffff' }}>Análise Biomecânica por Vídeo</option>
+                  <option value="lactato" style={{ color: '#1a1a1a', background: '#ffffff' }}>Teste de Limiar de Lactato</option>
+                  <option value="metabolomica" style={{ color: '#1a1a1a', background: '#ffffff' }}>Metabolômica</option>
+                  <option value="combo" style={{ color: '#1a1a1a', background: '#ffffff' }}>Combo Completo</option>
+                  <option value="nao-sei" style={{ color: '#1a1a1a', background: '#ffffff' }}>Ainda não decidi</option>
                 </select>
+                {errors.servico && (
+                  <span style={{ fontSize: '0.75rem', color: '#ff6b6b' }}>{errors.servico}</span>
+                )}
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Esporte</label>
-                <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })} style={fieldStyle}>
-                  <option value="">Selecione</option>
-                  <option value="corrida">Corrida</option>
-                  <option value="ciclismo">Ciclismo</option>
-                  <option value="natacao">Natação</option>
-                  <option value="triathlon">Triathlon</option>
-                  <option value="outro">Outro</option>
+                <select value={form.esporte} onChange={(e) => updateField('esporte', e.target.value)}
+                  style={{ ...fieldStyle, ...(errors.esporte ? { border: '1px solid rgba(255,107,107,0.6)' } : {}) }}>
+                  <option value="" style={{ color: '#1a1a1a', background: '#ffffff' }}>Selecione</option>
+                  <option value="corrida" style={{ color: '#1a1a1a', background: '#ffffff' }}>Corrida</option>
+                  <option value="ciclismo" style={{ color: '#1a1a1a', background: '#ffffff' }}>Ciclismo</option>
+                  <option value="natacao" style={{ color: '#1a1a1a', background: '#ffffff' }}>Natação</option>
+                  <option value="triathlon" style={{ color: '#1a1a1a', background: '#ffffff' }}>Triathlon</option>
+                  <option value="outro" style={{ color: '#1a1a1a', background: '#ffffff' }}>Outro</option>
                 </select>
+                {errors.esporte && (
+                  <span style={{ fontSize: '0.75rem', color: '#ff6b6b' }}>{errors.esporte}</span>
+                )}
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
                 <textarea placeholder="Conte um pouco sobre seu objetivo..." value={form.mensagem}
-                  onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
+                  onChange={(e) => updateField('mensagem', e.target.value)} rows={3}
                   style={{ ...fieldStyle, resize: 'none' }} />
               </div>
 
