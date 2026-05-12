@@ -247,17 +247,17 @@ export default function Home() {
       </section>
 
       {/* ─── COMO FUNCIONA ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-20">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Como funciona</span>
-            <h2 className="font-sans font-light text-3xl lg:text-5xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-5xl text-white tracking-tight mt-3">
               Simples assim.{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>3 passos.</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 relative">
             <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
               style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.5), rgba(123,167,232,0.5))' }} />
 
@@ -284,7 +284,7 @@ export default function Home() {
                 cor: '#4B7BF5',
               },
             ].map((item, i) => (
-              <div key={i} className="rounded-3xl p-8 flex flex-col gap-5"
+              <div key={i} className="rounded-3xl p-6 lg:p-8 flex flex-col gap-5"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-center justify-between">
                   <span className="font-sans font-bold text-2xl" style={{ color: item.cor }}>
@@ -305,7 +305,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-8 rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6"
+          <div className="mt-8 rounded-3xl p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6"
             style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: 'rgba(75,123,245,0.1)' }}>
@@ -325,7 +325,7 @@ export default function Home() {
 
       {/* ─── DIFERENCIAL — seção de alto contraste ─── */}
       <section ref={difRef} id="diferenciais" style={{ background: '#ffffff' }}>
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24 lg:py-32">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-16 lg:py-24 xl:py-32">
 
           {/* Header */}
           <div className="max-w-3xl mb-16">
@@ -333,7 +333,7 @@ export default function Home() {
               Por que a Veltron
             </span>
             <h2 className="font-sans mt-3 leading-tight"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 800, color: '#0A0A0A' }}>
+              style={{ fontSize: 'clamp(1.6rem, 4vw, 3.2rem)', fontWeight: 800, color: '#0A0A0A' }}>
               GPS mostra o que o atleta fez.<br />
               <span style={{ color: '#0A2463' }}>A Veltron mostra por que ele rendeu assim.</span>
             </h2>
@@ -344,7 +344,7 @@ export default function Home() {
           </div>
 
           {/* Grid de diferenciais */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
             {diferenciais.map((d, i) => (
               <div key={i} className="dif-item rounded-3xl p-7 flex flex-col gap-4"
                 style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
@@ -404,13 +404,13 @@ export default function Home() {
       </section>
 
       {/* ─── PORTAL DE MODALIDADES ─── */}
-      <section id="modalidades" ref={modRef} className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
+      <section id="modalidades" ref={modRef} className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-14">
             <span className="font-mono text-xs text-white/30 uppercase tracking-widest">
               Para qual modalidade?
             </span>
-            <h2 className="font-sans font-light text-3xl lg:text-5xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-5xl text-white tracking-tight mt-3">
               Escolha sua modalidade e veja{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>
                 como a Veltron trabalha para você
@@ -418,7 +418,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             {modalidades.map((mod, i) => (
               <Link key={i} to={`/${mod.slug}`}
                 className="mod-card group relative overflow-hidden rounded-3xl block"
@@ -474,12 +474,12 @@ export default function Home() {
       </section>
 
       {/* ─── CORE ENGINE AI ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
-              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+              <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
                 Core Engine AI —{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
@@ -507,7 +507,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="rounded-3xl p-8 flex flex-col gap-4" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col gap-4" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div className="flex flex-col gap-3">
                 {[
                   { tag: 'Biomecânica', titulo: 'Pose Estimation', cor: '#4B7BF5' },
@@ -569,11 +569,11 @@ export default function Home() {
       <Waitlist />
 
       {/* ─── FAQ ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[800px] mx-auto">
           <div className="mb-16">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Dúvidas frequentes</span>
-            <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
               Perguntas{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>frequentes.</span>
             </h2>

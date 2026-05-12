@@ -46,9 +46,9 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       <Navbar />
 
       {/* ─── HERO ─── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
+      <section ref={heroRef} className="relative min-h-[85vh] lg:min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap- items-center min-h-screen py-30">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] gap- items-center min-h-[85vh] lg:min-h-screen pt-24 pb-16">
             <div style={{ paddingLeft: '0' }}>
               <div className="pe-hi mb-4">
                 <span className="font-sans text-xs text-white/40 uppercase tracking-widest border border-white/10 rounded-full px-4 py-1.5">
@@ -56,7 +56,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 </span>
               </div>
               <h1 className="pe-hi font-sans font-bold text-white leading-tight mb-6"
-                style={{ fontSize: 'clamp(2.8rem, 5vw, 5rem)' }}>
+                style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
                 A IA que vê o que<br />
                 <span style={{ color: '#4B7BF5' }}>o olho humano não vê.</span>
               </h1>
@@ -72,7 +72,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 </span>
               </a>
             </div>
-            <div className="pe-hi hidden lg:flex items-center justify-end">
+            <div className="pe-hi hidden xl:flex items-center justify-end">
               <img src={mediaUrl('heropose1.jpeg')} alt="Grave com seu celular"
                 style={{ width: '150%', maxWidth: 680, objectFit: 'contain', borderRadius: '24px' }} />
             </div>
@@ -81,12 +81,12 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── O QUE É ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#ffffff' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#ffffff' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-40 items-center">
+          <div className="grid grid-cols-1 xl:grid-cols-[0.85fr_1.15fr] gap-8 xl:gap-20 items-center">
             <div>
               <span className="font-sans text-xs text-[#0A2463] uppercase tracking-widest">O que é</span>
-              <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: '#0A0A0A' }}>
+              <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: '#0A0A0A' }}>
                 Seu celular.<br />
                 <span style={{ color: '#0A2463' }}>Um laboratório de biomecânica.</span>
               </h2>
@@ -106,11 +106,11 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── COMO FUNCIONA ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-20">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Como funciona</span>
-            <h2 className="font-sans font-light text-3xl lg:text-5xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-5xl text-white tracking-tight mt-3">
               Simples assim.{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>3 passos.</span>
             </h2>
@@ -137,7 +137,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 cor: '#4B7BF5',
               },
             ].map((item, i) => (
-              <div key={i} className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 py-12"
+              <div key={i} className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-8 lg:gap-16 py-12"
                 style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-start gap-4 lg:flex-col lg:gap-2">
                   <span className="font-sans font-bold text-white/10" style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', lineHeight: 1 }}>{item.num}</span>
@@ -153,12 +153,12 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── O QUE VOCÊ RECEBE ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div>
               <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O laudo</span>
-              <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+              <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
                 O que você<br />
                 <span style={{ color: '#4B7BF5' }}>vai receber.</span>
               </h2>
@@ -190,7 +190,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
             </div>
 
             <div className="lg:sticky lg:top-32">
-              <div className="rounded-3xl p-8" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div className="rounded-3xl p-6 lg:p-8" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Por esporte</span>
                 <h3 className="font-sans font-bold text-white mt-3 mb-6" style={{ fontSize: '1.3rem' }}>
                   Indicadores específicos
@@ -217,12 +217,12 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── POR QUE ISSO IMPORTA ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Por que importa</span>
-              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-8">
+              <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-8">
                 Você treina pela sensação.<br />
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>A câmera não mente.</span>
               </h2>
@@ -247,13 +247,13 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── AVALIAÇÕES ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[1200px] mx-auto">
 
           {/* Header */}
           <div className="mb-16 max-w-2xl">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Avaliações Biomecânicas</span>
-            <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
               Escolha sua{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>avaliação.</span>
             </h2>
@@ -263,10 +263,10 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
           </div>
 
           {/* Produtos */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* Produto 1 */}
-            <div className="rounded-3xl p-8 flex flex-col justify-between gap-8"
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-8"
               style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div>
                 <div className="flex items-start justify-between mb-6">
@@ -316,7 +316,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
             </div>
 
             {/* Produto 2 */}
-            <div className="rounded-3xl p-8 flex flex-col justify-between gap-8"
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-8"
               style={{ background: '#0A2463', border: '1px solid rgba(75,123,245,0.4)' }}>
               <div>
                 <div className="mb-6">
@@ -380,10 +380,10 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── FORMULÁRIO ─── */}
-      <section id="enviar" className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section id="enviar" className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[600px] mx-auto">
           <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Envie seu vídeo</span>
-          <h2 className="font-sans mt-3 mb-3 leading-tight" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+          <h2 className="font-sans mt-3 mb-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
             Comece agora.
           </h2>
           <p className="text-white/50 mb-10 leading-relaxed">

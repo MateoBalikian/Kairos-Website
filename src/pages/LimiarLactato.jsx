@@ -47,16 +47,16 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       <Navbar />
 
       {/* ─── HERO ─── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
+      <section ref={heroRef} className="relative min-h-[85vh] lg:min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 w-full">
-          <div className="flex flex-col justify-center min-h-screen py-32" style={{ maxWidth: 720 }}>
+          <div className="flex flex-col justify-center min-h-[85vh] lg:min-h-screen py-16 lg:py-32" style={{ maxWidth: 720 }}>
             <div className="lt-hi mb-4">
               <span className="font-sans text-xs text-white/40 uppercase tracking-widest border border-white/10 rounded-full px-4 py-1.5">
                 Fisiologia do Exercício
               </span>
             </div>
             <h1 className="lt-hi font-sans font-bold text-white leading-tight mb-6"
-              style={{ fontSize: 'clamp(2.8rem, 5vw, 5rem)' }}>
+              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
               Pare de adivinhar<br />
               <span style={{ color: '#4B7BF5' }}>suas zonas de treino.</span>
             </h1>
@@ -79,12 +79,12 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── O QUE É (explicação didática) ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#ffffff' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#ffffff' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-16 items-center">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 items-center">
           <div>
             <span className="font-sans text-xs text-[#0A2463] uppercase tracking-widest">Entenda o teste</span>
-            <h2 className="font-sans mt-3 leading-tight mb-8" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: '#0A0A0A' }}>
+            <h2 className="font-sans mt-3 leading-tight mb-8" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: '#0A0A0A' }}>
               O que é o<br />
               <span style={{ color: '#0A2463' }}>Limiar de Lactato?</span>
             </h2>
@@ -124,11 +124,11 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── GRÁFICO DA CURVA DE LACTATO ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-16">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Visualize</span>
-            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
               A curva que define{' '}
               <span style={{ color: '#4B7BF5' }}>seu treino.</span>
             </h2>
@@ -137,7 +137,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
             </p>
           </div>
 
-          <div className="rounded-3xl p-8 lg:p-12" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="rounded-3xl p-4 md:p-8 lg:p-12" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
             <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto' }}>
               {[80, 140, 200, 260, 320].map((y, i) => (
                 <line key={i} x1="80" y1={y} x2="650" y2={y} stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
@@ -214,11 +214,11 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── POR QUE NÃO CONFIAR NO RELÓGIO ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-16">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Por que fazer o teste</span>
-            <h2 className="font-sans font-light text-3xl lg:text-5xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-5xl text-white tracking-tight mt-3">
               Seu relógio{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>não sabe disso.</span>
             </h2>
@@ -239,7 +239,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 desc: 'Treinar acima do limiar achando que está na zona leve causa overtraining, estagnação e lesão. Treinar abaixo achando que está no limiar desperdiça meses de evolução. Saber o número exato muda tudo.',
               },
             ].map((item, i) => (
-              <div key={i} className="rounded-3xl p-8" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div key={i} className="rounded-3xl p-6 lg:p-8" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <h3 className="font-sans font-bold text-white mb-3" style={{ fontSize: '1.2rem' }}>{item.titulo}</h3>
                 <p className="text-white/50 leading-relaxed text-sm">{item.desc}</p>
               </div>
@@ -249,11 +249,11 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── COMO FUNCIONA ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-20">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Como funciona</span>
-            <h2 className="font-sans font-light text-3xl lg:text-5xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-5xl text-white tracking-tight mt-3">
               O que você vai fazer.{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>Passo a passo.</span>
             </h2>
@@ -277,7 +277,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 desc: 'Em até 48 horas você recebe o laudo completo: seus valores de LT1 e LT2, a frequência cardíaca e velocidade (ou potência) correspondente a cada limiar, e suas zonas de treino individualizadas com recomendações práticas de prescrição.',
               },
             ].map((item, i) => (
-              <div key={i} className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 py-12"
+              <div key={i} className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-8 lg:gap-16 py-12"
                 style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-start gap-4 lg:flex-col lg:gap-2">
                   <span className="font-sans font-bold text-white/10" style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', lineHeight: 1 }}>{item.num}</span>
@@ -293,11 +293,11 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── O QUE VOCÊ RECEBE ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-16">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Seu laudo</span>
-            <h2 className="font-sans font-light text-3xl lg:text-5xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-5xl text-white tracking-tight mt-3">
               O que vem no{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>resultado.</span>
             </h2>
@@ -328,20 +328,20 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── AVALIAÇÕES ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-16">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Valores</span>
-            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
               Invista no dado que{' '}
               <span style={{ color: '#4B7BF5' }}>muda seu treino.</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* Produto 1 */}
-            <div className="rounded-3xl p-8 flex flex-col justify-between gap-8"
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-8"
               style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div>
                 <div className="flex items-start justify-between mb-6">
@@ -391,7 +391,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
             </div>
 
             {/* Produto 2 */}
-            <div className="rounded-3xl p-8 flex flex-col justify-between gap-8"
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-8"
               style={{ background: '#0A2463', border: '1px solid rgba(75,123,245,0.4)' }}>
               <div>
                 <div className="mb-6">
@@ -455,10 +455,10 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── FORMULÁRIO ─── */}
-      <section id="agendar" className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section id="agendar" className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[600px] mx-auto">
           <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Agende sua avaliação</span>
-          <h2 className="font-sans mt-3 mb-3 leading-tight" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+          <h2 className="font-sans mt-3 mb-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
             Comece agora.
           </h2>
           <p className="text-white/50 mb-3 leading-relaxed">

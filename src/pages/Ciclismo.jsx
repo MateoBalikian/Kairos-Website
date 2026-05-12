@@ -154,7 +154,7 @@ export default function Ciclismo() {
               </span>
             </div>
             <h1 className="hi font-sans font-bold text-white"
-              style={{ fontSize: 'clamp(2.8rem, 5vw, 5rem)', lineHeight: 1.05 }}>
+              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1.05 }}>
               O Poder da<br />
               <span style={{ color: '#4B7BF5' }}>Eficiência Absoluta.</span>
             </h1>
@@ -215,7 +215,7 @@ export default function Ciclismo() {
       </section>
 
       {/* ─── IA EM AÇÃO · BIKE FIT ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="rounded-3xl overflow-hidden" style={{ height: 400, background: '#0A0A0A' }}>
@@ -224,7 +224,7 @@ export default function Ciclismo() {
             </div>
             <div>
               <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Bike fit · IA</span>
-              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+              <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
                 Análise biomecânica da{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>pedalada em tempo real</span>
               </h2>
@@ -251,11 +251,11 @@ export default function Ciclismo() {
 
       {/* SEÇÃO BRANCA */}
       <section id="diferenciais" style={{ background: '#ffffff' }}>
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-24 lg:py-32">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-16 lg:py-24 xl:py-32">
           <div className="max-w-xl mb-14">
             <span className="font-mono text-xs text-[#0A2463] uppercase tracking-widest">Por que a Veltron</span>
             <h2 className="font-sans mt-3 leading-tight"
-              style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', fontWeight: 800, color: '#0A0A0A' }}>
+              style={{ fontSize: 'clamp(1.4rem,3.5vw,2.8rem)', fontWeight: 800, color: '#0A0A0A' }}>
               Seu ciclômetro diz que você perdeu potência.<br />
               <span style={{ color: '#0A2463' }}>A Veltron diz por quê — e o que fazer.</span>
             </h2>
@@ -263,9 +263,9 @@ export default function Ciclismo() {
               Combinamos análise biomecânica por IA com avaliações fisiológicas de laboratório. Dois dados que sozinhos não explicam nada — juntos, mudam tudo.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
             {diferenciais.map((d, i) => (
-              <div key={i} className="dif-card rounded-3xl p-8 flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300"
+              <div key={i} className="dif-card rounded-3xl p-6 lg:p-8 flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300"
                 style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
                 <div className="flex items-start justify-between">
                   <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
@@ -308,12 +308,12 @@ export default function Ciclismo() {
       </section>
 
       {/* ─── CORE ENGINE AI ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <span className="text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
-              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+              <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
                 Core Engine AI —{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
@@ -341,7 +341,7 @@ export default function Ciclismo() {
                 ))}
               </div>
             </div>
-            <div className="rounded-3xl p-8 flex flex-col gap-4" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col gap-4" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div className="flex flex-col gap-3">
                 {[
                   { tag: 'Biomecânica', titulo: 'Pose Estimation', cor: '#4B7BF5' },
@@ -397,11 +397,11 @@ export default function Ciclismo() {
       </section>
 
       {/* DASHBOARD MONITOR */}
-      <section ref={statsRef} className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
+      <section ref={statsRef} className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-12">
             <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Dados reais</span>
-            <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
               O diagnóstico completo{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>em números</span>
             </h2>
@@ -415,7 +415,7 @@ export default function Ciclismo() {
               </div>
               <span className="font-mono text-[10px] text-white/20">PROTOCOLO COMPLETO</span>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 md:grid-cols-4">
               {[
                 { label: 'CADÊNCIA IDEAL', val: `${v1}`, sub: 'Assinatura de torque angular', col: '#4B7BF5' },
                 { label: 'SIMETRIA DE PEDALADA', val: `${v2}%`, sub: 'L/R precisão laboratorial', col: '#7BA7E8' },
@@ -443,9 +443,9 @@ export default function Ciclismo() {
       </section>
 
       {/* ─── BIKE FIT ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#ffffff' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#ffffff' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
             {/* Imagem */}
             <div className="rounded-3xl overflow-hidden"
@@ -526,11 +526,11 @@ export default function Ciclismo() {
       </section>
 
       {/* ─── ANÁLISE EM CAMPO · NETO ─── */}
-      <section className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
+      <section className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-8">
             <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Análise em campo</span>
-            <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
               Rastreamento em{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>condições reais de treino</span>
             </h2>
@@ -556,17 +556,17 @@ export default function Ciclismo() {
       </section>
 
       {/* COMO FUNCIONA */}
-      <section id="como-funciona" className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
+      <section id="como-funciona" className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-20">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O processo</span>
-            <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
               Do pedal ao diagnóstico{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>em 3 passos.</span>
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 relative">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 relative">
             <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
               style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.4), rgba(123,167,232,0.4))' }} />
 
@@ -593,7 +593,7 @@ export default function Ciclismo() {
                 cor: '#4B7BF5',
               },
             ].map((item, i) => (
-              <div key={i} className="rounded-3xl p-8 flex flex-col gap-5 relative"
+              <div key={i} className="rounded-3xl p-6 lg:p-8 flex flex-col gap-5 relative"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-center justify-between">
                   <span className="font-sans font-bold text-2xl" style={{ color: item.cor }}>
@@ -614,7 +614,7 @@ export default function Ciclismo() {
             ))}
           </div>
 
-          <div className="mt-8 rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6"
+          <div className="mt-8 rounded-3xl p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6"
             style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: 'rgba(75,123,245,0.1)' }}>
@@ -633,10 +633,10 @@ export default function Ciclismo() {
       </section>
 
       {/* CTA */}
-      <section id="agendar" className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+      <section id="agendar" className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[560px] mx-auto text-center">
           <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Próximo passo</span>
-          <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-4">
+          <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-4">
             Pronto para pedalar com{' '}
             <span className="font-bold" style={{ color: '#4B7BF5' }}>dados reais?</span>
           </h2>
@@ -644,7 +644,7 @@ export default function Ciclismo() {
             Nossa equipe entrará em contato em breve.
           </p>
           {status === 'success' ? (
-            <div className="rounded-3xl p-8 text-left" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+            <div className="rounded-3xl p-6 lg:p-8 text-left" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div className="text-center py-12">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
                   style={{ background: 'rgba(75,123,245,0.15)' }}>
@@ -658,7 +658,7 @@ export default function Ciclismo() {
               </div>
             </div>
           ) : (
-            <div className="rounded-3xl p-8 text-left"
+            <div className="rounded-3xl p-6 lg:p-8 text-left"
               style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div className="flex flex-col gap-4">
                 {[

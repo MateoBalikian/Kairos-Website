@@ -59,7 +59,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
   const fieldStyle = { border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }
 
   return (
-    <section ref={sectionRef} id="waitlist" className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
+    <section ref={sectionRef} id="waitlist" className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
       <div className="max-w-[640px] mx-auto waitlist-content">
         <div className="text-center mb-12">
           <span className="font-mono text-xs uppercase tracking-widest block mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
@@ -88,7 +88,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
             <p className="text-white/50 text-sm mt-2">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="rounded-3xl p-8"
+          <form onSubmit={handleSubmit} className="rounded-3xl p-6 lg:p-8"
             style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
             <div className="flex flex-col gap-4">
               {[

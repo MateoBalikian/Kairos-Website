@@ -199,7 +199,7 @@ export default function Natacao() {
             </div>
 
             <h1 className="hi font-sans font-bold text-white"
-              style={{ fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', lineHeight: 1.02 }}>
+              style={{ fontSize: 'clamp(2rem, 6vw, 4.5rem)', lineHeight: 1.02 }}>
               Precisão que{' '}
               <span style={{ color: '#4B7BF5' }}>redefine o pódio.</span>
             </h1>
@@ -244,7 +244,7 @@ export default function Natacao() {
 
       {/* ─── SEÇÃO BRANCA — DIFERENCIAIS ─── */}
       <section ref={difRef} style={{ background: '#ffffff' }}>
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-24 lg:py-32">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-16 lg:py-24 xl:py-32">
 
           <div className="max-w-2xl mb-16">
             <span className="font-mono text-xs text-[#0A2463] uppercase tracking-widest">
@@ -259,9 +259,9 @@ export default function Natacao() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
             {diferenciais.map((d, i) => (
-              <div key={i} className="dif-card rounded-3xl p-8 flex flex-col gap-5 group hover:-translate-y-1 transition-transform duration-300"
+              <div key={i} className="dif-card rounded-3xl p-6 lg:p-8 flex flex-col gap-5 group hover:-translate-y-1 transition-transform duration-300"
                 style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
                 <div className="flex items-start justify-between">
                   <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
@@ -314,14 +314,14 @@ export default function Natacao() {
       </section>
 
       {/* ─── CORE ENGINE AI ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
             {/* Texto */}
             <div>
               <span className="text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
-              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+              <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
                 Core Engine AI —{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
@@ -351,7 +351,7 @@ export default function Natacao() {
             </div>
 
             {/* Diagrama */}
-            <div className="rounded-3xl p-8 flex flex-col gap-6"
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col gap-6"
               style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div className="flex flex-col gap-3">
                 {[
@@ -411,12 +411,12 @@ export default function Natacao() {
       </section>
 
       {/* ─── IA EM AÇÃO ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <span className="font-mono text-xs text-white/30 uppercase tracking-widest">IA em ação</span>
-              <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
+              <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
                 Rastreamento Dinâmico de{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>Esqueleto em ação</span>
               </h2>
@@ -446,7 +446,7 @@ export default function Natacao() {
       </section>
 
       {/* ─── STATS ─── */}
-      <section ref={statsRef} className="py-20 px-6 bg-[#0A0A0A]">
+      <section ref={statsRef} className="py-12 lg:py-20 px-5 md:px-6 bg-[#0A0A0A]">
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {[
@@ -454,7 +454,7 @@ export default function Natacao() {
               { val: 'V-SCORE', label: 'Índice proprietário de performance', sub: '0 a 100 pontos' },
               { val: `${v2}+`, label: 'Indicadores cinemáticos', sub: 'Por análise' },
             ].map((s, i) => (
-              <div key={i} className="rounded-3xl p-8 text-center"
+              <div key={i} className="rounded-3xl p-6 lg:p-8 text-center"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <p className="font-mono font-bold leading-none mb-3"
                   style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: i % 2 === 0 ? '#4B7BF5' : '#7BA7E8' }}>
@@ -469,17 +469,17 @@ export default function Natacao() {
       </section>
 
       {/* ─── COMO FUNCIONA ─── */}
-      <section className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
+      <section className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-20">
             <span className="font-mono text-xs text-white/30 uppercase tracking-widest">O processo</span>
-            <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
               Da piscina ao diagnóstico{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>em 3 passos.</span>
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 relative">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 relative">
             <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
               style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.4), rgba(123,167,232,0.4))' }} />
 
@@ -506,7 +506,7 @@ export default function Natacao() {
                 cor: '#4B7BF5',
               },
             ].map((item, i) => (
-              <div key={i} className="rounded-3xl p-8 flex flex-col gap-5 relative"
+              <div key={i} className="rounded-3xl p-6 lg:p-8 flex flex-col gap-5 relative"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-center justify-between">
                   <span className="font-sans font-bold text-2xl"
@@ -527,7 +527,7 @@ export default function Natacao() {
             ))}
           </div>
 
-          <div className="mt-8 rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6"
+          <div className="mt-8 rounded-3xl p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6"
             style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: 'rgba(75,123,245,0.1)' }}>
@@ -546,16 +546,16 @@ export default function Natacao() {
       </section>
 
       {/* ─── O QUE ESTÁ INCLUÍDO ─── */}
-      <section id="metricas" className="py-24 lg:py-32 px-6 bg-[#0A0A0A]">
+      <section id="metricas" className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-14">
             <span className="font-mono text-xs text-white/30 uppercase tracking-widest">O que está incluído</span>
-            <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3">
+            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
               Indicadores Técnicos{' '}
               <span className="font-bold" style={{ color: '#4B7BF5' }}>e Biomecânicos</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
             {metricas.map((m, i) => (
               <div key={i} className="metrica-card rounded-3xl p-7"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
@@ -571,10 +571,10 @@ export default function Natacao() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section id="agendar" className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+      <section id="agendar" className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[560px] mx-auto text-center">
           <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Próximo passo</span>
-          <h2 className="font-sans font-light text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-4">
+          <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-4">
             A medalha é uma{' '}
             <span className="font-bold" style={{ color: '#4B7BF5' }}>consequência dos dados.</span>
           </h2>
@@ -582,7 +582,7 @@ export default function Natacao() {
             Implemente a análise Veltron e substitua a percepção subjetiva pela certeza biomecânica e metabólica.
           </p>
           {status === 'success' ? (
-            <div className="rounded-3xl p-8 text-left" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+            <div className="rounded-3xl p-6 lg:p-8 text-left" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div className="text-center py-12">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
                   style={{ background: 'rgba(75,123,245,0.15)' }}>
@@ -596,7 +596,7 @@ export default function Natacao() {
               </div>
             </div>
           ) : (
-            <div className="rounded-3xl p-8 text-left"
+            <div className="rounded-3xl p-6 lg:p-8 text-left"
               style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <div className="flex flex-col gap-4">
                 {[

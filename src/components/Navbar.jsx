@@ -67,7 +67,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden xl:flex items-center gap-6 flex-nowrap whitespace-nowrap">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -112,7 +112,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden"
+            className="xl:hidden"
             aria-label="Menu"
             style={{ color: 'white', background: 'none', border: 'none', cursor: 'pointer' }}
           >

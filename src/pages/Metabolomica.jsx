@@ -48,9 +48,9 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       <Navbar />
 
       {/* ─── HERO (alinhado à esquerda com imagem) ─── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
+      <section ref={heroRef} className="relative min-h-[85vh] lg:min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 items-center min-h-screen py-32">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.3fr] gap-8 xl:gap-12 items-center min-h-[85vh] lg:min-h-screen py-16 lg:py-32">
             <div>
               <div className="met-hi mb-4">
                 <span className="font-sans text-xs text-white/40 uppercase tracking-widest border border-white/10 rounded-full px-4 py-1.5">
@@ -58,7 +58,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 </span>
               </div>
               <h1 className="met-hi font-sans font-bold text-white leading-tight mb-6"
-                style={{ fontSize: 'clamp(2.4rem, 4vw, 3.8rem)' }}>
+                style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}>
                 O exame que enxerga{' '}
                 <span style={{ color: '#4B7BF5' }}>o que nenhum outro vê.</span>
               </h1>
@@ -77,7 +77,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 </span>
               </a>
             </div>
-            <div className="met-hi hidden lg:flex items-center justify-end self-stretch">
+            <div className="met-hi hidden xl:flex items-center justify-end self-stretch">
               <img src={mediaUrl('metabolomica1.png')} alt="Metabolômica Veltron"
                 style={{ width: '100%', height: '100%', maxHeight: '520px', objectFit: 'cover', borderRadius: '24px' }} />
             </div>
@@ -86,12 +86,12 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── O QUE É (texto + imagem + comparação) ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#ffffff' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#ffffff' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-16 items-center mb-20">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 items-center mb-20">
             <div>
               <span className="font-sans text-xs text-[#0A2463] uppercase tracking-widest">Entenda a análise</span>
-              <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: '#0A0A0A' }}>
+              <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: '#0A0A0A' }}>
                 O que é<br />
                 <span style={{ color: '#0A2463' }}>Metabolômica?</span>
               </h2>
@@ -112,8 +112,8 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
           </div>
 
           {/* Comparação lado a lado */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="rounded-3xl p-8" style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-3xl p-6 lg:p-8" style={{ background: '#F8F8F6', border: '1px solid #E5E5E2' }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: '#E5E5E2' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
@@ -136,7 +136,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
               </div>
             </div>
 
-            <div className="rounded-3xl p-8" style={{ background: '#0A2463' }}>
+            <div className="rounded-3xl p-6 lg:p-8" style={{ background: '#0A2463' }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'rgba(75,123,245,0.3)' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12" /></svg>
@@ -165,11 +165,11 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── O QUE A METABOLÔMICA REVELA (editorial, sem cards) ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-16">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O que ela revela</span>
-            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
               Informações que{' '}
               <span style={{ color: '#4B7BF5' }}>mudam decisões.</span>
             </h2>
@@ -194,7 +194,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 desc: 'Como seu corpo usa carboidrato, gordura e proteína como combustível. Isso define a estratégia de nutrição periodizada ideal para o seu metabolismo — não uma dieta genérica.',
               },
             ].map((item, i) => (
-              <div key={i} className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-16 py-10"
+              <div key={i} className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-8 lg:gap-16 py-10"
                 style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                 <h3 className="font-sans font-bold text-white" style={{ fontSize: '1.3rem' }}>{item.titulo}</h3>
                 <p className="text-white/50 leading-relaxed" style={{ fontSize: '1rem' }}>{item.desc}</p>
@@ -205,11 +205,11 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── COMO FUNCIONA (3 passos em linha) ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Como funciona</span>
-            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
               Simples.{' '}
               <span style={{ color: '#4B7BF5' }}>Sem complicação.</span>
             </h2>
@@ -244,17 +244,17 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── AVALIAÇÃO (card único) ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0d0d0d' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[600px] mx-auto">
           <div className="text-center mb-12">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Investimento</span>
-            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
               Uma análise.{' '}
               <span style={{ color: '#4B7BF5' }}>Centenas de respostas.</span>
             </h2>
           </div>
 
-          <div className="rounded-3xl p-10"
+          <div className="rounded-3xl p-6 md:p-8 lg:p-10"
             style={{ background: '#0A2463', border: '1px solid rgba(75,123,245,0.4)' }}>
             <div className="flex items-center justify-between mb-8">
               <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
@@ -293,11 +293,11 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[700px] mx-auto">
           <div className="mb-12">
             <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Dúvidas frequentes</span>
-            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 800, color: 'white' }}>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)', fontWeight: 800, color: 'white' }}>
               Perguntas que nossos{' '}
               <span style={{ color: '#4B7BF5' }}>clientes fazem.</span>
             </h2>
@@ -348,10 +348,10 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       </section>
 
       {/* ─── FORMULÁRIO ─── */}
-      <section id="agendar" className="py-24 lg:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      <section id="agendar" className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[600px] mx-auto">
           <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Agende sua avaliação</span>
-          <h2 className="font-sans mt-3 mb-3 leading-tight" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 800, color: 'white' }}>
+          <h2 className="font-sans mt-3 mb-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
             Comece agora.
           </h2>
           <p className="text-white/50 mb-3 leading-relaxed">
