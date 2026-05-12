@@ -645,23 +645,23 @@ export default function Corrida() {
                 <div className="flex flex-col gap-2">
                   <label className="font-sans font-semibold text-sm text-white">Plano de interesse</label>
                   <select value={form.plano} onChange={(e) => setForm({ ...form, plano: e.target.value })}
-                    style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                    <option value="">Selecione</option>
-                    <option value="avulso-1-angulo">Análise avulsa 1 ângulo - R$70</option>
-                    <option value="avulso-2-angulos">Análise 2 ângulos - R$90</option>
-                    <option value="acompanhamento">Acompanhamento 3 vídeos - R$250</option>
-                    <option value="nao-sei">Ainda não sei</option>
+                    style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                    <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                    <option value="avulso-1-angulo" style={{ background: '#1a1a1a', color: 'white' }}>Análise avulsa 1 ângulo - R$70</option>
+                    <option value="avulso-2-angulos" style={{ background: '#1a1a1a', color: 'white' }}>Análise 2 ângulos - R$90</option>
+                    <option value="acompanhamento" style={{ background: '#1a1a1a', color: 'white' }}>Acompanhamento 3 vídeos - R$250</option>
+                    <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Ainda não sei</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="font-sans font-semibold text-sm text-white">Objetivo</label>
                   <select value={form.objetivo} onChange={(e) => setForm({ ...form, objetivo: e.target.value })}
-                    style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                    <option value="">Selecione</option>
-                    <option value="melhorar-tecnica">Melhorar técnica</option>
-                    <option value="prevenir-lesao">Prevenir lesão</option>
-                    <option value="acompanhar-evolucao">Acompanhar evolução</option>
-                    <option value="outro">Outro</option>
+                    style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                    <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                    <option value="melhorar-tecnica" style={{ background: '#1a1a1a', color: 'white' }}>Melhorar técnica</option>
+                    <option value="prevenir-lesao" style={{ background: '#1a1a1a', color: 'white' }}>Prevenir lesão</option>
+                    <option value="acompanhar-evolucao" style={{ background: '#1a1a1a', color: 'white' }}>Acompanhar evolução</option>
+                    <option value="outro" style={{ background: '#1a1a1a', color: 'white' }}>Outro</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">

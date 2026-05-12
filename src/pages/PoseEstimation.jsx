@@ -413,32 +413,32 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Esporte</label>
                 <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione seu esporte</option>
-                  <option value="corrida">Corrida</option>
-                  <option value="ciclismo">Ciclismo</option>
-                  <option value="natacao">Natação</option>
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione seu esporte</option>
+                  <option value="corrida" style={{ background: '#1a1a1a', color: 'white' }}>Corrida</option>
+                  <option value="ciclismo" style={{ background: '#1a1a1a', color: 'white' }}>Ciclismo</option>
+                  <option value="natacao" style={{ background: '#1a1a1a', color: 'white' }}>Natação</option>
                 </select>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Plano de interesse</label>
                 <select value={form.plano} onChange={(e) => setForm({ ...form, plano: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione</option>
-                  <option value="avulso">Análise avulsa (1 vídeo)</option>
-                  <option value="acompanhamento">Acompanhamento (3 vídeos)</option>
-                  <option value="nao-sei">Ainda não sei</option>
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                  <option value="avulso" style={{ background: '#1a1a1a', color: 'white' }}>Análise avulsa (1 vídeo)</option>
+                  <option value="acompanhamento" style={{ background: '#1a1a1a', color: 'white' }}>Acompanhamento (3 vídeos)</option>
+                  <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Ainda não sei</option>
                 </select>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Qual seu objetivo?</label>
                 <select value={form.objetivo} onChange={(e) => setForm({ ...form, objetivo: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione</option>
-                  <option value="melhorar-tecnica">Melhorar técnica</option>
-                  <option value="prevenir-lesao">Prevenir lesão</option>
-                  <option value="acompanhar-evolucao">Acompanhar evolução</option>
-                  <option value="outro">Outro</option>
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                  <option value="melhorar-tecnica" style={{ background: '#1a1a1a', color: 'white' }}>Melhorar técnica</option>
+                  <option value="prevenir-lesao" style={{ background: '#1a1a1a', color: 'white' }}>Prevenir lesão</option>
+                  <option value="acompanhar-evolucao" style={{ background: '#1a1a1a', color: 'white' }}>Acompanhar evolução</option>
+                  <option value="outro" style={{ background: '#1a1a1a', color: 'white' }}>Outro</option>
                 </select>
               </div>
               <div className="flex flex-col gap-2">

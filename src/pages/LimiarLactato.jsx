@@ -491,44 +491,44 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Esporte principal</label>
                 <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione</option>
-                  <option value="corrida">Corrida</option>
-                  <option value="ciclismo">Ciclismo</option>
-                  <option value="natacao">Natação</option>
-                  <option value="triathlon">Triathlon</option>
-                  <option value="outro">Outro</option>
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                  <option value="corrida" style={{ background: '#1a1a1a', color: 'white' }}>Corrida</option>
+                  <option value="ciclismo" style={{ background: '#1a1a1a', color: 'white' }}>Ciclismo</option>
+                  <option value="natacao" style={{ background: '#1a1a1a', color: 'white' }}>Natação</option>
+                  <option value="triathlon" style={{ background: '#1a1a1a', color: 'white' }}>Triathlon</option>
+                  <option value="outro" style={{ background: '#1a1a1a', color: 'white' }}>Outro</option>
                 </select>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Treina há quanto tempo?</label>
                 <select value={form.experiencia} onChange={(e) => setForm({ ...form, experiencia: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione</option>
-                  <option value="menos-1-ano">Menos de 1 ano</option>
-                  <option value="1-3-anos">1-3 anos</option>
-                  <option value="3-5-anos">3-5 anos</option>
-                  <option value="mais-5-anos">Mais de 5 anos</option>
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                  <option value="menos-1-ano" style={{ background: '#1a1a1a', color: 'white' }}>Menos de 1 ano</option>
+                  <option value="1-3-anos" style={{ background: '#1a1a1a', color: 'white' }}>1-3 anos</option>
+                  <option value="3-5-anos" style={{ background: '#1a1a1a', color: 'white' }}>3-5 anos</option>
+                  <option value="mais-5-anos" style={{ background: '#1a1a1a', color: 'white' }}>Mais de 5 anos</option>
                 </select>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Já fez teste de lactato antes?</label>
                 <select value={form.jaFezTeste} onChange={(e) => setForm({ ...form, jaFezTeste: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione</option>
-                  <option value="sim">Sim</option>
-                  <option value="nao">Não</option>
-                  <option value="nao-sei">Não sei o que é</option>
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                  <option value="sim" style={{ background: '#1a1a1a', color: 'white' }}>Sim</option>
+                  <option value="nao" style={{ background: '#1a1a1a', color: 'white' }}>Não</option>
+                  <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Não sei o que é</option>
                 </select>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Melhor período pra agendar</label>
                 <select value={form.periodo} onChange={(e) => setForm({ ...form, periodo: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }}>
-                  <option value="">Selecione</option>
-                  <option value="manha">Manhã</option>
-                  <option value="tarde">Tarde</option>
-                  <option value="qualquer">Qualquer um</option>
+                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                  <option value="manha" style={{ background: '#1a1a1a', color: 'white' }}>Manhã</option>
+                  <option value="tarde" style={{ background: '#1a1a1a', color: 'white' }}>Tarde</option>
+                  <option value="qualquer" style={{ background: '#1a1a1a', color: 'white' }}>Qualquer um</option>
                 </select>
               </div>
               <div className="flex flex-col gap-2">
