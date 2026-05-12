@@ -61,7 +61,7 @@ const diferenciais = [
   {
     tag: 'METABOLÔMICA',
     titulo: 'Assinatura Molecular',
-    desc: '200+ metabólitos que revelam o que nenhum exame convencional enxerga — recuperação, adaptação e deficiências invisíveis.',
+    desc: 'Metabólitos que revelam o que nenhum exame convencional enxerga — recuperação, adaptação e deficiências invisíveis.',
     cor: '#4B7BF5',
     cta: 'Agende sua análise',
     link: '/metabolomica',
@@ -100,7 +100,7 @@ function FaqSection() {
     },
     {
       q: 'O que é metabolômica e por que ela importa para o meu treino?',
-      a: 'Metabolômica é a análise de mais de 200 metabólitos do seu sangue — moléculas que revelam o que está acontecendo dentro das células. Ela identifica deficiências nutricionais invisíveis em exames convencionais, marcadores de overtraining antes dos sintomas aparecerem e o status real de recuperação muscular.',
+      a: 'Metabolômica é a análise de metabólitos do seu sangue — moléculas que revelam o que está acontecendo dentro das células. Ela identifica deficiências nutricionais invisíveis em exames convencionais, marcadores de overtraining antes dos sintomas aparecerem e o status real de recuperação muscular.',
     },
     {
       q: 'A Veltron atende apenas atletas de Maceió?',
@@ -196,10 +196,10 @@ export default function Home() {
 
         <div className="absolute z-10"
           style={{
-            bottom: 'clamp(100px, 12vh, 160px)',
-            left: 'clamp(24px, 5vw, 72px)',
-            right: 'clamp(24px, 5vw, 64px)',
-            maxWidth: 680,
+            bottom: 'clamp(80px, 10vh, 160px)',
+            left: 'clamp(16px, 5vw, 72px)',
+            right: 'clamp(16px, 5vw, 72px)',
+            maxWidth: 660,
           }}>
 
           <div className="hi">
@@ -209,13 +209,13 @@ export default function Home() {
           </div>
 
           <h1 className="hi font-sans font-bold text-white mt-4"
-            style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', lineHeight: 1.05 }}>
-            Transformando movimento em<br />
+            style={{ fontSize: 'clamp(1.9rem, 4.5vw, 4.5rem)', lineHeight: 1.1, wordBreak: 'break-word' }}>
+            Transformando movimento em{' '}
             <span style={{ color: '#4B7BF5' }}>inteligência competitiva.</span>
           </h1>
 
-          <p className="hi mt-5 text-white/65 leading-relaxed"
-            style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', maxWidth: 540 }}>
+          <p className="hi mt-4 text-white/65 leading-relaxed"
+            style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)', maxWidth: 500 }}>
             Eliminamos a incerteza dos wearables e apps. A Veltron traduz movimento em cinética do lactato, metabolômica e biomecânica — a tríade que realmente determina performance.
           </p>
 
@@ -422,7 +422,7 @@ export default function Home() {
             {modalidades.map((mod, i) => (
               <Link key={i} to={`/${mod.slug}`}
                 className="mod-card group relative overflow-hidden rounded-3xl block"
-                style={{ height: 480, textDecoration: 'none' }}>
+                style={{ height: 'clamp(300px, 55vh, 480px)', textDecoration: 'none' }}>
 
                 {/* Media de fundo */}
                 <video autoPlay muted loop playsInline

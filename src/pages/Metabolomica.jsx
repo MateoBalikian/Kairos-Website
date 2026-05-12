@@ -194,7 +194,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 desc: 'Como seu corpo usa carboidrato, gordura e proteína como combustível. Isso define a estratégia de nutrição periodizada ideal para o seu metabolismo — não uma dieta genérica.',
               },
             ].map((item, i) => (
-              <div key={i} className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-8 lg:gap-16 py-10"
+              <div key={i} className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-16 py-8 lg:py-10"
                 style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                 <h3 className="font-sans font-bold text-white" style={{ fontSize: '1.3rem' }}>{item.titulo}</h3>
                 <p className="text-white/50 leading-relaxed" style={{ fontSize: '1rem' }}>{item.desc}</p>

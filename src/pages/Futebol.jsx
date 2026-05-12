@@ -101,11 +101,11 @@ const avaliacoes = [
     cor: '#7BA7E8',
   },
   {
-    tag: '200+ Metabolitos · RMN',
+    tag: 'Metabolitos · RMN',
     titulo: 'Metabolômica',
     subtitulo: 'O que acontece dentro do atleta que o exame comum nao mostra',
     problema: 'Seu atleta dormiu 8h, treinou bem, parece recuperado. Mas rendeu 60% no jogo seguinte. A metabolômica revela o que o olho - e o GPS - nao conseguem ver.',
-    oQueMede: 'O perfil completo de 200+ metabolitos via Ressonancia Magnetica Nuclear - aminoacidos, acidos organicos, lipideos e marcadores de estresse oxidativo que revelam o estado real de recuperacao e adaptacao ao treino.',
+    oQueMede: 'O perfil completo de metabolitos via Ressonancia Magnetica Nuclear - aminoacidos, acidos organicos, lipideos e marcadores de estresse oxidativo que revelam o estado real de recuperacao e adaptacao ao treino.',
     oQueRevela: [
       'Se o atleta realmente recuperou entre dois jogos',
       'Deficiencias nutricionais especificas que comprometem rendimento',

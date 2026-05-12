@@ -119,9 +119,9 @@ const avaliacoes = [
   {
     tag: 'Metabolômica',
     titulo: 'Metabolômica',
-    subtitulo: '200+ metabólitos que revelam o que nenhum teste convencional enxerga',
+    subtitulo: 'Metabólitos que revelam o que nenhum teste convencional enxerga',
     problema: 'Fadiga persistente, recuperação lenta, desempenho estagnado. Os exames convencionais voltam normais. Mas o problema está no metabolismo — e só a metabolômica consegue mapear.',
-    oQueMede: 'Perfil metabólico completo via Ressonância Magnética Nuclear: 200+ metabólitos envolvidos em recuperação, adaptação ao treino, deficiências nutricionais e status energético celular.',
+    oQueMede: 'Perfil metabólico completo via Ressonância Magnética Nuclear: metabólitos envolvidos em recuperação, adaptação ao treino, deficiências nutricionais e status energético celular.',
     oQueRevela: [
       'Deficiências nutricionais invisíveis que limitam recuperação',
       'Status de adaptação muscular ao volume de treino atual',
@@ -307,7 +307,7 @@ export default function Corrida() {
           <div className="av-card rounded-3xl overflow-hidden"
             style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="p-8 lg:p-10 flex flex-col gap-6">
+              <div className="p-4 sm:p-6 lg:p-10 flex flex-col gap-4 sm:gap-6">
                 <div>
                   <span className="font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full inline-block mb-4"
                     style={{ background: `${av.cor}15`, border: `1px solid ${av.cor}30`, color: av.cor }}>
@@ -329,7 +329,7 @@ export default function Corrida() {
                   <p className="text-sm text-white/45 leading-relaxed">{av.comoFazemos}</p>
                 </div>
               </div>
-              <div className="p-8 lg:p-10 flex flex-col gap-6"
+              <div className="p-4 sm:p-6 lg:p-10 flex flex-col gap-4 sm:gap-6"
                 style={{ background: `${av.cor}08`, borderLeft: '1px solid rgba(255,255,255,0.05)' }}>
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-widest mb-5" style={{ color: av.cor }}>

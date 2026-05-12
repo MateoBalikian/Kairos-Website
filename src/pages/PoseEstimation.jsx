@@ -48,7 +48,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       {/* ─── HERO ─── */}
       <section ref={heroRef} className="relative min-h-[85vh] lg:min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]">
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 w-full">
-          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] gap- items-center min-h-[85vh] lg:min-h-screen pt-24 pb-16">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] gap-8 xl:gap-12 items-center min-h-[85vh] lg:min-h-screen pt-24 pb-16">
             <div style={{ paddingLeft: '0' }}>
               <div className="pe-hi mb-4">
                 <span className="font-sans text-xs text-white/40 uppercase tracking-widest border border-white/10 rounded-full px-4 py-1.5">
@@ -137,7 +137,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 cor: '#4B7BF5',
               },
             ].map((item, i) => (
-              <div key={i} className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-8 lg:gap-16 py-12"
+              <div key={i} className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 py-10 lg:py-12"
                 style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-start gap-4 lg:flex-col lg:gap-2">
                   <span className="font-sans font-bold text-white/10" style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', lineHeight: 1 }}>{item.num}</span>

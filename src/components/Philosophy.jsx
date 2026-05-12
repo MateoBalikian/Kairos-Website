@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 
-const IMG_PADDING = typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : 12
+const IMG_PADDING = 0
 
 const TextParallaxContent = ({ imgUrl, subheading, heading, children }) => {
   return (
     <div style={{ paddingLeft: IMG_PADDING, paddingRight: IMG_PADDING }}>
-      <div className="relative h-[120vh] lg:h-[150vh]">
+      <div className="relative h-[110vh] lg:h-[135vh]">
         <StickyImage imgUrl={imgUrl} />
         <OverlayCopy heading={heading} subheading={subheading} />
       </div>
@@ -63,7 +63,7 @@ const OverlayCopy = ({ subheading, heading }) => {
       <p className="mb-3 text-center text-xl md:text-2xl font-light text-white/60 font-sans">
         {subheading}
       </p>
-      <p className="text-center text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight font-sans">
+      <p className="text-center text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight font-sans" style={{ wordBreak: 'break-word' }}>
         {heading}
       </p>
     </motion.div>
@@ -89,11 +89,11 @@ export default function Philosophy() {
         heading="essa tecnologia existiu apenas em centros olímpicos."
       >
         <ContentBlock>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-start">
             <div>
               <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">O manifesto da Veltron</span>
-              <h3 className="font-sans font-bold text-3xl lg:text-4xl text-white mt-4 leading-tight">
-                Reservada para poucos.<br />
+              <h3 className="font-sans font-bold text-2xl lg:text-4xl text-white mt-4 leading-tight" style={{ wordBreak: 'break-word' }}>
+                Reservada para poucos.{' '}
                 <span className="text-[#4B7BF5]">Agora disponível para todos.</span>
               </h3>
             </div>
@@ -113,11 +113,11 @@ export default function Philosophy() {
         heading="mudou isso."
       >
         <ContentBlock>
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-start">
             <div>
               <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">Nossa abordagem</span>
-              <h3 className="font-sans font-bold text-3xl lg:text-4xl text-white mt-4 leading-tight">
-                Ciência aplicada.<br />
+              <h3 className="font-sans font-bold text-2xl lg:text-4xl text-white mt-4 leading-tight" style={{ wordBreak: 'break-word' }}>
+                Ciência aplicada.{' '}
                 <span className="text-[#4B7BF5]">Resultado real.</span>
               </h3>
             </div>
@@ -128,7 +128,7 @@ export default function Philosophy() {
               <div className="flex flex-wrap gap-8">
                 {[
                   { val: '99.5%', desc: 'Precisão do modelo preditivo' },
-                  { val: 'RMN', desc: '200+ metabólitos analisados' },
+                  { val: 'RMN', desc: 'Metabólitos analisados por espectroscopia' },
                   { val: 'IA', desc: 'Rastreamento frame a frame' },
                 ].map((s) => (
                   <div key={s.val}>

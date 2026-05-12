@@ -187,7 +187,7 @@ html, body, #root {
 
 /* Forçar color scheme dark — evita inversão de cores no Android modo noturno */
 :root {
-  color-scheme: only light;
+  color-scheme: light;
 }
 
 /* Seções brancas — forçar cores explicitamente */
@@ -217,7 +217,7 @@ select:-webkit-autofill {
 
 /* Navbar safe area — covers Dynamic Island / notch on iOS and Android */
 .navbar-safe-area {
-  height: var(--sat, env(safe-area-inset-top, 0px));
+  height: env(safe-area-inset-top, 0px);
   background: #0A0A0A;
   position: fixed;
   top: 0;
@@ -230,5 +230,5 @@ select:-webkit-autofill {
 /* Prevent horizontal scroll on mobile */
 html, body {
   overflow-x: hidden;
-  max-width: 100vw;
+  max-width: 100%;
 }

@@ -50,7 +50,7 @@ export default function Navbar() {
           paddingTop: 'env(safe-area-inset-top, 0px)',
         }}
       >
-        <div className="flex items-center justify-between px-6 lg:px-8 py-4">
+        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
 
           {/* Logo → Home */}
           <a href="/" style={{ flexShrink: 0, textDecoration: 'none' }}>
@@ -125,7 +125,7 @@ export default function Navbar() {
           <div style={{
             background: 'rgba(0,0,0,0.98)',
             backdropFilter: 'blur(12px)',
-            padding: '16px 32px 24px',
+            padding: 'clamp(12px, 4vw, 16px) clamp(16px, 5vw, 32px) 24px',
           }}>
             {navLinks.map((link) => (
               <a

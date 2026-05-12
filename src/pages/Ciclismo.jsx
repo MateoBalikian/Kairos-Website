@@ -48,7 +48,7 @@ const diferenciais = [
     tag: 'METABOLÔMICA',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" /></svg>),
     titulo: 'Assinatura Molecular',
-    desc: '200+ metabólitos que explicam por que as pernas pesam mesmo após descanso — e o que fazer para recuperar melhor.',
+    desc: 'Metabólitos que explicam por que as pernas pesam mesmo após descanso — e o que fazer para recuperar melhor.',
     cor: '#4B7BF5',
     cta: 'Agende sua análise',
     link: '/metabolomica',
@@ -134,13 +134,13 @@ export default function Ciclismo() {
           src={mediaUrl('herociclismo.jpeg')}
           alt=""
           className="absolute inset-0 w-full h-full"
-          style={{ objectFit: 'contain', objectPosition: 'center center', opacity: 0.95 }}
+          style={{ objectFit: 'cover', objectPosition: 'center center', opacity: 0.95 }}
           onError={(e) => e.target.style.display = 'none'}
         />
 
         {/* Esquerda — texto */}
-        <div className="relative flex flex-col justify-center px-8 lg:px-16 py-24 lg:py-0"
-          style={{ minHeight: '500px' }}>
+        <div className="relative flex flex-col justify-center px-4 sm:px-8 lg:px-16 py-10 sm:py-16 lg:py-0"
+          style={{ minHeight: 'clamp(300px, 75vh, 500px)' }}>
           <div className="max-w-[480px]">
             <div className="hi flex items-center gap-3 mb-8">
               <Link to="/" className="inline-flex items-center gap-2 font-mono text-sm text-white/50 hover:text-white transition-colors" style={{ textDecoration: 'none' }}>
@@ -180,7 +180,7 @@ export default function Ciclismo() {
 
         {/* Direita — painel biomecanico */}
         <div className="relative flex flex-col justify-center px-8 lg:px-12 py-16 lg:py-0"
-          style={{ background: 'transparent', minHeight: '500px' }}>
+          style={{ background: 'transparent', minHeight: 'clamp(280px, 60vh, 500px)' }}>
           <div className="hi" style={{ marginTop: 'auto' }}>
             <div className="flex items-center gap-2 mb-6">
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#4B7BF5' }} />
@@ -218,7 +218,7 @@ export default function Ciclismo() {
       <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="rounded-3xl overflow-hidden" style={{ height: 400, background: '#0A0A0A' }}>
+            <div className="rounded-3xl overflow-hidden" style={{ aspectRatio: '16/9', background: '#0A0A0A' }}>
               <video autoPlay muted loop playsInline className="w-full h-full object-cover"
                 src={mediaUrl('henrique.mp4')} />
             </div>
@@ -422,7 +422,7 @@ export default function Ciclismo() {
                 { label: 'ÂNGULO CRÍTICO JOELHO', val: `${v3}°`, sub: 'Fase propulsiva otimizada', col: '#4B7BF5' },
                 { label: 'METABÓLITOS ANALISADOS', val: `${v4}+`, sub: 'Perfil por RMN', col: '#7BA7E8' },
               ].map((m, i) => (
-                <div key={i} className="p-6 lg:p-8 flex flex-col gap-2"
+                <div key={i} className="p-3 sm:p-5 lg:p-8 flex flex-col gap-2"
                   style={{ borderRight: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                   <span className="font-mono text-[9px] text-white/30 uppercase tracking-widest">{m.label}</span>
                   <span className="font-mono font-bold leading-none"
@@ -449,11 +449,11 @@ export default function Ciclismo() {
 
             {/* Imagem */}
             <div className="rounded-3xl overflow-hidden"
-              style={{ border: '1px solid #E5E5E2', minHeight: '480px' }}>
+              style={{ border: '1px solid #E5E5E2', minHeight: 'clamp(250px, 50vh, 480px)' }}>
               <img
                 src={mediaUrl('bikefit.png')}
                 alt="Bike Fit Veltron"
-                style={{ width: '100%', height: '100%', minHeight: '480px', objectFit: 'cover', display: 'block' }}
+                style={{ width: '100%', height: '100%', minHeight: 'clamp(250px, 50vh, 480px)', objectFit: 'cover', display: 'block' }}
               />
             </div>
 

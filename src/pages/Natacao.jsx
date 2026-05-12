@@ -60,7 +60,7 @@ const diferenciais = [
       </svg>
     ),
     titulo: 'Assinatura Molecular',
-    desc: '200+ metabólitos que revelam recuperação, adaptação e deficiências invisíveis nos exames convencionais. A biologia do seu nadador, decifrada.',
+    desc: 'Metabólitos que revelam recuperação, adaptação e deficiências invisíveis nos exames convencionais. A biologia do seu nadador, decifrada.',
     cor: '#4B7BF5',
     cta: 'Agende sua análise',
     link: '/metabolomica',
@@ -177,9 +177,9 @@ export default function Natacao() {
 
         {/* Decoração de fundo */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-10"
+          <div className="absolute top-1/4 right-1/4 w-48 lg:w-96 h-48 lg:h-96 rounded-full opacity-10"
             style={{ background: 'radial-gradient(circle, #4B7BF5 0%, transparent 70%)' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 rounded-full opacity-8"
+          <div className="absolute bottom-1/4 left-1/3 w-32 lg:w-64 h-32 lg:h-64 rounded-full opacity-8"
             style={{ background: 'radial-gradient(circle, #7BA7E8 0%, transparent 70%)' }} />
         </div>
 
@@ -437,7 +437,7 @@ export default function Natacao() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-3xl overflow-hidden" style={{ height: 380, background: '#0A0A0A' }}>
+            <div className="rounded-3xl overflow-hidden" style={{ aspectRatio: '16/9', background: '#0A0A0A' }}>
               <video autoPlay muted loop playsInline className="w-full h-full object-cover"
                 src={mediaUrl('veltronswim.mp4')} />
             </div>
@@ -557,7 +557,7 @@ export default function Natacao() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
             {metricas.map((m, i) => (
-              <div key={i} className="metrica-card rounded-3xl p-7"
+              <div key={i} className="metrica-card rounded-3xl p-4 sm:p-5 lg:p-7"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mb-4" style={{ background: 'rgba(75,123,245,0.1)', color: '#4B7BF5' }}>
                   {m.icon}

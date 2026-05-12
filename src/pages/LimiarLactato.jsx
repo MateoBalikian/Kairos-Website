@@ -277,7 +277,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 desc: 'Em até 48 horas você recebe o laudo completo: seus valores de LT1 e LT2, a frequência cardíaca e velocidade (ou potência) correspondente a cada limiar, e suas zonas de treino individualizadas com recomendações práticas de prescrição.',
               },
             ].map((item, i) => (
-              <div key={i} className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-8 lg:gap-16 py-12"
+              <div key={i} className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 py-10 lg:py-12"
                 style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-start gap-4 lg:flex-col lg:gap-2">
                   <span className="font-sans font-bold text-white/10" style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', lineHeight: 1 }}>{item.num}</span>

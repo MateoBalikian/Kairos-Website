@@ -65,7 +65,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
           <span className="font-mono text-xs uppercase tracking-widest block mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
             VAGAS LIMITADAS
           </span>
-          <h2 className="font-sans font-light text-3xl lg:text-4xl xl:text-5xl text-white tracking-tight mb-4">
+          <h2 className="font-sans font-light text-xl sm:text-2xl lg:text-4xl xl:text-5xl text-white tracking-tight mb-4" style={{ wordBreak: 'break-word' }}>
             Treine com a vantagem que{' '}
             <span style={{ color: '#4B7BF5' }}>times olímpicos têm</span>
             <br />
