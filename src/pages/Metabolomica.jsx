@@ -243,55 +243,6 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
         </div>
       </section>
 
-      {/* ─── AVALIAÇÃO (card único) ─── */}
-      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
-        <div className="max-w-[600px] mx-auto">
-          <div className="text-center mb-12">
-            <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Investimento</span>
-            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
-              Uma análise.{' '}
-              <span style={{ color: '#4B7BF5' }}>Centenas de respostas.</span>
-            </h2>
-          </div>
-
-          <div className="rounded-3xl p-6 md:p-8 lg:p-10"
-            style={{ background: '#0A2463', border: '1px solid rgba(75,123,245,0.4)' }}>
-            <div className="flex items-center justify-between mb-8">
-              <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
-                style={{ background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}>
-                Análise Completa
-              </span>
-              <div className="text-right">
-                <p className="font-sans font-bold text-white" style={{ fontSize: '2.2rem', lineHeight: 1 }}>R$800</p>
-                <p className="text-white/50 text-xs mt-1">avaliação única</p>
-              </div>
-            </div>
-
-            <h3 className="font-sans font-bold text-white mb-3" style={{ fontSize: '1.3rem' }}>
-              Perfil Metabolômico Completo
-            </h3>
-            <p className="text-white/70 text-sm leading-relaxed mb-8">
-              Análise abrangente de metabólitos com interpretação individualizada para atletas. Identifica o que nenhum exame convencional mostra — recuperação, deficiências, eficiência energética e sinais de overtraining.
-            </p>
-
-            <a href="#agendar" onClick={(e) => { e.preventDefault(); const t = document.getElementById('agendar'); if (t && window.lenis) { window.lenis.scrollTo(t, { duration: 1.4 }) } else if (t) { t.scrollIntoView({ behavior: 'smooth' }) } }}
-              className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
-              style={{ background: 'white', borderRadius: 99, padding: '14px 28px', color: '#0A2463', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
-              QUERO MINHA ANÁLISE
-              <ArrowRight size={16} color="#0A2463" />
-            </a>
-          </div>
-
-          <div className="mt-6 rounded-2xl p-6 text-center"
-            style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-            <p className="text-white/60 text-sm">
-              Quer o diagnóstico completo?{' '}
-              <span className="text-white font-bold">Biomecânica + Lactato + Metabolômica por R$1.500</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ─── FAQ ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[700px] mx-auto">

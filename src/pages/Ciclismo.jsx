@@ -632,6 +632,203 @@ export default function Ciclismo() {
         </div>
       </section>
 
+      {/* ─── AVALIAÇÕES ─── */}
+      <section className="py-16 lg:py-24 xl:py-32 px-5 md:px-6" style={{ background: '#0A0A0A' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-16">
+            <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Avaliações</span>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
+              Avaliações e{' '}
+              <span style={{ color: '#4B7BF5' }}>Ciclo de Evolução.</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-6"
+              style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div>
+                <div className="flex items-start justify-between mb-6">
+                  <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>Express</span>
+                  <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$250</p>
+                </div>
+                <h3 className="font-sans font-bold text-white mb-3" style={{ fontSize: '1.2rem' }}>Avaliação Express</h3>
+                <p className="text-white/50 text-sm leading-relaxed mb-2">Coleta de vídeo analítica básica + 1 ponto de lactato + relatório simplificado.</p>
+                <p className="text-white/30 text-xs mb-6">Foco: Triagem e zonas essenciais.</p>
+                <div className="flex flex-col gap-3">
+                  {['Vídeo analítica básica', '1 ponto de lactato', 'Relatório simplificado', 'Zonas essenciais de treino'].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,255,255,0.1)' }}>
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round"><polyline points="20 6 9 17 4 12" /></svg>
+                      </div>
+                      <p className="text-white/60 text-sm">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-white/30 text-xs">Ideal para atletas iniciantes ou triagem rápida de retorno.</p>
+              <a href="#agendar" onClick={(e) => { e.preventDefault(); const t = document.getElementById('agendar'); if (t && window.lenis) { window.lenis.scrollTo(t, { duration: 1.4 }) } else if (t) { t.scrollIntoView({ behavior: 'smooth' }) } }}
+                className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
+                style={{ background: '#4B7BF5', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
+                QUERO MINHA AVALIAÇÃO
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-6"
+              style={{ background: '#0A2463', border: '1px solid rgba(75,123,245,0.4)' }}>
+              <div>
+                <div className="flex items-start justify-between mb-6">
+                  <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    style={{ background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}>Performance</span>
+                  <span className="font-sans text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    style={{ background: 'rgba(255,255,255,0.15)', color: 'white' }}>Melhor custo-benefício</span>
+                </div>
+                <p className="font-sans font-bold text-white text-right mb-6" style={{ fontSize: '2rem', lineHeight: 1 }}>R$450</p>
+                <h3 className="font-sans font-bold text-white mb-3" style={{ fontSize: '1.2rem' }}>Avaliação Performance</h3>
+                <p className="text-white/70 text-sm leading-relaxed mb-2">Análise biomecânica completa por IA + Curva de lactato com múltiplos pontos + Relatório técnico estruturado com indicadores.</p>
+                <p className="text-white/40 text-xs mb-6">Foco: Otimização real de treinos.</p>
+                <div className="flex flex-col gap-3">
+                  {['Análise biomecânica completa por IA', 'Curva de lactato com múltiplos pontos', 'Relatório técnico com indicadores', 'Recomendações de prescrição'].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,255,255,0.2)' }}>
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round"><polyline points="20 6 9 17 4 12" /></svg>
+                      </div>
+                      <p className="text-white/80 text-sm">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-white/40 text-xs">Ideal para ciclistas, corredores e nadadores em evolução.</p>
+              <a href="#agendar" onClick={(e) => { e.preventDefault(); const t = document.getElementById('agendar'); if (t && window.lenis) { window.lenis.scrollTo(t, { duration: 1.4 }) } else if (t) { t.scrollIntoView({ behavior: 'smooth' }) } }}
+                className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
+                style={{ background: 'white', borderRadius: 99, padding: '14px 28px', color: '#0A2463', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
+                QUERO MINHA AVALIAÇÃO
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2463" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+            <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-6"
+              style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div>
+                <div className="flex items-start justify-between mb-6">
+                  <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>Follow-up</span>
+                  <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$290</p>
+                </div>
+                <h3 className="font-sans font-bold text-white mb-3" style={{ fontSize: '1.2rem' }}>Reavaliação / Follow-up</h3>
+                <p className="text-white/50 text-sm leading-relaxed mb-2">Repetição total do protocolo após um ciclo de treinamento para comparar métricas.</p>
+                <p className="text-white/30 text-xs mb-6">Foco: Medição objetiva de evolução.</p>
+                <div className="flex flex-col gap-3">
+                  {['Repetição completa do protocolo', 'Comparativo com avaliação anterior', 'Evolução das métricas biomecânicas', 'Ajuste de zonas e prescrição'].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,255,255,0.1)' }}>
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round"><polyline points="20 6 9 17 4 12" /></svg>
+                      </div>
+                      <p className="text-white/60 text-sm">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-white/30 text-xs">Para quem já realizou a Avaliação Performance (4 a 8 semanas pós-teste).</p>
+              <a href="#agendar" onClick={(e) => { e.preventDefault(); const t = document.getElementById('agendar'); if (t && window.lenis) { window.lenis.scrollTo(t, { duration: 1.4 }) } else if (t) { t.scrollIntoView({ behavior: 'smooth' }) } }}
+                className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
+                style={{ background: '#4B7BF5', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
+                QUERO MINHA REAVALIAÇÃO
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── EVOLUÇÃO CIENTÍFICA AVANÇADA ─── */}
+      <section className="py-16 lg:py-24 xl:py-32 px-5 md:px-6" style={{ background: '#0A2463' }}>
+        <div className="max-w-[1000px] mx-auto">
+          <div className="mb-12">
+            <span className="font-sans text-xs text-white/40 uppercase tracking-widest">Para quem quer ir além</span>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
+              Evolução Científica{' '}
+              <span style={{ color: '#7BA7E8' }}>Avançada.</span>
+            </h2>
+          </div>
+
+          {/* Mapa Fisiometabólico */}
+          <div className="rounded-3xl p-6 lg:p-10 mb-6"
+            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(75,123,245,0.3)' }}>
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+              <div>
+                <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full inline-block mb-4"
+                  style={{ background: 'rgba(75,123,245,0.15)', color: '#7BA7E8', border: '1px solid rgba(75,123,245,0.25)' }}>
+                  8 Semanas · 2 Encontros
+                </span>
+                <h3 className="font-sans font-bold text-white" style={{ fontSize: '1.4rem' }}>
+                  Mapa Fisiometabólico Veltron
+                </h3>
+              </div>
+              <div className="lg:text-right flex-shrink-0">
+                <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$ 1.850,00</p>
+                <p className="text-white/50 text-sm mt-1">no Pix</p>
+                <p className="text-white/30 text-xs mt-1">ou em até 6x de R$ 340,00 no cartão</p>
+              </div>
+            </div>
+            <p className="text-white/60 leading-relaxed mb-8" style={{ fontSize: '0.95rem', maxWidth: 700 }}>
+              A fotografia molecular e biomecânica definitiva do seu organismo. Uma investigação profunda e integrada, realizada em <span className="text-white font-semibold">2 encontros distribuídos no período de 4 a 8 semanas</span>, projetada para identificar os gargalos ocultos que geram fadiga precoce e limitam o seu rendimento.
+            </p>
+            <p className="font-sans text-xs text-white/30 uppercase tracking-widest mb-4">Inclui 1 Mapa Fisiometabólico completo no ciclo</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+              {[
+                'Rastreio Biomecânico Cinemático de Precisão por IA',
+                'Determinação Cirúrgica de Limiares Metabólicos',
+                'Interpretação Especializada de Biomarcadores (Visão Molecular)',
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <span style={{ color: '#4B7BF5', marginTop: '2px', flexShrink: 0 }}>✦</span>
+                  <p className="text-white/60 text-sm leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Veltron Evolution */}
+          <div className="rounded-3xl p-6 lg:p-10"
+            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(75,123,245,0.3)' }}>
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    style={{ background: 'rgba(75,123,245,0.15)', color: '#7BA7E8', border: '1px solid rgba(75,123,245,0.25)' }}>
+                    Premium / 6 Meses
+                  </span>
+                </div>
+                <h3 className="font-sans font-bold text-white" style={{ fontSize: '1.4rem' }}>
+                  Veltron Evolution
+                </h3>
+              </div>
+              <div className="lg:text-right flex-shrink-0">
+                <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$ 3.900,00</p>
+                <p className="text-white/50 text-sm mt-1">Semestral à vista</p>
+                <p className="text-white/30 text-xs mt-1">ou em até 6x de R$ 690,00 no cartão de crédito</p>
+              </div>
+            </div>
+            <p className="text-white/60 leading-relaxed mb-8" style={{ fontSize: '0.95rem', maxWidth: 700 }}>
+              O programa contínuo de assessoria científica baseado em <span className="text-white font-semibold">6 encontros distribuídos em 6 meses</span> para atletas de elite e entusiastas de alta performance. Unimos a inteligência profunda do acompanhamento sistêmico a reavaliações e suporte ativo, garantindo ajustes dinâmicos e precisos à sua rotina de treinos.
+            </p>
+            <p className="font-sans text-xs text-white/30 uppercase tracking-widest mb-4">Inclui 2 Mapas Fisiometabólicos completos no ciclo</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+              {[
+                'Interpretação Especializada de Biomarcadores (Visão Molecular)',
+                'Reavaliações Biomecânicas e de Lactato periódicas',
+                'Dashboard exclusivo com evolução histórica de métricas',
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <span style={{ color: '#4B7BF5', marginTop: '2px', flexShrink: 0 }}>✦</span>
+                  <p className="text-white/60 text-sm leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* CTA */}
       <section id="agendar" className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[560px] mx-auto text-center">
