@@ -14,11 +14,12 @@ export default function Waitlist() {
   const [errors, setErrors] = useState({})
 
   const servicoLabels = {
-    biomecanica: 'Análise Biomecânica por Vídeo',
-    lactato: 'Teste de Limiar de Lactato',
-    metabolomica: 'Metabolômica',
-    combo: 'Combo Completo',
-    'nao-sei': 'Ainda não decidi',
+    express: 'Avaliação Express — R$250',
+    performance: 'Avaliação Performance — R$450',
+    reavaliacao: 'Reavaliação / Follow-up — R$290',
+    mapa: 'Mapa Fisiometabólico — R$1.850',
+    evolution: 'Veltron Evolution — R$3.900',
+    'nao-sei': 'Ainda não sei',
   }
   const esporteLabels = {
     corrida: 'Corrida',
@@ -40,14 +41,7 @@ export default function Waitlist() {
     const servicoLabel = servicoLabels[f.servico] || f.servico
     const esporteLabel = esporteLabels[f.esporte] || f.esporte
     return (
-      `Olá! Meu nome é ${f.nome} e gostaria de saber mais sobre os serviços da Veltron ${emoji}\n\n` +
-      `📋 Minhas informações:\n` +
-      `- WhatsApp: ${f.whatsapp}\n` +
-      `- E-mail: ${f.email}\n\n` +
-      `🎯 Interesse: ${servicoLabel}\n` +
-      `${emoji} Esporte: ${esporteLabel}` +
-      (f.mensagem ? `\n\n💬 "${f.mensagem}"` : '') +
-      `\n\nPoderiam me passar mais detalhes sobre esse serviço? Agradeço desde já!`
+      `Olá! Vim pelo site da Veltron 👋\n\nNome: ${f.nome}\nWhatsApp: ${f.whatsapp}\nE-mail: ${f.email}\nInteresse: ${servicoLabel || 'Não informado'}\nEsporte: ${esporteLabel || 'Não informado'}${f.mensagem ? `\nMensagem: ${f.mensagem}` : ''}`
     )
   }
 
@@ -164,13 +158,14 @@ export default function Waitlist() {
               <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Qual serviço te interessa?</label>
                 <select value={form.servico} onChange={(e) => updateField('servico', e.target.value)}
-                  style={{ ...fieldStyle, ...(errors.servico ? { border: '1px solid rgba(255,107,107,0.6)' } : {}) }}>
-                  <option value="" style={{ color: '#1a1a1a', background: '#ffffff' }}>Selecione</option>
-                  <option value="biomecanica" style={{ color: '#1a1a1a', background: '#ffffff' }}>Análise Biomecânica por Vídeo</option>
-                  <option value="lactato" style={{ color: '#1a1a1a', background: '#ffffff' }}>Teste de Limiar de Lactato</option>
-                  <option value="metabolomica" style={{ color: '#1a1a1a', background: '#ffffff' }}>Metabolômica</option>
-                  <option value="combo" style={{ color: '#1a1a1a', background: '#ffffff' }}>Combo Completo</option>
-                  <option value="nao-sei" style={{ color: '#1a1a1a', background: '#ffffff' }}>Ainda não decidi</option>
+                  style={{ border: errors.servico ? '1px solid rgba(255,107,107,0.6)' : '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
+                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
+                  <option value="express" style={{ background: '#1a1a1a', color: 'white' }}>Avaliação Express — R$250</option>
+                  <option value="performance" style={{ background: '#1a1a1a', color: 'white' }}>Avaliação Performance — R$450</option>
+                  <option value="reavaliacao" style={{ background: '#1a1a1a', color: 'white' }}>Reavaliação / Follow-up — R$290</option>
+                  <option value="mapa" style={{ background: '#1a1a1a', color: 'white' }}>Mapa Fisiometabólico — R$1.850</option>
+                  <option value="evolution" style={{ background: '#1a1a1a', color: 'white' }}>Veltron Evolution — R$3.900</option>
+                  <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Ainda não sei</option>
                 </select>
                 {errors.servico && (
                   <span style={{ fontSize: '0.75rem', color: '#ff6b6b' }}>{errors.servico}</span>

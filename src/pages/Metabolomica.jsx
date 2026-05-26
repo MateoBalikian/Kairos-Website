@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function Metabolomica() {
   const heroRef = useRef(null)
-  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', esporte: '', jaFezExame: '', suplementacao: '', periodo: '', mensagem: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', mensagem: '' })
   const [status, setStatus] = useState('idle')
   const [faqOpen, setFaqOpen] = useState(null)
 
@@ -27,17 +27,13 @@ export default function Metabolomica() {
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'metabolomica', created_at: new Date().toISOString() }])
       setStatus('success')
-      const msg = `Olá! Vim pelo site da Veltron 🧬
+      const msg = `Olá! Vim pelo site da Veltron 👋
 
-*Avaliação Metabolômica*
+*Interesse em Metabolômica*
 
 Nome: ${form.nome}
 WhatsApp: ${form.whatsapp}
 E-mail: ${form.email}
-Esporte: ${form.esporte || 'Não informado'}
-Já fez metabolômica: ${form.jaFezExame || 'Não informado'}
-Usa suplementação: ${form.suplementacao || 'Não informado'}
-Melhor período: ${form.periodo || 'Não informado'}
 ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
     } catch { setStatus('error') }
@@ -306,7 +302,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
             Comece agora.
           </h2>
           <p className="text-white/50 mb-3 leading-relaxed">
-            Preencha o formulário e entraremos em contato para agendar sua coleta presencial em Maceió.
+            Quer saber mais sobre essa tecnologia? Fale com a gente.
           </p>
           <p className="text-white/30 text-sm mb-10">
             Coleta simples de sangue venoso. Jejum de 8-12h recomendado.
@@ -333,56 +329,15 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 </div>
               ))}
               <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Esporte principal</label>
-                <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="corrida" style={{ background: '#1a1a1a', color: 'white' }}>Corrida</option>
-                  <option value="ciclismo" style={{ background: '#1a1a1a', color: 'white' }}>Ciclismo</option>
-                  <option value="natacao" style={{ background: '#1a1a1a', color: 'white' }}>Natação</option>
-                  <option value="triathlon" style={{ background: '#1a1a1a', color: 'white' }}>Triathlon</option>
-                  <option value="outro" style={{ background: '#1a1a1a', color: 'white' }}>Outro</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Já fez análise metabolômica antes?</label>
-                <select value={form.jaFezExame} onChange={(e) => setForm({ ...form, jaFezExame: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="sim" style={{ background: '#1a1a1a', color: 'white' }}>Sim</option>
-                  <option value="nao" style={{ background: '#1a1a1a', color: 'white' }}>Não</option>
-                  <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Não sei o que é</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Usa suplementação?</label>
-                <select value={form.suplementacao} onChange={(e) => setForm({ ...form, suplementacao: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="sim" style={{ background: '#1a1a1a', color: 'white' }}>Sim</option>
-                  <option value="nao" style={{ background: '#1a1a1a', color: 'white' }}>Não</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Melhor período pra agendar</label>
-                <select value={form.periodo} onChange={(e) => setForm({ ...form, periodo: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="manha" style={{ background: '#1a1a1a', color: 'white' }}>Manhã</option>
-                  <option value="tarde" style={{ background: '#1a1a1a', color: 'white' }}>Tarde</option>
-                  <option value="qualquer" style={{ background: '#1a1a1a', color: 'white' }}>Qualquer um</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
-                <textarea placeholder="Algo mais que queira nos dizer..." value={form.mensagem}
+                <textarea placeholder="Conte um pouco sobre o que você procura..." value={form.mensagem}
                   onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
                   style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)', resize: 'none' }} />
               </div>
               <button onClick={handleSubmit} disabled={status === 'loading'}
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity mt-2"
                 style={{ background: '#0A2463', borderRadius: 99, padding: '16px 32px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', border: 'none', cursor: 'pointer', width: '100%' }}>
-                {status === 'loading' ? 'ENVIANDO...' : 'AGENDAR MINHA COLETA'}
+                {status === 'loading' ? 'ENVIANDO...' : 'FALE CONOSCO'}
                 {status !== 'loading' && <ArrowRight size={16} color="white" />}
               </button>
             </div>

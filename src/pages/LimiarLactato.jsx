@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function LimiarLactato() {
   const heroRef = useRef(null)
-  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', esporte: '', experiencia: '', jaFezTeste: '', periodo: '', mensagem: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', mensagem: '' })
   const [status, setStatus] = useState('idle')
 
   useEffect(() => {
@@ -26,17 +26,13 @@ export default function LimiarLactato() {
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'limiar-de-lactato', created_at: new Date().toISOString() }])
       setStatus('success')
-      const msg = `Olá! Vim pelo site da Veltron 🩸
+      const msg = `Olá! Vim pelo site da Veltron 👋
 
-*Avaliação de Limiar de Lactato*
+*Interesse em Limiar de Lactato*
 
 Nome: ${form.nome}
 WhatsApp: ${form.whatsapp}
 E-mail: ${form.email}
-Esporte: ${form.esporte || 'Não informado'}
-Experiência: ${form.experiencia || 'Não informado'}
-Já fez teste de lactato: ${form.jaFezTeste || 'Não informado'}
-Melhor período: ${form.periodo || 'Não informado'}
 ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
     } catch { setStatus('error') }
@@ -335,10 +331,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
             Comece agora.
           </h2>
           <p className="text-white/50 mb-3 leading-relaxed">
-            Preencha o formulário e entraremos em contato para agendar sua avaliação presencial em Maceió.
-          </p>
-          <p className="text-white/30 text-sm mb-10">
-            O teste dura cerca de 40 minutos. Recomendamos estar descansado e hidratado.
+            Quer saber mais sobre essa tecnologia? Fale com a gente.
           </p>
 
           {status === 'success' ? (
@@ -362,58 +355,15 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 </div>
               ))}
               <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Esporte principal</label>
-                <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="corrida" style={{ background: '#1a1a1a', color: 'white' }}>Corrida</option>
-                  <option value="ciclismo" style={{ background: '#1a1a1a', color: 'white' }}>Ciclismo</option>
-                  <option value="natacao" style={{ background: '#1a1a1a', color: 'white' }}>Natação</option>
-                  <option value="triathlon" style={{ background: '#1a1a1a', color: 'white' }}>Triathlon</option>
-                  <option value="outro" style={{ background: '#1a1a1a', color: 'white' }}>Outro</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Treina há quanto tempo?</label>
-                <select value={form.experiencia} onChange={(e) => setForm({ ...form, experiencia: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="menos-1-ano" style={{ background: '#1a1a1a', color: 'white' }}>Menos de 1 ano</option>
-                  <option value="1-3-anos" style={{ background: '#1a1a1a', color: 'white' }}>1-3 anos</option>
-                  <option value="3-5-anos" style={{ background: '#1a1a1a', color: 'white' }}>3-5 anos</option>
-                  <option value="mais-5-anos" style={{ background: '#1a1a1a', color: 'white' }}>Mais de 5 anos</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Já fez teste de lactato antes?</label>
-                <select value={form.jaFezTeste} onChange={(e) => setForm({ ...form, jaFezTeste: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="sim" style={{ background: '#1a1a1a', color: 'white' }}>Sim</option>
-                  <option value="nao" style={{ background: '#1a1a1a', color: 'white' }}>Não</option>
-                  <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Não sei o que é</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Melhor período pra agendar</label>
-                <select value={form.periodo} onChange={(e) => setForm({ ...form, periodo: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="manha" style={{ background: '#1a1a1a', color: 'white' }}>Manhã</option>
-                  <option value="tarde" style={{ background: '#1a1a1a', color: 'white' }}>Tarde</option>
-                  <option value="qualquer" style={{ background: '#1a1a1a', color: 'white' }}>Qualquer um</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
-                <textarea placeholder="Algo mais que queira nos dizer..." value={form.mensagem}
+                <textarea placeholder="Conte um pouco sobre o que você procura..." value={form.mensagem}
                   onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
                   style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)', resize: 'none' }} />
               </div>
               <button onClick={handleSubmit} disabled={status === 'loading'}
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity mt-2"
                 style={{ background: '#0A2463', borderRadius: 99, padding: '16px 32px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', border: 'none', cursor: 'pointer', width: '100%' }}>
-                {status === 'loading' ? 'ENVIANDO...' : 'AGENDAR MINHA AVALIAÇÃO'}
+                {status === 'loading' ? 'ENVIANDO...' : 'FALE CONOSCO'}
                 {status !== 'loading' && <ArrowRight size={16} color="white" />}
               </button>
             </div>

@@ -875,19 +875,20 @@ export default function Ciclismo() {
                   <select value={form.plano} onChange={(e) => setForm({ ...form, plano: e.target.value })}
                     style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
                     <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                    <option value="avulso" style={{ background: '#1a1a1a', color: 'white' }}>Análise avulsa - R$70</option>
-                    <option value="acompanhamento" style={{ background: '#1a1a1a', color: 'white' }}>Acompanhamento 3 vídeos - R$250</option>
-                    <option value="bike-fit" style={{ background: '#1a1a1a', color: 'white' }}>Bike Fit Remoto - R$150</option>
+                    <option value="express" style={{ background: '#1a1a1a', color: 'white' }}>Avaliação Express — R$250</option>
+                    <option value="performance" style={{ background: '#1a1a1a', color: 'white' }}>Avaliação Performance — R$450</option>
+                    <option value="reavaliacao" style={{ background: '#1a1a1a', color: 'white' }}>Reavaliação / Follow-up — R$290</option>
+                    <option value="mapa" style={{ background: '#1a1a1a', color: 'white' }}>Mapa Fisiometabólico — R$1.850</option>
+                    <option value="evolution" style={{ background: '#1a1a1a', color: 'white' }}>Veltron Evolution — R$3.900</option>
                     <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Ainda não sei</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-sans font-semibold text-sm text-white">Objetivo</label>
+                  <label className="font-sans font-semibold text-sm text-white">Qual seu objetivo?</label>
                   <select value={form.objetivo} onChange={(e) => setForm({ ...form, objetivo: e.target.value })}
                     style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
                     <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                    <option value="melhorar-tecnica" style={{ background: '#1a1a1a', color: 'white' }}>Melhorar técnica</option>
-                    <option value="bike-fit" style={{ background: '#1a1a1a', color: 'white' }}>Bike fit</option>
+                    <option value="melhorar-performance" style={{ background: '#1a1a1a', color: 'white' }}>Melhorar performance</option>
                     <option value="prevenir-lesao" style={{ background: '#1a1a1a', color: 'white' }}>Prevenir lesão</option>
                     <option value="acompanhar-evolucao" style={{ background: '#1a1a1a', color: 'white' }}>Acompanhar evolução</option>
                     <option value="outro" style={{ background: '#1a1a1a', color: 'white' }}>Outro</option>
@@ -906,7 +907,16 @@ export default function Ciclismo() {
                       try {
                         await supabase.from('leads').insert([{ ...form, pagina: 'ciclismo', created_at: new Date().toISOString() }])
                         setStatus('success')
-                        const msg = `Olá! Vim pelo site da Veltron 🚴\n\n*Análise Biomecânica — Ciclismo*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\nPlano: ${form.plano || 'Não informado'}\nObjetivo: ${form.objetivo || 'Não informado'}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+                        const msg = `Olá! Vim pelo site da Veltron 🚴
+
+*Ciclismo — Avaliação Científica*
+
+Nome: ${form.nome}
+WhatsApp: ${form.whatsapp}
+E-mail: ${form.email}
+Plano: ${form.plano || 'Não informado'}
+Objetivo: ${form.objetivo || 'Não informado'}
+${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                         window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
                       } catch { setStatus('error') }
                     }}

@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function PoseEstimation() {
   const heroRef = useRef(null)
-  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', esporte: '', plano: '', objetivo: '', mensagem: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', mensagem: '' })
   const [status, setStatus] = useState('idle')
 
   useEffect(() => {
@@ -26,17 +26,7 @@ export default function PoseEstimation() {
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'pose-estimation', created_at: new Date().toISOString() }])
       setStatus('success')
-      const msg = `Olá! Vim pelo site da Veltron 🏃‍♂️
-
-*Análise Biomecânica por Vídeo*
-
-Nome: ${form.nome}
-WhatsApp: ${form.whatsapp}
-E-mail: ${form.email}
-Esporte: ${form.esporte || 'Não informado'}
-Plano: ${form.plano || 'Não informado'}
-Objetivo: ${form.objetivo || 'Não informado'}
-${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+      const msg = `Olá! Vim pelo site da Veltron 👋\n\n*Interesse em Pose Estimation*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
       window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
     } catch { setStatus('error') }
   }
@@ -254,7 +244,7 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
             Comece agora.
           </h2>
           <p className="text-white/50 mb-10 leading-relaxed">
-            Preencha o formulário e entraremos em contato para receber seu vídeo e iniciar a análise.
+            Quer saber mais sobre essa tecnologia? Fale com a gente.
           </p>
 
           {status === 'success' ? (
@@ -278,46 +268,15 @@ ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                 </div>
               ))}
               <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Esporte</label>
-                <select value={form.esporte} onChange={(e) => setForm({ ...form, esporte: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione seu esporte</option>
-                  <option value="corrida" style={{ background: '#1a1a1a', color: 'white' }}>Corrida</option>
-                  <option value="ciclismo" style={{ background: '#1a1a1a', color: 'white' }}>Ciclismo</option>
-                  <option value="natacao" style={{ background: '#1a1a1a', color: 'white' }}>Natação</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Plano de interesse</label>
-                <select value={form.plano} onChange={(e) => setForm({ ...form, plano: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="avulso" style={{ background: '#1a1a1a', color: 'white' }}>Análise avulsa (1 vídeo)</option>
-                  <option value="acompanhamento" style={{ background: '#1a1a1a', color: 'white' }}>Acompanhamento (3 vídeos)</option>
-                  <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Ainda não sei</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-sans font-semibold text-sm text-white">Qual seu objetivo?</label>
-                <select value={form.objetivo} onChange={(e) => setForm({ ...form, objetivo: e.target.value })}
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
-                  <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
-                  <option value="melhorar-tecnica" style={{ background: '#1a1a1a', color: 'white' }}>Melhorar técnica</option>
-                  <option value="prevenir-lesao" style={{ background: '#1a1a1a', color: 'white' }}>Prevenir lesão</option>
-                  <option value="acompanhar-evolucao" style={{ background: '#1a1a1a', color: 'white' }}>Acompanhar evolução</option>
-                  <option value="outro" style={{ background: '#1a1a1a', color: 'white' }}>Outro</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
                 <label className="font-sans font-semibold text-sm text-white">Mensagem (opcional)</label>
-                <textarea placeholder="Algo mais que queira nos dizer..." value={form.mensagem}
+                <textarea placeholder="Conte um pouco sobre o que você procura..." value={form.mensagem}
                   onChange={(e) => setForm({ ...form, mensagem: e.target.value })} rows={3}
                   style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)', resize: 'none' }} />
               </div>
               <button onClick={handleSubmit} disabled={status === 'loading'}
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity mt-2"
                 style={{ background: '#0A2463', borderRadius: 99, padding: '16px 32px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', border: 'none', cursor: 'pointer', width: '100%' }}>
-                {status === 'loading' ? 'ENVIANDO...' : 'QUERO MINHA ANÁLISE'}
+                {status === 'loading' ? 'ENVIANDO...' : 'FALE CONOSCO'}
                 {status !== 'loading' && <ArrowRight size={16} color="white" />}
               </button>
             </div>
