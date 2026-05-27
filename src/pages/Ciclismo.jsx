@@ -542,7 +542,7 @@ export default function Ciclismo() {
             style={{ background: '#000', aspectRatio: '16/9', width: '100%' }}>
             <video autoPlay muted loop playsInline
               style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
-              src={mediaUrl('neto_web.mp4')} />
+              src={mediaUrl('pougaard1.mp4')} />
           </div>
           <div className="flex flex-wrap gap-6 mt-6">
             {['Funciona com qualquer câmera', 'Análise em estrada, pista ou rolo', 'Keypoints detectados automaticamente', 'Relatório gerado a partir do vídeo'].map(f => (
@@ -573,21 +573,21 @@ export default function Ciclismo() {
             {[
               {
                 step: '01',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>),
                 titulo: 'Envie o vídeo',
                 descricao: 'Grave pedalando na bike ou ergômetro com qualquer celular — lateral, pelo menos 10 segundos. Sem câmeras especiais, sem marcadores no corpo.',
                 cor: '#4B7BF5',
               },
               {
                 step: '02',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" /></svg>),
                 titulo: 'Avaliação presencial',
                 descricao: 'Na Veltron, realizamos os protocolos fisiológicos: coleta de lactato e metabolômica. Conduzido por pesquisadores.',
                 cor: '#4B7BF5',
               },
               {
                 step: '03',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>),
                 titulo: 'Diagnóstico integrado',
                 descricao: 'Biomecânica + fisiologia + metabolômica em um único laudo. Você recebe recomendações individualizadas para técnica e treino.',
                 cor: '#4B7BF5',
@@ -670,7 +670,7 @@ export default function Ciclismo() {
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
                 style={{ background: '#4B7BF5', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
                 QUERO MINHA AVALIAÇÃO
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </a>
             </div>
             <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-6"
@@ -702,7 +702,7 @@ export default function Ciclismo() {
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
                 style={{ background: 'white', borderRadius: 99, padding: '14px 28px', color: '#0A2463', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
                 QUERO MINHA AVALIAÇÃO
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2463" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2463" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </a>
             </div>
             <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-6"
@@ -732,7 +732,7 @@ export default function Ciclismo() {
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
                 style={{ background: '#4B7BF5', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
                 QUERO MINHA REAVALIAÇÃO
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </a>
             </div>
           </div>

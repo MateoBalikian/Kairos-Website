@@ -16,7 +16,7 @@ const modalidades = [
     slug: 'corrida',
     label: 'Corrida',
     tag: 'Sport Tech',
-    desc: 'Pose estimation + cinética do lactato + metabolômica para corredores de rua e atletas de pista.',
+    desc: 'Pose estimation + Limiar do lactato + metabolômica para corredores de rua e atletas de pista.',
     img: mediaUrl('herocorrida.mp4'),
     isVideo: true,
     color: '#22d3ee',
@@ -216,7 +216,7 @@ export default function Home() {
 
           <p className="hi mt-4 text-white/65 leading-relaxed"
             style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)', maxWidth: 500 }}>
-            Eliminamos a incerteza dos wearables e apps. A Veltron traduz movimento em cinética do lactato, metabolômica e biomecânica — a tríade que realmente determina performance.
+            Eliminamos a incerteza dos wearables e apps. A Veltron traduz movimento em limiar de lactato, metabolômica e biomecânica — a tríade que realmente determina performance.
           </p>
 
           <div className="hi flex flex-wrap gap-2 mt-5">
