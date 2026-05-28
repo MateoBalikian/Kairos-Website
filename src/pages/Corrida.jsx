@@ -256,7 +256,7 @@ export default function Corrida() {
             <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.07)', aspectRatio: '9/16', maxHeight: '680px' }}>
               <video autoPlay muted loop playsInline
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '24px' }}
-                src={mediaUrl('jakob.mp4')} />
+                src={mediaUrl('jakob1.mp4')} />
             </div>
 
             {/* Texto */}

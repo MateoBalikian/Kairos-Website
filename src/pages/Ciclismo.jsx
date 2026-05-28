@@ -215,28 +215,28 @@ export default function Ciclismo() {
       </section>
 
       {/* ─── IA EM AÇÃO · BIKE FIT ─── */}
-      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="rounded-3xl overflow-hidden" style={{ aspectRatio: '16/9', background: '#0A0A0A' }}>
+      <section className="py-24 lg:py-36 xl:py-48 px-4 lg:px-10" style={{ background: '#0d0d0d' }}>
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.6fr_1fr] gap-16 items-start">
+            <div className="rounded-3xl overflow-hidden" style={{ aspectRatio: '16/9', background: '#0A0A0A', height: '480px' }}>
               <video autoPlay muted loop playsInline className="w-full h-full object-cover"
-                src={mediaUrl('henrique.mp4')} />
+                src={mediaUrl('pougaard1_web.mp4')} />
             </div>
             <div>
-              <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Bike fit · IA</span>
+              <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Pose Estimation · Os melhores do mundo</span>
               <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
-                Análise biomecânica da{' '}
-                <span className="font-bold" style={{ color: '#4B7BF5' }}>pedalada em tempo real</span>
+                Vingegaard vs Pogaçar.{' '}
+                <span className="font-bold" style={{ color: '#4B7BF5' }}>A diferença está na técnica.</span>
               </h2>
               <p className="text-white/55 text-base leading-relaxed mb-6">
-                A IA detecta articulações e rastreia o movimento completo da pedalada — identificando assimetrias, ângulos fora do ideal e compensações que reduzem a eficiência e aumentam o risco de lesão.
+                Com nossa tecnologia de Pose Estimation, conseguimos mapear e comparar a biomecânica de pedalada dos dois melhores ciclistas do mundo frame a frame — identificando as diferenças técnicas que separam atletas de elite. A mesma análise que aplicamos nos campeões, disponível para o seu treino.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Ângulo do joelho em cada fase da pedalada',
-                  'Posição do quadril e assimetrias laterais',
-                  'Alinhamento de cotovelo e postura no guidão',
-                  'Comparação com parâmetros biomecânicos ideais',
+                  'Comparação de biomecânica entre atletas em tempo real',
+                  'Ângulos articulares medidos quadro a quadro por IA',
+                  'Assimetrias e padrões técnicos identificados automaticamente',
+                  'A mesma tecnologia aplicada aos melhores do mundo',
                 ].map(f => (
                   <li key={f} className="flex items-start gap-3 text-sm text-white/65">
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style={{ background: '#4B7BF5' }} />{f}
@@ -542,7 +542,7 @@ export default function Ciclismo() {
             style={{ background: '#000', aspectRatio: '16/9', width: '100%' }}>
             <video autoPlay muted loop playsInline
               style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
-              src={mediaUrl('pougaard1_web.mp4')} />
+              src={mediaUrl('henrique.mp4')} />
           </div>
           <div className="flex flex-wrap gap-6 mt-6">
             {['Funciona com qualquer câmera', 'Análise em estrada, pista ou rolo', 'Keypoints detectados automaticamente', 'Relatório gerado a partir do vídeo'].map(f => (
