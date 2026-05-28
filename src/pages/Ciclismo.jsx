@@ -215,10 +215,10 @@ export default function Ciclismo() {
       </section>
 
       {/* ─── IA EM AÇÃO · BIKE FIT ─── */}
-      <section className="py-24 lg:py-36 xl:py-48 px-4 lg:px-10" style={{ background: '#0d0d0d' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0d0d0d' }}>
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 xl:grid-cols-[1.6fr_1fr] gap-16 items-start">
-            <div className="rounded-3xl overflow-hidden" style={{ aspectRatio: '16/9', background: '#0A0A0A', height: '480px' }}>
+          <div className="grid grid-cols-1 xl:grid-cols-[1.6fr_1fr] gap-8 lg:gap-16 items-start">
+            <div className="rounded-3xl overflow-hidden" style={{ aspectRatio: '16/9', background: '#0A0A0A' }}>
               <video autoPlay muted loop playsInline className="w-full h-full object-cover"
                 src={mediaUrl('pougaard1_web.mp4')} />
             </div>
