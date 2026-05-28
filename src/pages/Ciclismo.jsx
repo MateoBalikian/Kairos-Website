@@ -56,7 +56,7 @@ const diferenciais = [
   {
     tag: 'INTELIGÊNCIA ARTIFICIAL',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" /><path d="M12 6v6l4 2" /></svg>),
-    titulo: 'Core Engine AI',
+    titulo: 'Veltron Engine AI',
     desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. Identifica em qual potência sua técnica colapsa — e o que fazer para mudar isso.',
     cor: '#4B7BF5',
     cta: 'Conheça a tecnologia',
@@ -307,14 +307,14 @@ export default function Ciclismo() {
         </div>
       </section>
 
-      {/* ─── CORE ENGINE AI ─── */}
+      {/* ─── VELTRON ENGINE AI ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <span className="text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
               <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
-                Core Engine AI —{' '}
+                Veltron Engine AI —{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-8">
@@ -384,7 +384,7 @@ export default function Ciclismo() {
                 </div>
                 <div>
                   <p className="text-xs text-white/70 mb-0.5">Inteligência Artificial</p>
-                  <p className="font-bold text-white text-base">Core Engine AI</p>
+                  <p className="font-bold text-white text-base">Veltron Engine AI</p>
                 </div>
                 <div className="ml-auto">
                   <p className="text-xs text-white/60 text-right">Diagnóstico</p>
@@ -542,7 +542,7 @@ export default function Ciclismo() {
             style={{ background: '#000', aspectRatio: '16/9', width: '100%' }}>
             <video autoPlay muted loop playsInline
               style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
-              src={mediaUrl('pougaard1.mp4')} />
+              src={mediaUrl('pougaard1_web.mp4')} />
           </div>
           <div className="flex flex-wrap gap-6 mt-6">
             {['Funciona com qualquer câmera', 'Análise em estrada, pista ou rolo', 'Keypoints detectados automaticamente', 'Relatório gerado a partir do vídeo'].map(f => (

@@ -145,7 +145,6 @@ export default function Corrida() {
 
   const v1 = useCounter(185, 1800, metricsStarted)
   const v2 = useCounter(17, 1800, metricsStarted)
-  const v3 = useCounter(200, 1800, metricsStarted)
 
   useEffect(() => {
     if (window.lenis) {
@@ -245,6 +244,49 @@ export default function Corrida() {
               <ArrowRight size={13} color="white" />
             </span>
           </a>
+        </div>
+      </section>
+
+      {/* ─── JAKOB / LACTATO ─── */}
+      <section className="py-16 lg:py-24 xl:py-32 px-5 md:px-6" style={{ background: '#0A0A0A' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-8 lg:gap-16 items-center">
+
+            {/* Vídeo */}
+            <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.07)', aspectRatio: '9/16', maxHeight: '680px' }}>
+              <video autoPlay muted loop playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '24px' }}
+                src={mediaUrl('jakob.mp4')} />
+            </div>
+
+            {/* Texto */}
+            <div>
+              <span className="font-sans text-xs text-white/30 uppercase tracking-widest">A ciência por trás dos campeões</span>
+              <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', fontWeight: 800, color: 'white' }}>
+                Jakob Ingebrigtsen.{' '}
+                <span style={{ color: '#4B7BF5' }}>Recordista mundial.</span>
+              </h2>
+              <p className="text-white/60 leading-relaxed mb-4" style={{ fontSize: '0.95rem' }}>
+                O norueguês Jakob Ingebrigtsen — recordista mundial dos 1500m e 5000m — tem no protocolo de limiar de lactato a base de toda a sua periodização de treino. Cada zona, cada intensidade, cada sessão é calibrada a partir dos dados reais do seu sangue.
+              </p>
+              <p className="text-white/60 leading-relaxed mb-6" style={{ fontSize: '0.95rem' }}>
+                Essa não é uma tecnologia nova. Nossos pesquisadores e treinadores já conduziram atletas medalhistas olímpicos e campeões de campeonatos utilizando essa mesma tecnologia de limiar de lactato — agora potencializada com inteligência artificial pela Veltron.
+              </p>
+              <div className="flex flex-col gap-3">
+                {[
+                  'Protocolo de lactato como base da periodização',
+                  'Zonas de treino individualizadas por coleta real',
+                  'A mesma ciência dos recordistas mundiais — acessível pra você',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span style={{ color: '#4B7BF5', marginTop: '2px', flexShrink: 0 }}>✦</span>
+                    <p className="text-white/50 text-sm leading-relaxed">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -412,12 +454,11 @@ export default function Corrida() {
               Dados que <span className="font-bold" style={{ color: '#4B7BF5' }}>comprovam a diferenca</span>
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { val: `${v1}`, label: 'Passadas/min', sub: 'SPM ideal de corrida' },
               { val: 'vLT2', label: 'Velocidade de Limiar', sub: 'Zonas reais de treino' },
               { val: `${v2}pts`, label: 'Articulações rastreadas', sub: 'Pose Estimation' },
-              { val: `${v3}+`, label: 'Metabólitos', sub: 'Análise por RMN' },
             ].map((m, i) => (
               <div key={i} className="rounded-3xl p-6 text-center"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
@@ -431,14 +472,14 @@ export default function Corrida() {
         </div>
       </section>
 
-      {/* ─── CORE ENGINE AI ─── */}
+      {/* ─── VELTRON ENGINE AI ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <span className="text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
               <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
-                Core Engine AI —{' '}
+                Veltron Engine AI —{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-8">
@@ -454,7 +495,7 @@ export default function Corrida() {
                     <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{ background: 'rgba(75,123,245,0.15)' }}>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2.5" strokeLinecap="round">
-                        <polyline points="20 6 9 17 4 12"/>
+                        <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </div>
                     <div>
@@ -484,7 +525,7 @@ export default function Corrida() {
                     {i < 2 && (
                       <div className="flex justify-center py-1">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(75,123,245,0.4)" strokeWidth="2" strokeLinecap="round">
-                          <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                          <line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" />
                         </svg>
                       </div>
                     )}
@@ -494,7 +535,7 @@ export default function Corrida() {
               <div className="flex items-center gap-3 px-2">
                 <div className="flex-1 h-px" style={{ background: 'rgba(75,123,245,0.3)' }} />
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                  <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                  <line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" />
                 </svg>
                 <div className="flex-1 h-px" style={{ background: 'rgba(75,123,245,0.3)' }} />
               </div>
@@ -502,13 +543,13 @@ export default function Corrida() {
                 <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(255,255,255,0.2)' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-                    <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/>
-                    <path d="M12 6v6l4 2"/>
+                    <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" />
+                    <path d="M12 6v6l4 2" />
                   </svg>
                 </div>
                 <div>
                   <p className="text-xs text-white/70 mb-0.5">Inteligência Artificial</p>
-                  <p className="font-bold text-white text-base">Core Engine AI</p>
+                  <p className="font-bold text-white text-base">Veltron Engine AI</p>
                 </div>
                 <div className="ml-auto">
                   <p className="text-xs text-white/60 text-right">Diagnóstico</p>
@@ -539,21 +580,21 @@ export default function Corrida() {
             {[
               {
                 step: '01',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>),
                 titulo: 'Envie o vídeo',
                 descricao: 'Grave seu treino em esteira ou outdoor com qualquer celular. Sem câmeras especiais, sem marcadores no corpo.',
                 cor: '#4B7BF5',
               },
               {
                 step: '02',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" /></svg>),
                 titulo: 'Avaliação presencial',
                 descricao: 'Na Veltron, realizamos os protocolos fisiológicos: coleta de lactato e metabolômica. Conduzido por pesquisadores.',
                 cor: '#4B7BF5',
               },
               {
                 step: '03',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>),
+                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>),
                 titulo: 'Diagnóstico integrado',
                 descricao: 'Você recebe um laudo completo: biomecânica + fisiologia unidos em um único relatório com recomendações individualizadas.',
                 cor: '#4B7BF5',
@@ -639,7 +680,7 @@ export default function Corrida() {
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
                 style={{ background: '#4B7BF5', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
                 QUERO MINHA AVALIAÇÃO
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </a>
             </div>
             <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-6"
@@ -671,7 +712,7 @@ export default function Corrida() {
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
                 style={{ background: 'white', borderRadius: 99, padding: '14px 28px', color: '#0A2463', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
                 QUERO MINHA AVALIAÇÃO
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2463" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2463" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </a>
             </div>
             <div className="rounded-3xl p-6 lg:p-8 flex flex-col justify-between gap-6"
@@ -701,7 +742,7 @@ export default function Corrida() {
                 className="inline-flex items-center justify-center gap-3 hover:opacity-90 transition-opacity w-full"
                 style={{ background: '#4B7BF5', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none', textAlign: 'center' }}>
                 QUERO MINHA REAVALIAÇÃO
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </a>
             </div>
           </div>

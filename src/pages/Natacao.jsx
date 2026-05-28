@@ -72,7 +72,7 @@ const diferenciais = [
         <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" /><path d="M12 6v6l4 2" />
       </svg>
     ),
-    titulo: 'Core Engine AI',
+    titulo: 'Veltron Engine AI',
     desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. Identifica o ponto exato onde sua técnica colapsa — e o que fazer para mudar isso.',
     cor: '#4B7BF5',
     cta: 'Conheça a tecnologia',
@@ -255,7 +255,7 @@ export default function Natacao() {
               A Tríade da Excelência Veltron.
             </h2>
             <p className="mt-4 text-[#4A4A47] leading-relaxed" style={{ fontSize: '1.05rem' }}>
-              Visão Computacional, Perfilagem Metabólica Invasiva e Core Engine AI — integradas em um único diagnóstico de alta precisão.
+              Visão Computacional, Perfilagem Metabólica Invasiva e Veltron Engine AI — integradas em um único diagnóstico de alta precisão.
             </p>
           </div>
 
@@ -313,7 +313,7 @@ export default function Natacao() {
         </div>
       </section>
 
-      {/* ─── CORE ENGINE AI ─── */}
+      {/* ─── VELTRON ENGINE AI ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -322,7 +322,7 @@ export default function Natacao() {
             <div>
               <span className="text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
               <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
-                Core Engine AI —{' '}
+                Veltron Engine AI —{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-8">
@@ -398,7 +398,7 @@ export default function Natacao() {
                 </div>
                 <div>
                   <p className="text-xs text-white/70 mb-0.5">Inteligência Artificial</p>
-                  <p className="font-bold text-white text-base">Core Engine AI</p>
+                  <p className="font-bold text-white text-base">Veltron Engine AI</p>
                 </div>
                 <div className="ml-auto">
                   <p className="text-xs text-white/60 text-right">Diagnóstico</p>

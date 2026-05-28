@@ -68,7 +68,7 @@ const diferenciais = [
   },
   {
     tag: 'INTELIGÊNCIA ARTIFICIAL',
-    titulo: 'Core Engine AI',
+    titulo: 'Veltron Engine AI',
     desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. O ponto onde os 3 se tornam 1.',
     cor: '#4B7BF5',
     cta: 'Conheça a tecnologia',
@@ -246,79 +246,71 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── COMO FUNCIONA ─── */}
-      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
+      {/* ─── GUSTAVO CARVALHO ─── */}
+      <section className="py-16 lg:py-24 xl:py-32 px-5 md:px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-20">
-            <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Como funciona</span>
-            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-5xl text-white tracking-tight mt-3">
-              Simples assim.{' '}
-              <span className="font-bold" style={{ color: '#4B7BF5' }}>3 passos.</span>
-            </h2>
-          </div>
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-8 lg:gap-16 items-center">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 relative">
-            <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
-              style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.5), rgba(123,167,232,0.5))' }} />
-
-            {[
-              {
-                step: '01',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>),
-                titulo: 'Grave com qualquer celular',
-                descricao: 'Sem câmeras especiais. Sem sensores. Sem equipamentos caros. Seu smartphone já é suficiente — em esteira, piscina, bike ou pista.',
-                cor: '#4B7BF5',
-              },
-              {
-                step: '02',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><polyline points="16 16 12 12 8 16" /><line x1="12" y1="12" x2="12" y2="21" /><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" /></svg>),
-                titulo: 'Envie para a Veltron',
-                descricao: 'Upload simples pela nossa plataforma. Nossa equipe recebe, processa e integra com os dados fisiológicos da sua avaliação presencial.',
-                cor: '#4B7BF5',
-              },
-              {
-                step: '03',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>),
-                titulo: 'Receba seu diagnóstico',
-                descricao: 'Um laudo completo: biomecânica + fisiologia + metabolômica. Dados reais sobre como seu corpo se move e o que ele consome para fazer isso.',
-                cor: '#4B7BF5',
-              },
-            ].map((item, i) => (
-              <div key={i} className="rounded-3xl p-6 lg:p-8 flex flex-col gap-5"
-                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <div className="flex items-center justify-between">
-                  <span className="font-sans font-bold text-2xl" style={{ color: item.cor }}>
-                    {item.step}
-                  </span>
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(75,123,245,0.1)', color: '#4B7BF5' }}>
-                    {item.icon}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-sans font-bold text-xl text-white mb-3">{item.titulo}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed">{item.descricao}</p>
-                </div>
-                <div className="h-0.5 rounded-full mt-auto"
-                  style={{ background: `linear-gradient(90deg, ${item.cor}, transparent)` }} />
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-3xl p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6"
-            style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(75,123,245,0.1)' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
+            {/* Foto */}
+            <div className="rounded-3xl overflow-hidden" style={{ aspectRatio: '4/5', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <img
+                src={mediaUrl('sombrahome.PNG')}
+                alt="Gustavo Carvalho — Atleta Veltron"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '24px' }}
+              />
             </div>
+
+            {/* Texto */}
             <div>
-              <p className="font-sans font-bold text-white text-sm mb-1">Sem burocracia. Sem equipamentos especiais.</p>
-              <p className="text-white/40 text-xs leading-relaxed">
-                A tecnologia que estava só nos centros olímpicos agora cabe no seu bolso.
+              <div className="flex items-center gap-3 mb-5">
+                <span className="font-sans text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                  style={{ background: 'rgba(75,123,245,0.15)', color: '#4B7BF5', border: '1px solid rgba(75,123,245,0.25)' }}>
+                  Atleta Veltron
+                </span>
+                <span className="font-sans text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                  style={{ background: 'rgba(75,123,245,0.08)', color: '#7BA7E8', border: '1px solid rgba(75,123,245,0.15)' }}>
+                  Veltron Evolution
+                </span>
+              </div>
+
+              <h2 className="font-sans font-bold text-white leading-tight mb-2"
+                style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}>
+                Gustavo Carvalho.
+              </h2>
+              <p className="font-sans font-bold mb-6" style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)', color: '#4B7BF5' }}>
+                1º lugar no ranking nacional de triathlon.
               </p>
+
+              <p className="text-white/60 leading-relaxed mb-4" style={{ fontSize: '0.95rem' }}>
+                Gustavo atingiu a máxima performance com o acompanhamento contínuo da <span className="text-white font-semibold">Veltron Engine AI</span> — a inteligência que cruza dados de biomecânica, fisiologia e metabolômica em um único diagnóstico integrado.
+              </p>
+              <p className="text-white/60 leading-relaxed mb-8" style={{ fontSize: '0.95rem' }}>
+                Cada zona de treino, cada ajuste técnico e cada decisão de recuperação foi tomada com base em dados reais do seu organismo — não em estimativas. É isso que separa um atleta que treina duro de um atleta que treina certo.
+              </p>
+
+              <div className="flex flex-col gap-3 mb-8">
+                {[
+                  'Biomecânica analisada frame a frame por IA',
+                  'Limiares de lactato medidos por coleta real',
+                  'Metabolômica para recuperação e adaptação',
+                  'Tudo integrado pela Veltron Engine AI',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span style={{ color: '#4B7BF5', marginTop: '2px', flexShrink: 0 }}>✦</span>
+                    <p className="text-white/50 text-sm leading-relaxed">{item}</p>
+                  </div>
+                ))}
+              </div>
+
+              <a href="#waitlist"
+                onClick={(e) => { e.preventDefault(); const t = document.getElementById('waitlist'); if (t && window.lenis) { window.lenis.scrollTo(t, { duration: 1.4 }) } else if (t) { t.scrollIntoView({ behavior: 'smooth' }) } }}
+                className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity"
+                style={{ background: '#0A2463', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none' }}>
+                QUERO MINHA AVALIAÇÃO
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+              </a>
             </div>
+
           </div>
         </div>
       </section>
@@ -473,14 +465,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── CORE ENGINE AI ─── */}
+      {/* ─── VELTRON ENGINE AI ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O grande diferencial</span>
               <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3 mb-5">
-                Core Engine AI —{' '}
+                Veltron Engine AI —{' '}
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-8">
@@ -550,7 +542,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-xs text-white/70 mb-0.5">Inteligência Artificial</p>
-                  <p className="font-bold text-white text-base">Core Engine AI</p>
+                  <p className="font-bold text-white text-base">Veltron Engine AI</p>
                 </div>
                 <div className="ml-auto">
                   <p className="text-xs text-white/60 text-right">Diagnóstico</p>
