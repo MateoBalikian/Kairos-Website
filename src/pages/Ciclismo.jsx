@@ -256,7 +256,7 @@ export default function Ciclismo() {
             <span className="font-mono text-xs text-[#0A2463] uppercase tracking-widest">Por que a Veltron</span>
             <h2 className="font-sans mt-3 leading-tight"
               style={{ fontSize: 'clamp(1.4rem,3.5vw,2.8rem)', fontWeight: 800, color: '#0A0A0A' }}>
-              Seu ciclômetro diz que você perdeu potência.<br />
+              Seu velocímetro diz que você perdeu potência.<br />
               <span style={{ color: '#0A2463' }}>A Veltron diz por quê — e o que fazer.</span>
             </h2>
             <p className="mt-4 text-[#4A4A47] leading-relaxed" style={{ fontSize: '1.05rem' }}>
