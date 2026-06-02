@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { mediaUrl, supabase } from '../lib/supabase'
+import { planoLabels, objetivoLabels, labelFor } from '../lib/leadLabels'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -901,7 +902,7 @@ export default function Corrida() {
                     <option value="" style={{ background: '#1a1a1a', color: 'white' }}>Selecione</option>
                     <option value="express" style={{ background: '#1a1a1a', color: 'white' }}>Avaliação Express — R$250</option>
                     <option value="performance" style={{ background: '#1a1a1a', color: 'white' }}>Avaliação Performance — R$450</option>
-                    <option value="reavaliacao" style={{ background: '#1a1a1a', color: 'white' }}>Reavailiação / Follow-up — R$290</option>
+                    <option value="reavaliacao" style={{ background: '#1a1a1a', color: 'white' }}>Reavaliação / Follow-up — R$290</option>
                     <option value="mapa" style={{ background: '#1a1a1a', color: 'white' }}>Mapa Fisiometabólico — R$1.850</option>
                     <option value="evolution" style={{ background: '#1a1a1a', color: 'white' }}>Veltron Evolution — R$3.900</option>
                     <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Ainda não sei</option>
@@ -930,10 +931,12 @@ export default function Corrida() {
                       setStatus('loading')
                       try {
                         await supabase.from('leads').insert([{ ...form, pagina: 'corrida', created_at: new Date().toISOString() }])
-                        setStatus('success')
-                        const msg = `Olá! Vim pelo site da Veltron 🏃‍♂️\n\n*Análise Biomecânica — Corrida*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\nPlano: ${form.plano || 'Não informado'}\nObjetivo: ${form.objetivo || 'Não informado'}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
-                        window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
-                      } catch { setStatus('error') }
+                      } catch (err) {
+                        console.error('Falha ao registrar lead no Supabase:', err)
+                      }
+                      setStatus('success')
+                      const msg = `Olá! Vim pelo site da Veltron 🏃‍♂️\n\n*Análise Biomecânica — Corrida*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\nPlano: ${labelFor(planoLabels, form.plano)}\nObjetivo: ${labelFor(objetivoLabels, form.objetivo)}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+                      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
                     }}
                     disabled={status === 'loading'}
                     className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full cursor-pointer"

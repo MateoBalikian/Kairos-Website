@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { mediaUrl, supabase } from '../lib/supabase'
+import { planoLabels, objetivoLabels, labelFor } from '../lib/leadLabels'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -858,19 +859,21 @@ export default function Natacao() {
                       setStatus('loading')
                       try {
                         await supabase.from('leads').insert([{ ...form, pagina: 'natacao', created_at: new Date().toISOString() }])
-                        setStatus('success')
-                        const msg = `Olá! Vim pelo site da Veltron 🏊
+                      } catch (err) {
+                        console.error('Falha ao registrar lead no Supabase:', err)
+                      }
+                      setStatus('success')
+                      const msg = `Olá! Vim pelo site da Veltron 🏊
 
 *Natação — Avaliação Científica*
 
 Nome: ${form.nome}
 WhatsApp: ${form.whatsapp}
 E-mail: ${form.email}
-Plano: ${form.plano || 'Não informado'}
-Objetivo: ${form.objetivo || 'Não informado'}
+Plano: ${labelFor(planoLabels, form.plano)}
+Objetivo: ${labelFor(objetivoLabels, form.objetivo)}
 ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
-                        window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
-                      } catch { setStatus('error') }
+                      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
                     }}
                     disabled={status === 'loading'}
                     className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full cursor-pointer"

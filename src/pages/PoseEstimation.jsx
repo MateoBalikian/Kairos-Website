@@ -25,10 +25,12 @@ export default function PoseEstimation() {
     setStatus('loading')
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'pose-estimation', created_at: new Date().toISOString() }])
-      setStatus('success')
-      const msg = `Olá! Vim pelo site da Veltron 👋\n\n*Interesse em Pose Estimation*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
-      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
-    } catch { setStatus('error') }
+    } catch (err) {
+      console.error('Falha ao registrar lead no Supabase:', err)
+    }
+    setStatus('success')
+    const msg = `Olá! Vim pelo site da Veltron 👋\n\n*Interesse em Pose Estimation*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+    window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   return (

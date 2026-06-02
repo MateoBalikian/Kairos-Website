@@ -25,8 +25,11 @@ export default function LimiarLactato() {
     setStatus('loading')
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'limiar-de-lactato', created_at: new Date().toISOString() }])
-      setStatus('success')
-      const msg = `Olá! Vim pelo site da Veltron 👋
+    } catch (err) {
+      console.error('Falha ao registrar lead no Supabase:', err)
+    }
+    setStatus('success')
+    const msg = `Olá! Vim pelo site da Veltron 👋
 
 *Interesse em Limiar de Lactato*
 
@@ -34,8 +37,7 @@ Nome: ${form.nome}
 WhatsApp: ${form.whatsapp}
 E-mail: ${form.email}
 ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
-      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
-    } catch { setStatus('error') }
+    window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   return (

@@ -99,10 +99,12 @@ export default function Waitlist() {
     setStatus('loading')
     try {
       await supabase.from('leads').insert([{ ...form, pagina: 'home', created_at: new Date().toISOString() }])
-      setStatus('success')
-      const msg = buildWhatsAppMessage(form)
-      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
-    } catch { setStatus('error') }
+    } catch (err) {
+      console.error('Falha ao registrar lead no Supabase:', err)
+    }
+    setStatus('success')
+    const msg = buildWhatsAppMessage(form)
+    window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   const fieldStyle = { border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }
