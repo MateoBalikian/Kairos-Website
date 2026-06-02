@@ -232,7 +232,7 @@ export default function Corrida() {
             A única plataforma que correlaciona Cinemetria em Tempo Real com Cinética do Lactato para identificar o colapso técnico sob fadiga.
           </p>
           <div className="hi flex flex-wrap gap-2 mt-5">
-            {['Pose Estimation', 'Limiar de Lactato', 'Metabolômica', 'Vision IA', 'Metatreadmill'].map(t => (
+            {['Pose Estimation', 'Limiar de Lactato', 'Metabolômica', 'Metatreadmill'].map(t => (
               <span key={t} className="font-mono text-[11px] text-white/50 border border-white/15 rounded-full px-3 py-1"
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>{t}</span>
             ))}
@@ -750,19 +750,20 @@ export default function Corrida() {
       </section>
 
       {/* ─── EVOLUÇÃO CIENTÍFICA AVANÇADA ─── */}
-      <section className="py-16 lg:py-24 xl:py-32 px-5 md:px-6" style={{ background: '#0A2463' }}>
+      <section className="py-16 lg:py-24 xl:py-32 px-5 md:px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1000px] mx-auto">
           <div className="mb-12">
             <span className="font-sans text-xs text-white/40 uppercase tracking-widest">Para quem quer ir além</span>
             <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
               Evolução Científica{' '}
-              <span style={{ color: '#7BA7E8' }}>Avançada.</span>
+              <span style={{ color: '#4B7BF5' }}>Avançada.</span>
             </h2>
           </div>
 
           {/* Mapa Fisiometabólico */}
-          <div className="rounded-3xl p-6 lg:p-10 mb-6"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(75,123,245,0.3)' }}>
+          <div className="rounded-3xl p-6 lg:p-10 mb-6 relative overflow-hidden"
+            style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(75,123,245,0.5), transparent)' }} />
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
               <div>
                 <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full inline-block mb-4"
@@ -795,17 +796,24 @@ export default function Corrida() {
                 </div>
               ))}
             </div>
+            <a href="#agendar" onClick={(e) => { e.preventDefault(); smoothScrollTo('agendar') }}
+              className="inline-flex items-center justify-center gap-3 mt-8 hover:opacity-90 transition-opacity"
+              style={{ background: '#4B7BF5', borderRadius: 99, padding: '14px 28px', color: 'white', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none' }}>
+              QUERO O MAPA FISIOMETABÓLICO
+              <ArrowRight size={16} />
+            </a>
           </div>
 
-          {/* Veltron Evolution */}
-          <div className="rounded-3xl p-6 lg:p-10"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(75,123,245,0.3)' }}>
+          {/* Veltron Evolution — premium */}
+          <div className="rounded-3xl p-6 lg:p-10 relative overflow-hidden"
+            style={{ background: '#111111', border: '1px solid rgba(75,123,245,0.4)', boxShadow: '0 0 50px rgba(75,123,245,0.1)' }}>
+            <div className="absolute top-0 left-0 right-0" style={{ height: '3px', background: 'linear-gradient(90deg, transparent, #4B7BF5, transparent)' }} />
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full"
-                    style={{ background: 'rgba(75,123,245,0.15)', color: '#7BA7E8', border: '1px solid rgba(75,123,245,0.25)' }}>
-                    Premium / 6 Meses
+                  <span className="font-sans text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    style={{ background: '#4B7BF5', color: 'white' }}>
+                    Premium · 6 Meses
                   </span>
                 </div>
                 <h3 className="font-sans font-bold text-white" style={{ fontSize: '1.4rem' }}>
@@ -834,6 +842,12 @@ export default function Corrida() {
                 </div>
               ))}
             </div>
+            <a href="#agendar" onClick={(e) => { e.preventDefault(); smoothScrollTo('agendar') }}
+              className="inline-flex items-center justify-center gap-3 mt-8 hover:opacity-90 transition-opacity"
+              style={{ background: 'white', borderRadius: 99, padding: '14px 28px', color: '#0A2463', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '1px', textDecoration: 'none' }}>
+              QUERO O VELTRON EVOLUTION
+              <ArrowRight size={16} color="#0A2463" />
+            </a>
           </div>
 
         </div>
