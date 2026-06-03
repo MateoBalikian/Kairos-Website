@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { mediaUrl, supabase } from '../lib/supabase'
-import { planoLabels, objetivoLabels, labelFor } from '../lib/leadLabels'
+import { planoLabels, objetivoLabels, buildLeadMessage } from '../lib/leadLabels'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -921,16 +921,15 @@ export default function Ciclismo() {
                       // registra o lead em segundo plano (best-effort, nao bloqueia a abertura do WhatsApp)
                       supabase.from('leads').insert([{ ...form, pagina: 'ciclismo', created_at: new Date().toISOString() }])
                         .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
-                      const msg = `Olá! Vim pelo site da Veltron 🚴
-
-*Ciclismo — Avaliação Científica*
-
-Nome: ${form.nome}
-WhatsApp: ${form.whatsapp}
-E-mail: ${form.email}
-Plano: ${labelFor(planoLabels, form.plano)}
-Objetivo: ${labelFor(objetivoLabels, form.objetivo)}
-${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+                      const msg = buildLeadMessage({
+                        intro: `Sou *${form.nome}* e quero uma avaliação científica do meu ciclismo para entender melhor meu desempenho e evoluir com segurança.`,
+                        linhas: [
+                          ['Avaliação', planoLabels[form.plano]],
+                          ['Objetivo', objetivoLabels[form.objetivo]],
+                          ['Contexto', form.mensagem],
+                        ],
+                        email: form.email,
+                      })
                       window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
                       setStatus('success')
                     }}

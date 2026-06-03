@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { CheckCircle } from 'lucide-react'
 import { supabase } from '../lib/supabase'
+import { buildLeadMessage } from '../lib/leadLabels'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -28,22 +29,15 @@ export default function Waitlist() {
     triathlon: 'Triathlon',
     outro: 'Outro',
   }
-  const esporteEmojis = {
-    corrida: '🏃',
-    ciclismo: '🚴',
-    natacao: '🏊',
-    triathlon: '🏅',
-    outro: '⚽',
-  }
-
-  const buildWhatsAppMessage = (f) => {
-    const emoji = esporteEmojis[f.esporte] || '🏃'
-    const servicoLabel = servicoLabels[f.servico] || f.servico
-    const esporteLabel = esporteLabels[f.esporte] || f.esporte
-    return (
-      `Olá! Vim pelo site da Veltron 👋\n\nNome: ${f.nome}\nWhatsApp: ${f.whatsapp}\nE-mail: ${f.email}\nInteresse: ${servicoLabel || 'Não informado'}\nEsporte: ${esporteLabel || 'Não informado'}${f.mensagem ? `\nMensagem: ${f.mensagem}` : ''}`
-    )
-  }
+  const buildWhatsAppMessage = (f) => buildLeadMessage({
+    intro: `Me chamo *${f.nome}* e gostaria de evoluir minha performance com o acompanhamento de vocês.`,
+    linhas: [
+      ['Interesse', servicoLabels[f.servico] || f.servico],
+      ['Modalidade', esporteLabels[f.esporte] || f.esporte],
+      ['Objetivo', f.mensagem],
+    ],
+    email: f.email,
+  })
 
   const validate = (f) => {
     const errs = {}

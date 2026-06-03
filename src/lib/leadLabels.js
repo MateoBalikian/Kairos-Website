@@ -21,3 +21,19 @@ export const objetivoLabels = {
 // Converte um valor para seu rótulo legível; cai para o próprio valor
 // ou "Não informado" quando vazio.
 export const labelFor = (map, value) => map[value] || value || 'Não informado'
+
+// Monta a mensagem de WhatsApp do lead em tom sóbrio e profissional.
+// `intro` é a frase de abertura (em 1ª pessoa); `linhas` é uma lista de
+// pares [rótulo, valor] — linhas com valor vazio são omitidas; `email`
+// vai discreto no rodapé. Usa *negrito* e _itálico_ do WhatsApp.
+export function buildLeadMessage({ intro, linhas = [], email }) {
+  const corpo = linhas
+    .filter(([, valor]) => valor && String(valor).trim())
+    .map(([rotulo, valor]) => `*${rotulo}:* ${valor}`)
+    .join('\n')
+  let msg = `Olá, equipe Veltron.\n\n${intro}`
+  if (corpo) msg += `\n\n${corpo}`
+  msg += `\n\nFico no aguardo para os próximos passos.`
+  if (email) msg += `\n\n_Contato: ${email}_`
+  return msg
+}

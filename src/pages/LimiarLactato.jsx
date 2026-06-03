@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { mediaUrl, supabase } from '../lib/supabase'
+import { buildLeadMessage } from '../lib/leadLabels'
 import { ArrowRight } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -25,14 +26,11 @@ export default function LimiarLactato() {
     // registra o lead em segundo plano (best-effort, nao bloqueia a abertura do WhatsApp)
     supabase.from('leads').insert([{ ...form, pagina: 'limiar-de-lactato', created_at: new Date().toISOString() }])
       .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
-    const msg = `Olá! Vim pelo site da Veltron 👋
-
-*Interesse em Limiar de Lactato*
-
-Nome: ${form.nome}
-WhatsApp: ${form.whatsapp}
-E-mail: ${form.email}
-${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
+    const msg = buildLeadMessage({
+      intro: `Sou *${form.nome}* e gostaria de saber mais sobre o teste de Limiar de Lactato de vocês.`,
+      linhas: [['Mensagem', form.mensagem]],
+      email: form.email,
+    })
     window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
     setStatus('success')
   }
