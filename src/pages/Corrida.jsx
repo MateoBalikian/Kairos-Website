@@ -927,16 +927,13 @@ export default function Corrida() {
                 </div>
                 <div className="pt-2 flex justify-center">
                   <button ref={btnRef}
-                    onClick={async () => {
-                      setStatus('loading')
-                      try {
-                        await supabase.from('leads').insert([{ ...form, pagina: 'corrida', created_at: new Date().toISOString() }])
-                      } catch (err) {
-                        console.error('Falha ao registrar lead no Supabase:', err)
-                      }
-                      setStatus('success')
+                    onClick={() => {
+                      // registra o lead em segundo plano (best-effort, nao bloqueia a abertura do WhatsApp)
+                      supabase.from('leads').insert([{ ...form, pagina: 'corrida', created_at: new Date().toISOString() }])
+                        .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
                       const msg = `Olá! Vim pelo site da Veltron 🏃‍♂️\n\n*Análise Biomecânica — Corrida*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\nPlano: ${labelFor(planoLabels, form.plano)}\nObjetivo: ${labelFor(objetivoLabels, form.objetivo)}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                       window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+                      setStatus('success')
                     }}
                     disabled={status === 'loading'}
                     className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full cursor-pointer"

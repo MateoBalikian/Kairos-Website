@@ -20,17 +20,14 @@ export default function PoseEstimation() {
     return () => ctx.revert()
   }, [])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setStatus('loading')
-    try {
-      await supabase.from('leads').insert([{ ...form, pagina: 'pose-estimation', created_at: new Date().toISOString() }])
-    } catch (err) {
-      console.error('Falha ao registrar lead no Supabase:', err)
-    }
-    setStatus('success')
+    // registra o lead em segundo plano (best-effort, nao bloqueia a abertura do WhatsApp)
+    supabase.from('leads').insert([{ ...form, pagina: 'pose-estimation', created_at: new Date().toISOString() }])
+      .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
     const msg = `Olá! Vim pelo site da Veltron 👋\n\n*Interesse em Pose Estimation*\n\nNome: ${form.nome}\nWhatsApp: ${form.whatsapp}\nE-mail: ${form.email}\n${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
     window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+    setStatus('success')
   }
 
   return (

@@ -917,14 +917,10 @@ export default function Ciclismo() {
                 </div>
                 <div className="pt-2 flex justify-center">
                   <button ref={btnRef}
-                    onClick={async () => {
-                      setStatus('loading')
-                      try {
-                        await supabase.from('leads').insert([{ ...form, pagina: 'ciclismo', created_at: new Date().toISOString() }])
-                      } catch (err) {
-                        console.error('Falha ao registrar lead no Supabase:', err)
-                      }
-                      setStatus('success')
+                    onClick={() => {
+                      // registra o lead em segundo plano (best-effort, nao bloqueia a abertura do WhatsApp)
+                      supabase.from('leads').insert([{ ...form, pagina: 'ciclismo', created_at: new Date().toISOString() }])
+                        .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
                       const msg = `Olá! Vim pelo site da Veltron 🚴
 
 *Ciclismo — Avaliação Científica*
@@ -936,6 +932,7 @@ Plano: ${labelFor(planoLabels, form.plano)}
 Objetivo: ${labelFor(objetivoLabels, form.objetivo)}
 ${form.mensagem ? `Mensagem: ${form.mensagem}` : ''}`
                       window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+                      setStatus('success')
                     }}
                     disabled={status === 'loading'}
                     className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-full cursor-pointer"

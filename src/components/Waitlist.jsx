@@ -89,22 +89,19 @@ export default function Waitlist() {
     return () => { btn.removeEventListener('mousemove', mv); btn.removeEventListener('mouseleave', ml) }
   }, [status])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     const errs = validate(form)
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
       return
     }
-    setStatus('loading')
-    try {
-      await supabase.from('leads').insert([{ ...form, pagina: 'home', created_at: new Date().toISOString() }])
-    } catch (err) {
-      console.error('Falha ao registrar lead no Supabase:', err)
-    }
-    setStatus('success')
+    // registra o lead em segundo plano (best-effort, nao bloqueia a abertura do WhatsApp)
+    supabase.from('leads').insert([{ ...form, pagina: 'home', created_at: new Date().toISOString() }])
+      .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
     const msg = buildWhatsAppMessage(form)
     window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+    setStatus('success')
   }
 
   const fieldStyle = { border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: 'rgba(255,255,255,0.05)' }
