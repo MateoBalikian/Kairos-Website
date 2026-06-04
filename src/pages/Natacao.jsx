@@ -5,26 +5,11 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import LaudoExemplo from '../components/LaudoExemplo'
 import { mediaUrl, supabase } from '../lib/supabase'
 import { planoLabels, objetivoLabels, buildLeadMessage } from '../lib/leadLabels'
 
 gsap.registerPlugin(ScrollTrigger)
-
-function useCounter(target, duration = 2000, start = false) {
-  const [value, setValue] = useState(0)
-  useEffect(() => {
-    if (!start) return
-    let startTime = null
-    const step = (ts) => {
-      if (!startTime) startTime = ts
-      const p = Math.min((ts - startTime) / duration, 1)
-      setValue(Math.floor((1 - Math.pow(1 - p, 3)) * target))
-      if (p < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }, [start, target, duration])
-  return value
-}
 
 const diferenciais = [
   {
@@ -94,14 +79,9 @@ const metricas = [
 export default function Natacao() {
   const heroRef = useRef(null)
   const difRef = useRef(null)
-  const statsRef = useRef(null)
   const btnRef = useRef(null)
-  const [statsStarted, setStatsStarted] = useState(false)
-  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', plano: '', objetivo: '', mensagem: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', modalidades: ['Natação'], plano: '', objetivo: '', mensagem: '' })
   const [status, setStatus] = useState('idle')
-
-  const v1 = useCounter(1000, 2000, statsStarted)
-  const v2 = useCounter(7, 2000, statsStarted)
 
   const smoothScrollTo = (id) => {
     const target = document.getElementById(id)
@@ -133,13 +113,6 @@ export default function Natacao() {
           scrollTrigger: { trigger: difRef.current, start: 'top 78%' }
         }
       )
-      gsap.fromTo('.passo-item',
-        { opacity: 0, x: -30 },
-        {
-          opacity: 1, x: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
-          scrollTrigger: { trigger: '#como-funciona', start: 'top 78%' }
-        }
-      )
       gsap.fromTo('.metrica-card',
         { opacity: 0, y: 30 },
         {
@@ -147,11 +120,6 @@ export default function Natacao() {
           scrollTrigger: { trigger: '#metricas', start: 'top 78%' }
         }
       )
-      ScrollTrigger.create({
-        trigger: statsRef.current,
-        start: 'top 78%',
-        onEnter: () => setStatsStarted(true),
-      })
     })
 
     const btn = btnRef.current
@@ -195,23 +163,23 @@ export default function Natacao() {
               <span className="inline-flex items-center gap-1.5 font-mono text-xs px-3 py-1.5 rounded-full"
                 style={{ background: 'rgba(75,123,245,0.15)', border: '1px solid rgba(75,123,245,0.3)', color: '#4B7BF5' }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4B7BF5] animate-pulse" />
-                Análise de Natação com IA
+                Natação · Avaliação Científica
               </span>
             </div>
 
             <h1 className="hi font-sans font-bold text-white"
               style={{ fontSize: 'clamp(2rem, 6vw, 4.5rem)', lineHeight: 1.02 }}>
-              Precisão que{' '}
-              <span style={{ color: '#4B7BF5' }}>redefine o pódio.</span>
+              Você nada mais.{' '}
+              <span style={{ color: '#4B7BF5' }}>Mas o cronômetro não anda?</span>
             </h1>
 
             <p className="hi mt-6 text-white/60 leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', maxWidth: 520 }}>
-              A integração entre Visão Computacional e Perfilagem Metabólica para mapear a eficiência mecânica e energética do seu atleta.
+              Analisamos a sua braçada quadro a quadro e medimos onde você desperdiça energia na água — pra cada metro render mais.
             </p>
 
             <div className="hi flex flex-wrap gap-2 mt-6">
-              {['Sem equipamento', 'Resultado em minutos', 'Relatório em PDF', 'Todos os estilos'].map(t => (
+              {['Avaliação presencial', 'Todos os estilos', 'Relatório em PDF', 'Ciência de elite'].map(t => (
                 <span key={t} className="inline-flex items-center gap-1.5 font-mono text-[11px] text-white/50 border border-white/12 rounded-full px-3 py-1.5"
                   style={{ background: 'rgba(255,255,255,0.04)' }}>
                   <span className="text-[#4B7BF5]">✓</span> {t}
@@ -233,10 +201,10 @@ export default function Natacao() {
                 </span>
               </button>
               <button
-                onClick={() => smoothScrollTo('como-funciona')}
+                onClick={() => smoothScrollTo('laudo')}
                 className="inline-flex items-center gap-2 font-sans text-sm text-white/50 hover:text-white transition-colors cursor-pointer border-none bg-transparent"
               >
-                Como funciona →
+                Ver exemplo de laudo →
               </button>
             </div>
           </div>
@@ -446,106 +414,6 @@ export default function Natacao() {
         </div>
       </section>
 
-      {/* ─── STATS ─── */}
-      <section ref={statsRef} className="py-12 lg:py-20 px-5 md:px-6 bg-[#0A0A0A]">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {[
-              { val: `${v1}+`, label: 'Atletas analisados', sub: 'E crescendo' },
-              { val: 'V-SCORE', label: 'Índice proprietário de performance', sub: '0 a 100 pontos' },
-              { val: `${v2}+`, label: 'Indicadores cinemáticos', sub: 'Por análise' },
-            ].map((s, i) => (
-              <div key={i} className="rounded-3xl p-6 lg:p-8 text-center"
-                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <p className="font-mono font-bold leading-none mb-3"
-                  style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: i % 2 === 0 ? '#4B7BF5' : '#7BA7E8' }}>
-                  {s.val}
-                </p>
-                <p className="font-sans font-semibold text-white text-base mb-1">{s.label}</p>
-                <p className="font-mono text-[10px] text-white/30 uppercase tracking-wide">{s.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── COMO FUNCIONA ─── */}
-      <section className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-20">
-            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">O processo</span>
-            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
-              Da piscina ao diagnóstico{' '}
-              <span className="font-bold" style={{ color: '#4B7BF5' }}>em 3 passos.</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 relative">
-            <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
-              style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.4), rgba(123,167,232,0.4))' }} />
-
-            {[
-              {
-                step: '01',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>),
-                titulo: 'Envie o vídeo',
-                descricao: 'Filme com qualquer celular — lateral ou frontal, pelo menos 10 segundos de nado. Sem câmeras especiais, sem marcadores no corpo.',
-                cor: '#4B7BF5',
-              },
-              {
-                step: '02',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>),
-                titulo: 'Avaliação presencial',
-                descricao: 'Na Veltron, realizamos os protocolos fisiológicos: coleta de lactato e metabolômica. Conduzido por pesquisadores.',
-                cor: '#4B7BF5',
-              },
-              {
-                step: '03',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>),
-                titulo: 'Diagnóstico integrado',
-                descricao: 'Biomecânica + fisiologia + metabolômica em um único laudo. Você recebe recomendações individualizadas para técnica e treino.',
-                cor: '#4B7BF5',
-              },
-            ].map((item, i) => (
-              <div key={i} className="rounded-3xl p-6 lg:p-8 flex flex-col gap-5 relative"
-                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <div className="flex items-center justify-between">
-                  <span className="font-sans font-bold text-2xl"
-                    style={{ color: item.cor }}>
-                    {item.step}
-                  </span>
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(75,123,245,0.1)', color: '#4B7BF5' }}>
-                    {item.icon}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-sans font-bold text-xl text-white mb-3">{item.titulo}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed">{item.descricao}</p>
-                </div>
-                <div className="h-0.5 rounded-full mt-auto"
-                  style={{ background: `linear-gradient(90deg, ${item.cor}, transparent)` }} />
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-3xl p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6"
-            style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(75,123,245,0.1)' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            </div>
-            <div>
-              <p className="font-sans font-bold text-white text-sm mb-1">Diagnóstico completo e individualizado</p>
-              <p className="text-white/40 text-xs leading-relaxed">
-                Dados fisiológicos e biomecânicos unidos em um único laudo. Ciência aplicada diretamente à sua natação.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ─── O QUE ESTÁ INCLUÍDO ─── */}
       <section id="metricas" className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-[1200px] mx-auto">
@@ -570,6 +438,9 @@ export default function Natacao() {
           </div>
         </div>
       </section>
+
+      {/* ─── O QUE VOCÊ RECEBE — LAUDO ─── */}
+      <LaudoExemplo esporte="natacao" />
 
       {/* ─── AVALIAÇÕES ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-5 md:px-6" style={{ background: '#0A0A0A' }}>
@@ -824,6 +695,22 @@ export default function Natacao() {
                   </div>
                 ))}
                 <div className="flex flex-col gap-2">
+                  <label className="font-sans font-semibold text-sm text-white">Quais modalidades você treina?</label>
+                  <div className="flex flex-wrap gap-2">
+                    {['Corrida', 'Ciclismo', 'Natação', 'Triathlon'].map((m) => {
+                      const active = form.modalidades.includes(m)
+                      return (
+                        <button type="button" key={m}
+                          onClick={() => setForm((f) => ({ ...f, modalidades: f.modalidades.includes(m) ? f.modalidades.filter((x) => x !== m) : [...f.modalidades, m] }))}
+                          className="font-sans text-sm rounded-full px-4 py-2 transition-all"
+                          style={{ background: active ? '#4B7BF5' : 'rgba(255,255,255,0.05)', color: active ? 'white' : 'rgba(255,255,255,0.6)', border: active ? '1px solid #4B7BF5' : '1px solid rgba(255,255,255,0.12)', cursor: 'pointer' }}>
+                          {m}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
                   <label className="font-sans font-semibold text-sm text-white">Plano de interesse</label>
                   <select value={form.plano} onChange={(e) => setForm({ ...form, plano: e.target.value })}
                     style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
@@ -857,11 +744,13 @@ export default function Natacao() {
                   <button ref={btnRef}
                     onClick={() => {
                       // registra o lead em segundo plano (best-effort, nao bloqueia a abertura do WhatsApp)
-                      supabase.from('leads').insert([{ ...form, pagina: 'natacao', created_at: new Date().toISOString() }])
+                      const { modalidades, ...rest } = form
+                      supabase.from('leads').insert([{ ...rest, esporte: modalidades.join(', '), pagina: 'natacao', created_at: new Date().toISOString() }])
                         .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
                       const msg = buildLeadMessage({
                         intro: `Sou *${form.nome}* e quero uma avaliação científica da minha natação para entender melhor meu desempenho e evoluir com segurança.`,
                         linhas: [
+                          ['Modalidades', modalidades.join(', ')],
                           ['Avaliação', planoLabels[form.plano]],
                           ['Objetivo', objetivoLabels[form.objetivo]],
                           ['Contexto', form.mensagem],

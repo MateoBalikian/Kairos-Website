@@ -5,26 +5,11 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import LaudoExemplo from '../components/LaudoExemplo'
 import { mediaUrl, supabase } from '../lib/supabase'
 import { planoLabels, objetivoLabels, buildLeadMessage } from '../lib/leadLabels'
 
 gsap.registerPlugin(ScrollTrigger)
-
-function useCounter(target, duration = 2000, start = false) {
-  const [value, setValue] = useState(0)
-  useEffect(() => {
-    if (!start) return
-    let startTime = null
-    const step = (ts) => {
-      if (!startTime) startTime = ts
-      const p = Math.min((ts - startTime) / duration, 1)
-      setValue(Math.floor((1 - Math.pow(1 - p, 3)) * target))
-      if (p < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }, [start, target, duration])
-  return value
-}
 
 function GraficoLactato() {
   return (
@@ -137,15 +122,10 @@ const avaliacoes = [
 
 export default function Corrida() {
   const heroRef = useRef(null)
-  const metricsRef = useRef(null)
   const btnRef = useRef(null)
-  const [metricsStarted, setMetricsStarted] = useState(false)
   const [activeAv, setActiveAv] = useState(0)
-  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', plano: '', objetivo: '', mensagem: '' })
+  const [form, setForm] = useState({ nome: '', whatsapp: '', email: '', modalidades: ['Corrida'], plano: '', objetivo: '', mensagem: '' })
   const [status, setStatus] = useState('idle')
-
-  const v1 = useCounter(185, 1800, metricsStarted)
-  const v2 = useCounter(17, 1800, metricsStarted)
 
   useEffect(() => {
     if (window.lenis) {
@@ -164,10 +144,6 @@ export default function Corrida() {
           opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
           scrollTrigger: { trigger: '.av-section', start: 'top 80%' }
         })
-      ScrollTrigger.create({
-        trigger: metricsRef.current, start: 'top 75%',
-        onEnter: () => setMetricsStarted(true),
-      })
     })
     const btn = btnRef.current
     if (btn) {
@@ -223,14 +199,14 @@ export default function Corrida() {
               <ArrowLeft size={14} /> Veltron
             </Link>
             <span className="text-white/20">·</span>
-            <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">Running Elite: Vision IA &amp; Metatreadmill</span>
+            <span className="font-mono text-xs text-[#4B7BF5] uppercase tracking-widest">Corrida · Avaliação Científica</span>
           </div>
           <h1 className="hi font-sans font-bold text-white" style={{ fontSize: 'clamp(1.8rem,5vw,3.8rem)', lineHeight: 1.05 }}>
-            A Ciência da<br />
-            <span style={{ color: '#4B7BF5' }}>Economia de Corrida</span>
+            Você corre mais.<br />
+            <span style={{ color: '#4B7BF5' }}>Mas o tempo não cai?</span>
           </h1>
           <p className="hi mt-5 text-white/70 leading-relaxed" style={{ fontSize: 'clamp(0.9rem,1.5vw,1.1rem)', maxWidth: 520 }}>
-            A única plataforma que correlaciona Cinemetria em Tempo Real com Cinética do Lactato para identificar o colapso técnico sob fadiga.
+            A gente mede onde a sua corrida perde tempo, por que você apaga no fim e o pace certo pra treinar — no seu corpo, não no palpite do relógio.
           </p>
           <div className="hi flex flex-wrap gap-2 mt-5">
             {['Pose Estimation', 'Limiar de Lactato', 'Metabolômica', 'Metatreadmill'].map(t => (
@@ -446,33 +422,6 @@ export default function Corrida() {
         </div>
       </section>
 
-      {/* METRICAS */}
-      <section ref={metricsRef} className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-14">
-            <span className="font-mono text-xs text-white/30 uppercase tracking-widest">Resultados reais</span>
-            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
-              Dados que <span className="font-bold" style={{ color: '#4B7BF5' }}>comprovam a diferenca</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              { val: `${v1}`, label: 'Passadas/min', sub: 'SPM ideal de corrida' },
-              { val: 'vLT2', label: 'Velocidade de Limiar', sub: 'Zonas reais de treino' },
-              { val: `${v2}pts`, label: 'Articulações rastreadas', sub: 'Pose Estimation' },
-            ].map((m, i) => (
-              <div key={i} className="rounded-3xl p-6 text-center"
-                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <p className="font-mono font-bold text-2xl md:text-3xl lg:text-4xl leading-none mb-3"
-                  style={{ color: i % 2 === 0 ? '#4B7BF5' : '#7BA7E8' }}>{m.val}</p>
-                <p className="font-mono text-[10px] text-white/50 uppercase tracking-wide leading-relaxed mb-1">{m.label}</p>
-                <p className="font-mono text-[9px] text-white/25 uppercase tracking-wide">{m.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── VELTRON ENGINE AI ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
@@ -562,86 +511,8 @@ export default function Corrida() {
         </div>
       </section>
 
-      {/* COMO FUNCIONA */}
-      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#080808' }}>
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-20">
-            <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O processo</span>
-            <h2 className="font-sans font-light text-2xl md:text-3xl lg:text-4xl text-white tracking-tight mt-3">
-              Do vídeo ao diagnóstico{' '}
-              <span className="font-bold" style={{ color: '#4B7BF5' }}>em 3 passos.</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 relative">
-            {/* Linha conectora desktop */}
-            <div className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px"
-              style={{ background: 'linear-gradient(90deg, rgba(75,123,245,0.4), rgba(75,123,245,0.4))' }} />
-
-            {[
-              {
-                step: '01',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>),
-                titulo: 'Envie o vídeo',
-                descricao: 'Grave seu treino em esteira ou outdoor com qualquer celular. Sem câmeras especiais, sem marcadores no corpo.',
-                cor: '#4B7BF5',
-              },
-              {
-                step: '02',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" /></svg>),
-                titulo: 'Avaliação presencial',
-                descricao: 'Na Veltron, realizamos os protocolos fisiológicos: coleta de lactato e metabolômica. Conduzido por pesquisadores.',
-                cor: '#4B7BF5',
-              },
-              {
-                step: '03',
-                icon: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>),
-                titulo: 'Diagnóstico integrado',
-                descricao: 'Você recebe um laudo completo: biomecânica + fisiologia unidos em um único relatório com recomendações individualizadas.',
-                cor: '#4B7BF5',
-              },
-            ].map((item, i) => (
-              <div key={i} className="rounded-3xl p-6 lg:p-8 flex flex-col gap-5 relative"
-                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
-                {/* Número do passo */}
-                <div className="flex items-center justify-between">
-                  <span className="font-sans font-bold text-2xl" style={{ color: item.cor }}>
-                    {item.step}
-                  </span>
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(75,123,245,0.1)', color: '#4B7BF5' }}>
-                    {item.icon}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-sans font-bold text-xl text-white mb-3">{item.titulo}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed">{item.descricao}</p>
-                </div>
-                {/* Linha colorida no fundo do card */}
-                <div className="h-0.5 rounded-full mt-auto"
-                  style={{ background: `linear-gradient(90deg, ${item.cor}, transparent)` }} />
-              </div>
-            ))}
-          </div>
-
-          {/* Resultado final */}
-          <div className="mt-8 rounded-3xl p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6"
-            style={{ background: 'rgba(75,123,245,0.04)', border: '1px solid rgba(75,123,245,0.12)' }}>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(75,123,245,0.1)' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4B7BF5" strokeWidth="2" strokeLinecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            </div>
-            <div>
-              <p className="font-sans font-bold text-white text-sm mb-1">Resultado: Diagnóstico completo e individualizado</p>
-              <p className="text-white/40 text-xs leading-relaxed">
-                Dados fisiológicos e biomecânicos unidos em um único laudo. Ciência aplicada diretamente à sua corrida.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ─── O QUE VOCÊ RECEBE — LAUDO ─── */}
+      <LaudoExemplo esporte="corrida" />
 
       {/* ─── AVALIAÇÕES ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-5 md:px-6" style={{ background: '#0A0A0A' }}>
@@ -896,6 +767,22 @@ export default function Corrida() {
                   </div>
                 ))}
                 <div className="flex flex-col gap-2">
+                  <label className="font-sans font-semibold text-sm text-white">Quais modalidades você treina?</label>
+                  <div className="flex flex-wrap gap-2">
+                    {['Corrida', 'Ciclismo', 'Natação', 'Triathlon'].map((m) => {
+                      const active = form.modalidades.includes(m)
+                      return (
+                        <button type="button" key={m}
+                          onClick={() => setForm((f) => ({ ...f, modalidades: f.modalidades.includes(m) ? f.modalidades.filter((x) => x !== m) : [...f.modalidades, m] }))}
+                          className="font-sans text-sm rounded-full px-4 py-2 transition-all"
+                          style={{ background: active ? '#4B7BF5' : 'rgba(255,255,255,0.05)', color: active ? 'white' : 'rgba(255,255,255,0.6)', border: active ? '1px solid #4B7BF5' : '1px solid rgba(255,255,255,0.12)', cursor: 'pointer' }}>
+                          {m}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
                   <label className="font-sans font-semibold text-sm text-white">Plano de interesse</label>
                   <select value={form.plano} onChange={(e) => setForm({ ...form, plano: e.target.value })}
                     style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '12px 16px', fontSize: '0.95rem', outline: 'none', fontFamily: 'DM Sans, sans-serif', color: 'white', background: '#1a1a1a', colorScheme: 'dark' }}>
@@ -929,11 +816,13 @@ export default function Corrida() {
                   <button ref={btnRef}
                     onClick={() => {
                       // registra o lead em segundo plano (best-effort, nao bloqueia a abertura do WhatsApp)
-                      supabase.from('leads').insert([{ ...form, pagina: 'corrida', created_at: new Date().toISOString() }])
+                      const { modalidades, ...rest } = form
+                      supabase.from('leads').insert([{ ...rest, esporte: modalidades.join(', '), pagina: 'corrida', created_at: new Date().toISOString() }])
                         .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
                       const msg = buildLeadMessage({
                         intro: `Sou *${form.nome}* e quero uma avaliação científica da minha corrida para entender melhor meu desempenho e evoluir com segurança.`,
                         linhas: [
+                          ['Modalidades', modalidades.join(', ')],
                           ['Avaliação', planoLabels[form.plano]],
                           ['Objetivo', objetivoLabels[form.objetivo]],
                           ['Contexto', form.mensagem],

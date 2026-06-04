@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar'
 import Philosophy from '../components/Philosophy'
 import Waitlist from '../components/Waitlist'
 import Footer from '../components/Footer'
+import LaudoExemplo from '../components/LaudoExemplo'
 import { mediaUrl } from '../lib/supabase'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -43,33 +44,33 @@ const modalidades = [
 
 const diferenciais = [
   {
-    tag: 'BIOMECÂNICA',
-    titulo: 'Pose Estimation',
-    desc: 'Nossa IA rastreia 17 pontos articulares em tempo real, sem marcadores no corpo. Oscilação, assimetria e alinhamento — visíveis frame a frame.',
+    tag: 'Limiar de Lactato',
+    titulo: 'O ponto onde você "estoura"',
+    desc: 'O ritmo exato em que seu corpo passa do controle pro sufoco. Medimos no seu sangue, estágio a estágio — não estimamos por fórmula. É o que define as suas zonas de treino reais.',
     cor: '#4B7BF5',
-    cta: 'Envie seu vídeo',
-    link: '/pose-estimation',
-  },
-  {
-    tag: 'FISIOLOGIA',
-    titulo: 'Limiar de Lactato',
-    desc: 'O padrão-ouro da fisiologia do exercício. Identificamos LT1 e LT2 com coleta capilar real — a métrica definitiva para prescrição de zonas de treino.',
-    cor: '#4B7BF5',
-    cta: 'Agende sua análise',
+    cta: 'Entenda a fisiologia',
     link: '/limiar-de-lactato',
   },
   {
-    tag: 'METABOLÔMICA',
-    titulo: 'Assinatura Molecular',
-    desc: 'Metabólitos que revelam o que nenhum exame convencional enxerga — recuperação, adaptação e deficiências invisíveis.',
+    tag: 'Biomecânica',
+    titulo: 'O jeito que seu corpo se move',
+    desc: 'Com visão computacional, lemos seu movimento quadro a quadro, sem sensor no corpo. Assimetrias — uma perna que empurra mais, o quadril que cede no cansaço — aparecem claras. É o que te machuca e rouba seu tempo.',
     cor: '#4B7BF5',
-    cta: 'Agende sua análise',
+    cta: 'Veja a biomecânica',
+    link: '/pose-estimation',
+  },
+  {
+    tag: 'Metabolômica',
+    titulo: 'Como seu corpo recupera',
+    desc: 'Uma análise do seu sangue revela centenas de metabólitos: sinais de recuperação, overtraining e deficiências que um exame comum não mostra. É enxergar o motor por dentro, antes da lesão chegar.',
+    cor: '#4B7BF5',
+    cta: 'Conheça a metabolômica',
     link: '/metabolomica',
   },
   {
-    tag: 'INTELIGÊNCIA ARTIFICIAL',
-    titulo: 'Veltron Engine AI',
-    desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. O ponto onde os 3 se tornam 1.',
+    tag: 'Veltron Engine AI',
+    titulo: 'Onde os 3 viram 1',
+    desc: 'Nossa IA cruza biomecânica, lactato e metabolismo num diagnóstico só — o ponto onde a sua técnica, o seu motor e a sua recuperação se encontram.',
     cor: '#4B7BF5',
     cta: 'Conheça a tecnologia',
     link: '#contato',
@@ -84,11 +85,11 @@ function FaqSection() {
   const faqs = [
     {
       q: 'Preciso de algum equipamento especial para fazer a análise?',
-      a: 'Não. Para a análise biomecânica basta gravar um vídeo com qualquer smartphone — sem câmeras especiais, sem sensores e sem marcadores no corpo. Para as avaliações fisiológicas (curva de lactato e metabolômica), você comparece presencialmente na Veltron em Maceió.',
+      a: 'Não. Você não precisa levar nem comprar nada. A avaliação é presencial, nos nossos polos em Maceió: gravamos o vídeo da sua biomecânica na hora e fazemos a coleta de lactato ali mesmo. Basta vir de roupa de treino.',
     },
     {
       q: 'Quanto tempo leva para receber o diagnóstico?',
-      a: 'Após a avaliação presencial e o envio do vídeo, você recebe o laudo completo em até 48 horas. O relatório integra biomecânica, fisiologia e metabolômica em um único documento com recomendações individualizadas.',
+      a: 'Depende da avaliação: o laudo de biomecânica e lactato sai em poucos dias; a metabolômica, por ser laboratorial, tem prazo um pouco maior. Você recebe tudo em PDF, por e-mail e WhatsApp, com recomendações individualizadas.',
     },
     {
       q: 'Para que tipo de atleta a Veltron é indicada?',
@@ -104,7 +105,7 @@ function FaqSection() {
     },
     {
       q: 'A Veltron atende apenas atletas de Maceió?',
-      a: 'As avaliações fisiológicas presenciais são realizadas em Maceió, AL. A análise biomecânica por vídeo pode ser feita remotamente — você grava, envia e recebe o diagnóstico de qualquer lugar do Brasil.',
+      a: 'As avaliações são presenciais, feitas nos nossos polos em Maceió. Temos pontos em regiões diferentes da cidade e indicamos o mais perto de você — em alguns casos, conseguimos avaliar até no seu local de treino.',
     },
   ]
 
@@ -210,13 +211,13 @@ export default function Home() {
 
           <h1 className="hi font-sans font-bold text-white mt-4"
             style={{ fontSize: 'clamp(1.9rem, 4.5vw, 4.5rem)', lineHeight: 1.1, wordBreak: 'break-word' }}>
-            Transformando movimento em{' '}
-            <span style={{ color: '#4B7BF5' }}>inteligência competitiva.</span>
+            Você treina forte.{' '}
+            <span style={{ color: '#4B7BF5' }}>Mas está evoluindo de verdade?</span>
           </h1>
 
           <p className="hi mt-4 text-white/65 leading-relaxed"
             style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)', maxWidth: 500 }}>
-            Eliminamos a incerteza dos wearables e apps. A Veltron traduz movimento em limiar de lactato, metabolômica e biomecânica — a tríade que realmente determina performance.
+            A Veltron mede no seu corpo o que o relógio não vê: onde você perde tempo, por que se machuca e o ritmo certo pra você treinar. Ciência de verdade, no seu corpo.
           </p>
 
           <div className="hi flex flex-wrap gap-2 mt-5">
@@ -322,16 +323,16 @@ export default function Home() {
           {/* Header */}
           <div className="max-w-3xl mb-16">
             <span className="font-sans text-xs text-[#0A2463] uppercase tracking-widest">
-              Por que a Veltron
+              O que a gente mede
             </span>
             <h2 className="font-sans mt-3 leading-tight"
               style={{ fontSize: 'clamp(1.6rem, 4vw, 3.2rem)', fontWeight: 800, color: '#0A0A0A' }}>
-              GPS mostra o que o atleta fez.<br />
-              <span style={{ color: '#0A2463' }}>A Veltron mostra por que ele rendeu assim.</span>
+              Seu relógio te dá número.<br />
+              <span style={{ color: '#0A2463' }}>Não te diz por quê.</span>
             </h2>
             <p className="mt-5 text-[#4A4A47] leading-relaxed"
               style={{ fontSize: '1.1rem', maxWidth: 560 }}>
-              Nenhuma outra plataforma no Brasil combina avaliação fisiológica de laboratório com rastreamento por IA. São os dois lados do mesmo diagnóstico.
+              São 3 coisas que decidem se você evolui — e nenhum app, relógio ou planilha mede de verdade.
             </p>
           </div>
 
@@ -394,6 +395,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ─── O QUE VOCÊ RECEBE — LAUDO DE EXEMPLO ─── */}
+      <LaudoExemplo seletor link />
 
       {/* ─── PORTAL DE MODALIDADES ─── */}
       <section id="modalidades" ref={modRef} className="py-16 lg:py-24 xl:py-32 px-6 bg-[#0A0A0A]">
