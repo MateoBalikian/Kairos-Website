@@ -1,4 +1,4 @@
-import { Mail, ExternalLink } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 const columns = [
   {
@@ -14,7 +14,7 @@ const columns = [
     links: [
       { label: 'contato@veltrontech.com.br', href: 'mailto:contato@veltrontech.com.br' },
       { label: '@veltrontech_', href: 'https://instagram.com/veltrontech_', external: true },
-      { label: 'Parcerias', href: '#' },
+      { label: 'WhatsApp: (82) 99965-2230', href: 'https://wa.me/558299652230', external: true },
     ],
   },
 ]
@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
 
         {/* Links grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-8 sm:mb-16 border-t border-white/10 pt-6 sm:pt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12 border-t border-white/10 pt-6 sm:pt-10">
           {columns.map((col) => (
             <div key={col.title}>
               <p className="font-mono text-[10px] text-white/30 uppercase tracking-widest mb-4">
@@ -103,14 +103,6 @@ export default function Footer() {
                     ) : (
                       <a
                         href={link.href}
-                        onClick={(e) => {
-                          if (link.href.startsWith('#')) {
-                            e.preventDefault()
-                            const target = document.querySelector(link.href)
-                            if (window.lenis) window.lenis.scrollTo(target, { duration: 1.4, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) })
-                            else target?.scrollIntoView({ behavior: 'smooth' })
-                          }
-                        }}
                         className="text-sm text-white/50 hover:text-white transition-colors duration-200 hover:-translate-y-px inline-block"
                       >
                         {link.label}
@@ -121,21 +113,33 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Sede / institucional */}
+          <div>
+            <p className="font-mono text-[10px] text-white/30 uppercase tracking-widest mb-4">
+              Sede
+            </p>
+            <div className="text-sm text-white/50 leading-relaxed space-y-1">
+              <p className="text-white/70">Veltron Tecnologia em Saúde e Esporte</p>
+              <p>Av. Desembargador Valente de Lima, 537 — Ap. 704</p>
+              <p>Maceió – AL · CEP 57035-556</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Aviso médico */}
+        <div className="border-t border-white/10 pt-6 mb-6">
+          <p className="text-[11px] text-white/30 leading-relaxed max-w-3xl">
+            Os resultados fornecidos pela Veltron possuem caráter complementar e não substituem
+            diagnóstico, tratamento ou avaliação médica especializada.
+          </p>
         </div>
 
         {/* Bottom row */}
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-white/10 pt-6">
           <p className="font-mono text-[11px] text-white/30">
-            © 2025 Veltron — Ciência aplicada ao desempenho humano
+            © 2026 Veltron Tecnologia em Saúde e Esporte. Todos os direitos reservados.
           </p>
-          <div className="flex items-center gap-4">
-            <a href="#" className="font-mono text-[11px] text-white/30 hover:text-white/60 transition-colors duration-200">
-              Privacidade
-            </a>
-            <a href="#" className="font-mono text-[11px] text-white/30 hover:text-white/60 transition-colors duration-200">
-              Termos
-            </a>
-          </div>
         </div>
       </div>
     </footer>
