@@ -538,7 +538,8 @@ export default function Corrida() {
                   <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$250</p>
                 </div>
                 <h3 className="font-sans font-bold text-white mb-3" style={{ fontSize: '1.2rem' }}>Avaliação Express</h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-2">Coleta de vídeo analítica básica + 1 ponto de lactato + relatório simplificado.</p>
+                <p className="italic mb-3" style={{ color: '#7BA7E8', fontSize: '0.85rem' }}>o check-up rápido pra achar suas zonas de treino</p>
+                <p className="text-white/50 text-sm leading-relaxed mb-2">Vídeo da sua técnica + 1 medição de lactato + relatório com as suas zonas.</p>
                 <p className="text-white/30 text-xs mb-6">Foco: Triagem e zonas essenciais.</p>
                 <div className="flex flex-col gap-3">
                   {['Vídeo analítica básica', '1 ponto de lactato', 'Relatório simplificado', 'Zonas essenciais de treino'].map((item, i) => (
@@ -570,7 +571,8 @@ export default function Corrida() {
                 </div>
                 <p className="font-sans font-bold text-white text-right mb-6" style={{ fontSize: '2rem', lineHeight: 1 }}>R$450</p>
                 <h3 className="font-sans font-bold text-white mb-3" style={{ fontSize: '1.2rem' }}>Avaliação Performance</h3>
-                <p className="text-white/70 text-sm leading-relaxed mb-2">Análise biomecânica completa por IA + Curva de lactato com múltiplos pontos + Relatório técnico estruturado com indicadores.</p>
+                <p className="italic mb-3" style={{ color: '#7BA7E8', fontSize: '0.85rem' }}>a avaliação completa: técnica no vídeo + curva de lactato no sangue</p>
+                <p className="text-white/70 text-sm leading-relaxed mb-2">Análise biomecânica completa por IA + curva de lactato com vários pontos + relatório com zonas e recomendações.</p>
                 <p className="text-white/40 text-xs mb-6">Foco: Otimização real de treinos.</p>
                 <div className="flex flex-col gap-3">
                   {['Análise biomecânica completa por IA', 'Curva de lactato com múltiplos pontos', 'Relatório técnico com indicadores', 'Recomendações de prescrição'].map((item, i) => (
@@ -600,7 +602,8 @@ export default function Corrida() {
                   <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$290</p>
                 </div>
                 <h3 className="font-sans font-bold text-white mb-3" style={{ fontSize: '1.2rem' }}>Reavaliação / Follow-up</h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-2">Repetição total do protocolo após um ciclo de treinamento para comparar métricas.</p>
+                <p className="italic mb-3" style={{ color: '#7BA7E8', fontSize: '0.85rem' }}>a mesma avaliação, semanas depois, pra medir o que evoluiu</p>
+                <p className="text-white/50 text-sm leading-relaxed mb-2">Refazemos a avaliação completa depois de um ciclo de treino e comparamos com a anterior.</p>
                 <p className="text-white/30 text-xs mb-6">Foco: Medição objetiva de evolução.</p>
                 <div className="flex flex-col gap-3">
                   {['Repetição completa do protocolo', 'Comparativo com avaliação anterior', 'Evolução das métricas biomecânicas', 'Ajuste de zonas e prescrição'].map((item, i) => (
@@ -649,6 +652,7 @@ export default function Corrida() {
                 <h3 className="font-sans font-bold text-white" style={{ fontSize: '1.4rem' }}>
                   Mapa Fisiometabólico Veltron
                 </h3>
+                <p className="italic mt-2" style={{ color: '#7BA7E8', fontSize: '0.9rem' }}>o raio-x completo: do seu movimento à sua célula</p>
               </div>
               <div className="lg:text-right flex-shrink-0">
                 <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$ 1.850,00</p>
@@ -657,14 +661,14 @@ export default function Corrida() {
               </div>
             </div>
             <p className="text-white/60 leading-relaxed mb-8" style={{ fontSize: '0.95rem', maxWidth: 700 }}>
-              A fotografia molecular e biomecânica definitiva do seu organismo. Uma investigação profunda e integrada, realizada em <span className="text-white font-semibold">2 encontros distribuídos no período de 4 a 8 semanas</span>, projetada para identificar os gargalos ocultos que geram fadiga precoce e limitam o seu rendimento.
+              A análise mais completa da Veltron: junta biomecânica, lactato e metabolômica num retrato só do seu corpo. São <span className="text-white font-semibold">2 encontros ao longo de 4 a 8 semanas</span> pra achar os gargalos escondidos que causam fadiga precoce e seguram o seu rendimento.
             </p>
             <p className="font-sans text-xs text-white/30 uppercase tracking-widest mb-4">Inclui 1 Mapa Fisiometabólico completo no ciclo</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               {[
-                'Rastreio Biomecânico Cinemático de Precisão por IA',
-                'Determinação Cirúrgica de Limiares Metabólicos',
-                'Interpretação Especializada de Biomarcadores (Visão Molecular)',
+                'Análise biomecânica completa por IA (vídeo)',
+                'Limiares de lactato medidos no sangue',
+                'Leitura metabolômica do sangue (centenas de marcadores)',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span style={{ color: '#4B7BF5', marginTop: '2px', flexShrink: 0 }}>✦</span>
@@ -695,6 +699,7 @@ export default function Corrida() {
                 <h3 className="font-sans font-bold text-white" style={{ fontSize: '1.4rem' }}>
                   Veltron Evolution
                 </h3>
+                <p className="italic mt-2" style={{ color: '#7BA7E8', fontSize: '0.9rem' }}>acompanhamento de 6 meses: avalia, ajusta e reavalia sempre</p>
               </div>
               <div className="lg:text-right flex-shrink-0">
                 <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$ 3.900,00</p>
@@ -703,14 +708,14 @@ export default function Corrida() {
               </div>
             </div>
             <p className="text-white/60 leading-relaxed mb-8" style={{ fontSize: '0.95rem', maxWidth: 700 }}>
-              O programa contínuo de assessoria científica baseado em <span className="text-white font-semibold">6 encontros distribuídos em 6 meses</span> para atletas de elite e entusiastas de alta performance. Unimos a inteligência profunda do acompanhamento sistêmico a reavaliações e suporte ativo, garantindo ajustes dinâmicos e precisos à sua rotina de treinos.
+              Acompanhamento científico contínuo: <span className="text-white font-semibold">6 encontros ao longo de 6 meses</span>, com reavaliações e suporte ativo pra ajustar o seu treino o tempo todo. Para atletas de elite e entusiastas de alta performance.
             </p>
             <p className="font-sans text-xs text-white/30 uppercase tracking-widest mb-4">Inclui 2 Mapas Fisiometabólicos completos no ciclo</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               {[
-                'Interpretação Especializada de Biomarcadores (Visão Molecular)',
-                'Reavaliações Biomecânicas e de Lactato periódicas',
-                'Dashboard exclusivo com evolução histórica de métricas',
+                'Leitura metabolômica do sangue (centenas de marcadores)',
+                'Reavaliações de biomecânica e lactato ao longo do programa',
+                'Painel com a evolução das suas métricas',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span style={{ color: '#4B7BF5', marginTop: '2px', flexShrink: 0 }}>✦</span>
