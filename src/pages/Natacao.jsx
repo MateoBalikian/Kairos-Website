@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import LaudoExemplo from '../components/LaudoExemplo'
+import EntendaCiencia from '../components/EntendaCiencia'
 import { mediaUrl, supabase } from '../lib/supabase'
 import { planoLabels, objetivoLabels, buildLeadMessage } from '../lib/leadLabels'
 
@@ -46,7 +47,7 @@ const diferenciais = [
       </svg>
     ),
     titulo: 'Assinatura Molecular',
-    desc: 'Metabólitos que revelam recuperação, adaptação e deficiências invisíveis nos exames convencionais. A biologia do seu nadador, decifrada.',
+    desc: 'Metabólitos que revelam recuperação, adaptação e deficiências invisíveis nos exames convencionais. Inflamação e overtraining aparecem semanas antes do sintoma — preditivo, não reativo.',
     cor: '#4B7BF5',
     cta: 'Agende sua análise',
     link: '/metabolomica',
@@ -438,6 +439,9 @@ export default function Natacao() {
           </div>
         </div>
       </section>
+
+      {/* ─── ENTENDA A CIÊNCIA (glossário sem jargão) ─── */}
+      <EntendaCiencia esporte="natacao" />
 
       {/* ─── O QUE VOCÊ RECEBE — LAUDO ─── */}
       <LaudoExemplo esporte="natacao" />

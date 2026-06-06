@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import LaudoExemplo from '../components/LaudoExemplo'
+import EntendaCiencia from '../components/EntendaCiencia'
 import { mediaUrl, supabase } from '../lib/supabase'
 import { planoLabels, objetivoLabels, buildLeadMessage } from '../lib/leadLabels'
 
@@ -34,7 +35,7 @@ const diferenciais = [
     tag: 'METABOLÔMICA',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" /></svg>),
     titulo: 'Assinatura Molecular',
-    desc: 'Metabólitos que explicam por que as pernas pesam mesmo após descanso — e o que fazer para recuperar melhor.',
+    desc: 'Metabólitos que explicam por que as pernas pesam mesmo após descanso. Sinais de inflamação e overtraining aparecem semanas antes do sintoma — preditivo, não reativo.',
     cor: '#4B7BF5',
     cta: 'Agende sua análise',
     link: '/metabolomica',
@@ -477,6 +478,9 @@ export default function Ciclismo() {
           </div>
         </div>
       </section>
+
+      {/* ─── ENTENDA A CIÊNCIA (glossário sem jargão) ─── */}
+      <EntendaCiencia esporte="ciclismo" />
 
       {/* ─── O QUE VOCÊ RECEBE — LAUDO ─── */}
       <LaudoExemplo esporte="ciclismo" />

@@ -8,6 +8,7 @@ import Philosophy from '../components/Philosophy'
 import Waitlist from '../components/Waitlist'
 import Footer from '../components/Footer'
 import LaudoExemplo from '../components/LaudoExemplo'
+import EntendaCiencia from '../components/EntendaCiencia'
 import { mediaUrl } from '../lib/supabase'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -45,8 +46,8 @@ const modalidades = [
 const diferenciais = [
   {
     tag: 'Limiar de Lactato',
-    titulo: 'O ponto onde você "estoura"',
-    desc: 'O ritmo exato em que seu corpo passa do controle pro sufoco. Medimos no seu sangue, estágio a estágio — não estimamos por fórmula. É o que define as suas zonas de treino reais.',
+    titulo: 'O ponto de ruptura técnica',
+    desc: 'O ritmo exato em que sua eficiência despenca e o corpo começa a trabalhar contra você. Medimos no seu sangue, estágio a estágio — não estimamos por fórmula. É o que define as suas zonas de treino reais e te protege do overtraining.',
     cor: '#4B7BF5',
     cta: 'Entenda a fisiologia',
     link: '/limiar-de-lactato',
@@ -54,15 +55,15 @@ const diferenciais = [
   {
     tag: 'Biomecânica',
     titulo: 'O jeito que seu corpo se move',
-    desc: 'Com visão computacional, lemos seu movimento quadro a quadro, sem sensor no corpo. Assimetrias — uma perna que empurra mais, o quadril que cede no cansaço — aparecem claras. É o que te machuca e rouba seu tempo.',
+    desc: 'Visão computacional transforma um vídeo comum num laboratório de movimento: lemos cada quadro, sem sensor no corpo. Assimetrias que se escondem no cansaço ficam claras — antes de virarem lesão e enquanto ainda roubam o seu tempo.',
     cor: '#4B7BF5',
     cta: 'Veja a biomecânica',
     link: '/pose-estimation',
   },
   {
     tag: 'Metabolômica',
-    titulo: 'Como seu corpo recupera',
-    desc: 'Uma análise do seu sangue revela centenas de metabólitos: sinais de recuperação, overtraining e deficiências que um exame comum não mostra. É enxergar o motor por dentro, antes da lesão chegar.',
+    titulo: 'A verdade dentro das células',
+    desc: 'Uma análise do seu sangue revela centenas de metabólitos: a resposta real das suas células. Sinais de overtraining, inflamação e deficiências aparecem semanas antes do primeiro sintoma — dá pra agir antes da lesão chegar.',
     cor: '#4B7BF5',
     cta: 'Conheça a metabolômica',
     link: '/metabolomica',
@@ -70,7 +71,7 @@ const diferenciais = [
   {
     tag: 'Veltron Engine AI',
     titulo: 'Onde os 3 viram 1',
-    desc: 'Nossa IA cruza biomecânica, lactato e metabolismo num diagnóstico só — o ponto onde a sua técnica, o seu motor e a sua recuperação se encontram.',
+    desc: 'Nossa IA cruza biomecânica, lactato e metabolismo num diagnóstico só — e tira o seu treino do modo reativo: em vez de corrigir o problema depois, a gente antecipa onde ele vai aparecer.',
     cor: '#4B7BF5',
     cta: 'Conheça a tecnologia',
     link: '#contato',
@@ -217,11 +218,11 @@ export default function Home() {
 
           <p className="hi mt-4 text-white/65 leading-relaxed"
             style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)', maxWidth: 500 }}>
-            A Veltron mede no seu corpo o que o relógio não vê: onde você perde tempo, por que se machuca e o ritmo certo pra você treinar. Ciência de verdade, no seu corpo.
+            A Veltron mede no seu corpo o que o relógio não vê: o ritmo certo pra treinar, onde você perde tempo e por que se machuca — antes da lesão chegar. Ciência no lugar da estimativa.
           </p>
 
           <div className="hi flex flex-wrap gap-2 mt-5">
-            {['Limiar de Lactato', 'Metabolômica', 'Rastreamento por IA', 'Veltron'].map(t => (
+            {['Biomecânica por IA', 'Limiar de Lactato', 'Metabolômica Preditiva', 'Veltron Engine'].map(t => (
               <span key={t}
                 className="font-sans text-[11px] text-white/50 border border-white/12 rounded-full px-3 py-1"
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>
@@ -379,11 +380,11 @@ export default function Home() {
             style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.08)' }}>
             <div className="max-w-xl">
               <p className="font-sans font-bold text-xl lg:text-2xl text-white text-center lg:text-left mb-2">
-                Não entregamos dados isolados.{' '}
-                <span style={{ color: '#7BA7E8' }}>Entregamos uma síntese inteligente do movimento humano.</span>
+                A Veltron não mede o seu desempenho.{' '}
+                <span style={{ color: '#7BA7E8' }}>Ela o define.</span>
               </p>
               <p className="text-white/40 text-sm text-center lg:text-left">
-                Movimento mecânico + resposta do lactato + perfil molecular. Os três fatores que nenhum GPS ou wearable consegue medir.
+                Biomecânica + resposta do lactato + perfil molecular, cruzados num diagnóstico só. Não são dados soltos — é a decisão de treino que nenhum GPS ou wearable consegue te dar.
               </p>
             </div>
             <a href="#modalidades"
@@ -395,6 +396,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ─── ENTENDA A CIÊNCIA (glossário sem jargão) ─── */}
+      <EntendaCiencia />
 
       {/* ─── O QUE VOCÊ RECEBE — LAUDO DE EXEMPLO ─── */}
       <LaudoExemplo seletor link />
@@ -480,13 +484,13 @@ export default function Home() {
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-8">
-                Uma inteligência artificial desenvolvida para cruzar biomecânica, limiar de lactato e metabolômica simultaneamente. Não entrega dados isolados — entrega o diagnóstico completo do atleta em um único laudo.
+                Uma inteligência que cruza biomecânica, limiar de lactato e metabolômica ao mesmo tempo. Em vez de dados soltos, entrega decisão: o diagnóstico completo do atleta num laudo só — e tira o treino do modo reativo, antecipando o problema antes dele aparecer.
               </p>
               <div className="flex flex-col gap-4">
                 {[
                   { titulo: 'Cruza os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
                   { titulo: 'Interpreta padrões', desc: 'Identifica correlações invisíveis à análise humana isolada de cada dado.' },
-                  { titulo: 'Gera o diagnóstico', desc: 'Aponta o ponto exato onde a técnica colapsa e o que fazer para mudar isso.' },
+                  { titulo: 'Gera o diagnóstico', desc: 'Aponta o ponto de ruptura técnica — onde a eficiência despenca — e o que fazer para mudar isso.' },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 items-start">
                     <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"

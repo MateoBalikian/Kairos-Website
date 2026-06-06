@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import LaudoExemplo from '../components/LaudoExemplo'
+import EntendaCiencia from '../components/EntendaCiencia'
 import { mediaUrl, supabase } from '../lib/supabase'
 import { planoLabels, objetivoLabels, buildLeadMessage } from '../lib/leadLabels'
 
@@ -510,6 +511,9 @@ export default function Corrida() {
           </div>
         </div>
       </section>
+
+      {/* ─── ENTENDA A CIÊNCIA (glossário sem jargão) ─── */}
+      <EntendaCiencia esporte="corrida" />
 
       {/* ─── O QUE VOCÊ RECEBE — LAUDO ─── */}
       <LaudoExemplo esporte="corrida" />
