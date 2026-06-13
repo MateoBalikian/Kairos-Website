@@ -121,8 +121,8 @@ export default function Footer() {
             </p>
             <div className="text-sm text-white/50 leading-relaxed space-y-1">
               <p className="text-white/70">Veltron Tecnologia em Saúde e Esporte</p>
-              <p>Av. Desembargador Valente de Lima, 537 — Ap. 704</p>
-              <p>Maceió – AL · CEP 57035-556</p>
+              <p>Rua Paulina Maria de Mendonça, 469 — Jatiúca</p>
+              <p>Maceió – AL · CEP 57037-540</p>
             </div>
           </div>
         </div>
