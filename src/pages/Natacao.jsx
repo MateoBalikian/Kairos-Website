@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 import LaudoExemplo from '../components/LaudoExemplo'
 import EntendaCiencia from '../components/EntendaCiencia'
 import { mediaUrl, supabase } from '../lib/supabase'
-import { planoLabels, objetivoLabels, buildLeadMessage } from '../lib/leadLabels'
+import { planoLabels, objetivoLabels, buildLeadMessage, introEsporte } from '../lib/leadLabels'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -582,11 +582,7 @@ export default function Natacao() {
                 </h3>
                 <p className="italic mt-2" style={{ color: '#7BA7E8', fontSize: '0.9rem' }}>o raio-x completo: do seu movimento à sua célula</p>
               </div>
-              <div className="lg:text-right flex-shrink-0">
-                <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$ 1.850,00</p>
-                <p className="text-white/50 text-sm mt-1">no Pix</p>
-                <p className="text-white/30 text-xs mt-1">ou em até 6x de R$ 340,00 no cartão</p>
-              </div>
+
             </div>
             <p className="text-white/60 leading-relaxed mb-8" style={{ fontSize: '0.95rem', maxWidth: 700 }}>
               A análise mais completa da Veltron: junta biomecânica, lactato e metabolômica num retrato só do seu corpo. São <span className="text-white font-semibold">2 encontros ao longo de 4 a 8 semanas</span> pra achar os gargalos escondidos que causam fadiga precoce e seguram o seu rendimento.
@@ -629,11 +625,7 @@ export default function Natacao() {
                 </h3>
                 <p className="italic mt-2" style={{ color: '#7BA7E8', fontSize: '0.9rem' }}>acompanhamento de 6 meses: avalia, ajusta e reavalia sempre</p>
               </div>
-              <div className="lg:text-right flex-shrink-0">
-                <p className="font-sans font-bold text-white" style={{ fontSize: '2rem', lineHeight: 1 }}>R$ 3.900,00</p>
-                <p className="text-white/50 text-sm mt-1">Semestral à vista</p>
-                <p className="text-white/30 text-xs mt-1">ou em até 6x de R$ 690,00 no cartão de crédito</p>
-              </div>
+
             </div>
             <p className="text-white/60 leading-relaxed mb-8" style={{ fontSize: '0.95rem', maxWidth: 700 }}>
               Acompanhamento científico contínuo: <span className="text-white font-semibold">6 encontros ao longo de 6 meses</span>, com reavaliações e suporte ativo pra ajustar o seu treino o tempo todo. Para atletas de elite e entusiastas de alta performance.
@@ -727,8 +719,8 @@ export default function Natacao() {
                     <option value="express" style={{ background: '#1a1a1a', color: 'white' }}>Avaliação Express — R$250</option>
                     <option value="performance" style={{ background: '#1a1a1a', color: 'white' }}>Avaliação Performance — R$450</option>
                     <option value="reavaliacao" style={{ background: '#1a1a1a', color: 'white' }}>Reavaliação / Follow-up — R$290</option>
-                    <option value="mapa" style={{ background: '#1a1a1a', color: 'white' }}>Mapa Fisiometabólico — R$1.850</option>
-                    <option value="evolution" style={{ background: '#1a1a1a', color: 'white' }}>Veltron Evolution — R$3.900</option>
+                    <option value="mapa" style={{ background: '#1a1a1a', color: 'white' }}>Mapa Fisiometabólico</option>
+                    <option value="evolution" style={{ background: '#1a1a1a', color: 'white' }}>Veltron Evolution</option>
                     <option value="nao-sei" style={{ background: '#1a1a1a', color: 'white' }}>Ainda não sei</option>
                   </select>
                 </div>
@@ -757,7 +749,7 @@ export default function Natacao() {
                       supabase.from('leads').insert([{ ...rest, esporte: modalidades.join(', '), pagina: 'natacao', created_at: new Date().toISOString() }])
                         .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
                       const msg = buildLeadMessage({
-                        intro: `Sou *${form.nome}* e quero uma avaliação científica da minha natação para entender melhor meu desempenho e evoluir com segurança.`,
+                        intro: `Sou *${form.nome}* e quero uma avaliação científica${introEsporte(form.modalidades)} para entender melhor meu desempenho e evoluir com segurança.`,
                         linhas: [
                           ['Modalidades', modalidades.join(', ')],
                           ['Avaliação', planoLabels[form.plano]],

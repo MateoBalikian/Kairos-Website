@@ -37,3 +37,17 @@ export function buildLeadMessage({ intro, linhas = [], email }) {
   if (email) msg += `\n\n_Contato: ${email}_`
   return msg
 }
+
+// Trecho da abertura conforme a(s) modalidade(s) marcada(s) no formulário.
+// 1 modalidade -> cita ela ("da minha corrida"); várias ou nenhuma -> vazio
+// (abertura neutra), evitando dizer "da minha corrida" para um triatleta.
+export function introEsporte(modalidades) {
+  if (!Array.isArray(modalidades) || modalidades.length !== 1) return ''
+  const trechos = {
+    Corrida: ' da minha corrida',
+    Ciclismo: ' do meu ciclismo',
+    Natação: ' da minha natação',
+    Triathlon: ' do meu triathlon',
+  }
+  return trechos[modalidades[0]] || ''
+}
