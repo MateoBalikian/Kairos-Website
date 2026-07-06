@@ -59,7 +59,7 @@ export default function Metabolomica() {
                 Hemograma, glicemia, colesterol — esses exames mostram a superfície. A metabolômica mergulha nas suas células e analisa centenas de metabólitos que revelam o que realmente está acontecendo dentro do seu corpo.
               </p>
               <p className="met-hi text-white/60 leading-relaxed mb-8" style={{ fontSize: '1.05rem', maxWidth: 520 }}>
-                Deficiências invisíveis. Sinais de overtraining antes dos sintomas. O estado real da sua recuperação. Tudo em uma única coleta de sangue.
+                Deficiências invisíveis. Sinais de overtraining antes dos sintomas. O estado real da sua recuperação. Tudo em uma coleta simples de saliva ou urina.
               </p>
               <a href="#agendar" onClick={(e) => { e.preventDefault(); const t = document.getElementById('agendar'); if (t && window.lenis) { window.lenis.scrollTo(t, { duration: 1.4 }) } else if (t) { t.scrollIntoView({ behavior: 'smooth' }) } }}
                 className="met-hi inline-flex items-center gap-3 hover:opacity-90 transition-opacity"
@@ -92,7 +92,7 @@ export default function Metabolomica() {
                 Metabólitos são as moléculas que seu corpo produz, consome e descarta a cada segundo — aminoácidos, ácidos graxos, vitaminas, hormônios, subprodutos do metabolismo energético. São o retrato mais fiel do que está acontecendo nas suas células naquele momento.
               </p>
               <p className="text-[#4A4A47] leading-relaxed mb-4" style={{ fontSize: '1.05rem' }}>
-                A metabolômica analisa centenas desses metabólitos em uma única amostra de sangue. É como fazer um raio-X bioquímico do seu corpo — só que em vez de ossos, você vê o funcionamento celular.
+                A metabolômica analisa centenas desses metabólitos em uma amostra de saliva ou urina. É como fazer um raio-X bioquímico do seu corpo — só que em vez de ossos, você vê o funcionamento celular.
               </p>
               <p className="text-[#4A4A47] leading-relaxed" style={{ fontSize: '1.05rem' }}>
                 Enquanto um exame convencional diz se algo já está fora da faixa, a metabolômica identifica tendências e desequilíbrios antes de virarem problema — especialmente em atletas, cujo metabolismo opera em regimes que exames tradicionais não foram feitos para avaliar.
@@ -217,8 +217,8 @@ export default function Metabolomica() {
               },
               {
                 num: '02',
-                titulo: 'Coleta de sangue',
-                desc: 'Uma coleta simples de sangue venoso — como qualquer exame de laboratório. Dura menos de 10 minutos. A amostra é processada e enviada para análise.',
+                titulo: 'Coleta simples',
+                desc: 'Uma coleta não invasiva de saliva ou urina — sem agulha, sem picada. Feita na hora, em poucos minutos. A amostra é processada e enviada para análise.',
               },
               {
                 num: '03',
@@ -255,7 +255,7 @@ export default function Metabolomica() {
               },
               {
                 q: 'Dói? Como é a coleta?',
-                a: 'É uma coleta de sangue venoso simples — igual a qualquer exame de laboratório. Uma agulhada no braço, menos de 10 minutos. Nada invasivo.',
+                a: 'É uma coleta simples de saliva ou urina — não invasiva, sem agulha, sem picada. Feita na hora, em poucos minutos.',
               },
               {
                 q: 'Em quanto tempo recebo o resultado?',
@@ -302,7 +302,7 @@ export default function Metabolomica() {
             Quer saber mais sobre essa tecnologia? Fale com a gente.
           </p>
           <p className="text-white/30 text-sm mb-10">
-            Coleta simples de sangue venoso. Jejum de 8-12h recomendado.
+            Coleta simples de saliva ou urina. Jejum de 8-12h recomendado.
           </p>
 
           {status === 'success' ? (

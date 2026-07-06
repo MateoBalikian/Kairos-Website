@@ -182,7 +182,7 @@ export default function LaudoExemplo({ esporte = 'corrida', seletor = false, lin
             <span style={{ color: '#4B7BF5' }}>É o raio-x completo do seu desempenho.</span>
           </h2>
           <p className="text-white/50 mt-4 mx-auto leading-relaxed" style={{ maxWidth: 560, fontSize: '1rem' }}>
-            Você sai com um laudo que cruza a sua biomecânica com a sua fisiologia. Veja um exemplo — aqui, o perfil de um atleta de elite.
+            Você sai com um laudo onde a sua biomecânica converge com a sua fisiologia. Veja um exemplo — aqui, o perfil de um atleta de elite.
           </p>
         </div>
 

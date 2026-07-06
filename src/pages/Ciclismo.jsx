@@ -44,7 +44,7 @@ const diferenciais = [
     tag: 'INTELIGÊNCIA ARTIFICIAL',
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" /><path d="M12 6v6l4 2" /></svg>),
     titulo: 'Veltron Engine AI',
-    desc: 'Nossa IA cruza biomecânica, lactato e metabolômica em um único diagnóstico. Identifica em qual potência sua técnica colapsa — e o que fazer para mudar isso.',
+    desc: 'Nossa IA converge biomecânica, lactato e metabolômica em um único diagnóstico. Identifica em qual potência sua técnica colapsa — e o que fazer para mudar isso.',
     cor: '#4B7BF5',
     cta: 'Conheça a tecnologia',
     link: '#contato',
@@ -288,11 +288,11 @@ export default function Ciclismo() {
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-8">
-                Uma inteligência artificial desenvolvida para cruzar biomecânica, limiar de lactato e metabolômica simultaneamente. Não entrega dados isolados — entrega o diagnóstico completo do ciclista em um único laudo.
+                Uma inteligência artificial desenvolvida para convergir biomecânica, limiar de lactato e metabolômica simultaneamente. Não entrega dados isolados — entrega o diagnóstico completo do ciclista em um único laudo.
               </p>
               <div className="flex flex-col gap-4">
                 {[
-                  { titulo: 'Cruza os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
+                  { titulo: 'Converge os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
                   { titulo: 'Interpreta padrões', desc: 'Identifica em qual potência o erro mecânico e o aumento de lactato se encontram.' },
                   { titulo: 'Gera o diagnóstico', desc: 'Aponta o ponto exato onde a eficiência colapsa e o que ajustar na pedalada e no treino.' },
                 ].map((item, i) => (
@@ -631,7 +631,7 @@ export default function Ciclismo() {
               {[
                 'Análise biomecânica completa por IA (vídeo)',
                 'Limiares de lactato medidos no sangue',
-                'Leitura metabolômica do sangue (centenas de marcadores)',
+                'Leitura metabolômica de saliva ou urina (centenas de marcadores)',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span style={{ color: '#4B7BF5', marginTop: '2px', flexShrink: 0 }}>✦</span>
@@ -672,7 +672,7 @@ export default function Ciclismo() {
             <p className="font-sans text-xs text-white/30 uppercase tracking-widest mb-4">Inclui 2 Mapas Fisiometabólicos completos no ciclo</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               {[
-                'Leitura metabolômica do sangue (centenas de marcadores)',
+                'Leitura metabolômica de saliva ou urina (centenas de marcadores)',
                 'Reavaliações de biomecânica e lactato ao longo do programa',
                 'Painel com a evolução das suas métricas',
               ].map((item, i) => (

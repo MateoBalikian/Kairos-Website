@@ -47,7 +47,7 @@ const diferenciais = [
   {
     tag: 'Limiar de Lactato',
     titulo: 'O ponto de ruptura técnica',
-    desc: 'O ritmo exato em que sua eficiência despenca e o corpo começa a trabalhar contra você. Medimos no seu sangue, estágio a estágio — não estimamos por fórmula. É o que define as suas zonas de treino reais e te protege do overtraining.',
+    desc: 'O ritmo exato em que sua eficiência despenca e o corpo começa a trabalhar contra você. Medimos no seu sangue, estágio a estágio — não estimamos por fórmula. É o que define as suas zonas de treino ideais (moderada, pesada e severa) e te protege do overtraining.',
     cor: '#4B7BF5',
     cta: 'Entenda a fisiologia',
     link: '/limiar-de-lactato',
@@ -63,7 +63,7 @@ const diferenciais = [
   {
     tag: 'Metabolômica',
     titulo: 'A verdade dentro das células',
-    desc: 'Uma análise do seu sangue revela centenas de metabólitos: a resposta real das suas células. Sinais de overtraining, inflamação e deficiências aparecem semanas antes do primeiro sintoma — dá pra agir antes da lesão chegar.',
+    desc: 'Uma análise da sua saliva ou urina revela centenas de metabólitos: a resposta real das suas células. Sinais de overtraining, inflamação e deficiências aparecem semanas antes do primeiro sintoma — dá pra agir antes da lesão chegar.',
     cor: '#4B7BF5',
     cta: 'Conheça a metabolômica',
     link: '/metabolomica',
@@ -71,7 +71,7 @@ const diferenciais = [
   {
     tag: 'Veltron Engine AI',
     titulo: 'Onde os 3 viram 1',
-    desc: 'Nossa IA cruza biomecânica, lactato e metabolismo num diagnóstico só — e tira o seu treino do modo reativo: em vez de corrigir o problema depois, a gente antecipa onde ele vai aparecer.',
+    desc: 'Nossa IA converge biomecânica, lactato e metabolismo num diagnóstico só — e tira o seu treino do modo reativo: em vez de corrigir o problema depois, a gente antecipa onde ele vai aparecer.',
     cor: '#4B7BF5',
     cta: 'Conheça a tecnologia',
     link: '#contato',
@@ -102,7 +102,7 @@ function FaqSection() {
     },
     {
       q: 'O que é metabolômica e por que ela importa para o meu treino?',
-      a: 'Metabolômica é a análise de metabólitos do seu sangue — moléculas que revelam o que está acontecendo dentro das células. Ela identifica deficiências nutricionais invisíveis em exames convencionais, marcadores de overtraining antes dos sintomas aparecerem e o status real de recuperação muscular.',
+      a: 'Metabolômica é a análise de metabólitos da sua saliva ou urina — moléculas que revelam o que está acontecendo dentro das células. Ela identifica deficiências nutricionais invisíveis em exames convencionais, marcadores de overtraining antes dos sintomas aparecerem e o status real de recuperação muscular.',
     },
     {
       q: 'A Veltron atende apenas atletas de Maceió?',
@@ -222,7 +222,7 @@ export default function Home() {
           </p>
 
           <div className="hi flex flex-wrap gap-2 mt-5">
-            {['Biomecânica por IA', 'Limiar de Lactato', 'Metabolômica Preditiva', 'Veltron Engine'].map(t => (
+            {['Biomecânica por IA', 'Limiar de Lactato', 'Metabolômica Preditiva', 'Veltron Engine AI'].map(t => (
               <span key={t}
                 className="font-sans text-[11px] text-white/50 border border-white/12 rounded-full px-3 py-1"
                 style={{ backdropFilter: 'blur(4px)', background: 'rgba(255,255,255,0.04)' }}>
@@ -284,7 +284,7 @@ export default function Home() {
               </p>
 
               <p className="text-white/60 leading-relaxed mb-4" style={{ fontSize: '0.95rem' }}>
-                Gustavo atingiu a máxima performance com o acompanhamento contínuo da <span className="text-white font-semibold">Veltron Engine AI</span> — a inteligência que cruza dados de biomecânica, fisiologia e metabolômica em um único diagnóstico integrado.
+                Gustavo atingiu a máxima performance com o acompanhamento contínuo da <span className="text-white font-semibold">Veltron Engine AI</span> — a inteligência que converge dados de biomecânica, fisiologia e metabolômica em um único diagnóstico integrado.
               </p>
               <p className="text-white/60 leading-relaxed mb-8" style={{ fontSize: '0.95rem' }}>
                 Cada zona de treino, cada ajuste técnico e cada decisão de recuperação foi tomada com base em dados reais do seu organismo — não em estimativas. É isso que separa um atleta que treina duro de um atleta que treina certo.
@@ -384,7 +384,7 @@ export default function Home() {
                 <span style={{ color: '#7BA7E8' }}>Ela o define.</span>
               </p>
               <p className="text-white/40 text-sm text-center lg:text-left">
-                Biomecânica + resposta do lactato + perfil molecular, cruzados num diagnóstico só. Não são dados soltos — é a decisão de treino que nenhum GPS ou wearable consegue te dar.
+                Biomecânica + resposta do lactato + perfil molecular, convergidos num diagnóstico só. Não são dados soltos — é a decisão de treino que nenhum GPS ou wearable consegue te dar.
               </p>
             </div>
             <a href="#modalidades"
@@ -484,11 +484,11 @@ export default function Home() {
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-8">
-                Uma inteligência que cruza biomecânica, limiar de lactato e metabolômica ao mesmo tempo. Em vez de dados soltos, entrega decisão: o diagnóstico completo do atleta num laudo só — e tira o treino do modo reativo, antecipando o problema antes dele aparecer.
+                Uma inteligência que converge biomecânica, limiar de lactato e metabolômica ao mesmo tempo. Em vez de dados soltos, entrega decisão: o diagnóstico completo do atleta num laudo só — e tira o treino do modo reativo, antecipando o problema antes dele aparecer.
               </p>
               <div className="flex flex-col gap-4">
                 {[
-                  { titulo: 'Cruza os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
+                  { titulo: 'Converge os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
                   { titulo: 'Interpreta padrões', desc: 'Identifica correlações invisíveis à análise humana isolada de cada dado.' },
                   { titulo: 'Gera o diagnóstico', desc: 'Aponta o ponto de ruptura técnica — onde a eficiência despenca — e o que fazer para mudar isso.' },
                 ].map((item, i) => (

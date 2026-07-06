@@ -115,7 +115,7 @@ const avaliacoes = [
       'Marcadores de overtraining antes dos sintomas aparecerem',
       'Assinatura metabólica individual para otimização de suplementação',
     ],
-    comoFazemos: 'Coleta de sangue com análise por RMN de alta resolução. Relatório com mapeamento dos principais vias metabólicas e recomendações individualizadas baseadas no seu perfil.',
+    comoFazemos: 'Coleta simples de saliva ou urina com análise por RMN de alta resolução. Relatório com mapeamento das principais vias metabólicas e recomendações individualizadas baseadas no seu perfil.',
     grafico: 'metabolomica',
     cor: '#10b981',
   },
@@ -434,11 +434,11 @@ export default function Corrida() {
                 <span className="font-bold" style={{ color: '#4B7BF5' }}>onde os 3 se tornam 1.</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-8">
-                Uma inteligência artificial desenvolvida para cruzar biomecânica, limiar de lactato e metabolômica simultaneamente. Não entrega dados isolados — entrega o diagnóstico completo do corredor em um único laudo.
+                Uma inteligência artificial desenvolvida para convergir biomecânica, limiar de lactato e metabolômica simultaneamente. Não entrega dados isolados — entrega o diagnóstico completo do corredor em um único laudo.
               </p>
               <div className="flex flex-col gap-4">
                 {[
-                  { titulo: 'Cruza os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
+                  { titulo: 'Converge os 3 pilares', desc: 'Biomecânica + Lactato + Metabolômica analisados em conjunto, não separadamente.' },
                   { titulo: 'Interpreta padrões', desc: 'Identifica em qual velocidade o colapso técnico e o aumento de lactato se encontram.' },
                   { titulo: 'Gera o diagnóstico', desc: 'Aponta o ponto exato onde sua economia de corrida colapsa — e o que fazer para mudar isso.' },
                 ].map((item, i) => (
@@ -664,7 +664,7 @@ export default function Corrida() {
               {[
                 'Análise biomecânica completa por IA (vídeo)',
                 'Limiares de lactato medidos no sangue',
-                'Leitura metabolômica do sangue (centenas de marcadores)',
+                'Leitura metabolômica de saliva ou urina (centenas de marcadores)',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span style={{ color: '#4B7BF5', marginTop: '2px', flexShrink: 0 }}>✦</span>
@@ -705,7 +705,7 @@ export default function Corrida() {
             <p className="font-sans text-xs text-white/30 uppercase tracking-widest mb-4">Inclui 2 Mapas Fisiometabólicos completos no ciclo</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               {[
-                'Leitura metabolômica do sangue (centenas de marcadores)',
+                'Leitura metabolômica de saliva ou urina (centenas de marcadores)',
                 'Reavaliações de biomecânica e lactato ao longo do programa',
                 'Painel com a evolução das suas métricas',
               ].map((item, i) => (

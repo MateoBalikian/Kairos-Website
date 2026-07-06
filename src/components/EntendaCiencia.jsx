@@ -32,7 +32,7 @@ const termos = (esporte) => [
     nome: 'Metabolômica',
     sub: 'o Mapa Fisiometabólico',
     trad: 'o raio-x do seu motor por dentro',
-    texto: 'A leitura de centenas de moléculas do seu sangue — as que o corpo usa pra gerar energia, se recuperar e se defender. O resultado é o seu Mapa Fisiometabólico: aponta overtraining, inflamação e carências semanas antes de você sentir, coisas que o exame de sangue comum não mostra.',
+    texto: 'A leitura de centenas de moléculas da sua saliva ou urina — as que o corpo usa pra gerar energia, se recuperar e se defender. O resultado é o seu Mapa Fisiometabólico: aponta overtraining, inflamação e carências semanas antes de você sentir, coisas que o exame de sangue comum não mostra.',
     link: '/metabolomica',
   },
   {

@@ -105,7 +105,7 @@ export default function LimiarLactato() {
               </div>
             </div>
             <p className="text-[#4A4A47] leading-relaxed" style={{ fontSize: '1.05rem' }}>
-              Esses dois pontos definem todas as suas zonas de treino reais. Não é uma tabela genérica da internet — são os seus números, medidos do seu sangue.
+              Esses dois pontos definem todas as suas zonas de treino ideais — moderada, pesada e severa. Não é uma tabela genérica da internet: são os seus números, medidos do seu sangue.
             </p>
           </div>
           <div style={{ border: '1px solid #E5E5E2', borderRadius: '24px', overflow: 'hidden', padding: '16px' }}>
@@ -301,7 +301,7 @@ export default function LimiarLactato() {
               { titulo: 'LT1 e LT2 exatos', desc: 'Os dois limiares medidos diretamente do seu sangue, com a concentração de lactato em cada estágio do teste.' },
               { titulo: 'FC de cada limiar', desc: 'A frequência cardíaca correspondente ao seu LT1 e LT2 — agora seu relógio vai mostrar zonas que fazem sentido.' },
               { titulo: 'Velocidade ou Potência', desc: 'O pace (min/km) ou watts exatos de cada limiar. É o número que define seu treino intervalado e seu ritmo de prova.' },
-              { titulo: 'Zonas de treino reais', desc: 'Suas zonas individualizadas — não uma tabela genérica. Cada zona calculada a partir dos seus limiares reais.' },
+              { titulo: 'Zonas de treino ideais', desc: 'Suas zonas individualizadas — moderada, pesada e severa. Não é uma tabela genérica: cada zona é calculada a partir dos seus limiares medidos.' },
               { titulo: 'Curva de lactato completa', desc: 'O gráfico mostrando como seu lactato subiu a cada estágio. Você vê exatamente onde seu corpo mudou de marcha.' },
               { titulo: 'Recomendações de treino', desc: 'Orientações práticas de como usar as zonas na sua planilha — o que treinar em cada zona e quanto tempo.' },
             ].map((item, i) => (

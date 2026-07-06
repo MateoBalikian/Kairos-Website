@@ -112,7 +112,7 @@ const avaliacoes = [
       'Resposta metabolica individual ao treinamento',
       'Base para prescricao nutricional individual com precisao de laboratorio',
     ],
-    comoFazemos: 'Coleta simples de urina ou sangue. Analise por Ressonancia Magnetica Nuclear pela nossa equipe.',
+    comoFazemos: 'Coleta simples de saliva ou urina. Analise por Ressonancia Magnetica Nuclear pela nossa equipe.',
     grafico: 'metabolomica',
     cor: '#7BA7E8',
   },
