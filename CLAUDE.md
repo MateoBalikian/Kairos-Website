@@ -9,8 +9,10 @@ site da Veltron.
 
 - **Pedro** — fundador da Veltron. É professor, **não é desenvolvedor**. Conversa
   em português e pede alterações em linguagem comum. Não usa git nem terminal.
-- **Mateo** — filho do Pedro, desenvolvedor, dono do repositório. **É ele quem
-  aprova e publica.** Nenhuma alteração vai pro ar sem ele.
+- **Mateo** — filho do Pedro, desenvolvedor, dono do repositório. Continua
+  recebendo notificações de tudo e pode reverter qualquer publicação, mas não
+  precisa mais aprovar cada alteração — o merge é feito pelo Claude após a
+  aprovação em palavras do Pedro.
 - **João** — sócio, aprova decisões administrativas de rotina. Não mexe no site.
 
 ---
@@ -55,13 +57,22 @@ gh pr create --title "<título em português>" --body "<descrição>"
 O PR deve ter: o que mudou em português simples, quais páginas foram afetadas, e a
 linha `Solicitado por: Pedro`.
 
-### 6. NUNCA faça merge do PR
+### 6. Publicar a alteração
 
-Merge é decisão do Mateo. Não rode `gh pr merge` em hipótese nenhuma.
+Depois da aprovação do Pedro em palavras, e com build e preview da Vercel
+passando, o Claude publica com:
 
-### 7. Avise o Pedro
+```
+gh pr merge --squash --delete-branch
+```
 
-Passe o link do PR. A Vercel gera um link de preview no PR que ele pode abrir.
+Mudanças na lista "Não mexa sem avisar" continuam sendo enviadas ao Mateo antes.
+
+### 7. Avise o Mateo do que foi publicado
+
+Depois do merge, avise o Mateo (por mensagem) do que foi ao ar: link do PR
+mergeado, resumo curto do que mudou, e a URL da página no site já atualizada.
+A Vercel deploya automaticamente em ~1 minuto após o merge no `main`.
 
 ---
 
