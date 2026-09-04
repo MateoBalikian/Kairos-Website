@@ -7,6 +7,8 @@ import PoseEstimation from './pages/PoseEstimation'
 import Futebol from './pages/Futebol'
 import LimiarLactato from './pages/LimiarLactato'
 import Metabolomica from './pages/Metabolomica'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
         <Route path="/futebol" element={<Futebol />} />
         <Route path="/limiar-de-lactato" element={<LimiarLactato />} />
         <Route path="/metabolomica" element={<Metabolomica />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </BrowserRouter>
   )
