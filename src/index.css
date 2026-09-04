@@ -232,3 +232,30 @@ html, body {
   overflow-x: hidden;
   max-width: 100%;
 }
+
+/* Blog: texto dos artigos (src/pages/BlogPost.jsx) */
+.post-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #0A0A0A;
+}
+.post-content > * + * { margin-top: 1.4rem; }
+.post-content h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-top: 2.6rem;
+  color: #0A2463;
+}
+.post-content h3 { font-size: 1.25rem; font-weight: 700; margin-top: 2rem; }
+.post-content p { color: #1a1a1a; }
+.post-content a { color: #0A2463; text-decoration: underline; text-underline-offset: 3px; }
+.post-content ul, .post-content ol { padding-left: 1.4rem; }
+.post-content li + li { margin-top: 0.5rem; }
+.post-content blockquote {
+  border-left: 3px solid #0A2463;
+  padding-left: 1.2rem;
+  color: #4A4A47;
+  font-style: italic;
+}
+.post-content strong { font-weight: 700; }
