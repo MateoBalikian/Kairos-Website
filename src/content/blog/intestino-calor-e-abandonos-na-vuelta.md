@@ -4,7 +4,7 @@ description: "Calor, intestino e desempenho são o mesmo sistema. O processo com
 category: "Metabolômica"
 date: 2026-09-05
 readingTime: "5 min de leitura"
-cover: "vo2max.png"
+cover: "/blog/intestino-calor-e-abandonos-na-vuelta.jpg"
 ---
 
 O Tour de France deste ano terminou com 26 ciclistas a menos do que começou. A Vuelta perdeu 18 antes da 11ª etapa. Queda é a causa mais comum de abandono. Mas o segundo motivo quase não aparece nas manchetes: infecção intestinal, "problema de estômago", "não aguentou o calor".

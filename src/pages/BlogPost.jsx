@@ -7,6 +7,9 @@ import Footer from '../components/Footer'
 import { mediaUrl } from '../lib/supabase'
 import { getPost, getPosts, formatDate } from '../lib/posts'
 
+// Capa pode ser um arquivo em public/ (começa com "/") ou um nome no bucket do Supabase
+const coverUrl = (cover) => (cover.startsWith('/') ? cover : mediaUrl(cover))
+
 export default function BlogPost() {
   const { slug } = useParams()
   const post = getPost(slug)
@@ -51,7 +54,7 @@ export default function BlogPost() {
         <div className="max-w-[760px] mx-auto py-14 lg:py-20">
           {post.cover && (
             <div className="mb-12" style={{ border: '1px solid #E5E5E2', borderRadius: 24, overflow: 'hidden', padding: 12 }}>
-              <img src={mediaUrl(post.cover)} alt={post.title} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 14 }} />
+              <img src={coverUrl(post.cover)} alt={post.title} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 14 }} />
             </div>
           )}
           <article className="post-content">
