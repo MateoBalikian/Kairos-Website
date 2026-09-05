@@ -4,7 +4,7 @@ description: "Uma picada no dedo, uma gota de sangue, um gráfico. Bastidor do t
 category: "Bastidor"
 date: 2026-09-13
 readingTime: "4 min de leitura"
-cover: "lactato.jpg"
+cover: "/blog/como-e-um-teste-de-lactato.jpg"
 ---
 
 Muita gente pergunta o que é um teste de lactato e se dói. A resposta curta: parece um teste de glicose, dura quarenta minutos, e a única coisa que dói é descobrir que o seu treino "leve" não era tão leve assim.

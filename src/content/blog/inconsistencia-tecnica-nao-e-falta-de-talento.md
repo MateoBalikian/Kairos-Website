@@ -4,7 +4,7 @@ description: "No fim da etapa de montanha, o ombro balança e o joelho abre. O c
 category: "Biomecânica"
 date: 2026-09-08
 readingTime: "4 min de leitura"
-cover: "wingate.png"
+cover: "/blog/inconsistencia-tecnica-nao-e-falta-de-talento.jpg"
 ---
 
 Repare nos últimos quilômetros de uma etapa de montanha da Vuelta. O mesmo ciclista que pedalava redondo, com o tronco parado, agora balança os ombros, joga o joelho para fora e muda de marcha a cada dez metros. Os comentaristas chamam isso de "perdeu a técnica".

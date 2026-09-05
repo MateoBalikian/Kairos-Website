@@ -6,6 +6,9 @@ import Footer from '../components/Footer'
 import { mediaUrl } from '../lib/supabase'
 import { getPosts, formatDate } from '../lib/posts'
 
+// Capa pode ser um arquivo em public/ (começa com "/") ou um nome no bucket do Supabase
+const coverUrl = (cover) => (cover.startsWith('/') ? cover : mediaUrl(cover))
+
 export default function Blog() {
   const posts = getPosts()
 
@@ -51,7 +54,7 @@ export default function Blog() {
                 {post.cover && (
                   <div style={{ aspectRatio: '16 / 10', overflow: 'hidden' }}>
                     <img
-                      src={mediaUrl(post.cover)}
+                      src={coverUrl(post.cover)}
                       alt={post.title}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                       loading="lazy"
