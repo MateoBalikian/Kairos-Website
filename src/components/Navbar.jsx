@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'Biomecânica', href: '/pose-estimation' },
   { label: 'Fisiologia', href: '/limiar-de-lactato' },
   { label: 'Metabolômica', href: '/metabolomica' },
+  { label: 'Paralímpico', href: '/esporte-paralimpico' },
   { label: 'Blog', href: '/blog' },
 ]
 
