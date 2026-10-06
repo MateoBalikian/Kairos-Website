@@ -715,7 +715,7 @@ export default function Ciclismo() {
                 </div>
                 <h3 className="font-sans font-bold text-xl text-white mb-2">Mensagem enviada!</h3>
                 <p className="text-sm text-white/50">Nossa equipe entrará em contato em breve.</p>
-                <p className="text-white/50 text-sm mt-2">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
+                <p className="text-white/50 text-sm mt-2">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/5582999652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
               </div>
             </div>
           ) : (
@@ -797,7 +797,7 @@ export default function Ciclismo() {
                         ],
                         email: form.email,
                       })
-                      window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+                      window.open(`https://wa.me/5582999652230?text=${encodeURIComponent(msg)}`, '_blank')
                       setStatus('success')
                     }}
                     disabled={status === 'loading'}

@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { mediaUrl, supabase } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 import { buildLeadMessage } from '../lib/leadLabels'
 import { ArrowRight } from 'lucide-react'
 
@@ -32,7 +32,7 @@ export default function Metabolomica() {
       linhas: [['Mensagem', form.mensagem]],
       email: form.email,
     })
-    window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/5582999652230?text=${encodeURIComponent(msg)}`, '_blank')
     setStatus('success')
   }
 
@@ -71,7 +71,7 @@ export default function Metabolomica() {
               </a>
             </div>
             <div className="met-hi hidden xl:flex items-center justify-end self-stretch">
-              <img src={mediaUrl('metabolomica1.png')} alt="Metabolômica Veltron"
+              <img src="/metabolomica/kit-urinario-escuro.jpg" alt="Kit do painel urinário usado na metabolômica da Veltron"
                 style={{ width: '100%', height: '100%', maxHeight: '520px', objectFit: 'cover', borderRadius: '24px' }} />
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function Metabolomica() {
               </p>
             </div>
             <div style={{ border: '1px solid #E5E5E2', borderRadius: '24px', overflow: 'hidden', padding: '16px' }}>
-              <img src={mediaUrl('metabolomica2.png')} alt="Análise Molecular"
+              <img src="/metabolomica/kits-dois.jpg" alt="Kit do painel salivar e kit do painel urinário"
                 style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', borderRadius: '16px' }} />
             </div>
           </div>
@@ -157,6 +157,47 @@ export default function Metabolomica() {
         </div>
       </section>
 
+      {/* ─── OS DOIS PAINÉIS ─── */}
+      <section className="py-16 lg:py-24 px-6" style={{ background: '#0A0A0A' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="mb-12">
+            <span className="font-sans text-xs text-white/30 uppercase tracking-widest">Os dois painéis</span>
+            <h2 className="font-sans mt-3 leading-tight" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
+              Saliva ou urina.{' '}
+              <span style={{ color: '#4B7BF5' }}>Sem agulha.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                nome: 'Painel salivar',
+                numero: '11 marcadores',
+                prazo: 'Resultado do laboratório em 10 dias',
+                desc: 'Três domínios: construção muscular, energia e resistência, queima de gordura. É a porta de entrada, indicada para quem treina com regularidade e quer começar a medir.',
+              },
+              {
+                nome: 'Painel urinário',
+                numero: '100 metabólitos',
+                prazo: 'Resultado do laboratório em 15 dias',
+                desc: 'O painel completo, com faixa de referência metabólito por metabólito. Indicado para quem treina endurance de verdade e para quem repete a coleta ao longo da temporada.',
+              },
+            ].map((item, i) => (
+              <div key={i} className="rounded-3xl p-8 flex flex-col gap-3" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
+                <p className="font-sans font-bold text-white" style={{ fontSize: '1.3rem' }}>{item.nome}</p>
+                <p className="font-sans font-bold" style={{ fontSize: '2rem', lineHeight: 1.1, color: '#4B7BF5' }}>{item.numero}</p>
+                <p className="text-white/50 leading-relaxed text-sm">{item.desc}</p>
+                <p className="text-white/30 text-xs uppercase tracking-widest mt-2">{item.prazo}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-white/40 text-sm leading-relaxed mt-8" style={{ maxWidth: 820 }}>
+            A coleta é não invasiva e a análise é feita por espectrometria de massas no nosso laboratório parceiro, a Genika Multiômicas. A leitura esportiva do resultado é da Veltron.
+          </p>
+        </div>
+      </section>
+
       {/* ─── O QUE A METABOLÔMICA REVELA (editorial, sem cards) ─── */}
       <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[1200px] mx-auto">
@@ -193,6 +234,52 @@ export default function Metabolomica() {
                 <p className="text-white/50 leading-relaxed" style={{ fontSize: '1rem' }}>{item.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── A JANELA (o marcador se mexe primeiro) ─── */}
+      <section className="py-16 lg:py-24 xl:py-32 px-6" style={{ background: '#0A0A0A' }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.2fr] gap-10 xl:gap-16 items-center">
+            <div>
+              <span className="font-sans text-xs text-white/30 uppercase tracking-widest">A janela</span>
+              <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
+                O marcador se mexe{' '}
+                <span style={{ color: '#4B7BF5' }}>primeiro.</span>
+              </h2>
+              <p className="text-white/60 leading-relaxed mb-4" style={{ fontSize: '1.05rem' }}>
+                O seu DNA diz o que você poderia ser. O metabólito diz o que o seu corpo está sendo nesta semana: é a camada mais perto do agora, a que soma treino, sono, alimentação e estresse.
+              </p>
+              <p className="text-white/60 leading-relaxed mb-4" style={{ fontSize: '1.05rem' }}>
+                E é a que muda antes. O marcador se altera em horas; a queda de rendimento e a dor chegam semanas depois. Entre um ponto e outro existe uma janela — e é nela que ainda dá para mudar a semana de treino, a recuperação e a alimentação.
+              </p>
+              <p className="text-white/40 leading-relaxed text-sm">
+                Relatório técnico de desempenho. Não constitui diagnóstico clínico nem previsão individual de lesão.
+              </p>
+            </div>
+            <div style={{ border: '1px solid rgba(255,255,255,0.07)', borderRadius: '24px', overflow: 'hidden' }}>
+              <img src="/metabolomica/antecipacao.png" alt="Gráfico: o marcador metabólico sobe semanas antes de o rendimento cair"
+                style={{ width: '100%', height: 'auto', display: 'block' }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── TRÊS CAMADAS ─── */}
+      <section className="py-16 lg:py-24 px-6" style={{ background: '#0A0A0A' }}>
+        <div className="max-w-[1000px] mx-auto text-center">
+          <span className="font-sans text-xs text-white/30 uppercase tracking-widest">O que só a Veltron faz</span>
+          <h2 className="font-sans mt-3 leading-tight mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 800, color: 'white' }}>
+            Três camadas,{' '}
+            <span style={{ color: '#4B7BF5' }}>um laudo só.</span>
+          </h2>
+          <p className="text-white/60 leading-relaxed mx-auto mb-10" style={{ fontSize: '1.05rem', maxWidth: 720 }}>
+            O laboratório entrega o resultado analítico. A Veltron entrega a leitura esportiva e a página que nenhum laboratório escreve: a do painel cruzado com a sua curva de lactato e com o seu gesto filmado quadro a quadro.
+          </p>
+          <div style={{ border: '1px solid rgba(255,255,255,0.07)', borderRadius: '24px', overflow: 'hidden' }}>
+            <img src="/metabolomica/tres-camadas.png" alt="Curva de lactato, metabolômica e gesto filmado convergindo num laudo só"
+              style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
         </div>
       </section>
@@ -309,7 +396,7 @@ export default function Metabolomica() {
             <div className="rounded-3xl p-10 text-center" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <p className="font-sans font-bold text-white text-xl mb-2">Recebemos sua mensagem!</p>
               <p className="text-white/50 text-sm">Entraremos em contato em breve para agendar sua coleta.</p>
-              <p className="text-white/50 text-sm">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
+              <p className="text-white/50 text-sm">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/5582999652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
             </div>
           ) : (
             <div className="flex flex-col gap-4">

@@ -53,7 +53,7 @@ export default function EsporteParalimpico() {
       linhas: [['Mensagem', form.mensagem]],
       email: form.email,
     })
-    window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/5582999652230?text=${encodeURIComponent(msg)}`, '_blank')
     setStatus('success')
   }
 

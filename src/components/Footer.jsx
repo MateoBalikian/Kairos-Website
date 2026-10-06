@@ -14,7 +14,7 @@ const columns = [
     links: [
       { label: 'contato@veltrontech.com.br', href: 'mailto:contato@veltrontech.com.br' },
       { label: '@veltrontech_', href: 'https://instagram.com/veltrontech_', external: true },
-      { label: 'WhatsApp: (82) 99965-2230', href: 'https://wa.me/558299652230', external: true },
+      { label: 'WhatsApp: (82) 99965-2230', href: 'https://wa.me/5582999652230', external: true },
     ],
   },
 ]

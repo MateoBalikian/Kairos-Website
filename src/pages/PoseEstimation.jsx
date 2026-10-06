@@ -31,7 +31,7 @@ export default function PoseEstimation() {
       linhas: [['Mensagem', form.mensagem]],
       email: form.email,
     })
-    window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/5582999652230?text=${encodeURIComponent(msg)}`, '_blank')
     setStatus('success')
   }
 
@@ -255,7 +255,7 @@ export default function PoseEstimation() {
             <div className="rounded-3xl p-10 text-center" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)' }}>
               <p className="font-sans font-bold text-white text-xl mb-2">Recebemos sua mensagem!</p>
               <p className="text-white/50 text-sm">Entraremos em contato em breve para receber seu vídeo.</p>
-              <p className="text-white/50 text-sm">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
+              <p className="text-white/50 text-sm">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/5582999652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
             </div>
           ) : (
             <div className="flex flex-col gap-4">
