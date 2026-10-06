@@ -94,7 +94,7 @@ export default function Waitlist() {
     supabase.from('leads').insert([{ ...form, pagina: 'home', created_at: new Date().toISOString() }])
       .then(({ error }) => { if (error) console.error('Falha ao registrar lead no Supabase:', error) })
     const msg = buildWhatsAppMessage(form)
-    window.open(`https://wa.me/558299652230?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/5582999652230?text=${encodeURIComponent(msg)}`, '_blank')
     setStatus('success')
   }
 
@@ -127,7 +127,7 @@ export default function Waitlist() {
             <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
               Nossa equipe entrará em contato em breve.
             </p>
-            <p className="text-white/50 text-sm mt-2">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/558299652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
+            <p className="text-white/50 text-sm mt-2">Você será redirecionado para o WhatsApp. Se não abrir automaticamente, <a href="https://wa.me/5582999652230" target="_blank" style={{ color: '#4B7BF5', textDecoration: 'underline' }}>clique aqui</a>.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="rounded-3xl p-6 lg:p-8"
